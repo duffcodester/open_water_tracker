@@ -1,0 +1,45 @@
+require 'spec_helper'
+
+describe 'Navbar' do
+  let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:user) { FactoryGirl.create(:user) }
+
+  subject { page }
+
+  describe 'should have the correct links' do
+
+    describe 'as admin' do
+      before do
+        Warden.test_reset!
+        login_as(admin, scope: :user)
+        visit users_path
+      end
+
+      it { should have_link('Check In', swimmers_path) }
+      it { should have_link('Check Out', '#') }
+      it { should have_link('Users', users_path) }
+      it { should have_link('Analytics', '#') }
+      it { should have_link('Account') }
+      it { should have_link('My Profile', user_path(admin)) }
+      it { should have_link('Edit My Profile', edit_user_path(admin)) }
+      it { should have_link('Logout', destroy_user_session_path) }
+    end
+
+    describe 'as non-admin' do
+      before do
+        Warden.test_reset!
+        login_as(user, scope: :user)
+        visit swimmers_path
+      end
+
+      it { should have_link('Check In', swimmers_path) }
+      it { should have_link('Check Out', '#') }
+      it { should_not have_link('Users', users_path) }
+      it { should_not have_link('Analytics', '#') }
+      it { should have_link('Account') }
+      it { should have_link('My Profile', user_path(admin)) }
+      it { should have_link('Edit My Profile', edit_user_path(admin)) }
+      it { should have_link('Logout', destroy_user_session_path) }
+    end
+  end
+end

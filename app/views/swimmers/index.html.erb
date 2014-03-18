@@ -1,23 +1,22 @@
-<% provide(:title, 'Check In') %>
+<div ng-app='weowepro'>
+  <div ng-controller='SwimmersCtrl'>
+    <% provide(:title, 'Check In') %>
+    <h1>Check In</h1>
 
-<h1>Check In</h1>
+    <div class='row'>
+      <div class='col-md-3'>
+        <div class="input-group">
+          <input class="form-control" ng-model="search" placeholder="Search"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+          </span>
+        </div>
+      </div>
+      <div class='col-md-7'></div>
+      <div class='col-md-2'>
+    </div>
+    <br><br><br>
 
-<table>
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @swimmers.each do |swimmer| %>
-      <tr>
-        <td><%= swimmer.first_name %></td>
-        <td><%= swimmer.last_name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+    <%= render 'index' %>
+  </div>
+</div>
