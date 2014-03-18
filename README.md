@@ -1,4 +1,4 @@
-# WeOwePro
+# COMSA
 
 ## Start The Webserver
 `rails s`
