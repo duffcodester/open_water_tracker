@@ -6,6 +6,6 @@ describe 'Sign In Page' do
 
   subject { page }
 
-  it { should have_title('COMSA Tracker | Sign In') }
-  it { should have_selector('h1', text: 'COMSA Tracker') }
+  it { should have_title('App | Sign In') }
+  it { should have_selector('h1', text: 'Sign In') }
 end

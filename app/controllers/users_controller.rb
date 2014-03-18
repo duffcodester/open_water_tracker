@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.where(dealer_id: current_user.dealer_id)
+    @users = User.all
     respond_to do |format|
       format.html
       format.json
@@ -21,7 +21,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.dealer_id = current_user.dealer_id
     message = 'User account was successfully created.'
     handle_action(@user, message, :new, &:save)
   end

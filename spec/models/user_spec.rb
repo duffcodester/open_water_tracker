@@ -6,8 +6,7 @@ describe User do
                      last_name: 'Last',
                      email: 'user@example.com',
                      password: 'foobar77',
-                     password_confirmation: 'foobar77',
-                     dealer_id: 1
+                     password_confirmation: 'foobar77'
                      )
   end
 
@@ -19,7 +18,6 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:admin) }
-  it { should respond_to(:dealer_id) }
   it { should respond_to(:phone_number) }
   it { should be_valid }
   it { should_not be_admin }
@@ -88,11 +86,6 @@ describe User do
 
   describe 'with a password that\'s too short' do
     before { @user.password = @user.password_confirmation = 'a' * 5 }
-    it { should_not be_valid }
-  end
-
-  describe 'when dealer id is not present' do
-    before { @user.dealer_id = ' ' }
     it { should_not be_valid }
   end
 end
