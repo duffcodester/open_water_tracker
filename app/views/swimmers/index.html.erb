@@ -1,0 +1,23 @@
+<% provide(:title, 'Check In') %>
+
+<h1>Check In</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @swimmers.each do |swimmer| %>
+      <tr>
+        <td><%= swimmer.first_name %></td>
+        <td><%= swimmer.last_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,4 +1,6 @@
 Weowe::Application.routes.draw do
+  resources :swimmers
+
   devise_scope :user do
     root 'devise/sessions#new'
   end
