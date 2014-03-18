@@ -20,4 +20,11 @@ FactoryGirl.define do
     phone_number          '720-387-9655'
   end
 
+  factory :swimmer do
+    first_name            'Swimmer'
+    last_name             'Duffy'
+    usms_number           '1ADE-ABC'
+    lmsc                  'CO'
+  end
+
 end
