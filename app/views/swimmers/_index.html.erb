@@ -1,0 +1,38 @@
+<div ng-app='weowepro' class='table-responsive'>
+
+  <table ng-controller='SwimmersCtrl'
+    class='table table-hover table-condensed' >
+    <thead>
+      <tr>
+        <th>
+         <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+           Last Name</a>
+        </th>
+        <th class = 'hidden-xs'>
+         <a href="" ng-click="predicate.value = 'first_name'; reverse=!reverse">
+           First Name </a>
+        </th>
+        <th class = 'hidden-xs'>USMS Number</th>
+        <th>LMSC</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
+                     filter:search'>
+        <td>
+          <a ng-href='/swimmers/{{swimmer.id}}'>
+            {{swimmer.last_name}}
+          </a>
+        </td>
+        <td class='hidden-xs'>{{swimmer.first_name}}</td>
+        <td class='hidden-xs'>{{swimmer.usms_number}}</td>
+        <td>{{swimmer.lmsc}}</td>
+        <td><%= link_to 'Check In Swimmer',
+                        '#',
+                        class: 'btn btn-primary btn-sm',
+                        role: 'button' %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
