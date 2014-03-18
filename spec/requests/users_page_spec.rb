@@ -47,6 +47,49 @@ describe 'Users' do
     end
   end
 
+  describe 'edit' do
+    before do
+      Warden.test_reset!
+      login_as(user, scope: :user)
+      visit edit_user_path(user)
+    end
+
+    let(:submit) { 'Save Changes' }
+
+    describe 'with invalid information' do
+      before do
+        fill_in 'Password', with: 'foo'
+        click_button submit
+      end
+
+      it 'should not update the user' do
+        current_path.should eq user_path(user)
+      end
+
+      it { should have_content('Password is too short') }
+    end
+
+    describe 'with valid information' do
+      before do
+        fill_in 'First Name',            with: 'First'
+        fill_in 'Last Name',             with: 'Last'
+        fill_in 'Phone Number',          with: '1234'
+        fill_in 'Email',                 with: 'user@example.com'
+        fill_in 'Password',              with: 'foobar77'
+        fill_in 'Password Confirmation', with: 'foobar77'
+        click_button submit
+      end
+
+      it 'should redirect to user profile' do
+        current_path.should eq user_path(user)
+      end
+
+      describe 'after updating the user' do
+        it { should have_selector('div.alert') }
+      end
+    end
+  end
+
   describe 'show' do
     describe 'as admin' do
       before do

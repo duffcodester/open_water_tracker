@@ -26,10 +26,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(user_params)
-    message = 'Profile updated.'
-    handle_action(@user, message, :edit) do |resource|
-      resource.update(user_params)
+    if @user.update_attributes(user_params)
+      sign_in(@user, bypass: true) if @user == current_user
+      flash[:success] = 'Profile updated'
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
 
