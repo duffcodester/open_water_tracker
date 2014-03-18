@@ -11,20 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315204406) do
-
-  create_table "dealers", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "address_1"
-    t.string   "address_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "phone_number"
-    t.string   "time_zone"
-  end
+ActiveRecord::Schema.define(version: 20140318151318) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -49,41 +36,5 @@ ActiveRecord::Schema.define(version: 20140315204406) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "weowe_forms", force: true do |t|
-    t.string   "customer_first_name"
-    t.string   "customer_last_name"
-    t.string   "customer_address_1"
-    t.string   "customer_address_2"
-    t.string   "customer_city"
-    t.string   "customer_state"
-    t.string   "customer_zip"
-    t.string   "customer_phone_mobile"
-    t.string   "customer_address"
-    t.string   "customer_email"
-    t.datetime "custom_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "stock_number"
-    t.integer  "year"
-    t.string   "make"
-    t.datetime "sold_date"
-    t.string   "salesman_first_name"
-    t.string   "salesman_last_name"
-    t.text     "weowe_info"
-    t.text     "theyowe_info"
-    t.string   "customer_signature"
-    t.decimal  "dealer_parts_value",    precision: 8, scale: 2
-    t.decimal  "dealer_labor_value",    precision: 8, scale: 2
-    t.decimal  "dealer_total_value",    precision: 8, scale: 2
-    t.decimal  "customer_total_value",  precision: 8, scale: 2
-    t.string   "vehicle_model"
-    t.string   "color"
-    t.integer  "dealer_id"
-    t.integer  "user_id"
-    t.boolean  "pending",                                       default: true
-    t.boolean  "completed",                                     default: false
-    t.datetime "age"
-  end
 
 end
