@@ -1,12 +1,11 @@
 Weowe::Application.routes.draw do
   devise_scope :user do
-    root to: "devise/sessions#new"
+    root 'devise/sessions#new'
   end
 
   devise_for :users
 
   resources :users
-
 
   get 'static_pages/help'
   get 'static_pages/contact'
