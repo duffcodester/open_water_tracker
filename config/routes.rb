@@ -1,4 +1,6 @@
 Weowe::Application.routes.draw do
+  resources :swim_records
+
   resources :swimmers
 
   devise_scope :user do
@@ -13,5 +15,5 @@ Weowe::Application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/about'
 
-  match '/stats', to: 'static_pages#stats',    via: 'get'
+  match '/analytics', to: 'static_pages#analytics',    via: 'get'
 end
