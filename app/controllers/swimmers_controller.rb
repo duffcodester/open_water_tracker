@@ -1,28 +1,20 @@
 class SwimmersController < ApplicationController
   before_action :set_swimmer, only: [:show, :edit, :update, :destroy]
 
-  # GET /swimmers
-  # GET /swimmers.json
   def index
     @swimmers = Swimmer.all
   end
 
-  # GET /swimmers/1
-  # GET /swimmers/1.json
   def show
   end
 
-  # GET /swimmers/new
   def new
     @swimmer = Swimmer.new
   end
 
-  # GET /swimmers/1/edit
   def edit
   end
 
-  # POST /swimmers
-  # POST /swimmers.json
   def create
     @swimmer = Swimmer.new(swimmer_params)
 
@@ -37,8 +29,6 @@ class SwimmersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /swimmers/1
-  # PATCH/PUT /swimmers/1.json
   def update
     respond_to do |format|
       if @swimmer.update(swimmer_params)
@@ -51,8 +41,6 @@ class SwimmersController < ApplicationController
     end
   end
 
-  # DELETE /swimmers/1
-  # DELETE /swimmers/1.json
   def destroy
     @swimmer.destroy
     respond_to do |format|
@@ -62,13 +50,9 @@ class SwimmersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    include SwimmersHelper
+
     def set_swimmer
       @swimmer = Swimmer.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def swimmer_params
-      params.require(:swimmer).permit(:first_name, :last_name, :usms_number, :lmsc)
     end
 end
