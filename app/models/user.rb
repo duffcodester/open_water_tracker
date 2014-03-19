@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
             on: :update,
             allow_blank: true
 
+  has_many :swim_records
+
   def self.new_remember_token
     SecureRandom.urlsafe_base64
   end
