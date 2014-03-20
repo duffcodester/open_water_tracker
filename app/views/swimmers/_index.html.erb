@@ -8,8 +8,9 @@
         </th>
         <th>
          <a href="" ng-click="predicate.value = 'first_name'; reverse=!reverse">
-           First Name </a>
+           First Name</a>
         </th>
+        <th>MI</th>
         <th class = 'hidden-xs'>USMS Number</th>
         <th class = 'hidden-xs'>LMSC</th>
       </tr>
@@ -24,6 +25,7 @@
           </a>
         </td>
         <td>{{swimmer.first_name}}</td>
+        <td>{{swimmer.middle_initial}}</td>
         <td class = 'hidden-xs'>{{swimmer.usms_number}}</td>
         <th class = 'hidden-xs'>{{swimmer.lmsc}}</td>
         <td><%= link_to 'Check In',

@@ -130,6 +130,15 @@ describe 'Users' do
     it { should have_content('Admin') }
     it { should_not have_content('Add User') }
 
+    describe 'should display swim records' do
+      #tests for angular tags in ng-repeat
+      it { should have_content('user.first_name') }
+      it { should have_content('user.last_name') }
+      it { should have_content('user.email') }
+      it { should have_content('user.phone_number') }
+      it { should have_content('user.admin') }
+    end
+
     describe 'as admin' do
       before do
         Warden.test_reset!

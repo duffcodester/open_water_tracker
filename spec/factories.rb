@@ -23,8 +23,16 @@ FactoryGirl.define do
   factory :swimmer do
     first_name            'Swimmer'
     last_name             'Duffy'
+    middle_initial        'M'
     usms_number           '1ADE-ABC'
     lmsc                  'CO'
+  end
+
+  factory :swim_record do
+    swimmer_id            1
+    user_id               1
+    check_in              '2014-03-20 18:28:06'
+    check_out             '2014-03-20 19:31:06'
   end
 
 end

@@ -14,4 +14,10 @@ describe 'Check Out' do
   it { should have_selector('h1', text: 'Check Out') }
   it { should have_content('Last Name') }
   it { should have_content('First Name') }
+
+  describe 'should display swim records' do
+    #tests for angular tags in ng-repeat
+    it { should have_content('swim_record.first_name') }
+    it { should have_content('swim_record.last_name') }
+  end
 end

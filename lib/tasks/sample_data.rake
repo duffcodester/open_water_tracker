@@ -24,11 +24,13 @@ namespace :db do
     end
 
 
-    LMSC = %w(MR PC SP PC SE FL SE FG AD MR AM CT FL LE MR NC MR IL GU MD GU PV OH PC AK PC CO)
+    LMSC = %w(MR PC SP PC SE FL SE FG AD MR AM CT FL LE CO)
+    MIDDLE_INITIALS = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
 
     200.times do |n|
 
       Swimmer.create!(first_name: Faker::Name.first_name,
+                      middle_initial: MIDDLE_INITIALS.sample,
                       last_name: Faker::Name.last_name,
                       usms_number: "ABCD-10#{n}",
                       lmsc: LMSC.sample
