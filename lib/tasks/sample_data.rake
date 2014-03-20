@@ -34,5 +34,13 @@ namespace :db do
                       lmsc: LMSC.sample
                       )
     end
+
+    200.times do |n|
+
+      SwimRecord.create!(swimmer_id: rand(199) + 1,
+                         check_in: '2014-03-20 18:28:06',
+                         check_out: '2014-03-20 19:35:06',
+                         user_id: rand(19) + 1)
+    end
   end
 end

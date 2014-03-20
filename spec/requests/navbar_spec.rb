@@ -16,9 +16,9 @@ describe 'Navbar' do
       end
 
       it { should have_link('Check In', swimmers_path) }
-      it { should have_link('Check Out', '#') }
+      it { should have_link('Check Out', swim_records_path) }
       it { should have_link('Users', users_path) }
-      it { should have_link('Analytics', '#') }
+      it { should have_link('Analytics', analytics_path) }
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }
       it { should have_link('Edit My Profile', edit_user_path(admin)) }
@@ -33,9 +33,9 @@ describe 'Navbar' do
       end
 
       it { should have_link('Check In', swimmers_path) }
-      it { should have_link('Check Out', '#') }
+      it { should have_link('Check Out', swim_records_path) }
       it { should_not have_link('Users', users_path) }
-      it { should_not have_link('Analytics', '#') }
+      it { should_not have_link('Analytics', analytics_path) }
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }
       it { should have_link('Edit My Profile', edit_user_path(admin)) }

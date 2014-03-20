@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pp'
 
 describe 'Users' do
   let!(:user) { FactoryGirl.create(:user) }

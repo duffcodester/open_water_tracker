@@ -1,15 +1,12 @@
 Weowe::Application.routes.draw do
-  resources :swim_records
 
-  resources :swimmers
-
-  devise_scope :user do
-    root 'devise/sessions#new'
-  end
+  root 'swimmers#index'
 
   devise_for :users
 
   resources :users
+  resources :swim_records
+  resources :swimmers
 
   get 'static_pages/help'
   get 'static_pages/contact'
