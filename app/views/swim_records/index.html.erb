@@ -1,25 +1,22 @@
-<h1>Listing swim_records</h1>
+<div ng-app='weowepro'>
+  <div ng-controller='SwimRecordsCtrl'>
+    <% provide(:title, 'Check Out') %>
+    <h1>Check Out</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    <div class='row'>
+      <div class='col-md-3'>
+        <div class="input-group">
+          <input class="form-control" ng-model="search" placeholder="Search"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+          </span>
+        </div>
+      </div>
+      <div class='col-md-7'></div>
+      <div class='col-md-2'>
+    </div>
+    <br><br><br>
 
-  <tbody>
-    <% @swim_records.each do |swim_record| %>
-      <tr>
-        <td><%= link_to 'Show', swim_record %></td>
-        <td><%= link_to 'Edit', edit_swim_record_path(swim_record) %></td>
-        <td><%= link_to 'Destroy', swim_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Swim record', new_swim_record_path %>
+    <%= render 'index' %>
+  </div>
+</div>

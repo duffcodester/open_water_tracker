@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Swimmers' do
+describe 'Check In' do
   let!(:user) { FactoryGirl.create(:user) }
 
   before do

@@ -13,10 +13,10 @@
       <ul class = 'nav navbar-nav navbar-right' >
         <% if user_signed_in? %>
         <li><%= link_to 'Check In', swimmers_path %></li>
-        <li><%= link_to 'Check Out', '#' %></li>
+        <li><%= link_to 'Check Out', swim_records_path %></li>
           <% if current_user.admin? %>
             <li><%= link_to 'Users', users_path %></li>
-            <li><%= link_to 'Analytics', '#' %></li>
+            <li><%= link_to 'Analytics', analytics_path %></li>
           <% end %>
 
           <li class = 'dropdown'>
