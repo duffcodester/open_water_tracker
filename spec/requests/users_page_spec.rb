@@ -3,6 +3,8 @@ require 'spec_helper'
 describe 'Users' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
+  let!(:admin_too) { FactoryGirl.create(:admin,
+                                        email: 'newuser3@example.com') }
 
   subject { page }
 
@@ -99,7 +101,26 @@ describe 'Users' do
 
       it { should have_selector('h1',
                                 text: "#{user.first_name} #{user.last_name}") }
-      # it { should have_content('Add Admin') }
+    end
+
+    describe 'should not be able to delete my own admin status' do
+      before do
+        Warden.test_reset!
+        login_as(admin, scope: :user)
+        visit user_path(admin)
+      end
+
+      it { should_not have_button('Remove Admin') }
+    end
+
+    describe 'should be able to delete another users admin status' do
+      before do
+        Warden.test_reset!
+        login_as(admin, scope: :user)
+        visit user_path(admin_too)
+      end
+
+      it { should have_button('Remove Admin') }
     end
 
     describe 'as non-admin' do
@@ -111,7 +132,7 @@ describe 'Users' do
 
       it { should have_selector('h1',
                                 text: "#{user.first_name} #{user.last_name}") }
-      it { should_not have_content('Add Admin') }
+      it { should_not have_button('Add Admin') }
     end
   end
 
