@@ -13,19 +13,27 @@
 
   <div class="field">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= @swimmer.first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_initial %><br>
+    <%= @swimmer.middle_initial %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= @swimmer.last_name %>
   </div>
   <div class="field">
     <%= f.label :usms_number %><br>
-    <%= f.text_field :usms_number %>
+    <%= @swimmer.usms_number %>
   </div>
   <div class="field">
     <%= f.label :lmsc %><br>
-    <%= f.text_field :lmsc %>
+    <%= @swimmer.lmsc %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
   </div>
   <div class="actions">
     <%= f.submit %>
