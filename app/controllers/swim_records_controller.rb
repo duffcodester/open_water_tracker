@@ -72,6 +72,7 @@ class SwimRecordsController < ApplicationController
       params.require(:swim_record).permit(:swimmer_id,
                                           :check_in,
                                           :check_out,
-                                          :user_id)
+                                          :check_in_user_id,
+                                          :check_out_user_id)
     end
 end
