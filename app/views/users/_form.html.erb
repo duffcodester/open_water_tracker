@@ -12,6 +12,8 @@
     <%= f.text_field :phone_number, label: 'Phone Number' %>
     <%= f.password_field :password, label: 'Password' %>
     <%= f.password_field :password_confirmation, label: 'Password Confirmation' %>
+    <%= f.label :admin %>
+    <%= f.check_box :admin, label: "" %>
 
     <%= f.primary ( f.object.new_record? ?  'Create User' :
     'Save Changes' ) %>
