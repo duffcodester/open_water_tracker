@@ -1,23 +1,35 @@
+<h1><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
+  <strong>First Name:</strong>
   <%= @swimmer.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Middle Initial:</strong>
+  <%= @swimmer.middle_initial %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
   <%= @swimmer.last_name %>
 </p>
 
 <p>
-  <strong>Usms number:</strong>
+  <strong>USMS Number:</strong>
   <%= @swimmer.usms_number %>
 </p>
 
 <p>
-  <strong>Lmsc:</strong>
+  <strong>LMSC:</strong>
   <%= @swimmer.lmsc %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @swimmer.phone_number %>
 </p>
 
 <%= link_to 'Edit', edit_swimmer_path(@swimmer) %> |
