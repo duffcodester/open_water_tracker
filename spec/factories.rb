@@ -30,7 +30,8 @@ FactoryGirl.define do
 
   factory :swim_record do
     swimmer_id            1
-    user_id               1
+    check_in_user_id      1
+    check_out_user_id     1
     check_in              '2014-03-20 18:28:06'
     check_out             '2014-03-20 19:31:06'
   end

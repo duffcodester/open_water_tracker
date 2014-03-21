@@ -19,5 +19,6 @@ describe 'Check Out' do
     #tests for angular tags in ng-repeat
     it { should have_content('swim_record.first_name') }
     it { should have_content('swim_record.last_name') }
+    it { should have_content('swim_record.check_in') }
   end
 end
