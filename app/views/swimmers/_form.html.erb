@@ -1,41 +1,21 @@
-<%= form_for(@swimmer) do |f| %>
-  <% if @swimmer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:</h2>
+<div class='userform well'>
+  <%= bootstrap_form_for(@swimmer,
+    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
 
-      <ul>
-      <% @swimmer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render 'shared/error_messages_swimmers' %>
+
+    <legend><%= legend %></legend>
+
+    <%= f.text_field :first_name, label: 'First Name' %>
+    <%= f.text_field :middle_initial, label: 'Middle Initial' %>
+    <%= f.text_field :last_name, label: 'Last Name' %>
+    <%= f.text_field :usms_number, label: 'USMS Number' %>
+    <%= f.text_field :lmsc, label: 'LMSC' %>
+    <%= f.text_field :phone_number, label: 'Phone Number' %>
+
+    <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
+    'Save Changes' ) %>
+
   <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= @swimmer.first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_initial %><br>
-    <%= @swimmer.middle_initial %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= @swimmer.last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :usms_number %><br>
-    <%= @swimmer.usms_number %>
-  </div>
-  <div class="field">
-    <%= f.label :lmsc %><br>
-    <%= @swimmer.lmsc %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+</div>

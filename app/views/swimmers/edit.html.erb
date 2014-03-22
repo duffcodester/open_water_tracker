@@ -1,6 +1,2 @@
-<h1>Editing swimmer</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @swimmer %> |
-<%= link_to 'Back', swimmers_path %>
+<% provide(:title, 'Edit Swimmer') %>
+<%= render 'form', legend: 'Update Swimmer', user: @swimmer %>

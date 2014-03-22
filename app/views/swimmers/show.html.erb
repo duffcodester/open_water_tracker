@@ -1,36 +1,39 @@
+<% provide(:title, "#{@swimmer.first_name} #{@swimmer.last_name.each_char.first}.") %>
+
 <h1><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
 
-<p id="notice"><%= notice %></p>
+<div class='pull-left'>
+<%=link_to 'Edit Information', edit_swimmer_path(@swimmer), type: 'button',
+    class: 'btn btn-primary'%>
+</div>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @swimmer.first_name %>
-</p>
+<br> <br>
 
-<p>
-  <strong>Middle Initial:</strong>
-  <%= @swimmer.middle_initial %>
-</p>
-
-<p>
-  <strong>Last Name:</strong>
-  <%= @swimmer.last_name %>
-</p>
-
-<p>
-  <strong>USMS Number:</strong>
-  <%= @swimmer.usms_number %>
-</p>
-
-<p>
-  <strong>LMSC:</strong>
-  <%= @swimmer.lmsc %>
-</p>
-
-<p>
-  <strong>Phone Number:</strong>
-  <%= @swimmer.phone_number %>
-</p>
-
-<%= link_to 'Edit', edit_swimmer_path(@swimmer) %> |
-<%= link_to 'Back', swimmers_path %>
+<div class='table-responsive'>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>First Name</th>
+      <td><%= @swimmer.first_name %></td>
+    </tr>
+    <tr>
+    <th>Middle Initial</th>
+      <td><%= @swimmer.middle_initial %></td>
+    </tr>
+    <tr>
+    <th>Last Name</th>
+      <td><%= @swimmer.last_name %></td>
+    </tr>
+    <tr>
+    <th>USMS Number</th>
+      <td><%= @swimmer.usms_number %></td>
+    </tr>
+    <tr>
+    <th>LMSC</th>
+      <td><%= @swimmer.lmsc %></td>
+    </tr>
+    <tr>
+    <th>Phone Number</th>
+      <td><%= @swimmer.phone_number %></td>
+    </tr>
+  </table>
+</div>
