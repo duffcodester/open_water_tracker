@@ -1,4 +1,4 @@
-@weowepro.factory 'Users', ['$resource',
+@comsatrack.factory 'Users', ['$resource',
   ($resource) ->
     $resource('/users.json', {}, { index: { method: 'GET', isArray: true}})
 ]

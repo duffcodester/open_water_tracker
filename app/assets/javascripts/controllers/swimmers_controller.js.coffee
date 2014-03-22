@@ -1,5 +1,5 @@
-@weowepro.controller 'SwimmersCtrl', ['$scope', 'Swimmers',
-  @WeoweFormsCtrl = ($scope, Swimmers) ->
+@comsatrack.controller 'SwimmersCtrl', ['$scope', 'Swimmers',
+  @SwimmersCtrl = ($scope, Swimmers) ->
 
     $scope.predicate =
       value: 'last_name'
@@ -13,3 +13,4 @@
     Swimmers.index (data) ->
       $scope.Swimmers = data
 ]
+
