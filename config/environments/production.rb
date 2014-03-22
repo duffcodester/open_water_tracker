@@ -26,7 +26,6 @@ Weowe::Application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  config.assets.js_compressor = Sprockets::LazyCompressor.new { Uglifier.new(mangle: false)}
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
