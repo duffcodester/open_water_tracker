@@ -23,7 +23,6 @@ namespace :db do
                   )
     end
 
-
     LMSC = %w(MR PC SP PC SE FL SE FG AD MR AM CT FL LE CO)
     MIDDLE_INITIALS = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
 
@@ -40,9 +39,9 @@ namespace :db do
     200.times do |n|
 
       SwimRecord.create!(swimmer_id: rand(199) + 1,
-                         check_in: '2014-03-20 18:28:06',
-                         check_out: '2014-03-20 19:35:06',
-                         user_id: rand(19) + 1)
+                         check_in: Time.now,
+                         check_out: Time.now,
+                         check_in_user_id: rand(19) + 1)
     end
   end
 end

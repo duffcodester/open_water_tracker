@@ -12,6 +12,7 @@
         </th>
         <th class = 'hidden-xs'>Check In</th>
         <th class = 'hidden-xs'>LMSC</th>
+        <th>Action</th>
       </tr>
     </thead>
 
@@ -24,7 +25,7 @@
           </a>
         </td>
         <td>{{swim_record.first_name}}</td>
-        <td class = 'hidden-xs'>{{swim_record.check_in}}</td>
+        <td class = 'hidden-xs'>{{swim_record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <th class = 'hidden-xs'>{{swim_record.lmsc}}</td>
         <td><%= link_to 'Check Out',
                         '#',

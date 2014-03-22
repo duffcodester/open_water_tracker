@@ -50,9 +50,9 @@ class SwimmersController < ApplicationController
   end
 
   private
-    include SwimmersHelper
+  include SwimmersHelper
 
-    def set_swimmer
-      @swimmer = Swimmer.find(params[:id])
-    end
+  def set_swimmer
+    @swimmer = Swimmer.find(params[:id])
+  end
 end
