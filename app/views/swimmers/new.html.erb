@@ -1,5 +1,2 @@
-<h1>New swimmer</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', swimmers_path %>
+<% provide(:title, 'Create New Swimmer') %>
+<%= render 'form', :legend => 'Create New Swimmer', :swimmer => @swimmer %>

@@ -1,4 +1,4 @@
-@weowepro= angular.module 'weowepro',
-  ['ngResource', 'weoweproFilters']
+@comsatrack= angular.module 'comsatrack',
+  ['ngResource', 'comsatrackFilters']
 
-@weoweproFilters = angular.module 'weoweproFilters', []
+@comsatrackFilters = angular.module 'comsatrackFilters', []

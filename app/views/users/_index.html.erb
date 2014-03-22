@@ -1,4 +1,4 @@
-<div ng-app='weowepro' class='table-responsive'>
+<div ng-app='comsatrack' class='table-responsive'>
 
   <table ng-controller='UsersCtrl'
     class='table table-hover table-condensed' >
@@ -19,7 +19,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat='user in weoweUsers | orderBy:predicate.value:reverse |
+      <tr ng-repeat='user in Users | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
           <a ng-href='/users/{{user.id}}'>

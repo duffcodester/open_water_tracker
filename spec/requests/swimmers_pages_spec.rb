@@ -14,11 +14,11 @@ describe 'Swimmers' do
       visit edit_swimmer_path(swimmer)
     end
 
-    let(:submit) { 'Update Swimmer' }
+    let(:submit) { 'Save Changes' }
 
     describe 'with valid information' do
       before do
-        fill_in 'Phone number', with: '1234'
+        fill_in 'Phone Number', with: '1234'
         click_button submit
       end
 

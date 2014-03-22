@@ -1,4 +1,4 @@
-<div ng-app='weowepro'>
+<div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
     <h1>Check In</h1>
@@ -19,5 +19,13 @@
     <br><br><br>
 
     <%= render 'index' %>
+
+    <center>
+    <div class='well'>
+    <%=link_to 'Update Local USMS Database', '#', type: 'button',
+        class: 'btn btn-lg btn-danger'%>
+    </div>
+  </center>
+
   </div>
 </div>
