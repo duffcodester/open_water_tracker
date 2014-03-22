@@ -1,5 +1,8 @@
-@comsatrack.controller 'SwimmersCtrl', ['$scope', 'Swimmers',
-  @SwimmersCtrl = ($scope, Swimmers) ->
+@comsatrack.controller 'SwimmersCtrl', [
+  '$scope',
+  '$http',
+  'Swimmers',
+  @SwimmersCtrl = ($scope, $http, Swimmers) ->
 
     $scope.predicate =
       value: 'last_name'
