@@ -21,7 +21,7 @@ describe 'Check In' do
   it { should have_content('LMSC') }
 
   describe 'should display swimmers' do
-    #tests for angular tags in ng-repeat
+    # tests for angular tags in ng-repeat
     it { should have_content('swimmer.first_name') }
     it { should have_content('swimmer.last_name') }
     it { should have_content('swimmer.middle_initial') }

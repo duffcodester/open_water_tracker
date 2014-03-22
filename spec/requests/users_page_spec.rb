@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'Users' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:admin_too) { FactoryGirl.create(:admin,
-                                        email: 'newuser3@example.com') }
+  let!(:admin_too) do FactoryGirl.create(:admin,
+                                         email: 'newuser3@example.com') end
 
   subject { page }
 
@@ -99,8 +99,8 @@ describe 'Users' do
         visit user_path(user)
       end
 
-      it { should have_selector('h1',
-                                text: "#{user.first_name} #{user.last_name}") }
+      it do should have_selector('h1',
+                                 text: "#{user.first_name} #{user.last_name}") end
     end
 
     describe 'should not be able to delete my own admin status' do
@@ -130,8 +130,8 @@ describe 'Users' do
         visit user_path(user)
       end
 
-      it { should have_selector('h1',
-                                text: "#{user.first_name} #{user.last_name}") }
+      it do should have_selector('h1',
+                                 text: "#{user.first_name} #{user.last_name}") end
       it { should_not have_button('Add Admin') }
     end
   end
@@ -152,7 +152,7 @@ describe 'Users' do
     it { should_not have_content('Add User') }
 
     describe 'should display swim records' do
-      #tests for angular tags in ng-repeat
+      # tests for angular tags in ng-repeat
       it { should have_content('user.first_name') }
       it { should have_content('user.last_name') }
       it { should have_content('user.email') }

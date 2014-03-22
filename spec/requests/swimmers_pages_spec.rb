@@ -39,8 +39,8 @@ describe 'Swimmers' do
       visit swimmer_path(swimmer)
     end
 
-    it { should have_selector('h1',
-                              text: "#{swimmer.first_name} #{swimmer.last_name}") }
+    it do should have_selector('h1',
+                               text: "#{swimmer.first_name} #{swimmer.last_name}") end
     it { should have_content('First Name') }
     it { should have_content('Middle Initial') }
     it { should have_content('Last Name') }
