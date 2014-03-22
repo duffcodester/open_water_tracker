@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321041452) do
+ActiveRecord::Schema.define(version: 20140322010635) do
 
   create_table "swim_records", force: true do |t|
     t.datetime "created_at"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140321041452) do
     t.datetime "check_out"
     t.integer  "check_in_user_id"
     t.integer  "check_out_user_id"
+    t.string   "phone_number"
   end
 
   create_table "swimmers", force: true do |t|

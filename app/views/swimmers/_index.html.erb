@@ -14,6 +14,7 @@
         <th>MI</th>
         <th class = 'hidden-xs'>USMS Number</th>
         <th class = 'hidden-xs'>LMSC</th>
+        <th>Action</th>
       </tr>
     </thead>
 
@@ -34,10 +35,15 @@
         <td>{{swimmer.middle_initial}}</td>
         <td class = 'hidden-xs'>{{swimmer.usms_number}}</td>
         <th class = 'hidden-xs'>{{swimmer.lmsc}}</td>
-        <td><%= link_to 'Check In',
-                        '#',
-                        class: 'btn btn-success btn-sm',
-                        role: 'button' %></td>
+        <td>
+          <div ng-if="showPhone(swimmer.phone_number)">
+            <%= link_to 'Check In', '#', class: 'btn btn-success btn-sm', role: 'button' %>
+          </div>
+          <div ng-hide="hideCheckin(swimmer.phone_number)">
+            <button type="button" class="btn btn-sm btn-success" disabled="disabled">
+              Check In</button>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
