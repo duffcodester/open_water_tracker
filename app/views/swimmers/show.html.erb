@@ -3,7 +3,7 @@
 <h1><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
 
 <div class='pull-left'>
-<%=link_to 'Edit Information', edit_swimmer_path(@swimmer), type: 'button',
+<%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
     class: 'btn btn-primary'%>
 </div>
 
