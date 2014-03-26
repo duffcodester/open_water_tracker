@@ -1,11 +1,12 @@
 class AnalyticsController < ApplicationController
-  before_action :set_analytic, only: [:show, :edit, :update, :destroy]
+  before_action :set_analytic, only: [:edit, :update, :destroy]
 
   def index
     @analytics = Analytic.all
   end
 
   def show
+     @analytic = Analytic.find(1)
   end
 
   def new
