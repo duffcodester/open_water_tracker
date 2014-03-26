@@ -4,5 +4,4 @@ class Swimmer < ActiveRecord::Base
   validates_presence_of :usms_number, :lmsc
 
   has_many :swim_records
-  belongs_to :analytic
 end
