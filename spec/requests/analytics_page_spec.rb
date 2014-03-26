@@ -5,7 +5,7 @@ describe 'Analytics' do
 
   before do
     login_as(admin, scope: :user)
-    visit analytics_path
+    visit swimmer_analytics_path
   end
 
   subject { page }
