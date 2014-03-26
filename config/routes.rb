@@ -1,5 +1,7 @@
 Weowe::Application.routes.draw do
 
+  resources :analytics
+
   root 'swimmers#index'
 
   devise_for :users

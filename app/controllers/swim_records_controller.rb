@@ -1,28 +1,20 @@
 class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
-  # GET /swim_records
-  # GET /swim_records.json
   def index
     @swim_records = SwimRecord.all
   end
 
-  # GET /swim_records/1
-  # GET /swim_records/1.json
   def show
   end
 
-  # GET /swim_records/new
   def new
     @swim_record = SwimRecord.new
   end
 
-  # GET /swim_records/1/edit
   def edit
   end
 
-  # POST /swim_records
-  # POST /swim_records.json
   def create
     @swim_record = SwimRecord.new(swim_record_params)
 
@@ -37,8 +29,6 @@ class SwimRecordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /swim_records/1
-  # PATCH/PUT /swim_records/1.json
   def update
     respond_to do |format|
       if @swim_record.update(swim_record_params)
@@ -51,8 +41,6 @@ class SwimRecordsController < ApplicationController
     end
   end
 
-  # DELETE /swim_records/1
-  # DELETE /swim_records/1.json
   def destroy
     @swim_record.destroy
     respond_to do |format|

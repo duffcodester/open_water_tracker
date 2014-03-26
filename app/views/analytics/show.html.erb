@@ -1,0 +1,37 @@
+<div class='table-responsive'>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>Start Date</th>
+      <td><%= @analytic.start_date %></td>
+    </tr>
+    <tr>
+    <th>End Date</th>
+      <td><%= @analytic.end_date %></td>
+    </tr>
+  </table>
+</div>
+
+<div class='userform well'>
+  <%= bootstrap_form_for(@analytic,
+    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
+
+
+    <div class='date-select'>
+     <%= f.date_select :start_date, { start_year: Time.now.year,
+      end_year: Time.now.year-30, order: [:month, :day, :year], prompt: true},
+        label: 'Date of Hire'  %>
+     <%= f.date_select :end_date, { start_year: Time.now.year,
+      end_year: Time.now.year-30, order: [:month, :day, :year], prompt: true},
+        label: 'Date of Hire'  %>
+    </div>
+
+    <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
+    'Save Changes' ) %>
+
+  <% end %>
+</div>
+</div>
+
+<%= Swimmer.where(:created_at => @analytic.start_date..@analytic.end_date).count %>
+
+
