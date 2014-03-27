@@ -8,7 +8,12 @@
 </div>
 
   <ul class='pull-right'>
-    <%= bootstrap_form_for @swimmer do |f| %>
+    <%= bootstrap_form_for SwimRecord.create do |f| %>
+      <%= f.hidden_field :last_name, value: @swimmer.last_name %>
+      <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
+      <%= f.hidden_field :check_in, value: Time.now %>
+      <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
+      <%= f.hidden_field :check_in_user_id, value: current_user.id %>
       <%= f.submit 'Check In', class: "btn btn-success" %>
     <% end %>
   </ul>

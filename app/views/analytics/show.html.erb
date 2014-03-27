@@ -1,0 +1,38 @@
+<% provide(:title, 'Analytics') %>
+<h1>Analytics</h1>
+
+<div class='userform well'>
+  <%= bootstrap_form_for(@analytic,
+    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
+    <div class='date-select'>
+     <%= f.date_select :start_date, { start_year: Time.now.year,
+      end_year: Time.now.year-5, order: [:month, :day, :year], prompt: true},
+        label: 'Date of Hire'  %>
+     <%= f.date_select :end_date, { start_year: Time.now.year,
+      end_year: Time.now.year-5, order: [:month, :day, :year], prompt: true},
+        label: 'Date of Hire'  %>
+    </div>
+    <%= f.primary ( 'Submit' ) %>
+  <% end %>
+</div>
+
+<center>
+  <table class='table table-bordered table-condensed' style='width:400px'>
+    <tr>
+      <th> Metric </th>
+      <th> Value </th>
+    </tr>
+    <tr>
+      <td> # Unique Swimmers </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td> Total number of swims</td>
+      <td>
+        <%= Swimmer.where(:created_at =>
+                          @analytic.start_date..@analytic.end_date).count %>
+      </td>
+    </tr>
+  </table>
+</center>
+</div>

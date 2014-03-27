@@ -1,5 +1,7 @@
 Weowe::Application.routes.draw do
 
+  resources :analytics
+
   root 'swimmers#index'
 
   devise_for :users
@@ -12,5 +14,5 @@ Weowe::Application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/about'
 
-  match '/analytics', to: 'static_pages#analytics',    via: 'get'
+  match '/swimmer_analytics', to: 'analytics#show',    via: 'get'
 end
