@@ -1,5 +1,7 @@
 # COMSA
 
+Testing
+
 ## Start The Webserver
 `rails s`
 
@@ -8,7 +10,7 @@
 
 `rake db:migrate`
 
-`rake db:populate` 
+`rake db:populate`
 
 ## Git Commands
 
@@ -42,7 +44,7 @@ Delete local branch `git branch -d (branch)`
 ## Heroku
 To update: `git push heroku master`
 
-To populate: `heroku pg:reset DATABASE` > `heroku run rake db:migrate` > `heroku run rake db:populate` 
+To populate: `heroku pg:reset DATABASE` > `heroku run rake db:migrate` > `heroku run rake db:populate`
 
 ***
 
