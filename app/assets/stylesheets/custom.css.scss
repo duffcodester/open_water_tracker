@@ -6,10 +6,14 @@ $lightgrey: #999;
 
 html {
   overflow-y: scroll;
+  position: relative;
+  height: 100%;
 }
 
 body {
+  height: 100%;
   padding-top: 0px;
+  margin: 0 0 100px; /* bottom = footer height */
 }
 
 section {
@@ -76,13 +80,6 @@ P {
 
 /* Footer */
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: $lightgrey;  //defined via bootstrap-sass gem
-}
-
 footer a {
   color: #555;
 }
@@ -103,6 +100,22 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 10px;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.footer, .push {
+    height: 50px; /* .push must be the same height as .footer */
+}
+
+.footer { /* centers the text */
+    text-align: center; /* horizontal centering */
+    line-height: 50px; /* vertical centering; should be equal to the footer height */
 }
 
 /* mixins, variables, etc. */

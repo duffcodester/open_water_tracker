@@ -10,10 +10,4 @@ class StaticPagesController < ApplicationController
 
   def about
   end
-
-  def dashboard
-  end
-
-  def analytics
-  end
 end
