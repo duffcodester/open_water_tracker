@@ -15,4 +15,5 @@ Weowe::Application.routes.draw do
   get 'static_pages/about'
 
   match '/swimmer_analytics', to: 'analytics#show',    via: 'get'
+  match '/records', to: 'swim_records#records',    via: 'get'
 end

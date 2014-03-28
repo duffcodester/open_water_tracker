@@ -2,7 +2,19 @@ class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
   def index
-    @swim_records = SwimRecord.all
+    @swim_records = SwimRecord.where(completed: false)
+      respond_to do |format|
+        format.html
+        format.json
+      end
+  end
+
+  def records
+    @records = SwimRecord.where(completed: true)
+      respond_to do |format|
+        format.html
+        format.json
+      end
   end
 
   def show
@@ -61,6 +73,7 @@ class SwimRecordsController < ApplicationController
                                         :check_in,
                                         :check_out,
                                         :check_in_user_id,
-                                        :check_out_user_id)
+                                        :check_out_user_id,
+                                        :completed)
   end
 end

@@ -14,10 +14,9 @@
         <th>MI</th>
         <th class = 'hidden-xs'>USMS Number</th>
         <th class = 'hidden-xs'>LMSC</th>
-        <th>Action</th>
+        <th></th>
       </tr>
     </thead>
-
     <tbody>
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search'>
@@ -36,16 +35,21 @@
         <td class = 'hidden-xs'>{{swimmer.usms_number}}</td>
         <th class = 'hidden-xs'>{{swimmer.lmsc}}</td>
         <td>
-          <div ng-if="showPhone(swimmer.phone_number)">
-            <%= link_to 'Check In', '#', class: 'btn btn-success btn-sm', role: 'button' %>
-          </div>
-          <div ng-hide="hideCheckin(swimmer.phone_number)">
-            <button type="button" class="btn btn-sm btn-success" disabled="disabled">
-              Check In</button>
-          </div>
+          <%= bootstrap_form_for SwimRecord.create do |f| %>
+            <%= f.hidden_field :last_name, value: '{{swimmer.last_name}}!' %>
+            <%= f.hidden_field :first_name, value: '{{swimmer.first_name}}!'  %>
+            <%= f.hidden_field :check_in, value: Time.now %>
+            <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}!' %>
+            <%= f.hidden_field :check_in_user_id, value: current_user.id %>
+            <div ng-if="showPhone(swimmer.phone_number)">
+              <%= f.submit 'Check In', class: "btn btn-success"  %>
+            </div>
+            <div ng-hide="hideCheckin(swimmer.phone_number)">
+              <%= f.submit 'Check In', class: "btn btn-success", disabled: "disabled"  %>
+            </div>
+          <% end %>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
