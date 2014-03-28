@@ -28,7 +28,7 @@
         <td class = 'hidden-xs'>{{swim_record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <th class = 'hidden-xs'>{{swim_record.lmsc}}</td>
         <td>
-          <%= bootstrap_form_for Swimmer.find(['{{swim_record.id |}}!'.to_f]) do |f| %>
+          <%= bootstrap_form_for Swimmer.find_by_id("{{swim_record.id }}!".to_i) do |f| %>
             <%= f.hidden_field :last_name, value: "Hat" %>
               <%= f.submit 'Check Out', class: "btn btn-danger"  %>
             </div>
