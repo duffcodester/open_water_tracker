@@ -17,22 +17,17 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat='swim_record in SwimRecords | orderBy:predicate.value:reverse |
+      <tr ng-repeat='record in Records | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
-          <a ng-href='/swim_records/{{swim_record.id}}'>
-            {{swim_record.last_name}}
+          <a ng-href='/records/{{swim_record.id}}'>
+            {{record.last_name}}
           </a>
         </td>
-        <td>{{swim_record.first_name}}</td>
-        <td class = 'hidden-xs'>{{swim_record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
-        <th class = 'hidden-xs'>{{swim_record.lmsc}}</td>
+        <td>{{record.first_name}}</td>
+        <td class = 'hidden-xs'>{{record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <th class = 'hidden-xs'>{{record.lmsc}}</td>
         <td>
-          <%= bootstrap_form_for Swimmer.find_by_id("{{swim_record.id }}!".to_i) do |f| %>
-            <%= f.hidden_field :last_name, value: "Hat" %>
-              <%= f.submit 'Check Out', class: "btn btn-danger"  %>
-            </div>
-          <% end %>
         </td>
       </tr>
     </tbody>
