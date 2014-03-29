@@ -18,7 +18,7 @@
 
     <tbody>
       <tr ng-repeat='swim_record in SwimRecords | orderBy:predicate.value:reverse |
-                     filter:search'>
+                     filter:search' ng-class="{'muted':isTemp($index)}">
         <td>
           <a ng-href='/swim_records/{{swim_record.id}}'>
             {{swim_record.last_name}}
@@ -28,11 +28,17 @@
         <td class = 'hidden-xs'>{{swim_record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <th class = 'hidden-xs'>{{swim_record.lmsc}}</td>
         <td>
-          <%= bootstrap_form_for Swimmer.find_by_id(1) do |f| %>
-            <%= f.hidden_field :last_name, value: "Hat" %>
+          <div ng-click="deleteRow(swim_record)">
+            <%= bootstrap_form_for SwimRecord.create do |f| %>
+              <%= f.hidden_field :last_name, value: '{{swimmer_record.last_name}}!' %>
+              <%= f.hidden_field :first_name, value: '{{swimmer_record.first_name}}!'  %>
+              <%= f.hidden_field :check_in, value: '{{swim_record.check_in}}' %>
+              <%= f.hidden_field :swimmer_id, value: '{{swim_record.id}}!' %>
+              <%= f.hidden_field :check_in_user_id, value: 1 %>
+              <%= f.hidden_field :completed, value: true %>
               <%= f.submit 'Check Out', class: "btn btn-danger"  %>
-            </div>
-          <% end %>
+            <% end %>
+        </div>
         </td>
       </tr>
     </tbody>
