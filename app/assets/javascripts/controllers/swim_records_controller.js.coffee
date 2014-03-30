@@ -6,6 +6,9 @@
 
     $scope.temp = false
 
+    $scope.showPhone = (swimmer) ->
+      true  if swimmer.phone_number isnt null
+
     $scope.deleteRow = (row) ->
       $scope.SwimRecords.splice $scope.SwimRecords.indexOf(row), 1
       return

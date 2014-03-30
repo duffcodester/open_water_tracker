@@ -2,7 +2,7 @@
   <table class='table table-hover table-condensed' >
     <thead>
       <tr>
-        <th>#</th>
+        <th></th>
         <th>
          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
            Last Name</a>
@@ -21,10 +21,10 @@
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
-         <div ng-if="showPhone(swimmer.phone_number)">
+          <div ng-if="showPhone(swimmer.phone_number)">
             <span class="glyphicon glyphicon-earphone"></span>
-         </div>
-       </td>
+          </div>
+        </td>
         <td>
           <a ng-href='/swimmers/{{swimmer.id}}'>
             {{swimmer.last_name}}
