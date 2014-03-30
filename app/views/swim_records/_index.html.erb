@@ -2,6 +2,7 @@
   <table class='table table-hover table-condensed'>
     <thead>
       <tr>
+        <th></th>
         <th>
          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
            Last Name</a>
@@ -20,6 +21,11 @@
       <tr ng-repeat='swim_record in SwimRecords | orderBy:predicate.value:reverse |
                      filter:search' ng-class="{'muted':isTemp($index)}">
         <td>
+          <div ng-if="showPhone(swim_record.phone_number)">
+            <span class="glyphicon glyphicon-earphone"></span>
+          </div>
+        </td>
+        <td>
           <a ng-href='/swim_records/{{swim_record.id}}'>
             {{swim_record.last_name}}
           </a>
@@ -33,8 +39,10 @@
               <%= f.hidden_field :last_name, value: '{{swimmer_record.last_name}}!' %>
               <%= f.hidden_field :first_name, value: '{{swimmer_record.first_name}}!'  %>
               <%= f.hidden_field :check_in, value: '{{swim_record.check_in}}' %>
+              <%= f.hidden_field :check_out, value: Time.now %>
               <%= f.hidden_field :swimmer_id, value: '{{swim_record.id}}!' %>
               <%= f.hidden_field :check_in_user_id, value: 1 %>
+              <%= f.hidden_field :check_out_user_id, value: 1 %>
               <%= f.hidden_field :completed, value: true %>
               <%= f.submit 'Check Out', class: "btn btn-danger"  %>
             <% end %>

@@ -21,4 +21,19 @@ describe 'Check Out' do
     it { should have_content('swim_record.last_name') }
     it { should have_content('swim_record.check_in') }
   end
+
+  describe 'when clicking the check out button' do
+    before do
+      click_button 'Check Out'
+    end
+
+    it 'should redirect to check out page' do
+      current_path.should eq swim_records_path
+    end
+
+    describe 'after check out' do
+      it { should have_selector('div.alert') }
+    end
+  end
+
 end
