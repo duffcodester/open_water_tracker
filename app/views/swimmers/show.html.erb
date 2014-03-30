@@ -8,6 +8,8 @@
 </div>
 
   <ul class='pull-right'>
+  <% if @swimmer.phone_number? %>
+
     <%= bootstrap_form_for SwimRecord.create do |f| %>
       <%= f.hidden_field :last_name, value: @swimmer.last_name %>
       <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
@@ -16,6 +18,10 @@
       <%= f.hidden_field :check_in_user_id, value: current_user.id %>
       <%= f.submit 'Check In', class: "btn btn-success" %>
     <% end %>
+
+  <% else %>
+    <button type="button" class="btn btn btn-warning" disabled="disabled">Add Phone Number</button>
+  <% end %>
   </ul>
 
 <br> <br>
