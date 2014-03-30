@@ -22,7 +22,7 @@
                      filter:search'>
         <td>
           <div ng-if="showPhone(swimmer.phone_number)">
-            <SPAN style="color: green; font-size: 18pt" class="glyphicon glyphicon-earphone"></span>
+            <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
           </div>
         </td>
         <td>
@@ -42,10 +42,10 @@
             <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}!' %>
             <%= f.hidden_field :check_in_user_id, value: current_user.id %>
             <div ng-if="showPhone(swimmer.phone_number)">
-              <%= f.submit 'Check In', class: "btn btn-success"  %>
+              <%= f.submit 'Check In', class: "btn btn-success btn-sm"  %>
             </div>
             <div ng-hide="hideCheckin(swimmer.phone_number)">
-              <%= f.submit 'Add Phone Number', class: "btn btn-warning", disabled: "disabled"  %>
+              <%= f.submit 'Add Phone Number', class: "btn btn-warning btn-sm", disabled: "disabled"  %>
             </div>
           <% end %>
         </td>

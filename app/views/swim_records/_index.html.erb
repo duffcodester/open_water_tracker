@@ -21,11 +21,12 @@
       <tr ng-repeat='swim_record in SwimRecords | orderBy:predicate.value:reverse |
                      filter:search' ng-class="{'muted':isTemp($index)}">
         <td>
-          <div ng-if="showPhone(swim_record.phone_number)">
-            <span class="glyphicon glyphicon-earphone"></span>
-          </div>
+          <a ng-href="{{swim_record.phone_number}}">
+          <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
+          </a>
         </td>
         <td>
+          <a href="tel:555-555-5555">555-555-5555</a>
           <a ng-href='/swim_records/{{swim_record.id}}'>
             {{swim_record.last_name}}
           </a>
