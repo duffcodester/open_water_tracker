@@ -6,12 +6,12 @@
 
     <legend><%= legend %></legend>
 
-    <%= f.text_field :first_name, label: 'First Name' %>
-    <%= f.text_field :middle_initial, label: 'Middle Initial' %>
-    <%= f.text_field :last_name, label: 'Last Name' %>
-    <%= f.text_field :usms_number, label: 'USMS Number' %>
-    <%= f.text_field :lmsc, label: 'LMSC' %>
-    <%= f.text_field :phone_number, label: 'Phone Number' %>
+    <%= f.text_field :first_name, label: 'First Name (First Name as Registered in USMS Database)', disabled: true %>
+    <%= f.text_field :middle_initial, label: 'Middle Initial', disabled: true %>
+    <%= f.text_field :last_name, label: 'Last Name', disabled: true %>
+    <%= f.text_field :usms_number, label: 'USMS Number', disabled: true %>
+    <%= f.text_field :lmsc, label: 'LMSC', disabled: true %>
+    <%= f.text_field :phone_number, label: 'Phone Number (Insert 10 Numbers, no hyphens or brackets)' %>
 
     <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
     'Save Changes' ) %>
