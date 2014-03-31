@@ -30,11 +30,15 @@
       <tr ng-repeat='record in Records | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
-          <div ng-if="showPhone(swimmer.phone_number)">
+          <a ng-href="tel:{{record.swimmer.phone_number}}">
             <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
-          </div>
+          </a>
         </td>
-        <td>{{record.swimmer.last_name}}</td>
+        <td>
+          <a ng-href='/swimmers/{{record.swimmer.id}}'>
+            {{record.swimmer.last_name}}
+          </a>
+        </td>
         <td>{{record.swimmer.first_name}}</td>
         <td>{{record.swimmer.middle_initial}}</td>
         <td class = 'hidden-xs'>{{record.swimmer.usms_number}}</td>
