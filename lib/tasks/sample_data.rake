@@ -26,7 +26,7 @@ namespace :db do
     LMSC = %w(MR PC SP PC SE FL SE FG AD MR AM CT FL LE CO)
     MIDDLE_INITIALS = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
 
-    200.times do |n|
+    1500.times do |n|
 
       Swimmer.create!(first_name: Faker::Name.first_name,
                       middle_initial: MIDDLE_INITIALS.sample,
@@ -37,9 +37,9 @@ namespace :db do
                       )
     end
 
-    300.times do |n|
+    50.times do |n|
 
-      SwimRecord.create!(swimmer_id: rand(199) + 1,
+      SwimRecord.create!(swimmer_id: rand(1500) + 1,
                          check_in: Time.now,
                          check_out: Time.now + rand(3).hour,
                          check_in_user_id: rand(100) + 1,

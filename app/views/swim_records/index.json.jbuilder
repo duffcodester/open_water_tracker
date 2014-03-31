@@ -15,5 +15,3 @@ json.array!(@swim_records) do |swim_record|
     json.phone_number swim_record.swimmer.phone_number
   end
 end
-
-

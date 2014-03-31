@@ -37,7 +37,7 @@
         <td>
           <div ng-click="deleteRow(swim_record)">
             <%= bootstrap_form_for SwimRecord.create do |f| %>
-              <%= f.hidden_field :swimmer_id, value: '{{swim_record.id}}!' %>
+              <%= f.hidden_field :swimmer_id, value: '{{swim_record.swimmer.id}}' %>
               <%= f.hidden_field :completed, value: true %>
               <%= f.hidden_field :check_in, value: '{{swim_record.check_in}}' %>
               <%= f.hidden_field :check_out, value: Time.now %>

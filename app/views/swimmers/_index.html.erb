@@ -36,7 +36,7 @@
         <th class = 'hidden-xs'>{{swimmer.lmsc}}</td>
         <td>
           <%= bootstrap_form_for SwimRecord.create do |f| %>
-            <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}!' %>
+            <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}' %>
             <%= f.hidden_field :check_in, value: Time.now %>
             <%= f.hidden_field :check_in_user_id, value: current_user.id %>
             <div ng-if="showPhone(swimmer.phone_number)">
