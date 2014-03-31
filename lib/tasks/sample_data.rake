@@ -2,6 +2,9 @@ namespace :db do
   desc 'Fill database with sample data'
   task populate: :environment do
 
+    Analytic.create!(start_date: '2010-01-01',
+                     end_date: '2014-12-12')
+
     User.create!(first_name: 'Michael',
                  last_name: 'Pierce',
                  phone_number: '720-387-9691',
