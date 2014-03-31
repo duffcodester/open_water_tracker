@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable,
          :rememberable,
-         :trackable
+         :trackable,
+         :timeoutable,
+         timeout_in: 1.minutes
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
