@@ -1,23 +1,18 @@
 <div class='userform well'>
   <%= bootstrap_form_for(@user,
     style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
-
     <%= render 'shared/error_messages_users' %>
-
     <legend><%= legend %></legend>
-
     <%= f.text_field :first_name, label: 'First Name' %>
     <%= f.text_field :last_name, label: 'Last Name' %>
     <%= f.text_field :email, label: 'Email' %>
     <%= f.text_field :phone_number, label: 'Phone Number' %>
     <%= f.password_field :password, label: 'Password' %>
     <%= f.password_field :password_confirmation, label: 'Password Confirmation' %>
-    <%= f.label :admin %>
-    <%= f.check_box :admin, label: "" %>
-
+    <%= f.select :admin, [['Yes', true], ['No', false]] %>
     <%= f.primary ( f.object.new_record? ?  'Create User' :
     'Save Changes' ) %>
-
   <% end %>
+</div>
 </div>
 </div>

@@ -62,12 +62,11 @@ class SwimRecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
   def set_swim_record
     @swim_record = SwimRecord.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
   def swim_record_params
     params.require(:swim_record).permit(:swimmer_id,
                                         :check_in,
