@@ -10,10 +10,6 @@ Weowe::Application.routes.draw do
   resources :swim_records
   resources :swimmers
 
-  get 'static_pages/help'
-  get 'static_pages/contact'
-  get 'static_pages/about'
-
   match '/swimmer_analytics', to: 'analytics#show',    via: 'get'
   match '/records', to: 'swim_records#records',    via: 'get'
 end
