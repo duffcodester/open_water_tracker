@@ -17,8 +17,8 @@ describe 'Check Out' do
 
   describe 'should display swim records' do
     # tests for angular tags in ng-repeat
-    it { should have_content('swim_record.first_name') }
-    it { should have_content('swim_record.last_name') }
+    it { should have_content('swim_record.swimmer.first_name') }
+    it { should have_content('swim_record.swimmer.last_name') }
     it { should have_content('swim_record.check_in') }
   end
 
