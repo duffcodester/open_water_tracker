@@ -15,7 +15,7 @@ describe 'Users' do
       visit new_user_path
     end
 
-    let(:submit) { 'Create User' }
+    let(:submit) { 'Create Monitor' }
 
     describe 'with invalid information' do
       before { fill_in 'Password', with: 'foo' }
@@ -143,8 +143,8 @@ describe 'Users' do
       visit users_path
     end
 
-    it { should have_title('COMSA Tracker | Users') }
-    it { should have_selector('h1', text: 'Users') }
+    it { should have_title('COMSA Tracker | Monitors') }
+    it { should have_selector('h1', text: 'Monitors') }
     it { should have_content('Last Name') }
     it { should have_content('First Name') }
     it { should have_content('Email') }
@@ -167,7 +167,7 @@ describe 'Users' do
         visit users_path
       end
 
-      it { should have_content('Add User') }
+      it { should have_content('Add Monitor') }
     end
   end
 end
