@@ -1,127 +1,25 @@
 <% provide(:title, 'Analytics') %>
 <h1>Analytics</h1>
 
-<div ng-app="comsatracker">
-        <script>
-    angular.module('comsatracker', ['ui.bootstrap']);
-    var StartDateCtrl = function ($scope) {
-      $scope.today = function() {
-        $scope.dt = new Date();
-      };
-      $scope.today();
+<div class='userform well'>
+  <%= bootstrap_form_for(@analytic,
+    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
 
-      $scope.showWeeks = true;
-      $scope.toggleWeeks = function () {
-        $scope.showWeeks = ! $scope.showWeeks;
-      };
-
-      $scope.clear = function () {
-        $scope.dt = null;
-      };
-
-      // Disable weekend selection
-      $scope.disabled = function(date, mode) {
-        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-      };
-
-      $scope.toggleMin = function() {
-        $scope.minDate = ( $scope.minDate ) ? null : new Date();
-      };
-      $scope.toggleMin();
-
-      $scope.open = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-
-        $scope.opened = true;
-      };
-
-      $scope.dateOptions = {
-        'year-format': "'yy'",
-        'starting-day': 1
-      };
-
-      $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
-      $scope.format = $scope.formats[0];
-    };
-
-    </script>
-        <script>
-    angular.module('comsatracker', ['ui.bootstrap']);
-    var EndDateCtrl = function ($scope) {
-      $scope.today = function() {
-        $scope.dt = new Date();
-      };
-      $scope.today();
-
-      $scope.showWeeks = true;
-      $scope.toggleWeeks = function () {
-        $scope.showWeeks = ! $scope.showWeeks;
-      };
-
-      $scope.clear = function () {
-        $scope.dt = null;
-      };
-
-      // Disable weekend selection
-      $scope.disabled = function(date, mode) {
-        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-      };
-
-      $scope.toggleMin = function() {
-        $scope.minDate = ( $scope.minDate ) ? null : new Date();
-      };
-      $scope.toggleMin();
-
-      $scope.open = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-
-        $scope.opened = true;
-      };
-
-      $scope.dateOptions = {
-        'year-format': "'yy'",
-        'starting-day': 1
-      };
-
-      $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
-      $scope.format = $scope.formats[0];
-    };
-
-    </script>
-
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
-
-  <h4> Start Date</h4>
-  <div ng-controller="StartDateCtrl">
-    <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
-    <div class="row">
-        <div class="col-md-3">
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-        </div>
+    <div class='date-select'>
+     <%= f.date_select :start_date, { start_year: Time.now.year,
+      end_year: Time.now.year-30, order: [:month, :day, :year], prompt: true},
+        label: 'Date of Hire'  %>
+     <%= f.date_select :end_date, { start_year: Time.now.year,
+      end_year: Time.now.year-30, order: [:month, :day, :year], prompt: true},
+        label: 'Date of Hire'  %>
     </div>
-  </div>
 
-  <h4> End Date</h4>
-  <div ng-controller="EndDateCtrl">
-    <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
-    <div class="row">
-        <div class="col-md-3">
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-        </div>
-    </div>
-  </div>
+    <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
+    'Query Database' ) %>
+
+  <% end %>
+
+</div>
 
   <br><br>
 
