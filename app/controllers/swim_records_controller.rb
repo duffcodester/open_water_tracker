@@ -42,6 +42,7 @@ class SwimRecordsController < ApplicationController
   end
 
   def update
+    debugger
     respond_to do |format|
       if @swim_record.update(swim_record_params)
         format.html { redirect_to @swim_record, notice: 'Swim record was successfully updated.' }

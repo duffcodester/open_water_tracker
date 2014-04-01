@@ -17,35 +17,36 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat='swim_record in SwimRecords | orderBy:predicate.value:reverse |
+      <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
                      filter:search' ng-class="{'muted':isTemp($index)}">
         <td>
-          <div ng-if="showPhone(swim_record.swimmer.phone_number)">
-            <a ng-href="tel:{{swim_record.swimmer.phone_number}}">
+          <div ng-if="showPhone(swimRecord.swimmer.phone_number)">
+            <a ng-href="tel:{{swimRecord.swimmer.phone_number}}">
               <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
             </a>
         </div>
         </td>
         <td>
-          <a ng-href='/swimmers/{{swim_record.swimmer.id}}'>
-            {{swim_record.swimmer.last_name}}
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
+            {{swimRecord.swimmer.last_name}}
           </a>
         </td>
-        <td>{{swim_record.swimmer.first_name}}</td>
-        <td>{{swim_record.swimmer.middle_initial}}</td>
-        <td class = 'hidden-xs'>{{swim_record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td>{{swimRecord.swimmer.first_name}}</td>
+        <td>{{swimRecord.swimmer.middle_initial}}</td>
+        <td class = 'hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <td>
-          <div ng-click="deleteRow(swim_record)">
-            <%= bootstrap_form_for SwimRecord.create do |f| %>
-              <%= f.hidden_field :swimmer_id, value: '{{swim_record.swimmer.id}}' %>
+          <check-out info='swimRecord'></check-out>
+          <!-- <div ng-click="deleteRow(swimRecord)">
+            <%= bootstrap_form_for SwimRecord.first do |f| %>
+              <%= f.hidden_field :swimmer_id, value: '{{swimRecord.swimmer.id}}' %>
               <%= f.hidden_field :completed, value: true %>
-              <%= f.hidden_field :check_in, value: '{{swim_record.check_in}}' %>
+              <%= f.hidden_field :check_in, value: '{{swimRecord.check_in}}' %>
               <%= f.hidden_field :check_out, value: Time.now %>
-              <%= f.hidden_field :check_in_user_id, value: '{{swim_record.check_in_user_id}}' %>
+              <%= f.hidden_field :check_in_user_id, value: '{{swimRecord.check_in_user_id}}' %>
               <%= f.hidden_field :check_out_user_id, value: current_user.id %>
               <%= f.submit 'Check Out', class: "btn btn-danger"  %>
             <% end %>
-        </div>
+        </div> -->
         </td>
       </tr>
     </tbody>
