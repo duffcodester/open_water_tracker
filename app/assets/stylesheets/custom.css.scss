@@ -16,6 +16,8 @@ body {
   margin: 0 0 100px; /* bottom = footer height */
 }
 
+html,body{background-color:#fff;}
+
 section {
   overflow: auto;
 }
@@ -202,4 +204,31 @@ legend{
   height: 33px;
   margin-left: auto;
      margin-right: auto;
+}
+
+.navbar-custom {
+    background-color:#000040;
+    color:#000040;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+    background: #000040;
+
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav >, .navbar-nav > .active > a:focus {
+    background: #000040;
+    color: #fff;
+    background-color:transparent;
+}
+.navbar-custom .navbar-nav > .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a, .dropdown-menu li.current-menu-item > a {
+    background-color: #333333;
+    background-image: -moz-linear-gradient(center top , #333333, #000000);
+    background-repeat: repeat-x;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.navbar-custom .navbar-brand {
+    color:#000040;
 }
