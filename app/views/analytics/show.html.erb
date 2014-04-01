@@ -16,12 +16,10 @@
 
     <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
     'Query Database' ) %>
-
   <% end %>
-
 </div>
 
-  <br><br>
+<br><br>
 
 <center>
   <table class='table table-bordered table-condensed' style='width:400px'>
@@ -30,19 +28,12 @@
       <th> Value </th>
     </tr>
     <tr>
-      <td> # Unique Swimmers </td>
+      <td> Total Number of Swims </td>
       <td>
-<div ng-controller="StartDateCtrl">
-  <%= Swimmer.where(:created_at =>
-                    @analytic.start_date..@analytic.end_date).count %>
-</div>
+        <div ng-controller="StartDateCtrl">
+          <%= SwimRecord.where(created_at: @analytic.start_date..@analytic.end_date,
+                               completed: true).count %>
+        </div>
       </td>
-    </tr>
-    <tr>
-      <td> Total number of swims</td>
-      <td>
-
-      </td>
-    </tr>
   </table>
 </center>
