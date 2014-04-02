@@ -1,39 +1,29 @@
 <% provide(:title, 'Analytics') %>
-<h1>Analytics</h1>
-
+<h1 class='hidden-xs'>Monitors</h1>
+<center><h4 class='visible-xs'>Analytics</h4></center>
 <div class='userform well'>
-  <%= bootstrap_form_for(@analytic,
-    style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
-
-    <div class='date-select'>
+  <%= bootstrap_form_for(@analytic) do |f| %>
      <%= f.date_select :start_date, { start_year: Time.now.year,
       end_year: Time.now.year-30, order: [:month, :day, :year], prompt: true},
         label: 'Date of Hire'  %>
      <%= f.date_select :end_date, { start_year: Time.now.year,
       end_year: Time.now.year-30, order: [:month, :day, :year], prompt: true},
         label: 'Date of Hire'  %>
-    </div>
-
-    <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
+    <%= f.primary ( f.object.new_record? ?  'Setup Query' :
     'Query Database' ) %>
   <% end %>
 </div>
-
-<br><br>
-
 <center>
-  <table class='table table-bordered table-condensed' style='width:400px'>
+  <table class='table table-bordered table-condensed' style='width:25%'>
     <tr>
-      <th> Metric </th>
-      <th> Value </th>
-    </tr>
-    <tr>
-      <td> Total Number of Swims </td>
-      <td>
-        <div ng-controller="StartDateCtrl">
-          <%= SwimRecord.where(created_at: @analytic.start_date..@analytic.end_date,
-                               completed: true).count %>
-        </div>
+      <td style="display: table-cell; vertical-align: middle;">
+        <h4>Total Number of Swims</h4>
+      </td>
+      <td style="display: table-cell; vertical-align: middle;">
+        <h4>
+          <%=SwimRecord.where(created_at: @analytic.start_date..@analytic.end_date,
+                              completed: true).count%>
+        </h4>
       </td>
   </table>
 </center>

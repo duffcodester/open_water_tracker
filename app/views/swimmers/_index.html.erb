@@ -2,7 +2,6 @@
   <table class='table table-hover table-condensed' >
     <thead>
       <tr>
-        <th></th>
         <th>
          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
            Last Name</a>
@@ -21,11 +20,6 @@
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search'>
         <td>
-          <div ng-if="showPhone(swimmer.phone_number)">
-            <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
-          </div>
-        </td>
-        <td>
           <a ng-href='/swimmers/{{swimmer.id}}'>
             {{swimmer.last_name}}
           </a>
@@ -40,10 +34,20 @@
             <%= f.hidden_field :check_in, value: Time.now %>
             <%= f.hidden_field :check_in_user_id, value: current_user.id %>
             <div ng-if="showPhone(swimmer.phone_number)">
-              <%= f.submit 'Check In', class: "btn btn-success btn-sm"  %>
+              <div class='hidden-xs'>
+                <%= f.submit 'Check In', class: "btn btn-success btn-sm"  %>
+              </div>
+              <div class='visible-xs'>
+                <%= f.submit 'Check In', class: "btn btn-success btn-xs"  %>
+              </div>
             </div>
             <div ng-hide="hideCheckin(swimmer.phone_number)">
-              <%= f.submit 'Add Phone Number', class: "btn btn-warning btn-sm", disabled: "disabled"  %>
+              <div class='hidden-xs'>
+                <%= f.submit 'Add Phone Number', class: "btn btn-warning btn-sm", disabled: "disabled"  %>
+              </div>
+              <div class='visible-xs'>
+                <%= f.submit 'Add Phone Number', class: "btn btn-warning btn-xs", disabled: "disabled"  %>
+              </div>
             </div>
           <% end %>
         </td>

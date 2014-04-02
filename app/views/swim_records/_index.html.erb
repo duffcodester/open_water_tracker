@@ -22,7 +22,7 @@
         <td>
           <div ng-if="showPhone(swim_record.swimmer.phone_number)">
             <a ng-href="tel:{{swim_record.swimmer.phone_number}}">
-              <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
+              <span style="color: green; font-size: 10pt" class="glyphicon glyphicon-earphone"></span>
             </a>
         </div>
         </td>
@@ -43,7 +43,12 @@
               <%= f.hidden_field :check_out, value: Time.now %>
               <%= f.hidden_field :check_in_user_id, value: '{{swim_record.check_in_user_id}}' %>
               <%= f.hidden_field :check_out_user_id, value: current_user.id %>
-              <%= f.submit 'Check Out', class: "btn btn-danger"  %>
+              <div class='hidden-xs'>
+                <%= f.submit 'Check Out', class: "btn btn-danger btn-sm"  %>
+              </div>
+              <div class='visible-xs'>
+                <%= f.submit 'Check Out', class: "btn btn-danger btn-xs"  %>
+              </div>
             <% end %>
         </div>
         </td>

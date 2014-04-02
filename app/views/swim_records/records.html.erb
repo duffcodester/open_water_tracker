@@ -1,8 +1,8 @@
 <div ng-app='comsatrack'>
   <div ng-controller='RecordsCtrl'>
     <% provide(:title, 'Records') %>
-    <h1>Historical Swimmer Data</h1>
-
+    <h1 class='hidden-xs'>Historical Swimmer Data</h1>
+    <center><h4 class='visible-xs'>Historical Swimmer Data</h4></center>
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">
@@ -16,8 +16,10 @@
       <div class='col-md-7'></div>
       <div class='col-md-2'>
     </div>
-    <br><br><br>
-
+    <div class='hidden-xs'>
+      <br><br>
+    </div>
+    <br>
     <%= render 'records' %>
   </div>
 </div>
