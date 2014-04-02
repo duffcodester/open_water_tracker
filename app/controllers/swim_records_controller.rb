@@ -11,11 +11,13 @@ class SwimRecordsController < ApplicationController
 
   def records
     @records = SwimRecord.where(completed: true)
-      respond_to do |format|
-        format.html
-        format.json
-        format.csv { render csv: @records, filename: records }
+    respond_to do |format|
+      format.html
+      format.json
+      format.csv do
+        render csv: @records, filename: 'records'
       end
+    end
   end
 
   def show

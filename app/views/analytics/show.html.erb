@@ -1,6 +1,12 @@
 <% provide(:title, 'Analytics') %>
-<h1 class='hidden-xs'>Monitors</h1>
-<center><h4 class='visible-xs'>Analytics</h4></center>
+<center>
+  <h1 class='hidden-xs'>Monitors</h1>
+  <h4 class='visible-xs'>Analytics</h4>
+  <div class='userform well'>
+    <%= link_to 'Export All Records', records_path(format: 'csv'),
+      class: 'btn btn-danger btn-sm' %>
+  </div>
+</center>
 <div class='userform well'>
   <%= bootstrap_form_for(@analytic) do |f| %>
      <%= f.date_select :start_date, { start_year: Time.now.year,
@@ -28,5 +34,4 @@
   </table>
 </center>
 
-<%= link_to 'Export Records', records_path(format: 'csv'),
-  class: 'btn btn-danger btn-sm' %>
+
