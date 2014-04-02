@@ -2,20 +2,25 @@
   <table class='table table-hover table-condensed' >
     <thead>
       <tr>
-        <th></th>
-        <th>
+        <th>Action</th>
+        <th class='visible-xs'>
          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
-           Name</a>
+           Full Name</a>
         </th>
-        <th class = 'hidden-xs'>USMS Number</th>
-        <th class = 'hidden-xs'>LMSC</th>
-
+        <th class='hidden-xs'>
+          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+            Last Name</a>
+        </th>
+        <th class='hidden-xs'>First Name</th>
+        <th class='hidden-xs'>MI</th>
+        <th class='hidden-xs'>USMS Number</th>
+        <th class='hidden-xs'>LMSC</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search'>
-        <td>
+        <td class='special_column'>
           <div ng-if="showPhone(swimmer.phone_number)">
           <%= bootstrap_form_for SwimRecord.create do |f| %>
             <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}' %>
@@ -31,17 +36,24 @@
           <% end %>
           <div ng-hide="hideCheckin(swimmer.phone_number)">
             <a href="#" editable-text="swimmer.phone_number">
-              {{ swimmer.phone_number || "Add Phone Number" }}
+              {{ "Add Phone Number" }}
             </a>
           </div>
         </td>
-        <td>
+        <td class='visible-xs'>
           <a ng-href='/swimmers/{{swimmer.id}}'>
             {{swimmer.last_name}}, {{swimmer.first_name}} {{swimmer.middle_initial}}
           </a>
         </td>
-        <td class = 'hidden-xs'>{{swimmer.usms_number}}</td>
-        <th class = 'hidden-xs'>{{swimmer.lmsc}}</td>
+        <td class='hidden-xs'>
+          <a ng-href='/swimmers/{{swimmer.id}}'>
+            {{swimmer.last_name}}
+          </a>
+        </td>
+        <td class='hidden-xs'>{{swimmer.first_name}}</td>
+        <td class='hidden-xs'>{{swimmer.middle_initial}}</td>
+        <td class='hidden-xs'>{{swimmer.usms_number}}</td>
+        <th class='hidden-xs'>{{swimmer.lmsc}}</td>
       </tr>
     </tbody>
   </table>
