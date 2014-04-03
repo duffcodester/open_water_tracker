@@ -4,15 +4,17 @@
       <tr>
         <th></th>
         <th>
-         <a href="" ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
-           Last Name</a>
+          <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
+            Last Name
+          </a>
         </th>
         <th>
-         <a href="" ng-click="predicate.value = 'swimmer.first_name'; reverse=!reverse">
-           First Name </a>
+          <a href='' ng-click="predicate.value = 'swimmer.first_name'; reverse=!reverse">
+            First Name
+          </a>
         </th>
         <th>MI</th>
-        <th class = 'hidden-xs'>Check In</th>
+        <th class='hidden-xs'>Check In</th>
         <th></th>
       </tr>
     </thead>
@@ -33,7 +35,7 @@
         </td>
         <td>{{swimRecord.swimmer.first_name}}</td>
         <td>{{swimRecord.swimmer.middle_initial}}</td>
-        <td class = 'hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <td>
           <check-out info='swimRecord'></check-out>
         </td>

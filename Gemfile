@@ -28,6 +28,7 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
+  gem 'teaspoon'
   gem 'debugger'
 end
 

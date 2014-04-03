@@ -2,13 +2,17 @@
   restrict: 'E'
   templateUrl: '/check_out'
   scope:
-    swimmerInfo: '=info'
-
+    swimRecord: '=info'
 
   link: (scope, element, attrs) ->
     element.bind 'click', ->
-      scope.swimmerInfo.completed = true
-      # scope.swimmerInfo.$save()
+      scope.swimRecord.completed = true
+
+      scope.swimRecord.$update (newSwimRecord, putResponseHeaders) ->
+        console.log 'Great Success!'
+        console.log newSwimRecord
+
+        # scope.swimRecord = newSwimRecord
 
       # post to server with completed true
       # set client object to server response

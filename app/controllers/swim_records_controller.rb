@@ -3,10 +3,6 @@ class SwimRecordsController < ApplicationController
 
   def index
     @swim_records = SwimRecord.where(completed: false)
-      respond_to do |format|
-        format.html
-        format.json
-      end
   end
 
   def records
@@ -47,8 +43,11 @@ class SwimRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @swim_record.update(swim_record_params)
+        @swim_record.update_attribute(:check_out, Time.now)
+        @swim_record.update_attribute(:check_out_user_id, current_user.id)
+
         format.html { redirect_to @swim_record, notice: 'Swim record was successfully updated.' }
-        format.json { head :no_content }
+        format.json
       else
         format.html { render action: 'edit' }
         format.json { render json: @swim_record.errors, status: :unprocessable_entity }
@@ -76,6 +75,7 @@ class SwimRecordsController < ApplicationController
                                         :check_out,
                                         :check_in_user_id,
                                         :check_out_user_id,
-                                        :completed)
+                                        :completed,
+                                        :id)
   end
 end
