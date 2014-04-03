@@ -1,8 +1,18 @@
 @comsatrack.directive 'checkOut', ->
   restrict: 'E'
+  templateUrl: '/check_out'
   scope:
     swimmerInfo: '=info'
-  # template: 'Id: {{swimmerInfo.swimmer.id}}'
-  templateUrl: '/check_out'
+
+
   link: (scope, element, attrs) ->
-    scope.actionUrl = "/swim_records/#{scope.swimmerInfo.swimmer.id}"
+    element.bind 'click', ->
+      scope.swimmerInfo.completed = true
+      # scope.swimmerInfo.$save()
+
+      # post to server with completed true
+      # set client object to server response
+
+
+
+      # ng-click='deleteRow(swimRecord)'

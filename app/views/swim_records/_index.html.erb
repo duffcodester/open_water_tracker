@@ -36,17 +36,6 @@
         <td class = 'hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <td>
           <check-out info='swimRecord'></check-out>
-          <!-- <div ng-click="deleteRow(swimRecord)">
-            <%= bootstrap_form_for SwimRecord.first do |f| %>
-              <%= f.hidden_field :swimmer_id, value: '{{swimRecord.swimmer.id}}' %>
-              <%= f.hidden_field :completed, value: true %>
-              <%= f.hidden_field :check_in, value: '{{swimRecord.check_in}}' %>
-              <%= f.hidden_field :check_out, value: Time.now %>
-              <%= f.hidden_field :check_in_user_id, value: '{{swimRecord.check_in_user_id}}' %>
-              <%= f.hidden_field :check_out_user_id, value: current_user.id %>
-              <%= f.submit 'Check Out', class: "btn btn-danger"  %>
-            <% end %>
-        </div> -->
         </td>
       </tr>
     </tbody>
