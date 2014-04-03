@@ -1,8 +1,8 @@
 <div ng-app='comsatrack'>
   <div ng-controller='UsersCtrl'>
-    <% provide(:title, 'Users') %>
-    <h1>Users</h1>
-
+    <% provide(:title, 'Monitors') %>
+    <h1 class='hidden-xs'>Monitors</h1>
+    <center><h4 class='visible-xs'>Monitors</h4></center>
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">
@@ -17,13 +17,15 @@
       <div class='col-md-2'>
       <% if current_user.admin? %>
         <div class='btn-group'>
-          <%= link_to 'Add User', new_user_path,
+          <%= link_to 'Add Monitor', new_user_path,
             class: 'btn btn-primary btn-sm', role: 'button' %>
         </div>
       <% end %>
     </div>
-    <br><br><br>
-
+    <div class='hidden-xs'>
+      <br><br>
+    </div>
+    <br>
     <%= render 'index' %>
   </div>
 </div>

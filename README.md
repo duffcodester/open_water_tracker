@@ -1,7 +1,5 @@
 # COMSA
 
-Testing
-
 ## Start The Webserver
 `rails s`
 

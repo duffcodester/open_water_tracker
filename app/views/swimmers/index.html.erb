@@ -1,7 +1,8 @@
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
-    <h1>Swimmer Check In</h1>
+    <h1 class='hidden-xs'>Swimmer Check In</h1>
+    <center><h4 class='visible-xs'>Swimmer Check In</h4></center>
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">
@@ -15,16 +16,15 @@
       <div class='col-md-7'></div>
       <div class='col-md-2'>
     </div>
-    <br><br><br>
-
+    <div class='hidden-xs'>
+      <br><br><br>
+    </div>
     <%= render 'index' %>
-
     <center>
     <div class='well'>
     <%=link_to 'Update Local USMS Database', '#', type: 'button',
         class: 'btn btn-lg btn-danger'%>
     </div>
   </center>
-
   </div>
 </div>

@@ -17,7 +17,7 @@ describe 'Navbar' do
 
       it { should have_link('Check In', swimmers_path) }
       it { should have_link('Check Out', swim_records_path) }
-      it { should have_link('Users', users_path) }
+      it { should have_link('Monitors', users_path) }
       it { should have_link('Analytics', analytics_path) }
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }

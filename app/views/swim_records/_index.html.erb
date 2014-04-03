@@ -20,11 +20,11 @@
       <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
                      filter:search' ng-class="{'muted':isTemp($index)}">
         <td>
-          <div ng-if="showPhone(swimRecord.swimmer.phone_number)">
-            <a ng-href="tel:{{swimRecord.swimmer.phone_number}}">
-              <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
+          <div ng-if='showPhone(swim_record.swimmer.phone_number)'>
+            <a ng-href='tel:{{swim_record.swimmer.phone_number}}'>
+              <span style='color: green; font-size: 10pt' class='glyphicon glyphicon-earphone'></span>
             </a>
-        </div>
+          </div>
         </td>
         <td>
           <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>

@@ -2,7 +2,6 @@
   <% if @swim_record.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@swim_record.errors.count, "error") %> prohibited this swim_record from being saved:</h2>
-
       <ul>
       <% @swim_record.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,7 +9,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,7 +1,8 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name.each_char.first}.") %>
-
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-
+<h1 class='hidden-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<center>
+  <h4 class='visible-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h4>
+</center>
 <% if current_user.admin? && @user != current_user %>
   <ul class='pull-right'>
     <% if @user.admin? %>
@@ -17,14 +18,11 @@
     <% end %>
   </ul>
 <% end %>
-
 <div class='pull-left'>
-<%=link_to 'Edit Information', edit_user_path(@user), type: 'button',
-    class: 'btn btn-primary'%>
+  <%=link_to 'Edit', edit_user_path(@user), type: 'button',
+                                 class: 'btn btn-primary btn-sm'%>
 </div>
-
-<br> <br>
-
+<br><br>
 <div class='table-responsive'>
   <table class='table table-bordered table-condensed' >
     <tr>
@@ -41,7 +39,9 @@
     </tr>
     <tr>
     <th>Phone</th>
-      <td><%= @user.phone_number %></td>
+      <td>
+        <%= phone_number_link(@user.phone_number) %>
+      </td>
     </tr>
     <tr>
     <th>Admin</th>
@@ -49,3 +49,4 @@
     </tr>
   </table>
 </div>
+

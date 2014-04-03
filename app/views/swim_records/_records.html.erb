@@ -2,7 +2,6 @@
   <table class='table table-hover table-condensed'>
     <thead>
       <tr>
-        <th></th>
         <th>
          <a href="" ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
            Last Name</a>
@@ -14,26 +13,21 @@
         <th>MI</th>
         <th class = 'hidden-xs'>USMS Number</th>
         <th class = 'hidden-xs'>LMSC</th>
-        <th>
+        <th class = 'hidden-xs'>
          <a href="" ng-click="predicate.value = 'swimmer.check_in'; reverse=!reverse">
            Checked In </a>
         </th>
-        <th>By</th>
+        <th class = 'hidden-xs'>By</th>
         <th>
          <a href="" ng-click="predicate.value = 'swimmer.check_out'; reverse=!reverse">
            Checked Out </a>
         </th>
-        <th>By</th>
+        <th class = 'hidden-xs'>By</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat='record in Records | orderBy:predicate.value:reverse |
                      filter:search'>
-        <td>
-          <a ng-href="tel:{{record.swimmer.phone_number}}">
-            <span style="color: green; font-size: 14pt" class="glyphicon glyphicon-earphone"></span>
-          </a>
-        </td>
         <td>
           <a ng-href='/swimmers/{{record.swimmer.id}}'>
             {{record.swimmer.last_name}}
@@ -43,10 +37,10 @@
         <td>{{record.swimmer.middle_initial}}</td>
         <td class = 'hidden-xs'>{{record.swimmer.usms_number}}</td>
         <th class = 'hidden-xs'>{{record.swimmer.lmsc}}</td>
-        <td>{{record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
-        <td>{{record.check_in_user_id}}</td>
+        <td class = 'hidden-xs'>{{record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td class = 'hidden-xs'>{{record.check_in_user_id}}</td>
         <td>{{record.check_out | date:'MM/dd/yyyy @ h:mma'}}</td>
-        <td>{{record.check_out_user_id}}</td>
+        <td class = 'hidden-xs'>{{record.check_out_user_id}}</td>
       </tr>
     </tbody>
   </table>
