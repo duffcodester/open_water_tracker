@@ -21,7 +21,7 @@
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search'>
         <td class='special_column'>
-          <div ng-if="showPhone(swimmer.phone_number)">
+          <div ng-if="showPhone(swimmer)">
           <%= bootstrap_form_for SwimRecord.create do |f| %>
             <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}' %>
             <%= f.hidden_field :check_in, value: Time.now %>
@@ -34,9 +34,9 @@
               </div>
             </div>
           <% end %>
-          <div ng-hide="hideCheckin(swimmer.phone_number)">
+          <div ng-hide="hideCheckin(swimmer)">
             <a href="#" editable-text="swimmer.phone_number">
-              {{ "Add Phone Number" }}
+              Add Phone Number
             </a>
           </div>
         </td>

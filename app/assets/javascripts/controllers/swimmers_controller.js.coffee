@@ -5,10 +5,10 @@
       value: 'last_name'
 
     $scope.showPhone = (swimmer) ->
-      true  if swimmer.phone_number isnt null
+      swimmer.phone_number?
 
     $scope.hideCheckin = (swimmer) ->
-      true  if swimmer.phone_number isnt null
+      swimmer.phone_number?
 
     Swimmers.index (data) ->
       $scope.Swimmers = data
