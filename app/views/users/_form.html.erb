@@ -10,7 +10,7 @@
     <%= f.password_field :password, label: 'Password' %>
     <%= f.password_field :password_confirmation, label: 'Password Confirmation' %>
     <%= f.select :admin, [['Yes', true], ['No', false]] %>
-    <%= f.primary ( f.object.new_record? ?  'Create User' :
+    <%= f.primary ( f.object.new_record? ?  'Create Monitor' :
     'Save Changes' ) %>
   <% end %>
 </div>

@@ -1,31 +1,23 @@
 <% provide(:title, "#{@swimmer.first_name} #{@swimmer.last_name.each_char.first}.") %>
-
-<h1><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
-
+<h1 class='hidden-xs'><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
+<center>
+  <h4 class='visible-xs'><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h4>
+</center>
 <div class='pull-left'>
-<%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
-    class: 'btn btn-primary'%>
+  <%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
+                                 class: 'btn btn-primary btn-sm'%>
 </div>
-
-  <ul class='pull-right'>
-  <% if @swimmer.phone_number? %>
-
-    <%= bootstrap_form_for SwimRecord.create do |f| %>
-      <%= f.hidden_field :last_name, value: @swimmer.last_name %>
-      <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
-      <%= f.hidden_field :check_in, value: Time.now %>
-      <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
-      <%= f.hidden_field :check_in_user_id, value: current_user.id %>
-      <%= f.submit 'Check In', class: "btn btn-success" %>
-    <% end %>
-
-  <% else %>
-    <button type="button" class="btn btn btn-warning" disabled="disabled">Add Phone Number</button>
+<ul class='pull-right'>
+  <%= bootstrap_form_for SwimRecord.create do |f| %>
+    <%= f.hidden_field :last_name, value: @swimmer.last_name %>
+    <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
+    <%= f.hidden_field :check_in, value: Time.now %>
+    <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
+    <%= f.hidden_field :check_in_user_id, value: current_user.id %>
+    <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
   <% end %>
-  </ul>
-
+</ul>
 <br> <br>
-
 <div class='table-responsive'>
   <table class='table table-bordered table-condensed' >
     <tr>
@@ -50,7 +42,13 @@
     </tr>
     <tr>
     <th>Phone Number</th>
-      <td><%= @swimmer.phone_number %></td>
+      <td>
+        <% if @swimmer.phone_number? %>
+          <%= phone_number_link(@swimmer.phone_number) %>
+        <% else %>
+          Add Phone Number
+        <% end %>
+      </td>
     </tr>
   </table>
 </div>

@@ -1,7 +1,6 @@
 <div ng-app='comsatrack' class='table-responsive'>
-
   <table ng-controller='UsersCtrl'
-    class='table table-bordered table-condensed' >
+    class='table table-hover table-condensed' >
     <thead>
       <tr>
         <th>
@@ -16,7 +15,6 @@
         <th class = 'hidden-xs'>Admin</th>
       </tr>
     </thead>
-
     <tbody>
       <tr ng-repeat='user in Users | orderBy:predicate.value:reverse |
                      filter:search'>
@@ -27,11 +25,17 @@
         </td>
         <td class='hidden-xs'>{{user.first_name}}</td>
         <td class='hidden-xs'>{{user.email}}</td>
-        <td>{{user.phone_number}}</td>
-        <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
+        <td>
+          <a ng-href="tel:{{user.phone_number}}">{{user.phone_number}}
+        </td>
+        <% if current_user.admin? && @user != current_user %>
+          <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
+        <% end %>
       </tr>
     </tbody>
   </table>
 </div>
+
+
 
 
