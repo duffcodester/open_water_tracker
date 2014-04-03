@@ -22,8 +22,7 @@
     <%= render 'index' %>
     <center>
     <div class='well'>
-    <%=link_to 'Update Local USMS Database', '#', type: 'button',
-        class: 'btn btn-lg btn-danger'%>
+    <%= link_to 'Update Local USMS Database', { controller: 'swimmers', action: 'import' }, method: :get, class: 'btn btn-danger' %>
     </div>
   </center>
   </div>

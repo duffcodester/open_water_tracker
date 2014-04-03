@@ -49,6 +49,11 @@ class SwimmersController < ApplicationController
     end
   end
 
+  def import
+    Swimmer.import
+    redirect_to swimmers_path
+  end
+
   private
   include SwimmersHelper
 

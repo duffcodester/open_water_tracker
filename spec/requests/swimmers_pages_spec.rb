@@ -48,4 +48,18 @@ describe 'Swimmers' do
     it { should have_content('LMSC') }
     it { should have_content('Phone Number') }
   end
+
+  describe 'import' do
+    let(:submit) { 'Update Local USMS Database' }
+    before do
+      Warden.test_reset!
+      login_as(user, scope: :user)
+      visit swimmers_path
+    end
+
+    it 'should update the Database' do
+      Swimmer.should_receive(:import)
+      click_link submit
+    end
+  end
 end
