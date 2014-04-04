@@ -15,7 +15,7 @@
       $timeout (->
             console.log "Removing alert: " + alert
             $scope.alerts.splice $scope.alerts.indexOf(alert), 1
-          ), 2500
+          ), 4000
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
