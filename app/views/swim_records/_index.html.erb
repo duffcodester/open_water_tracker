@@ -37,9 +37,10 @@
         <td>{{swimRecord.swimmer.middle_initial}}</td>
 
         <td>
-          <check-out info='swimRecord'></check-out>
+          <check-out data-ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
