@@ -6,7 +6,7 @@ class AnalyticsController < ApplicationController
   end
 
   def show
-     @analytic = Analytic.find(1)
+    @analytic = Analytic.find(1)
   end
 
   def new
@@ -51,10 +51,10 @@ class AnalyticsController < ApplicationController
   end
 
   private
-    include ApplicationHelper
-    include AnalyticsHelper
+  include ApplicationHelper
+  include AnalyticsHelper
 
-    def set_analytic
-      @analytic = Analytic.find(params[:id])
-    end
+  def set_analytic
+    @analytic = Analytic.find(params[:id])
+  end
 end
