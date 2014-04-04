@@ -11,7 +11,6 @@
       $scope.alerts.push
         type: "success"
         msg: "#{swimmer.first_name}
-              #{swimmer.middle_initial}
               #{swimmer.last_name} has been checked in!"
 
     $scope.closeAlert = (index) ->

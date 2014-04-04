@@ -36,7 +36,7 @@
         <td>{{swimRecord.swimmer.first_name}}</td>
         <td>{{swimRecord.swimmer.middle_initial}}</td>
 
-        <td>
+        <td data-ng-click='deleteRow(swimRecord)'>
           <check-out data-ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
         </td>
       </tr>
