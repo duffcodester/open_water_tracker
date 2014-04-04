@@ -65,17 +65,10 @@ class SwimRecordsController < ApplicationController
 
   private
 
+  include ApplicationHelper
+  include UsersHelper
+
   def set_swim_record
     @swim_record = SwimRecord.find(params[:id])
-  end
-
-  def swim_record_params
-    params.require(:swim_record).permit(:swimmer_id,
-                                        :check_in,
-                                        :check_out,
-                                        :check_in_user_id,
-                                        :check_out_user_id,
-                                        :completed,
-                                        :id)
   end
 end
