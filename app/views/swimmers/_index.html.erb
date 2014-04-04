@@ -23,6 +23,7 @@
         <td class='special_column'>
           <button class='btn btn-default' ng-click="addAlert(swimmer)">Add Alert</button>
           <div ng-if="showPhone(swimmer)">
+            <check-in info='swimmer'></check-in>
           <%= bootstrap_form_for SwimRecord.create do |f| %>
             <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}' %>
             <%= f.hidden_field :check_in, value: Time.now %>

@@ -55,6 +55,8 @@ class SwimmersController < ApplicationController
   end
 
   private
+
+  include ApplicationHelper
   include SwimmersHelper
 
   def set_swimmer

@@ -29,6 +29,7 @@ class SwimRecordsController < ApplicationController
   def create
     @swim_record = SwimRecord.new(swim_record_params)
 
+
     respond_to do |format|
       if @swim_record.save
         format.html { redirect_to swimmers_path, notice: 'Swimmer has been checked out.' }
@@ -66,7 +67,7 @@ class SwimRecordsController < ApplicationController
   private
 
   include ApplicationHelper
-  include UsersHelper
+  include SwimRecordsHelper
 
   def set_swim_record
     @swim_record = SwimRecord.find(params[:id])

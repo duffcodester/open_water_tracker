@@ -5,8 +5,10 @@
     swimmer: '=info'
 
   link: (scope, element, attrs) ->
+    scope.test = 'foo'
     element.bind 'click', ->
-
-      scope.swimmer.$save (newSwimmer, putResponseHeaders) ->
-        console.log 'New Swim Record Created!'
-        console.log newSwimRecord
+      console.log('click')
+    scope.$apply()
+      # newSwimRecord = new SwimRecord
+      #   swimmer_id: scope.swimmer.id
+      # newSwimRecord.$save()
