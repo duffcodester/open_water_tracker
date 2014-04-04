@@ -51,6 +51,7 @@ class AnalyticsController < ApplicationController
   end
 
   private
+
   include ApplicationHelper
   include AnalyticsHelper
 
