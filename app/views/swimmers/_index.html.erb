@@ -4,7 +4,7 @@
       <tr>
         <th>Action</th>
         <th class='visible-xs'>
-         <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+         <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
            Full Name</a>
         </th>
         <th class='hidden-xs'>
@@ -21,26 +21,8 @@
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search | limitTo:totalDisplayed'>
         <td class='special_column'>
-          <button class='btn btn-default' ng-click="addAlert(swimmer)">Add Alert</button>
-          <div ng-if="showPhone(swimmer)">
-            <check-in info='swimmer'></check-in>
-          <%= bootstrap_form_for SwimRecord.create do |f| %>
-            <%= f.hidden_field :swimmer_id, value: '{{swimmer.id}}' %>
-            <%= f.hidden_field :check_in, value: Time.now %>
-            <%= f.hidden_field :check_in_user_id, value: current_user.id %>
-              <div class='hidden-xs'>
-                <%= f.submit 'Check In', class: "btn btn-success btn-sm"  %>
-              </div>
-              <div class='visible-xs'>
-                <%= f.submit 'Check In', class: "btn btn-success btn-xs"  %>
-              </div>
-            </div>
-          <% end %>
-          <div ng-hide="hideCheckin(swimmer)">
-            <a href="#" editable-text="swimmer.phone_number">
-              Add Phone Number
-            </a>
-          </div>
+          <button class='btn btn-default' ng-click='addAlert(swimmer)'>Add Alert</button>
+          <check-in info='swimmer'></check-in>
         </td>
         <td class='visible-xs'>
           <a ng-href='/swimmers/{{swimmer.id}}'>

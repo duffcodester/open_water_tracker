@@ -30,14 +30,10 @@ class SwimmersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @swimmer.update(swimmer_params)
-        format.html { redirect_to @swimmer, notice: 'Swimmer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @swimmer.errors, status: :unprocessable_entity }
-      end
+    if @swimmer.update(swimmer_params)
+      render :show
+    else
+      render json: @swimmer.errors, status: :unprocessable_entity
     end
   end
 

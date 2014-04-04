@@ -28,31 +28,23 @@ class SwimRecordsController < ApplicationController
 
   def create
     @swim_record = SwimRecord.new(swim_record_params)
+    @swim_record.check_in_user_id = current_user.id
+    @swim_record.check_in = Time.now
 
-
-    respond_to do |format|
-      if @swim_record.save
-        format.html { redirect_to swimmers_path, notice: 'Swimmer has been checked out.' }
-        format.json { render action: 'show', status: :created, location: @swim_record }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @swim_record.errors, status: :unprocessable_entity }
-      end
+    if @swim_record.save
+      render :show
+    else
+      render json: @swim_record.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @swim_record.update(swim_record_params)
-        @swim_record.update_attribute(:check_out, Time.now)
-        @swim_record.update_attribute(:check_out_user_id, current_user.id)
-
-        format.html { redirect_to @swim_record, notice: 'Swim record was successfully updated.' }
-        format.json
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @swim_record.errors, status: :unprocessable_entity }
-      end
+    if @swim_record.update(swim_record_params)
+      @swim_record.update_attribute(:check_out, Time.now)
+      @swim_record.update_attribute(:check_out_user_id, current_user.id)
+      render :show
+    else
+      render json: @swim_record.errors, status: :unprocessable_entity
     end
   end
 

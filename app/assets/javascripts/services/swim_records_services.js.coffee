@@ -5,10 +5,11 @@
       index:
         method: 'GET'
         isArray: true
+
       update:
         method: 'PUT'
-      save:
+
+      create:
         method: 'POST'
-        isArray: false
     )
 ]
