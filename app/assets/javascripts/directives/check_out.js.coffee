@@ -12,7 +12,9 @@
         console.log 'Great Success!'
         console.log newSwimRecord
 
-        # scope.swimRecord = newSwimRecord
+      element.hide()
+
+      # scope.swimRecord = newSwimRecord
 
       # post to server with completed true
       # set client object to server response
@@ -20,3 +22,4 @@
 
 
       # ng-click='deleteRow(swimRecord)'
+

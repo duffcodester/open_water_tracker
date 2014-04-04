@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
-                     filter:search' ng-class="{'muted':isTemp($index)}">
+                     filter:search'>
         <td>
           <div ng-if='showPhone(swim_record.swimmer.phone_number)'>
             <a ng-href='tel:{{swim_record.swimmer.phone_number}}'>
@@ -35,7 +35,7 @@
         </td>
         <td>{{swimRecord.swimmer.first_name}}</td>
         <td>{{swimRecord.swimmer.middle_initial}}</td>
-        <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+
         <td>
           <check-out info='swimRecord'></check-out>
         </td>
