@@ -27,7 +27,7 @@
     </thead>
     <tbody>
       <tr ng-repeat='record in Records | orderBy:predicate.value:reverse |
-                     filter:search'>
+                     filter:search | limitTo:totalDisplayed'>
         <td>
           <a ng-href='/swimmers/{{record.swimmer.id}}'>
             {{record.swimmer.last_name}}

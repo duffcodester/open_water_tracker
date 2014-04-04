@@ -4,6 +4,11 @@
     $scope.predicate =
       value: 'check_in'
 
+    $scope.totalDisplayed = 20
+
+    $scope.loadMore = ->
+      $scope.totalDisplayed += 100
+
     Records.index (data) ->
       $scope.Records = data
 ]
