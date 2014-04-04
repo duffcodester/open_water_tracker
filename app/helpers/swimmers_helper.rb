@@ -4,7 +4,8 @@ module SwimmersHelper
                     :last_name,
                     :usms_number,
                     :lmsc,
-                    :phone_number
+                    :phone_number,
+                    :id
                    ]
 
   def swimmer_params

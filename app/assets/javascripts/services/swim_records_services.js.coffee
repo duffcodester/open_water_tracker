@@ -7,5 +7,8 @@
         isArray: true
       update:
         method: 'PUT'
+      save:
+        method: 'POST'
+        isArray: false
     )
 ]

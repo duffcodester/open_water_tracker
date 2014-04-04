@@ -4,7 +4,7 @@
     $scope.predicate =
       value: 'check_in'
 
-    $scope.alerts = [ ]
+    $scope.alerts = []
 
     $scope.addAlert = (swimRecord) ->
       $scope.alerts.push
