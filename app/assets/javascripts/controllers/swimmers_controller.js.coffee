@@ -4,6 +4,19 @@
     $scope.predicate =
       value: 'last_name'
 
+    $scope.alerts = []
+
+    $scope.addAlert = (swimmer) ->
+      $scope.alerts = []
+      $scope.alerts.push
+        type: "success"
+        msg: "#{swimmer.first_name}
+              #{swimmer.middle_initial}
+              #{swimmer.last_name} has been checked in!"
+
+    $scope.closeAlert = (index) ->
+      $scope.alerts.splice index, 1
+
     $scope.showPhone = (swimmer) ->
       swimmer.phone_number?
 

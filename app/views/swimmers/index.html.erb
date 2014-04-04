@@ -1,6 +1,7 @@
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <h1 class='hidden-xs'>Swimmer Check In</h1>
     <center><h4 class='visible-xs'>Swimmer Check In</h4></center>
     <div class='row'>

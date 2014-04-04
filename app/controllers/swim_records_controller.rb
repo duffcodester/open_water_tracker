@@ -31,7 +31,7 @@ class SwimRecordsController < ApplicationController
 
     respond_to do |format|
       if @swim_record.save
-        format.html { redirect_to swim_records_path, notice: 'Swimmer has been checked out.' }
+        format.html { redirect_to swimmers_path, notice: 'Swimmer has been checked out.' }
         format.json { render action: 'show', status: :created, location: @swim_record }
       else
         format.html { render action: 'new' }

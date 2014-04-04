@@ -7,6 +7,7 @@
     $scope.alerts = []
 
     $scope.addAlert = (swimRecord) ->
+      $scope.alerts = []
       $scope.alerts.push
         type: "danger"
         msg: "#{swimRecord.swimmer.first_name}
