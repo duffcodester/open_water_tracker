@@ -2,6 +2,8 @@ class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
   def index
+    @check_in = false
+    @check_out = true
     @swim_records = SwimRecord.where(completed: false)
   end
 
