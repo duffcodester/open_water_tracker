@@ -2,42 +2,46 @@
   <table class='table table-hover table-condensed'>
     <thead>
       <tr>
-        <th></th>
-        <th>
-          <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
-            Last Name
-          </a>
+        <th>Action</th>
+        <th class='visible-xs'>
+         <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
+           Full Name</a>
         </th>
-        <th>
-          <a href='' ng-click="predicate.value = 'swimmer.first_name'; reverse=!reverse">
-            First Name
-          </a>
+        <th class='hidden-xs'>
+          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+            Last Name</a>
         </th>
-        <th>MI</th>
+        <th class='hidden-xs'>First Name</th>
+        <th class='hidden-xs'>MI</th>
         <th class='hidden-xs'>Check In</th>
-        <th></th>
+        <th class='visible-xs'></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
                      filter:search'>
-        <td>
-          <div ng-if='showPhone(swim_record.swimmer.phone_number)'>
-            <a ng-href='tel:{{swim_record.swimmer.phone_number}}'>
-              <span style='color: green; font-size: 10pt' class='glyphicon glyphicon-earphone'></span>
-            </a>
-          </div>
+        <td data-ng-click='deleteRow(swimRecord)'>
+          <check-out data-ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
         </td>
-        <td>
+        <td class='visible-xs'>
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
+            {{swimRecord.swimmer.last_name}},
+            {{swimRecord.swimmer.first_name}}
+             {{swimRecord.swimmer.middle_initial}}
+          </a>
+        </td>
+        <td class='hidden-xs'>
           <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
             {{swimRecord.swimmer.last_name}}
           </a>
         </td>
-        <td>{{swimRecord.swimmer.first_name}}</td>
-        <td>{{swimRecord.swimmer.middle_initial}}</td>
-
-        <td data-ng-click='deleteRow(swimRecord)'>
-          <check-out data-ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
+        <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.middle_initial}}</td>
+        <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td class='visible-xs'>
+          <a ng-href='tel:{{swim_record.swimmer.phone_number}}'>
+            <span style='color: green; font-size: 10pt' class='glyphicon glyphicon-earphone'></span>
+          </a>
         </td>
       </tr>
     </tbody>
