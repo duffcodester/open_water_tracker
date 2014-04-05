@@ -13,5 +13,7 @@ json.array!(@swim_records) do |swim_record|
     json.middle_initial swim_record.swimmer.middle_initial
     json.last_name swim_record.swimmer.last_name
     json.phone_number swim_record.swimmer.phone_number
+    json.usms_number swim_record.swimmer.usms_number
+    json.lmsc swim_record.swimmer.lmsc
   end
 end
