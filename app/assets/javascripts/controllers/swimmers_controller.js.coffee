@@ -1,5 +1,5 @@
-@comsatrack.controller 'SwimmersCtrl', ['$scope', 'Swimmers', '$timeout',
-  @SwimmersCtrl = ($scope, Swimmers, $timeout) ->
+@comsatrack.controller 'SwimmersCtrl', ['$scope', 'Swimmers',
+  @SwimmersCtrl = ($scope, Swimmers) ->
 
     $scope.predicate =
       value: 'last_name'
@@ -12,10 +12,6 @@
         type: "success"
         msg: "#{swimmer.first_name}
               #{swimmer.last_name} has been checked in!"
-      $timeout (->
-            console.log "Removing alert: " + alert
-            $scope.alerts.splice $scope.alerts.indexOf(alert), 1
-          ), 4000
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1

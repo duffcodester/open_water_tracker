@@ -1,5 +1,5 @@
-@comsatrack.controller 'SwimRecordsCtrl', ['$scope', 'SwimRecords', '$timeout',
-  @SwimRecordsCtrl = ($scope, SwimRecords, $timeout) ->
+@comsatrack.controller 'SwimRecordsCtrl', ['$scope', 'SwimRecords',
+  @SwimRecordsCtrl = ($scope, SwimRecords) ->
 
     $scope.predicate =
       value: 'check_in'
@@ -12,10 +12,6 @@
         type: "danger"
         msg: "#{swimRecord.swimmer.first_name}
               #{swimRecord.swimmer.last_name} has been checked out!"
-      $timeout (->
-            console.log "Removing alert: " + alert
-            $scope.alerts.splice $scope.alerts.indexOf(alert), 1
-          ), 4000
 
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1

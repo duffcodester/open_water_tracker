@@ -16,8 +16,7 @@
       <div class="wrapper">
       <%= yield %>
       <div class="push"></div>
-      <%= render 'layouts/footer_check_in' if @check_in %>
-      <%= render 'layouts/footer_check_out' if @check_out %>
+      <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
