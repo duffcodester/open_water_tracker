@@ -31,6 +31,8 @@ class SwimRecordsController < ApplicationController
   def create
     @swim_record = SwimRecord.new(swim_record_params)
     @swim_record.check_in_user_id = current_user.id
+    @swim_record.check_in_first_name = current_user.first_name
+    @swim_record.check_in_last_name = current_user.last_name
     @swim_record.check_in = Time.now
 
     if @swim_record.save
@@ -44,6 +46,8 @@ class SwimRecordsController < ApplicationController
     if @swim_record.update(swim_record_params)
       @swim_record.update_attribute(:check_out, Time.now)
       @swim_record.update_attribute(:check_out_user_id, current_user.id)
+      @swim_record.update_attribute(:check_out_first_name, current_user.first_name)
+      @swim_record.update_attribute(:check_out_last_name, current_user.last_name)
       render :show
     else
       render json: @swim_record.errors, status: :unprocessable_entity

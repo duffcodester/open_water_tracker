@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328050525) do
+ActiveRecord::Schema.define(version: 20140405055854) do
 
   create_table "analytics", force: true do |t|
     t.datetime "start_date"
@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(version: 20140328050525) do
     t.integer  "check_in_user_id"
     t.integer  "check_out_user_id"
     t.string   "phone_number"
-    t.boolean  "completed",         default: false
+    t.boolean  "completed",            default: false
+    t.string   "check_in_first_name"
+    t.string   "check_in_last_name"
+    t.string   "check_out_first_name"
+    t.string   "check_out_last_name"
   end
 
   create_table "swimmers", force: true do |t|

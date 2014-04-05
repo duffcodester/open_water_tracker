@@ -4,6 +4,10 @@ module SwimRecordsHelper
                         :check_out,
                         :check_in_user_id,
                         :check_out_user_id,
+                        :check_in_first_name,
+                        :check_in_last_name,
+                        :check_out_first_name,
+                        :check_out_last_name,
                         :completed,
                         :id
                        ]

@@ -2,8 +2,12 @@ json.array!(@swim_records) do |swim_record|
   json.extract! swim_record, :id
   json.extract! swim_record, :check_in
   json.extract! swim_record, :check_in_user_id
+  json.extract! swim_record, :check_in_first_name
+  json.extract! swim_record, :check_in_last_name
   json.extract! swim_record, :check_out
   json.extract! swim_record, :check_out_user_id
+  json.extract! swim_record, :check_out_first_name
+  json.extract! swim_record, :check_out_last_name
   json.extract! swim_record, :completed
   json.extract! swim_record, :swimmer_id
 
