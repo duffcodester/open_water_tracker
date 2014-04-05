@@ -21,8 +21,12 @@
       <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                      filter:search | limitTo:totalDisplayed'>
         <td class='special_column'>
-          <button class='btn btn-default' ng-click='addAlert(swimmer)'>Add Alert</button>
-          <check-in info='swimmer'></check-in>
+          <span class='nowrap'>
+            <!-- <button class='btn btn-default' ng-click='addAlert(swimmer)'>Add Alert</button> -->
+            <div style='width:85px;'>
+              <check-in info='swimmer'></check-in>
+            </div>
+          </span>
         </td>
         <td class='visible-xs'>
           <a ng-href='/swimmers/{{swimmer.id}}'>
