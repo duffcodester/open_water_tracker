@@ -2,7 +2,7 @@
   @SwimRecordsCtrl = ($scope, SwimRecords) ->
 
     $scope.predicate =
-      value: 'check_in'
+      value: 'last_name'
 
     $scope.alerts = []
 

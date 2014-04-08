@@ -19,6 +19,7 @@ gem 'bootstrap-sass', '3.0.3.0'
 gem 'stripe'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
+gem 'unicorn'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -47,4 +48,12 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'unicorn'
+group :development do
+  gem 'capistrano-bundler', '~> 1.0.0'
+  gem 'capistrano-rails', '~> 1.0.0'
+  # gem 'capistrano-unicorn', require: false
+end
+
+gem 'capistrano-rvm', github: 'capistrano/rvm'
+
+
