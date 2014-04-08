@@ -1,6 +1,8 @@
-<div ng-app='comsatrack'>
-  <div ng-controller='SwimRecordsCtrl'>
+<script src="http://code.angularjs.org/1.2.8/angular-animate.min.js"></script>
+<div data-ng-app='comsatrack'>
+  <div data-ng-controller='SwimRecordsCtrl'>
     <% provide(:title, 'Check Out') %>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <h1 class='hidden-xs'>Swimmer Check Out</h1>
     <center><h4 class='visible-xs'>Swimmer Check Out</h4></center>
     <div class='row'>

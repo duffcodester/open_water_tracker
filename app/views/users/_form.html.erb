@@ -2,7 +2,8 @@
   <%= bootstrap_form_for(@user,
     style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
     <%= render 'shared/error_messages_users' %>
-    <legend><%= legend %></legend>
+    <h1 class='hidden-xs'><%= legend %></h1>
+    <center><h4 class='visible-xs'><%= legend %></h4></center>
     <%= f.text_field :first_name, label: 'First Name' %>
     <%= f.text_field :last_name, label: 'Last Name' %>
     <%= f.text_field :email, label: 'Email' %>

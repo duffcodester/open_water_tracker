@@ -4,18 +4,23 @@
     $scope.predicate =
       value: 'check_in'
 
-    $scope.temp = false
+    $scope.alerts = []
 
-    $scope.showPhone = (swimmer) ->
-      true  if swimmer.phone_number isnt null
+    $scope.addAlert = (swimRecord) ->
+      $scope.alerts = []
+      $scope.alerts.push
+        type: "danger"
+        msg: "#{swimRecord.swimmer.first_name}
+              #{swimRecord.swimmer.last_name} has been checked out!"
 
-    $scope.deleteRow = (row) ->
-      $scope.SwimRecords.splice $scope.SwimRecords.indexOf(row), 1
-      return
+    $scope.closeAlert = (index) ->
+      $scope.alerts.splice index, 1
 
-    $scope.isTemp = (i) ->
-      i is $scope.SwimRecords.length - 1 and $scope.temp
+    $scope.deleteRow = (swimRecord) ->
+      $scope.SwimRecords.splice $scope.SwimRecords.indexOf(swimRecord), 1
 
     SwimRecords.index (data) ->
       $scope.SwimRecords = data
 ]
+
+

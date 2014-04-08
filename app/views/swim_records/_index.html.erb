@@ -2,57 +2,53 @@
   <table class='table table-hover table-condensed'>
     <thead>
       <tr>
-        <th></th>
-        <th>
-         <a href="" ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
-           Last Name</a>
+        <th>Action</th>
+        <th class='visible-xs'>
+         <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
+           Full Name</a>
         </th>
-        <th>
-         <a href="" ng-click="predicate.value = 'swimmer.first_name'; reverse=!reverse">
-           First Name </a>
+        <th class='hidden-xs'>
+          <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+            Last Name</a>
         </th>
-        <th>MI</th>
-        <th class = 'hidden-xs'>Check In</th>
-        <th></th>
+        <th class='hidden-xs'>First Name</th>
+        <th class='hidden-xs'>MI</th>
+        <th class='hidden-xs'>USMS Number</th>
+        <th class='hidden-xs'>LMSC</th>
+        <th class='hidden-xs'>Check In</th>
+        <th class='visible-xs'></th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat='swim_record in SwimRecords | orderBy:predicate.value:reverse |
-                     filter:search' ng-class="{'muted':isTemp($index)}">
-        <td>
-          <div ng-if="showPhone(swim_record.swimmer.phone_number)">
-            <a ng-href="tel:{{swim_record.swimmer.phone_number}}">
-              <span style="color: green; font-size: 10pt" class="glyphicon glyphicon-earphone"></span>
-            </a>
-        </div>
+      <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
+                     filter:search'>
+        <td data-ng-click='deleteRow(swimRecord)'>
+          <check-out data-ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
         </td>
-        <td>
-          <a ng-href='/swimmers/{{swim_record.swimmer.id}}'>
-            {{swim_record.swimmer.last_name}}
+        <td class='visible-xs'>
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
+            {{swimRecord.swimmer.last_name}},
+            {{swimRecord.swimmer.first_name}}
+             {{swimRecord.swimmer.middle_initial}}
           </a>
         </td>
-        <td>{{swim_record.swimmer.first_name}}</td>
-        <td>{{swim_record.swimmer.middle_initial}}</td>
-        <td class = 'hidden-xs'>{{swim_record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
-        <td>
-          <div ng-click="deleteRow(swim_record)">
-            <%= bootstrap_form_for SwimRecord.create do |f| %>
-              <%= f.hidden_field :swimmer_id, value: '{{swim_record.swimmer.id}}' %>
-              <%= f.hidden_field :completed, value: true %>
-              <%= f.hidden_field :check_in, value: '{{swim_record.check_in}}' %>
-              <%= f.hidden_field :check_out, value: Time.now %>
-              <%= f.hidden_field :check_in_user_id, value: '{{swim_record.check_in_user_id}}' %>
-              <%= f.hidden_field :check_out_user_id, value: current_user.id %>
-              <div class='hidden-xs'>
-                <%= f.submit 'Check Out', class: "btn btn-danger btn-sm"  %>
-              </div>
-              <div class='visible-xs'>
-                <%= f.submit 'Check Out', class: "btn btn-danger btn-xs"  %>
-              </div>
-            <% end %>
-        </div>
+        <td class='hidden-xs'>
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
+            {{swimRecord.swimmer.last_name}}
+          </a>
+        </td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.middle_initial}}</td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
+        <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
+        <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td class='visible-xs'>
+          <a ng-href='tel:{{swim_record.swimmer.phone_number}}'>
+            <span style='color: green; font-size: 10pt' class='glyphicon glyphicon-earphone'></span>
+          </a>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+

@@ -18,6 +18,7 @@
 
 #= require angular
 #= require angular-resource
+#= require angular-animate
 
 #= require modules
 #= require_tree .

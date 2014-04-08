@@ -2,11 +2,9 @@ class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
   def index
+    @check_in = false
+    @check_out = true
     @swim_records = SwimRecord.where(completed: false)
-      respond_to do |format|
-        format.html
-        format.json
-      end
   end
 
   def records
@@ -32,27 +30,27 @@ class SwimRecordsController < ApplicationController
 
   def create
     @swim_record = SwimRecord.new(swim_record_params)
+    @swim_record.check_in_user_id = current_user.id
+    @swim_record.check_in_first_name = current_user.first_name
+    @swim_record.check_in_last_name = current_user.last_name
+    @swim_record.check_in = Time.now
 
-    respond_to do |format|
-      if @swim_record.save
-        format.html { redirect_to swim_records_path, notice: 'Swimmer has been checked out.' }
-        format.json { render action: 'show', status: :created, location: @swim_record }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @swim_record.errors, status: :unprocessable_entity }
-      end
+    if @swim_record.save
+      render :show
+    else
+      render json: @swim_record.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @swim_record.update(swim_record_params)
-        format.html { redirect_to @swim_record, notice: 'Swim record was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @swim_record.errors, status: :unprocessable_entity }
-      end
+    if @swim_record.update(swim_record_params)
+      @swim_record.update_attribute(:check_out, Time.now)
+      @swim_record.update_attribute(:check_out_user_id, current_user.id)
+      @swim_record.update_attribute(:check_out_first_name, current_user.first_name)
+      @swim_record.update_attribute(:check_out_last_name, current_user.last_name)
+      render :show
+    else
+      render json: @swim_record.errors, status: :unprocessable_entity
     end
   end
 
@@ -66,16 +64,10 @@ class SwimRecordsController < ApplicationController
 
   private
 
+  include ApplicationHelper
+  include SwimRecordsHelper
+
   def set_swim_record
     @swim_record = SwimRecord.find(params[:id])
-  end
-
-  def swim_record_params
-    params.require(:swim_record).permit(:swimmer_id,
-                                        :check_in,
-                                        :check_out,
-                                        :check_in_user_id,
-                                        :check_out_user_id,
-                                        :completed)
   end
 end

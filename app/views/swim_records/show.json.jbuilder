@@ -1,1 +1,1 @@
-json.extract! @swim_record, :id, :created_at, :updated_at
+json.extract! @swim_record, *SwimRecord.column_names

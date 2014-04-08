@@ -1,6 +1,7 @@
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <h1 class='hidden-xs'>Swimmer Check In</h1>
     <center><h4 class='visible-xs'>Swimmer Check In</h4></center>
     <div class='row'>
@@ -21,10 +22,11 @@
     </div>
     <%= render 'index' %>
     <center>
-    <div class='well'>
-    <%=link_to 'Update Local USMS Database', '#', type: 'button',
-        class: 'btn btn-lg btn-danger'%>
-    </div>
-  </center>
+      <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
+      <br><br>
+      <div class='well'>
+        <%= link_to 'Update Local USMS Database', { controller: 'swimmers', action: 'import' }, method: :get, class: 'btn btn-danger' %>
+      </div>
+    </center>
   </div>
 </div>

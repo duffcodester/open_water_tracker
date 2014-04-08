@@ -2,6 +2,8 @@ class SwimmersController < ApplicationController
   before_action :set_swimmer, only: [:show, :edit, :update, :destroy]
 
   def index
+    @check_in = true
+    @check_out = false
     @swimmers = Swimmer.all
   end
 
@@ -30,14 +32,10 @@ class SwimmersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @swimmer.update(swimmer_params)
-        format.html { redirect_to @swimmer, notice: 'Swimmer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @swimmer.errors, status: :unprocessable_entity }
-      end
+    if @swimmer.update(swimmer_params)
+      render :show
+    else
+      render json: @swimmer.errors, status: :unprocessable_entity
     end
   end
 
@@ -49,7 +47,14 @@ class SwimmersController < ApplicationController
     end
   end
 
+  def import
+    Swimmer.import
+    redirect_to swimmers_path
+  end
+
   private
+
+  include ApplicationHelper
   include SwimmersHelper
 
   def set_swimmer
