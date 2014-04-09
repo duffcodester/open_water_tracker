@@ -1,4 +1,4 @@
-class CreateWeoweForms < ActiveRecord::Migration
+class CreateComsaForms < ActiveRecord::Migration
   def change
     create_table :weowe_forms do |t|
       t.integer :weowe_id

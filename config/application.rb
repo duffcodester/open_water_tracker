@@ -14,7 +14,7 @@ Bundler.require(:default, Rails.env)
 SESSIONS = proc { |controller| user_signed_in? ? 'application' : 'devise' }
 REGISTRATION = proc { |controller| user_signed_in? ? 'application' : 'devise' }
 
-module Weowe
+module Comsa
   class Application < Rails::Application
     system("rubocop -D #{Rails.root}") if Rails.env.development?
 

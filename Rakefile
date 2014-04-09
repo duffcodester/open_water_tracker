@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Weowe::Application.load_tasks
+Comsa::Application.load_tasks

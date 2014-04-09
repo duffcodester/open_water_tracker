@@ -1,4 +1,4 @@
-Weowe::Application.routes.draw do
+Comsa::Application.routes.draw do
 
   resources :analytics
 
