@@ -47,5 +47,7 @@ module Comsa
       Devise::UnlocksController.layout 'application'
       Devise::PasswordsController.layout 'application'
     end
+
+    config.serve_static_assets = true
   end
 end
