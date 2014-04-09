@@ -1,0 +1,1 @@
+(function(){this.comsatrack.controller("RecordsCtrl",["$scope","Records",this.RecordsCtrl=function($scope,Records){return $scope.predicate={value:"check_in"},$scope.totalDisplayed=20,$scope.loadMore=function(){return $scope.totalDisplayed+=100},Records.index(function(data){return $scope.Records=data})}])}).call(this);
