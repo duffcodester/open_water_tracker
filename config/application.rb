@@ -48,6 +48,8 @@ module Comsa
       Devise::PasswordsController.layout 'application'
     end
 
+    config.assets.precompile += %w( *.js *.css )
+
     config.serve_static_assets = true
   end
 end
