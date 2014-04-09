@@ -22,7 +22,7 @@
     $scope.hideCheckin = (swimmer) ->
       swimmer.phone_number?
 
-    $scope.totalDisplayed = 20
+    $scope.totalDisplayed = 10
 
     $scope.loadMore = ->
       $scope.totalDisplayed += 100
