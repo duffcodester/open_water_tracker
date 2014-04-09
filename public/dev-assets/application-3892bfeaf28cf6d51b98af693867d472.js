@@ -36585,7 +36585,7 @@ angular.module('ngAnimate', ['ng'])
 
 })(window, window.angular);
 (function() {
-  this.comsatrack = angular.module('comsatrack', ['ngResource', 'comsatrackFilters', 'xeditable', 'ui.bootstrap', 'ngAnimate']).config(function($httpProvider) {
+  this.comsatrack = angular.module('comsatrack', ['ngResource', 'comsatrackFilters', 'ui.bootstrap', 'ngAnimate']).config(function($httpProvider) {
     var authToken;
     authToken = $('meta[name="csrf-token"]').attr('content');
     return $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = authToken;
