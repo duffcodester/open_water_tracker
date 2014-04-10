@@ -20,7 +20,63 @@
       <br><br>
     </div>
     <br>
-    <%= render 'records' %>
+    <div class='table-responsive'>
+      <table class='table table-hover table-condensed'>
+        <thead>
+          <tr>
+            <th class='visible-xs'>
+             <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
+               Full Name</a>
+            </th>
+            <th class='hidden-xs'>
+              <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+                Last Name</a>
+            </th>
+            <th class='hidden-xs'>First Name</th>
+            <th class='hidden-xs'>MI</th>
+            <th class = 'hidden-xs'>USMS Number</th>
+            <th class = 'hidden-xs'>LMSC</th>
+            <th class = 'hidden-xs'>
+             <a href="" ng-click="predicate.value = 'swimmer.check_in'; reverse=!reverse">
+               Checked In </a>
+            </th>
+            <th class = 'hidden-xs'>Checked In Monitor</th>
+            <th>
+             <a href="" ng-click="predicate.value = 'swimmer.check_out'; reverse=!reverse">
+               Checked Out </a>
+            </th>
+            <th class = 'hidden-xs'>Checked Out Monitor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat='record in Records | orderBy:predicate.value:reverse |
+                         filter:search | limitTo:totalDisplayed'>
+            <td class='visible-xs'>
+              <a ng-href='/swimmers/{{record.swimmer.id}}'>
+                {{record.swimmer.last_name}}, {{record.swimmer.first_name}} {{record.swimmer.middle_initial}}
+              </a>
+            </td>
+            <td class='hidden-xs'>
+              <a ng-href='/swimmers/{{record.swimmer.id}}'>
+                {{record.swimmer.last_name}}
+              </a>
+           </td>
+           <td class='hidden-xs'>{{record.swimmer.first_name}}</td>
+           <td class='hidden-xs'>{{record.swimmer.middle_initial}}</td>
+            <td class = 'hidden-xs'>{{record.swimmer.usms_number}}</td>
+            <th class = 'hidden-xs'>{{record.swimmer.lmsc}}</td>
+            <td class = 'hidden-xs'>{{record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+            <td class = 'hidden-xs'>
+              {{record.check_in_first_name}} {{record.check_in_last_name}}
+            </td>
+            <td>{{record.check_out | date:'MM/dd/yyyy @ h:mma'}}</td>
+            <td class = 'hidden-xs'>
+              {{record.check_out_first_name}} {{record.check_out_last_name}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <center>
       <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
     </center>
