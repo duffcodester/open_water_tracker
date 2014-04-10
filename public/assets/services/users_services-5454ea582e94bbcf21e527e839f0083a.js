@@ -1,1 +1,0 @@
-(function(){this.comsatrack.factory("Users",["$resource",function($resource){return $resource("/users.json",{},{index:{method:"GET",isArray:!0}})}])}).call(this);
