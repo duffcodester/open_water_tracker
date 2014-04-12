@@ -1,6 +1,6 @@
 describe 'Check In', ->
   scope = element = $httpBackend = undefined
-  template = "<button class='btn btn-success'>Check In</button>"
+  template = "<button class='btn-xs btn-success'>Check In</button>"
 
   beforeEach angular.mock.module('comsatrack')
 
