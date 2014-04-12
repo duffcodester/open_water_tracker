@@ -6,3 +6,6 @@ User.create!(first_name: 'Michael',
                  password_confirmation: 'foobar22',
                  admin: true
                )
+
+Analytic.create!(start_date: '2010-01-01',
+                     end_date: '2014-12-12')
