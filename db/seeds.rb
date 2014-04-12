@@ -1,12 +1,3 @@
-User.create!(first_name: 'Michael',
-             last_name: 'Pierce',
-             phone_number: '720-387-9691',
-             email: 'example@example.com',
-             password: 'comsa1',
-             password_confirmation: 'comsa1',
-             admin: true
-             )
-
 User.create!(first_name: 'Non-Admin',
              last_name: 'User',
              phone_number: '720-387-9691',
