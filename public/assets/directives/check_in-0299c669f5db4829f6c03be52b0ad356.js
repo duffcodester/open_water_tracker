@@ -1,1 +1,0 @@
-(function(){this.comsatrack.directive("checkIn",["SwimRecords",function(SwimRecords){return{restrict:"E",templateUrl:"/check_in",scope:{swimmer:"=info"},link:function(scope,element){return element.find(".btn").bind("click",function(){return scope.swimmer.$update(),SwimRecords.create({swimmer_id:scope.swimmer.id})})}}}])}).call(this);

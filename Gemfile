@@ -20,6 +20,7 @@ gem 'stripe'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
 gem 'unicorn'
+gem 'angular-ui-bootstrap-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
