@@ -21,5 +21,6 @@
 #= require angular-animate
 
 #= require modules
+#= require_tree ./services
 #= require_tree .
 

@@ -30,4 +30,3 @@
     Swimmers.index (data) ->
       $scope.Swimmers = data
 ]
-
