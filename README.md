@@ -32,6 +32,13 @@ Push to master `git push origin master`
 
 ***
 
+### Production Mode
+`RAILS_ENV=production rake assets:clobber` Deleted public assets and clears cache
+`RAILS_ENV=production rake assets:precompile` Minifies CSS and JS into single files
+`RAILS_ENV=production rails server` Runs rails server in production mode
+
+***
+
 ### Other Useful Commands
 List branches `git branch`
 
