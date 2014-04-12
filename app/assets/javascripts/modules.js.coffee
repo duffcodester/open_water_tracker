@@ -1,5 +1,5 @@
 @comsatrack = angular.module 'comsatrack',
-  ['ngResource', 'comsatrackFilters', 'ngAnimate']
+  ['ngResource', 'comsatrackFilters', 'ngAnimate', 'ui.bootstrap']
 
 .config ($httpProvider) ->
   authToken = $('meta[name="csrf-token"]').attr('content')
