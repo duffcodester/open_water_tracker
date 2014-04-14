@@ -50,16 +50,28 @@ describe 'Swimmers' do
   end
 
   describe 'import' do
-    let(:submit) { 'Update Local USMS Database' }
     before do
       Warden.test_reset!
       login_as(user, scope: :user)
       visit swimmers_path
     end
 
-    it 'should update the Database' do
-      Swimmer.should_receive(:import)
-      click_link submit
+    describe 'from mobile view' do
+      let(:submit) { 'Update Local Database' }
+
+      it 'should update the Database' do
+        Swimmer.should_receive(:import)
+        click_link submit
+      end
+    end
+
+    describe 'from desktop view' do
+      let(:submit) { 'Update Local USMS Database' }
+
+      it 'should update the Database' do
+        Swimmer.should_receive(:import)
+        click_link submit
+      end
     end
   end
 end

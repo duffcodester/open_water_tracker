@@ -20,6 +20,9 @@
               <li><%= link_to 'Edit My Profile', edit_user_path(current_user) %></li>
               <li class='divider'></li>
               <li>
+                <%= link_to 'Update Local USMS Database', { controller: 'swimmers', action: 'import' }, method: :get %>
+              </li>
+              <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete %>
               </li>
             </ul>
