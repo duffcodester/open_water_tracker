@@ -2,8 +2,7 @@ class SwimmersController < ApplicationController
   before_action :set_swimmer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @check_in = true
-    @check_out = false
+    @check_in = false
     @swimmers = Swimmer.all
   end
 
