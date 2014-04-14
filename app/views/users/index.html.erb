@@ -4,7 +4,7 @@
     <h1 class='hidden-xs'>Monitors</h1>
     <center><h4 class='visible-xs'>Monitors</h4></center>
     <div class='row'>
-      <div class='col-md-3'>
+      <div class='col-md-3 col-xs-8'>
         <div class="input-group">
           <input class="form-control" ng-model="search"
                  placeholder="Search Last Name"/>
@@ -13,8 +13,8 @@
           </span>
         </div>
       </div>
-      <div class='col-md-7'></div>
-      <div class='col-md-2'>
+      <div class='col-md-7 col-xs-4'></div>
+      <div class='col-md-2 col-xs-2'>
       <% if current_user.admin? %>
         <div class='btn-group'>
           <%= link_to 'Add Monitor', new_user_path,
