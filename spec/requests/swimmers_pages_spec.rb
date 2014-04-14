@@ -39,14 +39,16 @@ describe 'Swimmers' do
       visit swimmer_path(swimmer)
     end
 
-    it do should have_selector('h1',
-                               text: "#{swimmer.first_name} #{swimmer.last_name}") end
+    it do
+      should have_selector('h1',
+                           text: "#{swimmer.first_name} #{swimmer.last_name}")
+    end
     it { should have_content('First Name') }
     it { should have_content('Middle Initial') }
     it { should have_content('Last Name') }
     it { should have_content('USMS Number') }
     it { should have_content('LMSC') }
-    it { should have_content('Phone Number') }
+    it { should_not have_content('Phone Number') }
   end
 
   describe 'import' do

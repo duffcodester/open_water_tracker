@@ -149,6 +149,7 @@ describe 'Users' do
     it { should have_content('First Name') }
     it { should have_content('Email') }
     it { should have_content('Admin') }
+    it { should have_content('Phone Number') }
     it { should_not have_content('Add User') }
 
     describe 'should display swim records' do
