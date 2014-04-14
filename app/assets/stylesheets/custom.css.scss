@@ -213,3 +213,13 @@ legend{
 .nowrap {
   white-space: nowrap ;
 }
+
+.alert {
+  line-height: 1.5px;
+  button {
+    line-height: 13px;
+    position:relative;
+    bottom:6px;
+  }
+}
+

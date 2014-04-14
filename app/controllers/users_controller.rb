@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @check_in = true
+    @check_out = true
     respond_to do |format|
       format.html
       format.json
@@ -36,6 +38,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @check_in = true
+    @check_out = true
   end
 
   private
