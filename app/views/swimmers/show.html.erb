@@ -41,12 +41,12 @@
       <td><%= @swimmer.lmsc %></td>
     </tr>
     <tr>
-    <th>Phone Number</th>
+    <th>Phone #</th>
       <td>
         <% if @swimmer.phone_number? %>
           <%= phone_number_link(@swimmer.phone_number) %>
         <% else %>
-          Add Phone Number
+          Add Phone #
         <% end %>
       </td>
     </tr>

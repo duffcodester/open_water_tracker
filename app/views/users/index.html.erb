@@ -40,7 +40,7 @@
             </th>
             <th class='hidden-xs'>First Name</th>
             <th class = 'hidden-xs'>Email</th>
-            <th>Phone Number</th>
+            <th>Phone #</th>
             <th class = 'hidden-xs'>Admin</th>
           </tr>
         </thead>
@@ -62,9 +62,7 @@
             <td class='hidden-xs'>{{user.email}}</td>
             <td class='hidden-xs'>{{user.phone_number}}</td>
             <td class='visible-xs'>
-              <a ng-href='tel:{{user.phone_number}}'>
-                <span style='color: green; font-size: 10pt' class='glyphicon glyphicon-earphone'></span>
-              </a>
+              <a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</a>
             </td>
             <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
           </tr>
