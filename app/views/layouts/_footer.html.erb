@@ -18,8 +18,9 @@
             <% if current_user.admin? %>
               <li><%= link_to 'Monitors', users_path %></li>
             <% end %>
-            <li><%= link_to 'Update Local Database', { controller: 'swimmers', action: 'import' }, method: :get %><li>
-            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'Update Local Database', { controller: 'swimmers', action: 'import' }, method: :get %>
+            </li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>>
           </ul>
         </div>
       </div>
