@@ -25,7 +25,7 @@
     $scope.totalDisplayed = 10
 
     $scope.loadMore = ->
-      $scope.totalDisplayed += 100
+      $scope.totalDisplayed += 20
 
     Swimmers.index (data) ->
       $scope.Swimmers = data
