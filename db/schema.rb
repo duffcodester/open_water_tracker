@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405055854) do
-
-  create_table "analytics", force: true do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140416050834) do
 
   create_table "swim_records", force: true do |t|
     t.datetime "created_at"

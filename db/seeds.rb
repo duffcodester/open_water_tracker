@@ -33,6 +33,3 @@ User.create!(first_name: 'Marcia',
              password_confirmation: 'comsa1',
              admin: true
              )
-
-Analytic.create!(start_date: '2014-01-01',
-                 end_date: '2014-12-31')
