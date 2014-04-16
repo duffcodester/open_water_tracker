@@ -11,8 +11,12 @@ class SwimRecord < ActiveRecord::Base
     swimmer usms_number: 'USMS'
     swimmer lmsc: 'LMSC'
     check_in 'Check In'
-    check_in_user_id 'User'
+    check_in_user_id 'User ID'
+    check_in_first_name 'First Name'
+    check_in_last_name 'Last Name'
     check_out 'Check Out'
-    check_out_user_id 'User'
+    check_out_user_id 'User ID'
+    check_out_first_name 'First Name'
+    check_out_last_name 'Last Name'
   end
 end

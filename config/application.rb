@@ -22,6 +22,9 @@ module Comsa
       g.stylesheets false
       g.test_framework false
     end
+
+    config.time_zone = 'Mountain Time (US & Canada)'
+
     # Settings in config/environments/* take precedence over those specified
     # here.
     # Application configuration should go into files in config/initializers
@@ -42,10 +45,10 @@ module Comsa
 
     config.to_prepare do
       Devise::SessionsController.layout SESSIONS
-      Devise::RegistrationsController.layout REGISTRATION
-      Devise::ConfirmationsController.layout 'application'
-      Devise::UnlocksController.layout 'application'
-      Devise::PasswordsController.layout 'application'
+      Devise::RegistrationsController.layout SESSIONS
+      Devise::ConfirmationsController.layout SESSIONS
+      Devise::UnlocksController.layout SESSIONS
+      Devise::PasswordsController.layout SESSIONS
     end
 
     config.assets.precompile += %w( *.js *.scss )

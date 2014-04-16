@@ -1,9 +1,16 @@
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
-    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <h1 class='hidden-xs'>Swimmer Check In</h1>
-    <center><h4 class='visible-xs'>Swimmer Check In</h4></center>
+    <div class='hidden-xs'>
+      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+      <h1>Swimmer Check In</h1>
+    </div>
+    <div class='visible-xs'>
+      <div class='navbar-fixed-top'>
+          <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+      </div>
+      <center><br><br><h4>Swimmer Check In</h4></center>
+    </div>
     <div class='row'>
       <div class='col-md-3'>
         <div class="input-group">

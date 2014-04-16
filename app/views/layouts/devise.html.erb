@@ -2,8 +2,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title))%></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link href = '/assets/bootstrap.css' rel = 'stylesheet'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
     <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css',
     'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -13,7 +12,7 @@
   <body>
     <div class='container'>
       <% if !current_user %>
-        <br><br><br>
+        <br><br>
       <% end %>
       <% browser_check %>
       <%= flash_messages %>

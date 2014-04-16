@@ -1,7 +1,5 @@
 Comsa::Application.routes.draw do
 
-  resources :analytics
-
   root 'swimmers#index'
 
   devise_for :users
@@ -10,7 +8,13 @@ Comsa::Application.routes.draw do
   resources :swim_records
   resources :swimmers
 
-  match '/swimmer_analytics', to: 'analytics#show',    via: 'get'
+  match '/analytics',
+        to: 'static_pages#analytics',
+        via: 'get'
+  match '/analytics',
+        to: 'static_pages#analytics',
+        via: 'post'
+
   match '/records', to: 'swim_records#records',    via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'
 end
