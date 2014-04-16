@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe 'Analytics' do
   let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:id) { FactoryGirl.create(:analytic) }
 
   before do
     login_as(admin, scope: :user)
-    visit swimmer_analytics_path(:id)
+    visit analytics_path
   end
 
   subject { page }

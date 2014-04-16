@@ -1,9 +1,5 @@
 FactoryGirl.define do
 
-  factory :analytic do
-    id 1
-  end
-
   factory :user do
     first_name            'Josh'
     last_name             'Duffy'

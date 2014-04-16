@@ -9,10 +9,10 @@ Comsa::Application.routes.draw do
   resources :swimmers
 
   match '/analytics',
-        to: 'static_pages#analytics_query',
+        to: 'static_pages#analytics',
         via: 'get'
   match '/analytics',
-        to: 'static_pages#analytics_query',
+        to: 'static_pages#analytics',
         via: 'post'
 
   match '/records', to: 'swim_records#records',    via: 'get'
