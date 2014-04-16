@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable,
          :rememberable,
+         :lockable,
          :trackable,
          :timeoutable,
          timeout_in: 120.minutes

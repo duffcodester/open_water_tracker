@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416051118) do
+ActiveRecord::Schema.define(version: 20140416055935) do
 
   create_table "swim_records", force: true do |t|
     t.datetime "created_at"
@@ -57,9 +57,13 @@ ActiveRecord::Schema.define(version: 20140416051118) do
     t.string   "phone_number"
     t.boolean  "admin",                  default: false
     t.string   "time_zone"
+    t.integer  "failed_attempts",        default: 0,     null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
 end
