@@ -22,6 +22,9 @@ module Comsa
       g.stylesheets false
       g.test_framework false
     end
+
+    config.time_zone = 'Mountain Time (US & Canada)'
+
     # Settings in config/environments/* take precedence over those specified
     # here.
     # Application configuration should go into files in config/initializers
