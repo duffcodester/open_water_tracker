@@ -1,9 +1,11 @@
 <% provide(:title, 'Sign In') %>
-<div class='row well'>
+<div class='userform well'>
   <div class='userform'>
     <center>
-      <h1>COMSA Tracker</h1>
-      <h1>Monitor Sign In</h1>
+      <h1 class='hidden-xs'>COMSA Tracker</h1>
+      <h1 class='hidden-xs'>Monitor Sign In</h1>
+      <h4 class='visible-xs'>COMSA Tracker</h4>
+      <h4 class='visible-xs'>Monitor Sign In</h4>
     </center>
     <%= bootstrap_form_for(resource, :as => resource_name,
                            :url => session_path(resource_name)) do |f| %>
@@ -14,4 +16,4 @@
     <!--<%= render "devise/shared/links" %>-->
   </div>
 </div>
-
+</div>
