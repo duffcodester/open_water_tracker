@@ -22,6 +22,7 @@ describe 'Navbar' do
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }
       it { should have_link('Edit My Profile', edit_user_path(admin)) }
+      it { should have_link('Update Local USMS Database', '/import') }
       it { should have_link('Logout', destroy_user_session_path) }
     end
 
@@ -39,6 +40,7 @@ describe 'Navbar' do
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }
       it { should have_link('Edit My Profile', edit_user_path(admin)) }
+      it { should have_link('Update Local USMS Database', '/import') }
       it { should have_link('Logout', destroy_user_session_path) }
     end
   end

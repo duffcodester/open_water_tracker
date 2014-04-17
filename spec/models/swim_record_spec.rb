@@ -6,7 +6,11 @@ describe SwimRecord do
                                   check_in:          '2014-01-01 04:56',
                                   check_out:         '2014-01-01 05:06',
                                   check_in_user_id:  1,
-                                  check_out_user_id: 1
+                                  check_in_first_name: 'Michael',
+                                  check_in_last_name: 'Pierce',
+                                  check_out_user_id: 1,
+                                  check_out_first_name: 'Josh',
+                                  check_out_last_name: 'Duffy'
                                   )
   end
 
@@ -16,7 +20,12 @@ describe SwimRecord do
   it { should respond_to(:check_in) }
   it { should respond_to(:check_out) }
   it { should respond_to(:check_in_user_id) }
+  it { should respond_to(:check_in_first_name) }
+  it { should respond_to(:check_in_last_name) }
   it { should respond_to(:check_out_user_id) }
+  it { should respond_to(:check_out_first_name) }
+  it { should respond_to(:check_out_last_name) }
+
   it { should be_valid }
 
   describe 'when swimmer_id is not present' do

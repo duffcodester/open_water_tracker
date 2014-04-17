@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe Swimmer do
   before do
-    @swimmer = Swimmer.new(first_name:   'First',
-                           last_name:    'Last',
-                           usms_number:  'ABCD-1234',
-                           lmsc:         'CO'
+    @swimmer = Swimmer.new(first_name:     'First',
+                           last_name:      'Last',
+                           middle_initial: 'Dubs',
+                           usms_number:    'ABCD-1234',
+                           lmsc:           'CO',
+                           phone_number:   '720-387-9691'
                            )
   end
 
@@ -13,8 +15,10 @@ describe Swimmer do
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
+  it { should respond_to(:middle_initial) }
   it { should respond_to(:usms_number) }
   it { should respond_to(:lmsc) }
+  it { should respond_to(:phone_number) }
   it { should be_valid }
 
   describe 'when first name is not present' do

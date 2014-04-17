@@ -11,5 +11,14 @@ describe 'Analytics' do
   subject { page }
 
   it { should have_title('COMSA Tracker | Analytics') }
-  it { should have_selector('h1', text: 'Analytics') }
+
+  describe 'on mobile view' do
+    it { should have_selector('h4', text: 'Analytics') }
+  end
+
+  describe 'on desktop view' do
+    it { should have_selector('h1', text: 'Analytics') }
+  end
 end
+
+
