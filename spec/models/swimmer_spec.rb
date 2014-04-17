@@ -7,7 +7,8 @@ describe Swimmer do
                            middle_initial: 'Dubs',
                            usms_number:    'ABCD-1234',
                            lmsc:           'CO',
-                           phone_number:   '720-387-9691'
+                           phone_number:   '720-387-9691',
+                           in_state:       false
                            )
   end
 
@@ -19,6 +20,7 @@ describe Swimmer do
   it { should respond_to(:usms_number) }
   it { should respond_to(:lmsc) }
   it { should respond_to(:phone_number) }
+  it { should respond_to(:in_state) }
   it { should be_valid }
 
   describe 'when first name is not present' do
@@ -68,8 +70,11 @@ describe Swimmer do
 
     it 'should create new swimmers in local db' do
       Swimmer.should_receive(:open).with(Swimmer::URL)
-      expect { Swimmer.import }.to change(Swimmer, :count).by(1)
-      Swimmer.last.first_name.should == 'Robert'
+      expect { Swimmer.import }.to change(Swimmer, :count).by(2)
+      Swimmer.first.first_name.should == 'Robert'
+      Swimmer.first.in_state.should == true
+      Swimmer.last.first_name.should == 'Daniel'
+      Swimmer.last.in_state.should == false
     end
   end
 end

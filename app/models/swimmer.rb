@@ -15,6 +15,7 @@ class Swimmer < ActiveRecord::Base
                 headers: true,
                 header_converters: :symbol) do |row|
       create_swimmer(row) if from_colorado?(row)
+      create_out_of_state_swimmer(row) if !from_colorado?(row)
     end
   end
 
@@ -31,6 +32,16 @@ class Swimmer < ActiveRecord::Base
     .first_or_create(first_name:      row[:first_name],
                      last_name:       row[:last_name],
                      middle_initial:  row[:mi],
-                     lmsc:            row[:lmsc])
+                     lmsc:            row[:lmsc],
+                     in_state:        true)
+  end
+
+  def self.create_out_of_state_swimmer(row)
+    Swimmer.where(usms_number: row[:usms_number])
+    .first_or_create(first_name:      row[:first_name],
+                     last_name:       row[:last_name],
+                     middle_initial:  row[:mi],
+                     lmsc:            row[:lmsc],
+                     in_state:        false)
   end
 end
