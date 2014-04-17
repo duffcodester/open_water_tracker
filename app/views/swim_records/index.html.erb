@@ -45,7 +45,7 @@
             <th class='hidden-xs'>USMS Number</th>
             <th class='hidden-xs'>LMSC</th>
             <th class='hidden-xs'>Check In</th>
-            <th class='visible-xs'>Phone Number</th>
+            <th> Phone Number</th>
           </tr>
         </thead>
         <tbody>
@@ -71,8 +71,7 @@
             <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
             <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
             <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
-            <td class='visible-xs'>
-
+            <td>
               <a ng-href='tel:{{swimRecord.swimmer.phone_number}}'> {{swimRecord.swimmer.phone_number}}</a>
             </td>
           </tr>
@@ -81,9 +80,3 @@
     </div>
   </div>
 </div>
-
-
-
-            <td class='visible-xs'>
-              <a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</a>
-            </td>
