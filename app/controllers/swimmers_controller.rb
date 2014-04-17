@@ -6,6 +6,10 @@ class SwimmersController < ApplicationController
     @swimmers = Swimmer.all
   end
 
+  def out_of_state
+
+  end
+
   def show
   end
 

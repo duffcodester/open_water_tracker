@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416055935) do
+ActiveRecord::Schema.define(version: 20140417172217) do
 
   create_table "swim_records", force: true do |t|
     t.datetime "created_at"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140416055935) do
     t.datetime "updated_at"
     t.string   "middle_initial"
     t.string   "phone_number"
+    t.boolean  "in_state",       default: false
   end
 
   create_table "users", force: true do |t|
