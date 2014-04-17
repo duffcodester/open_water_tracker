@@ -28,20 +28,20 @@ class Swimmer < ActiveRecord::Base
   end
 
   def self.create_swimmer(row)
-    Swimmer.find_or_create_by(usms_number:     row[:usms_number],
-                              first_name:      row[:first_name],
-                              last_name:       row[:last_name],
-                              middle_initial:  row[:mi],
-                              lmsc:            row[:lmsc],
-                              in_state:        true)
+    Swimmer.where(usms_number: row[:usms_number])
+    .first_or_create(first_name:      row[:first_name],
+                     last_name:       row[:last_name],
+                     middle_initial:  row[:mi],
+                     lmsc:            row[:lmsc],
+                     in_state:        true)
   end
 
   def self.create_out_of_state_swimmer(row)
-    Swimmer.find_or_create_by(usms_number:     row[:usms_number],
-                              first_name:      row[:first_name],
-                              last_name:       row[:last_name],
-                              middle_initial:  row[:mi],
-                              lmsc:            row[:lmsc],
-                              in_state:        false)
+    Swimmer.where(usms_number: row[:usms_number])
+    .first_or_create(first_name:      row[:first_name],
+                     last_name:       row[:last_name],
+                     middle_initial:  row[:mi],
+                     lmsc:            row[:lmsc],
+                     in_state:        false)
   end
 end

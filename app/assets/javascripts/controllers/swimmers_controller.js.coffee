@@ -1,5 +1,5 @@
-@comsatrack.controller 'SwimmersCtrl', ['$scope', 'Swimmers',
-  @SwimmersCtrl = ($scope, Swimmers) ->
+@comsatrack.controller 'SwimmersCtrl', ['$location', '$scope', 'Swimmers',
+  @SwimmersCtrl = ($location, $scope, Swimmers) ->
 
     $scope.predicate =
       value: 'last_name'
@@ -27,6 +27,9 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 20
 
-    Swimmers.index (data) ->
-      $scope.Swimmers = data
+    Swimmers.index
+      inState: !($location.$$absUrl.indexOf('in_state=false') != -1)
+    ,
+      (data) ->
+        $scope.Swimmers = data
 ]
