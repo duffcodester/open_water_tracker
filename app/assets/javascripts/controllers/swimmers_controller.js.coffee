@@ -19,6 +19,9 @@
     $scope.showPhone = (swimmer) ->
       swimmer.phone_number?
 
+    $scope.inState = (swimmer) ->
+      swimmer.in_state == true
+
     $scope.hideCheckin = (swimmer) ->
       swimmer.phone_number?
 

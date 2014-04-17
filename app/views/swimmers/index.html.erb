@@ -52,9 +52,13 @@
                          filter:search | limitTo:totalDisplayed'>
             <td class='special_column'>
               <span class='nowrap'>
-                <!-- <button class='btn btn-default' ng-click='addAlert(swimmer)'>Add Alert</button> -->
-                <div style='width:85px;'>
-                  <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                <div ng-hide='inState(swimmer)' class='ng-show'>
+                  <in-state info='swimmer'></in-state>
+                </div>
+                <div ng-show='inState(swimmer)' class='ng-hide'>
+                  <div style='width:85px;'>
+                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                  </div>
                 </div>
               </span>
             </td>
