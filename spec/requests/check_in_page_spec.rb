@@ -13,7 +13,6 @@ describe 'Check In' do
   subject { page }
 
   it { should have_title('COMSA Tracker | Check In') }
-  it { should have_selector('h1', text: 'Check In') }
 
   describe 'on mobile view' do
     it { should have_content('Last Name') }
@@ -22,11 +21,13 @@ describe 'Check In' do
     it { should have_content('USMS Number') }
     it { should have_content('LMSC') }
     it { should have_content('Check In') }
+    it { should have_selector('h4', text: 'Check In') }
   end
 
   describe 'on desktop view' do
     it { should_not have_content('Phone Number') }
     it { should have_content('Full Name') }
+    it { should have_selector('h1', text: 'Check In') }
   end
 
   describe 'should display swimmers' do

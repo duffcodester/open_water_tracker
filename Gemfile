@@ -25,7 +25,7 @@ gem 'sendgrid'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails'
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.20.1'
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'spork-rails', '4.0.0'
@@ -57,5 +57,3 @@ group :development do
 end
 
 gem 'capistrano-rvm', github: 'capistrano/rvm'
-
-

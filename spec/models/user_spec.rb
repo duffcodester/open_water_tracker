@@ -6,7 +6,9 @@ describe User do
                      last_name: 'Last',
                      email: 'user@example.com',
                      password: 'foobar77',
-                     password_confirmation: 'foobar77'
+                     password_confirmation: 'foobar77',
+                     admin: false,
+                     phone_number: '720-387-9691'
                      )
   end
 
