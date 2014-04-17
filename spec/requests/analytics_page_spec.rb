@@ -20,5 +20,3 @@ describe 'Analytics' do
     it { should have_selector('h1', text: 'Analytics') }
   end
 end
-
-

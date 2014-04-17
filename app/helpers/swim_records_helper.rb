@@ -16,4 +16,3 @@ module SwimRecordsHelper
     params.require(:swim_record).permit(SWIMRECORDS_PARAMS)
   end
 end
-

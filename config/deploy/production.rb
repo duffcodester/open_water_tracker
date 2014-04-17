@@ -7,7 +7,7 @@ set :stage, :production
 # something that quacks like a hash can be used to set
 # extended properties on the server.
 server '107.170.80.179', user: 'deployer',
-                         roles: %w{web app db},
+                         roles: %w(web app db),
                          primary: true
 
 set :deploy_to, '/home/deployer/var/www/comsa'
@@ -36,5 +36,3 @@ set :rails_env, :production
 #     # password: 'please use keys'
 #   }
 # setting per server overrides global ssh_options
-
-
