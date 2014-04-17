@@ -18,7 +18,7 @@ describe 'Users' do
     let(:submit) { 'Create Monitor' }
 
     describe 'with invalid information' do
-      before { fill_in 'Password', with: 'foo' }
+      before { (fill_in 'Password *', with: 'foo', exact: true) }
 
       it 'should not create a user' do
         expect { click_button submit }.not_to change(User, :count)
@@ -27,12 +27,12 @@ describe 'Users' do
 
     describe 'with valid information' do
       before do
-        fill_in 'First Name',            with: 'First'
-        fill_in 'Last Name',             with: 'Last'
-        fill_in 'Phone Number',          with: '1234'
-        fill_in 'Email',                 with: 'user@example.com'
-        fill_in 'Password',              with: 'foobar77'
-        fill_in 'Password Confirmation', with: 'foobar77'
+        fill_in 'First Name',              with: 'First'
+        fill_in 'Last Name',               with: 'Last'
+        fill_in 'Phone Number',            with: '1234'
+        fill_in 'Email',                   with: 'user@example.com'
+        fill_in('Password *',              with: 'foobar77', exact: true)
+        fill_in('Password Confirmation *', with: 'foobar77', exact: true)
       end
 
       it 'should create a user' do
@@ -59,7 +59,7 @@ describe 'Users' do
 
     describe 'with invalid information' do
       before do
-        fill_in 'Password', with: 'foo'
+        fill_in('Password *', with: 'foo', exact: true)
         click_button submit
       end
 
@@ -72,12 +72,12 @@ describe 'Users' do
 
     describe 'with valid information' do
       before do
-        fill_in 'First Name',            with: 'First'
-        fill_in 'Last Name',             with: 'Last'
-        fill_in 'Phone Number',          with: '1234'
-        fill_in 'Email',                 with: 'user@example.com'
-        fill_in 'Password',              with: 'foobar77'
-        fill_in 'Password Confirmation', with: 'foobar77'
+        fill_in 'First Name',              with: 'First'
+        fill_in 'Last Name',               with: 'Last'
+        fill_in 'Phone Number',            with: '1234'
+        fill_in 'Email',                   with: 'user@example.com'
+        fill_in('Password *',              with: 'foobar77', exact: true)
+        fill_in('Password Confirmation *', with: 'foobar77', exact: true)
         click_button submit
       end
 
