@@ -22,6 +22,9 @@
     $scope.inState = (swimmer) ->
       swimmer.in_state == true
 
+    $scope.deleteRow = (swimmer) ->
+      $scope.Swimmers.splice $scope.Swimmers.indexOf(swimmer), 1
+
     $scope.hideCheckin = (swimmer) ->
       swimmer.phone_number?
 
