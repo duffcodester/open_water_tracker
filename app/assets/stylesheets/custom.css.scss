@@ -215,11 +215,16 @@ legend{
 }
 
 .alert {
-  line-height: 1.5px;
+  line-height: 25px;
+  position:fixed;
+  width: 100%;
+  top:50px;
+  padding: 0px;
   button {
     line-height: 13px;
     position:relative;
-    bottom:6px;
+    top:4px;
+    right: 10px;
   }
 }
 
@@ -248,3 +253,6 @@ legend{
     width:205px; // adjust
     height:115px; // adjust
 }
+
+
+
