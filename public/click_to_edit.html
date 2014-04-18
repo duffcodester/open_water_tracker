@@ -1,0 +1,19 @@
+<div class="click-to-edit">
+  <div ng-hide="view.editorEnabled">
+    <div ng-show="addedPhone(">
+      <button ng-click="enableEditor()"
+              class='btn-sm btn'
+              ng-class="swimmer.phone_number ? 'btn-primary' : 'btn-primary'">
+              Add Phone
+      </button>
+    </div>
+  </div>
+  <div ng-show="view.editorEnabled">
+    <input class='swimmer-check-in' ng-model="view.editableValue">
+    <button ng-click="save()" class='btn-xs btn-default'> Save </button>
+    <button ng-click="disableEditor()" class='btn-xs btn-danger'> X </button>
+  </div>
+</div>
+
+
+

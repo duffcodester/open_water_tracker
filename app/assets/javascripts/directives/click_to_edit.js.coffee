@@ -1,19 +1,18 @@
  @comsatrack.directive "clickToEdit", ->
-  editorTemplate = "<div class=\"click-to-edit\">" + "<div ng-hide=\"view.editorEnabled\">" + "{{value}} " + "<a ng-click=\"enableEditor()\">Add Phone</a>" + "</div>" + "<div ng-show=\"view.editorEnabled\">" + "<input ng-model=\"view.editableValue\">" + "<a href=\"#\" ng-click=\"save()\">Save</a>" + " or " + "<a ng-click=\"disableEditor()\">cancel</a>." + "</div>" + "</div>"
   restrict: "A"
   replace: true
-  template: editorTemplate
+  templateUrl: '/click_to_edit'
   scope:
-    value: "=clickToEdit"
+    swimmer: "=clickToEdit"
 
   controller: ($scope) ->
     $scope.view =
-      editableValue: $scope.value
+      editableValue: $scope.swimmer
       editorEnabled: false
 
     $scope.enableEditor = ->
       $scope.view.editorEnabled = true
-      $scope.view.editableValue = $scope.value
+      $scope.view.editableValue = $scope.swimmer
       return
 
     $scope.disableEditor = ->
@@ -21,9 +20,24 @@
       return
 
     $scope.save = ->
-      $scope.value = $scope.view.editableValue
+      $scope.swimmer = $scope.view.editableValue
       $scope.disableEditor()
+
       return
 
     return
 
+# @comsatrack.directive 'checkIn', ['SwimRecords',
+#   (SwimRecords) ->
+#     restrict: 'E'
+#     templateUrl: '/check_in'
+#     scope:
+#       swimmer: '=info'
+
+#     link: (scope, element, attrs) ->
+#       element.find('.btn').bind 'click', ->
+#         scope.swimmer.$update()
+
+#         SwimRecords.create
+#           swimmer_id: scope.swimmer.id
+# ]

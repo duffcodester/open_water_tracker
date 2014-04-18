@@ -52,15 +52,19 @@
             <td class='special_column'>
               <span class='nowrap'>
                 <!-- <button class='btn btn-default' ng-click='addAlert(swimmer)'>Add Alert</button> -->
-                <div style='width:85px;'>
-                  <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                <div style='width:250px;'>
+                   <span ng-if="swimmer.phone_added == false">
+                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                    <div click-to-edit="swimmer.phone_number"></div>
+                  </span>
+                   <span ng-if="swimmer.phone_added == true">
+                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                  </span>
                 </div>
-              </span>
-            </td>
-            <td>
-              <div class="field">
-                  <div click-to-edit="swimmer.phone_number"></div>
-              </div>
+
+
+
+
             </td>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{swimmer.id}}'>

@@ -227,10 +227,17 @@ legend{
   margin: 0px;
 }
 
-.field {
-    margin-bottom: 1em;
+.click-to-edit {
+    display: inline-block;
+    margin-bottom: 0px;
 }
 
 .click-to-edit {
     display: inline-block;
+    margin-bottom: 0px;
+}
+
+.swimmer-check-in {
+  margin: 0px;
+  width: 50%;
 }
