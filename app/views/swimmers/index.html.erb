@@ -52,14 +52,9 @@
             <td class='special_column'>
               <span class='nowrap'>
                 <!-- <button class='btn btn-default' ng-click='addAlert(swimmer)'>Add Alert</button> -->
-                <div style='width:250px;'>
-                   <span ng-if="swimmer.phone_added == false">
-                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
-                    <div click-to-edit="swimmer.phone_number"></div>
-                  </span>
-                   <span ng-if="swimmer.phone_added == true">
-                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
-                  </span>
+                <div style='width:250px;' ng-switch="addedPhone">
+                  <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                  <div click-to-edit="swimmer.phone_number"></div>
                 </div>
 
 
