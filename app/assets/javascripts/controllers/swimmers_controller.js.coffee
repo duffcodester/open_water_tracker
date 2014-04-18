@@ -26,6 +26,9 @@
       swimmer.phone_added?
 
     $scope.inState = (swimmer) ->
+      swimmer.in_state != false
+
+    $scope.notOutOfState = (swimmer) ->
       swimmer.in_state == true
 
     $scope.deleteRow = (swimmer) ->
