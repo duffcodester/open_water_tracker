@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140418030658) do
     t.string   "middle_initial"
     t.string   "phone_number"
     t.boolean  "in_state",       default: false
+    t.boolean  "phone_added",    default: false
   end
 
   add_index "swimmers", ["usms_number"], name: "index_swimmers_on_usms_number"

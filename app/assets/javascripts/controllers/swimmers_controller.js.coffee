@@ -4,6 +4,9 @@
     $scope.predicate =
       value: 'last_name'
 
+    $scope.hideButton =
+      value: 'True'
+
     $scope.alerts = []
 
     $scope.addAlert = (swimmer) ->
@@ -19,7 +22,13 @@
     $scope.showPhone = (swimmer) ->
       swimmer.phone_number?
 
+    $scope.addedPhone = (swimmer) ->
+      swimmer.phone_added?
+
     $scope.inState = (swimmer) ->
+      swimmer.in_state != false
+
+    $scope.notOutOfState = (swimmer) ->
       swimmer.in_state == true
 
     $scope.deleteRow = (swimmer) ->

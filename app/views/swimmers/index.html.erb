@@ -52,13 +52,14 @@
                          filter:search | limitTo:totalDisplayed'>
             <td class='special_column'>
               <span class='nowrap'>
-                <div ng-hide='inState(swimmer)' class='ng-show'>
+                <div ng-hide='inState(swimmer)'>
                   <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
                 </div>
-                <div ng-show='inState(swimmer)' class='ng-hide'>
-                  <div style='width:85px;'>
+
+                <div ng-show='notOutOfState(swimmer)'>
+                  <div style='width:250px;' ng-switch="addedPhone"></div>
                     <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
-                  </div>
+                  <div click-to-edit="swimmer.phone_number"></div>
                 </div>
               </span>
             </td>

@@ -5,6 +5,7 @@ module SwimmersHelper
                     :usms_number,
                     :lmsc,
                     :phone_number,
+                    :phone_added,
                     :id,
                     :in_state
                    ]

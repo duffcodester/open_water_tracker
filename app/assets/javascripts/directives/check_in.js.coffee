@@ -7,6 +7,7 @@
 
     link: (scope, element, attrs) ->
       element.find('.btn').bind 'click', ->
+        scope.swimmer.phone_added = true
         scope.swimmer.$update()
 
         SwimRecords.create
