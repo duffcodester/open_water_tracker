@@ -7,6 +7,13 @@
     $scope.hideButton =
       value: 'True'
 
+    $scope.setPhoneTrue = (swimmer) ->
+      swimmer.phone_added == true
+
+    $scope.phoneIsTrue = (swimmer) ->
+      swimmer.phone_added != false
+
+
     $scope.alerts = []
 
     $scope.addAlert = (swimmer) ->

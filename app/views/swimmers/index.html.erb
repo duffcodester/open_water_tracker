@@ -50,14 +50,13 @@
         <tbody>
           <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                          filter:search | limitTo:totalDisplayed'>
-            <td class='special_column'>
-              <span class='nowrap'>
+            <td style='width:180px;' >
+              <span>
                 <div ng-hide='inState(swimmer)'>
                   <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
                 </div>
 
                 <div ng-show='notOutOfState(swimmer)'>
-                  <div style='width:250px;' ng-switch="addedPhone"></div>
                     <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
                   <div click-to-edit="swimmer.phone_number"></div>
                 </div>

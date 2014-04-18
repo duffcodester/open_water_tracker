@@ -228,16 +228,23 @@ legend{
 }
 
 .click-to-edit {
-    display: inline-block;
+    display: block;
     margin-bottom: 0px;
 }
 
 .click-to-edit {
-    display: inline-block;
+    display: block;
     margin-bottom: 0px;
 }
 
 .swimmer-check-in {
   margin: 0px;
   width: 50%;
+}
+
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
+    float: left;
+    clear: left;
+    width:205px; // adjust
+    height:115px; // adjust
 }
