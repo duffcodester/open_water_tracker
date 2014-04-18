@@ -53,9 +53,7 @@
             <td class='special_column'>
               <span class='nowrap'>
                 <div ng-hide='inState(swimmer)' class='ng-show'>
-                  <div ng-click='deleteRow(swimmer)'>
-                    <in-state info='swimmer'></in-state>
-                  </div>
+                  <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
                 </div>
                 <div ng-show='inState(swimmer)' class='ng-hide'>
                   <div style='width:85px;'>
