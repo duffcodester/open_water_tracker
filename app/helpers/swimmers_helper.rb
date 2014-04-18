@@ -6,7 +6,8 @@ module SwimmersHelper
                     :lmsc,
                     :phone_number,
                     :phone_added,
-                    :id
+                    :id,
+                    :in_state
                    ]
 
   def swimmer_params
