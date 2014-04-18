@@ -15,7 +15,6 @@ Comsa::Application.routes.draw do
         to: 'static_pages#analytics',
         via: 'post'
 
-  # match '/out_of_state_swimmers', to: 'swimmers#out_of_state_swimmers', via: 'get'
   match '/records', to: 'swim_records#records',    via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'
 end
