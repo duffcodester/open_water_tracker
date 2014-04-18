@@ -3,11 +3,7 @@ class SwimmersController < ApplicationController
 
   def index
     @check_in = false
-    @swimmers = Swimmer.all
-  end
-
-  def out_of_state
-
+    @swimmers = Swimmer.where(in_state: params[:in_state] == 'true')
   end
 
   def show
@@ -51,7 +47,8 @@ class SwimmersController < ApplicationController
   end
 
   def import
-    Swimmer.import
+    call_rake :import
+    flash[:success] = 'Importing... Please allow 2 minutes to update.'
     redirect_to swimmers_path
   end
 

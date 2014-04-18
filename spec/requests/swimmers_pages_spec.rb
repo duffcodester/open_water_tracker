@@ -16,6 +16,19 @@ describe 'Swimmers' do
 
     let(:submit) { 'Save Changes' }
 
+    describe 'page' do
+      it do
+        should have_selector('h1',
+          text: "Update #{swimmer.first_name} #{swimmer.last_name}")
+      end
+      it { should_not have_content('First Name') }
+      it { should_not have_content('Middle Initial') }
+      it { should_not have_content('Last Name') }
+      it { should_not have_content('USMS Number') }
+      it { should_not have_content('LMSC') }
+      it { should have_content('Phone Number *') }
+    end
+
     describe 'with valid information' do
       before do
         fill_in 'Phone Number', with: '1234'

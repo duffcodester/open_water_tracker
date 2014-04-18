@@ -1,5 +1,5 @@
-@comsatrack.controller 'SwimmersCtrl', ['$scope', 'Swimmers',
-  @SwimmersCtrl = ($scope, Swimmers) ->
+@comsatrack.controller 'SwimmersCtrl', ['$location', '$scope', 'Swimmers',
+  @SwimmersCtrl = ($location, $scope, Swimmers) ->
 
     $scope.predicate =
       value: 'last_name'
@@ -19,6 +19,12 @@
     $scope.showPhone = (swimmer) ->
       swimmer.phone_number?
 
+    $scope.inState = (swimmer) ->
+      swimmer.in_state == true
+
+    $scope.deleteRow = (swimmer) ->
+      $scope.Swimmers.splice $scope.Swimmers.indexOf(swimmer), 1
+
     $scope.hideCheckin = (swimmer) ->
       swimmer.phone_number?
 
@@ -27,6 +33,9 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 20
 
-    Swimmers.index (data) ->
-      $scope.Swimmers = data
+    Swimmers.index
+      inState: !($location.$$absUrl.indexOf('in_state=false') != -1)
+    ,
+      (data) ->
+        $scope.Swimmers = data
 ]

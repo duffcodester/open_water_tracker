@@ -1,2 +1,2 @@
 <% provide(:title, 'Edit Swimmer') %>
-<%= render 'form', legend: 'Update Swimmer', user: @swimmer %>
+<%= render 'form', legend: "Update #{@swimmer.first_name} #{@swimmer.last_name}", user: @swimmer %>
