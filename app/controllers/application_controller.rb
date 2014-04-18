@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
   end
+
+  def call_rake(task, options = {})
+    options[:rails_env] = Rails.env
+    args = options.map { |n, v| "#{n.to_s.upcase}='#{v}'" }
+    system "rake db:#{task} #{args.join(' ')} --trace &"
+  end
 end

@@ -47,7 +47,9 @@ class SwimmersController < ApplicationController
   end
 
   def import
-    Swimmer.import
+    call_rake :import
+    system 'rake import &'
+    flash[:success] = 'Import started. Please allow 1 minute to update.'
     redirect_to swimmers_path
   end
 
