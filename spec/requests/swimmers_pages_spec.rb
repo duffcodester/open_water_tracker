@@ -64,29 +64,29 @@ describe 'Swimmers' do
     it { should_not have_content('Phone Number') }
   end
 
-  describe 'import' do
-    before do
-      Warden.test_reset!
-      login_as(user, scope: :user)
-      visit swimmers_path
-    end
+  # describe 'import' do
+  #   before do
+  #     Warden.test_reset!
+  #     login_as(user, scope: :user)
+  #     visit swimmers_path
+  #   end
 
-    describe 'from mobile view' do
-      let(:submit) { 'Update Local Database' }
+  #   describe 'from mobile view' do
+  #     let(:submit) { 'Update Local Database' }
 
-      it 'should update the Database' do
-        Swimmer.should_receive(:import)
-        click_link submit
-      end
-    end
+  #     it 'should update the Database' do
+  #       Swimmer.should_receive(:import)
+  #       click_link submit
+  #     end
+  #   end
 
-    describe 'from desktop view' do
-      let(:submit) { 'Update Local USMS Database' }
+  #   describe 'from desktop view' do
+  #     let(:submit) { 'Update Local USMS Database' }
 
-      it 'should update the Database' do
-        Swimmer.should_receive(:import)
-        click_link submit
-      end
-    end
-  end
+  #     it 'should update the Database' do
+  #       Swimmer.should_receive(:import)
+  #       click_link submit
+  #     end
+  #   end
+  # end
 end
