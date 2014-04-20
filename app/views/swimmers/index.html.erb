@@ -50,7 +50,7 @@
         <tbody>
           <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                          filter:search | limitTo:totalDisplayed'>
-            <td style='width:180px;' >
+            <td style='width:220px;' >
               <span>
                 <div ng-hide='inState(swimmer)'>
                   <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
