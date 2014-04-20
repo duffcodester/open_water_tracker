@@ -9,7 +9,7 @@
     <%= f.text_field :first_name, label: 'First Name *' %>
     <%= f.text_field :last_name, label: 'Last Name *' %>
     <%= f.text_field :email, label: 'Email *' %>
-    <%= f.text_field :phone_number, label: 'Phone Number *' %>
+    <%= f.telephone_field :phone_number, label: 'Phone Number *' %>
     <%= f.password_field :password, label: 'Password *' %>
     <%= f.password_field :password_confirmation, label: 'Password Confirmation *' %>
     <% if current_user.admin? && @user != current_user %>
