@@ -4,16 +4,6 @@
     $scope.predicate =
       value: 'last_name'
 
-    $scope.hideButton =
-      value: 'True'
-
-    $scope.setPhoneTrue = (swimmer) ->
-      swimmer.phone_added == true
-
-    $scope.phoneIsTrue = (swimmer) ->
-      swimmer.phone_added != false
-
-
     $scope.alerts = []
 
     $scope.addAlert = (swimmer) ->
@@ -26,23 +16,21 @@
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
 
-    $scope.showPhone = (swimmer) ->
-      swimmer.phone_number?
-
-    $scope.addedPhone = (swimmer) ->
-      swimmer.phone_added?
-
     $scope.inState = (swimmer) ->
       swimmer.in_state != false
 
     $scope.notOutOfState = (swimmer) ->
       swimmer.in_state == true
+      swimmer.swimmer_checked_in is false
+
+    $scope.noPhone = (swimmer) ->
+      swimmer.phone_added == false
+
+    $scope.swimmerCheckedIn = (swimmer) ->
+      swimmer.swimmer_checked_in is false
 
     $scope.deleteRow = (swimmer) ->
       $scope.Swimmers.splice $scope.Swimmers.indexOf(swimmer), 1
-
-    $scope.hideCheckin = (swimmer) ->
-      swimmer.phone_number?
 
     $scope.totalDisplayed = 10
 
