@@ -9,10 +9,10 @@ describe 'Sign In Page' do
   it { should have_title('COMSA Tracker | Sign In') }
 
   describe 'on mobile view' do
-    it { should have_selector('h4', text: 'COMSA Tracker') }
+    it { should have_selector('h4', text: 'COMSA TRACKER 1.0') }
   end
 
   describe 'on desktop view' do
-    it { should have_selector('h1', text: 'COMSA Tracker') }
+    it { should have_selector('h1', text: 'COMSA TRACKER 1.0') }
   end
 end

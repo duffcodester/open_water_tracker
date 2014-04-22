@@ -4,6 +4,9 @@ describe 'Swimmers' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
   let!(:swimmer) { FactoryGirl.create(:swimmer) }
+  let!(:swimmer_with_phone) do
+    FactoryGirl.create(:swimmer, phone_number: '3039218628')
+  end
 
   subject { page }
 
@@ -52,6 +55,8 @@ describe 'Swimmers' do
       visit swimmer_path(swimmer)
     end
 
+    let(:submit) { 'Check In' }
+
     it do
       should have_selector('h1',
                            text: "#{swimmer.first_name} #{swimmer.last_name}")
@@ -62,7 +67,22 @@ describe 'Swimmers' do
     it { should have_content('USMS Number') }
     it { should have_content('LMSC') }
     it { should_not have_content('Phone Number') }
+
+    describe 'check in' do
+      describe 'with phone number' do
+        before do
+          Warden.test_reset!
+          login_as(user, scope: :user)
+          visit swimmer_path(swimmer_with_phone)
+        end
+
+        it 'should check in swimmer' do
+          expect { click_button submit }.to change(SwimRecord, :count).by(1)
+        end
+      end
+    end
   end
+
 
   # describe 'import' do
   #   before do
