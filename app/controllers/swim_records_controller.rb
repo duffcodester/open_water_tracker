@@ -47,6 +47,8 @@ class SwimRecordsController < ApplicationController
       @swim_record.update_attribute(:check_out_user_id, current_user.id)
       @swim_record.update_attribute(:check_out_first_name, current_user.first_name)
       @swim_record.update_attribute(:check_out_last_name, current_user.last_name)
+      @swim_record.swimmer.swimmer_checked_in = false
+      @swim_record.swimmer.save
       render :show
     else
       render json: @swim_record.errors, status: :unprocessable_entity

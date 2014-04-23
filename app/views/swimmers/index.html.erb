@@ -32,6 +32,7 @@
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th class='visible-xs'>
              <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
                Full Name</a>
@@ -44,23 +45,30 @@
             <th class='hidden-xs'>MI</th>
             <th class='hidden-xs'>USMS Number</th>
             <th class='hidden-xs'>LMSC</th>
-            <!-- <th class='hidden-xs'>In State?</th> -->
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                          filter:search | limitTo:totalDisplayed'>
-            <td style='width:220px;' >
+            <td style='width:80px;'>
               <span>
                 <div ng-hide='inState(swimmer)'>
                   <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
                 </div>
-
-                <div ng-show='notOutOfState(swimmer)'>
+                <div ng-show='swimmerCheckedIn(swimmer)'>
                     <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
-                  <div click-to-edit="swimmer.phone_number"></div>
+                </div>
+                <div ng-hide='swimmerCheckedIn(swimmer)'>
+                  <button class='btn-sm btn' style='width:80px;' disabled="disabled">Checked In</button>
                 </div>
               </span>
+            </td>
+            <td style='width:100px;' >
+              <div ng-if='noPhone(swimmer)'>
+                <form novalidate class="simple-form">
+                  <input type="text" ng-model="swimmer.phone_number" placeholder="Add Phone" />
+                </form>
+              </div>
             </td>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{swimmer.id}}'>
@@ -76,7 +84,6 @@
             <td class='hidden-xs'>{{swimmer.middle_initial}}</td>
             <td class='hidden-xs'>{{swimmer.usms_number}}</td>
             <th class='hidden-xs'>{{swimmer.lmsc}}</td>
-            <!-- <th class='hidden-xs'>{{swimmer.in_state}}</td> -->
           </tr>
         </tbody>
       </table>
