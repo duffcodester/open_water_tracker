@@ -19,5 +19,6 @@ json.array!(@swim_records) do |swim_record|
     json.phone_number swim_record.swimmer.phone_number
     json.usms_number swim_record.swimmer.usms_number
     json.lmsc swim_record.swimmer.lmsc
+    json.swimmer_checked_in swim_record.swimmer.swimmer_checked_in
   end
 end

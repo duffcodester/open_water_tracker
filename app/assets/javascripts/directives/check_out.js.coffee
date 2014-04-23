@@ -7,8 +7,11 @@
   link: (scope, element, attrs) ->
     element.bind 'click', ->
       scope.swimRecord.completed = true
-      scope.swimmer.$update()
+      scope.swimRecord.swimmer.swimmer_checked_in = false
+      scope.swimRecord.swimmer.$update
 
       scope.swimRecord.$update (newSwimRecord, putResponseHeaders) ->
         console.log 'Great Success!'
         console.log newSwimRecord
+
+      scope.$apply()

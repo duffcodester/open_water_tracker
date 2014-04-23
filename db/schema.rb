@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140422181406) do
     t.string   "last_name"
     t.string   "phone_number"
     t.boolean  "admin",                  default: false
+    t.boolean  "active",                 default: true
     t.string   "time_zone"
     t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
