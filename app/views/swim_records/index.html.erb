@@ -2,12 +2,12 @@
   <div ng-controller='SwimRecordsCtrl'>
     <% provide(:title, 'Check Out') %>
     <div class='hidden-xs'>
-      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-      <h1>Swimmer Check Out</h1>
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <h1>Swimmer Check Out</h1>
     </div>
     <div class='visible-xs'>
       <div class='navbar-fixed-top'>
-          <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+          <alert ng-repeat="alert in alerts" style='text-align: center;' type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
       </div>
       <br><br>
     </div>
