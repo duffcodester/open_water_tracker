@@ -6,6 +6,8 @@ AllCops:
   Exclude:
     - db/**
     - bin/**
+    - spec/teaspoon_env.rb
+    - config/initializers/teaspoon.rb
 
 Documentation:
   Enabled: false
