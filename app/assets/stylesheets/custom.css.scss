@@ -120,6 +120,10 @@ footer ul li {
     line-height: 50px; /* vertical centering; should be equal to the footer height */
 }
 
+.mobile-nav { /* centers the text */
+    text-align: center; /* horizontal centering */
+}
+
 /* mixins, variables, etc. */
 $grayMediumLight: #eaeaea;
 
@@ -215,15 +219,12 @@ legend{
 }
 
 .alert {
-  line-height: 25px;
-  position:fixed;
-  width: 100%;
-  top:50px;
   padding: 0px;
+  text-align: center;
   button {
     line-height: 13px;
     position:relative;
-    top:4px;
+    top:3px;
     right: 10px;
   }
 }
