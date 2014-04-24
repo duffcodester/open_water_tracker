@@ -5,10 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
     @check_in = true
     @check_out = true
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    users_respond_to_format_methods
   end
 
   def edit
@@ -28,13 +25,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
-      sign_in(@user, bypass: true) if @user == current_user
-      flash[:success] = 'Profile updated'
-      redirect_to @user
-    else
-      render 'edit'
-    end
+    @user.update_attributes(user_params) ? user_update : (render 'edit')
   end
 
   def show
@@ -54,5 +45,18 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def users_respond_to_format_methods
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def user_update
+    sign_in(@user, bypass: true) if @user == current_user
+    flash[:success] = 'Profile updated'
+    redirect_to @user
   end
 end

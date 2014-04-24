@@ -1,10 +1,10 @@
+# rubocop:disable all
 require 'csv'
 require 'open-uri'
 
 URL = 'http://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2014&oper=csv&_search=false&nd=1396542916605&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1'
 
 module Importer
-
   def self.import
     ActiveRecord::Base.transaction do
       count = 0
@@ -12,7 +12,7 @@ module Importer
                   headers: true,
                   header_converters: :symbol) do |row|
         create_swimmer(row) if from_colorado?(row)
-        create_out_of_state_swimmer(row) if !from_colorado?(row)
+        create_out_of_state_swimmer(row) unless from_colorado?(row)
 
         count += 1
         puts count
@@ -46,3 +46,4 @@ module Importer
                      in_state:        false)
   end
 end
+# rubocop:enable all

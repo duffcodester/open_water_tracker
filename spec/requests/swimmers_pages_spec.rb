@@ -21,8 +21,9 @@ describe 'Swimmers' do
 
     describe 'page' do
       it do
+        EDIT_H1 = "Update #{swimmer.first_name} #{swimmer.last_name}"
         should have_selector('h1',
-          text: "Update #{swimmer.first_name} #{swimmer.last_name}")
+                             text: EDIT_H1)
       end
       it { should_not have_content('First Name') }
       it { should_not have_content('Middle Initial') }
@@ -82,7 +83,6 @@ describe 'Swimmers' do
       end
     end
   end
-
 
   # describe 'import' do
   #   before do
