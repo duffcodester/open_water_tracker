@@ -18,23 +18,14 @@ class SwimmersController < ApplicationController
 
   def create
     @swimmer = Swimmer.new(swimmer_params)
-
-    respond_to do |format|
-      if @swimmer.save
-        format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @swimmer }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @swimmer.errors, status: :unprocessable_entity }
-      end
-    end
+    @swimmer.save ? (render :show) : create_and_update_json_else
   end
 
   def update
     if @swimmer.update(swimmer_params)
       render :show
     else
-      render json: @swimmer.errors, status: :unprocessable_entity
+      create_and_update_json_else
     end
   end
 
@@ -59,5 +50,9 @@ class SwimmersController < ApplicationController
 
   def set_swimmer
     @swimmer = Swimmer.find(params[:id])
+  end
+
+  def create_and_update_json_else
+    render json: @swimmer.errors, status: :unprocessable_entity
   end
 end

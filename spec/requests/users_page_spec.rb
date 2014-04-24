@@ -4,7 +4,8 @@ describe 'Users' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
   let!(:admin_too) do FactoryGirl.create(:admin,
-                                         email: 'newuser3@example.com') end
+                                         email: 'newuser3@example.com')
+  end
 
   subject { page }
 
@@ -76,8 +77,8 @@ describe 'Users' do
         fill_in 'Last Name *',               with: 'Last'
         fill_in 'Phone Number *',            with: '1234'
         fill_in 'Email *',                   with: 'user@example.com'
-        fill_in('Password *',              with: 'foobar77', exact: true)
-        fill_in('Password Confirmation *', with: 'foobar77', exact: true)
+        fill_in('Password *',                with: 'foobar77', exact: true)
+        fill_in('Password Confirmation *',   with: 'foobar77', exact: true)
         click_button submit
       end
 
@@ -100,7 +101,8 @@ describe 'Users' do
       end
 
       it do should have_selector('h1',
-                                 text: "#{user.first_name} #{user.last_name}") end
+                                 text: "#{user.first_name} #{user.last_name}")
+      end
     end
 
     describe 'should not be able to delete my own admin status' do
@@ -131,7 +133,9 @@ describe 'Users' do
       end
 
       it do should have_selector('h1',
-                                 text: "#{user.first_name} #{user.last_name}") end
+                                 text: "#{user.first_name} #{user.last_name}")
+      end
+
       it { should_not have_button('Add Admin') }
     end
   end
