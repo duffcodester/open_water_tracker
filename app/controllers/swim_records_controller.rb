@@ -66,11 +66,11 @@ class SwimRecordsController < ApplicationController
   end
 
   def swim_record_params_update
-    @swim_record.update_attribute(:check_out, Time.now)
-    @swim_record.update_attribute(:check_out_user_id, current_user.id)
-    @swim_record.update_attribute(:check_out_first_name,
-                                  current_user.first_name)
-    @swim_record.update_attribute(:check_out_last_name, current_user.last_name)
+    @swim_record
+      .update_attribute(:check_out, Time.now,
+                        :check_out_user_id, current_user.id,
+                        :check_out_first_name, current_user.first_name,
+                        :check_out_last_name, current_user.last_name)
   end
 
   def swimmer_params_update
@@ -82,17 +82,11 @@ class SwimRecordsController < ApplicationController
     render json: @swim_record.errors, status: :unprocessable_entity
   end
 
-  def recrods_respond_to_format_methods
+  def records_respond_to_format_methods
     respond_to do |format|
       format.html
       format.json
-      respond_to_csv
-    end
-  end
-
-  def respond_to_csv
-    format.csv do
-      render csv: @records, filename: 'records'
+      format.csv {render csv: @records, filename: 'records'}
     end
   end
 end
