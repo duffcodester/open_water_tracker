@@ -66,11 +66,11 @@ class SwimRecordsController < ApplicationController
   end
 
   def swim_record_params_update
-    @swim_record
-      .update_attribute(:check_out, Time.now,
-                        :check_out_user_id, current_user.id,
-                        :check_out_first_name, current_user.first_name,
-                        :check_out_last_name, current_user.last_name)
+    @swim_record.update_attribute(:check_out, Time.now)
+    @swim_record.update_attribute(:check_out_user_id, current_user.id)
+    @swim_record.update_attribute(:check_out_first_name,
+                                  current_user.first_name)
+    @swim_record.update_attribute(:check_out_last_name, current_user.last_name)
   end
 
   def swimmer_params_update
