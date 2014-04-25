@@ -82,17 +82,11 @@ class SwimRecordsController < ApplicationController
     render json: @swim_record.errors, status: :unprocessable_entity
   end
 
-  def recrods_respond_to_format_methods
+  def records_respond_to_format_methods
     respond_to do |format|
       format.html
       format.json
-      respond_to_csv
-    end
-  end
-
-  def respond_to_csv
-    format.csv do
-      render csv: @records, filename: 'records'
+      format.csv {render csv: @records, filename: 'records'}
     end
   end
 end

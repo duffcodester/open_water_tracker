@@ -220,13 +220,18 @@ legend{
 
 .alert {
   padding: 0px;
-  text-align: center;
   button {
     line-height: 13px;
     position:relative;
     top:3px;
     right: 10px;
   }
+}
+
+.desktop-alert-centering {
+  margin-left: auto;
+  margin-right: auto;
+  width:718px;
 }
 
 .inputfix {

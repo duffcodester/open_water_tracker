@@ -1,13 +1,13 @@
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
-    <div class='hidden-xs'>
+    <div class='hidden-xs desktop-alert-centering'>
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
       <h1>Swimmer Check In</h1>
     </div>
     <div class='visible-xs'>
       <div class='navbar-fixed-top'>
-          <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+          <alert ng-repeat="alert in alerts" style='text-align: center;' type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
       </div>
       <br><br>
     </div>
