@@ -23,6 +23,7 @@ class SwimRecordsController < ApplicationController
 
   def create
     swim_record_params_create
+    @swim_record.swimmer.save
     @swim_record.save ? (render :show) : create_and_update_json_else
   end
 
@@ -57,6 +58,7 @@ class SwimRecordsController < ApplicationController
     @swim_record.check_in_first_name = current_user.first_name
     @swim_record.check_in_last_name = current_user.last_name
     @swim_record.check_in = Time.now
+    @swim_record.swimmer.swimmer_checked_in = true
   end
 
   def swim_record_if_logic
