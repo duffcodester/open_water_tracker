@@ -21,6 +21,7 @@ gem 'comma', '~> 3.0'
 gem 'unicorn'
 gem 'angular-ui-bootstrap-rails'
 gem 'sendgrid'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
