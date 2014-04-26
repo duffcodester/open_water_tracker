@@ -16,8 +16,10 @@
       <%= f.hidden_field :check_in, value: Time.now %>
       <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
       <%= f.hidden_field :check_in_user_id, value: current_user.id %>
-      <% if @swimmer.phone_number? %>
+      <% if @swimmer.phone_number? && !@swimmer.swimmer_checked_in %>
         <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
+      <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
+        <%= f.submit 'Checked In', class: "btn disabled btn-sm" %>
       <% else %>
         <%= f.submit 'Check In', class: "btn disabled btn-sm" %>
       <% end %>
