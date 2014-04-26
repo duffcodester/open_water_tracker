@@ -59,11 +59,11 @@
                     <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
                 </div>
                 <div ng-hide='swimmerCheckedIn(swimmer)'>
-                  <button class='btn-sm btn' style='width:80px;' disabled="disabled">Checked In</button>
+                  <button class='btn-sm btn btn-default' style='width:80px;' disabled="disabled">Checked In</button>
                 </div>
               </span>
             </td>
-            <td style='width:105px;'>
+            <td style='width:110px;'>
               <div ng-if='noPhone(swimmer)'>
                 <form novalidate class="simple-form">
                   <input type="tel" ng-model="swimmer.phone_number" placeholder="Add Phone" />

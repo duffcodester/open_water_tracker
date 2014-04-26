@@ -182,21 +182,15 @@ legend{
   }
 }
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-}
+// .field_with_errors {
+//   @extend .control-group;
+//   @extend .error;
+// }
 
 .btnfix{
   width: 150px;
   display: block;
   margin: auto;
-}
-
-// Default form width convenience class
-.userform{
-  width: 66%;
-  margin: 0 auto;
 }
 
 /* tables */
@@ -265,4 +259,16 @@ legend{
   margin: 0 auto;
 }
 
+@media (min-width: 992px) {
+  .userform{
+    width: 66%;
+    margin: 0 auto;
+  }
+}
 
+@media (max-width: 991px) {
+  .userform{
+    width: 95%;
+    margin: 0 auto;
+  }
+}
