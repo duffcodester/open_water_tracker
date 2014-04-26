@@ -195,8 +195,8 @@ legend{
 
 // Default form width convenience class
 .userform{
-  @extend .col-sm-8;
-  @extend .col-sm-offset-2;
+  width: 66%;
+  margin: 0 auto;
 }
 
 /* tables */
@@ -260,5 +260,9 @@ legend{
     height:115px; // adjust
 }
 
+.table-width-desktop {
+  width: 66%;
+  margin: 0 auto;
+}
 
 
