@@ -9,7 +9,7 @@
     <%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
                                    class: 'btn btn-primary btn-sm'%>
   </div>
-  <ul class='pull-right'>
+  <div class='pull-right'>
     <%= bootstrap_form_for SwimRecord.create do |f| %>
       <%= f.hidden_field :last_name, value: @swimmer.last_name %>
       <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
@@ -19,45 +19,43 @@
       <% if @swimmer.phone_number? && !@swimmer.swimmer_checked_in %>
         <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
       <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
-        <%= f.submit 'Checked In', class: "btn disabled btn-sm" %>
+        <%= f.submit 'Checked In', class: "btn btn-default btn-sm disabled"%>
       <% else %>
-        <%= f.submit 'Check In', class: "btn disabled btn-sm" %>
+        <%= f.submit 'Check In', class: "btn btn-default btn-sm disabled" %>
       <% end %>
     <% end %>
-  </ul>
-  <br> <br>
-  <div class='table-responsive'>
-    <table class='table table-bordered table-condensed' >
-      <tr>
-      <th style='width:25%'>First Name</th>
-        <td><%= @swimmer.first_name %></td>
-      </tr>
-      <tr>
-      <th>Middle Initial</th>
-        <td><%= @swimmer.middle_initial %></td>
-      </tr>
-      <tr>
-      <th>Last Name</th>
-        <td><%= @swimmer.last_name %></td>
-      </tr>
-      <tr>
-      <th>USMS Number</th>
-        <td><%= @swimmer.usms_number %></td>
-      </tr>
-      <tr>
-      <th>LMSC</th>
-        <td><%= @swimmer.lmsc %></td>
-      </tr>
-      <tr>
-      <th>Phone #</th>
-        <td>
-          <% if @swimmer.phone_number? %>
-            <%= phone_number_link(@swimmer.phone_number) %>
-          <% else %>
-            Add Phone #
-          <% end %>
-        </td>
-      </tr>
-    </table>
   </div>
+  <br> <br>
+  <table class='table table-bordered table-condensed' >
+    <tr>
+    <th style='width:25%'>First Name</th>
+      <td><%= @swimmer.first_name %></td>
+    </tr>
+    <tr>
+    <th>Middle Initial</th>
+      <td><%= @swimmer.middle_initial %></td>
+    </tr>
+    <tr>
+    <th>Last Name</th>
+      <td><%= @swimmer.last_name %></td>
+    </tr>
+    <tr>
+    <th>USMS Number</th>
+      <td><%= @swimmer.usms_number %></td>
+    </tr>
+    <tr>
+    <th>LMSC</th>
+      <td><%= @swimmer.lmsc %></td>
+    </tr>
+    <tr>
+    <th>Phone #</th>
+      <td>
+        <% if @swimmer.phone_number? %>
+          <%= phone_number_link(@swimmer.phone_number) %>
+        <% else %>
+          Add Phone #
+        <% end %>
+      </td>
+    </tr>
+  </table>
 </div>

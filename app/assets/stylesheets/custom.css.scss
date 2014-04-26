@@ -222,12 +222,6 @@ legend{
   }
 }
 
-.desktop-alert-centering {
-  margin-left: auto;
-  margin-right: auto;
-  width:718px;
-}
-
 .inputfix {
   margin: 0px;
 }
@@ -264,6 +258,12 @@ legend{
     width: 66%;
     margin: 0 auto;
   }
+
+  .desktop-alert-centering {
+    margin-left: auto;
+    margin-right: auto;
+    width:75%;
+  }
 }
 
 @media (max-width: 991px) {
@@ -271,4 +271,13 @@ legend{
     width: 95%;
     margin: 0 auto;
   }
+
+  .desktop-alert-centering {
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+  }
 }
+
+
+
