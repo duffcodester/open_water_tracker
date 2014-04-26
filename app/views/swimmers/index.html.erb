@@ -52,9 +52,6 @@
                          filter:search | limitTo:totalDisplayed'>
             <td style='width:80px;'>
               <span>
-                <div ng-hide='inState(swimmer)'>
-                  <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
-                </div>
                 <div ng-show='swimmerCheckedIn(swimmer)'>
                     <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
                 </div>

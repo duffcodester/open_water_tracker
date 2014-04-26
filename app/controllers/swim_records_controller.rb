@@ -86,7 +86,7 @@ class SwimRecordsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.csv {render csv: @records, filename: 'records'}
+      format.csv { render csv: @records, filename: 'records' }
     end
   end
 end

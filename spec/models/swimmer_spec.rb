@@ -7,7 +7,6 @@ describe Swimmer do
                            last_name:      'Last',
                            middle_initial: 'Dubs',
                            usms_number:    'ABCD-1234',
-                           lmsc:           'CO',
                            phone_number:   '720-387-9691',
                            in_state:       false
                            )
@@ -19,7 +18,6 @@ describe Swimmer do
   it { should respond_to(:last_name) }
   it { should respond_to(:middle_initial) }
   it { should respond_to(:usms_number) }
-  it { should respond_to(:lmsc) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:in_state) }
   it { should be_valid }
@@ -46,11 +44,6 @@ describe Swimmer do
 
   describe 'when last name is too long' do
     before { @swimmer.last_name = 'a' * 26 }
-    it { should_not be_valid }
-  end
-
-  describe 'when lmsc is not present' do
-    before { @swimmer.lmsc = ' ' }
     it { should_not be_valid }
   end
 
