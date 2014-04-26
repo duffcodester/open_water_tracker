@@ -51,7 +51,7 @@
         <tbody>
           <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
                          filter:search'>
-            <td ng-click='deleteRow(swimRecord)'>
+            <td ng-click="search.swimmer.last_name=''" ng-click='deleteRow(swimRecord)'>
               <check-out ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
             </td>
             <td class='visible-xs'>

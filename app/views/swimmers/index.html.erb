@@ -55,7 +55,7 @@
                 <div ng-hide='inState(swimmer)'>
                   <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
                 </div>
-                <div ng-show='swimmerCheckedIn(swimmer)'>
+                <div ng-show='swimmerCheckedIn(swimmer)' ng-click="search.last_name ='' ">
                     <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
                 </div>
                 <div ng-hide='swimmerCheckedIn(swimmer)'>
