@@ -29,6 +29,7 @@
         <% end %>
       </div>
 
+    <br>
     <center>
       <table class='table table-bordered table-condensed' style='width:50%'>
         <tr>
@@ -38,8 +39,6 @@
           <td align="center">
             <h4>
               <%= @records.count %>
-              <%= SwimRecord.where(check_out: @start_date..@end_date,
-                                   completed: true) %>
             </h4>
           </td>
       </table>
