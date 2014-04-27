@@ -17,6 +17,7 @@ module Importer
         @usms_count += 1
         # puts @usms_count
       end
+      puts 'done'
     end
   end
   # rubocop:enable all
