@@ -1,12 +1,22 @@
-<h2>Resend confirmation instructions</h2>
+<% provide(:title, 'Resend Confirmation Instructions') %>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class='box-position'>
+  <center>
+    <p class='header-font'>COMSA TRACKER 1.0</font>
+  </center>
+  <div class='fixwidth box'>
+    <%= bootstrap_form_for(resource,
+                           :as => resource_name,
+                           :url => confirmation_path(resource_name),
+                           :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
+      <center><h4>Resend Confirmation Instructions</h4></center><hr>
+      <%= f.email_field :email, :autofocus => true, hide_label: true, placeholder: 'Email' %>
+      <center>
+        <%= f.submit 'Resend Confirmation Email', class: 'devise-buttons' %>
+      </center>
+    <% end %>
+    <hr>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
