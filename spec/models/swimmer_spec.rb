@@ -3,13 +3,15 @@ require Rails.root.join('lib/modules/importer')
 
 describe Swimmer do
   before do
-    @swimmer = Swimmer.new(first_name:     'First',
-                           last_name:      'Last',
-                           middle_initial: 'Dubs',
-                           usms_number:    'ABCD-1234',
-                           lmsc:           'CO',
-                           phone_number:   '720-387-9691',
-                           in_state:       false
+    @swimmer = Swimmer.new(first_name:         'First',
+                           last_name:          'Last',
+                           middle_initial:     'Dubs',
+                           usms_number:        'ABCD-1234',
+                           lmsc:               'CO',
+                           phone_number:       '720-387-9691',
+                           in_state:           false,
+                           phone_added:        false,
+                           swimmer_checked_in: false
                            )
   end
 
@@ -22,6 +24,8 @@ describe Swimmer do
   it { should respond_to(:lmsc) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:in_state) }
+  it { should respond_to(:phone_added) }
+  it { should respond_to(:swimmer_checked_in) }
   it { should be_valid }
 
   describe 'when first name is not present' do
