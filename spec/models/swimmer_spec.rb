@@ -8,6 +8,7 @@ describe Swimmer do
                            mi: 'Dubs',
                            usms_number:    'ABCD-1234',
                            phone_number:   '720-387-9691')
+  end
 
   subject { @swimmer }
 

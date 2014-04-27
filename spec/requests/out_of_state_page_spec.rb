@@ -30,7 +30,7 @@ describe 'Out of State' do
     it { should have_content('LMSC') }
     it { should have_content('Full Name') }
 
-    it { should have_content('Add to Database') }
+    it { should have_content('Add') }
 
     describe 'add to local' do
       before do
