@@ -1,8 +1,6 @@
 require 'spec_helper'
 require Rails.root.join('lib/modules/importer')
 
-# usms_test = Rails.root.join('db/data/usms_test.csv')
-
 describe Importer do
   describe 'import' do
     before(:all) do

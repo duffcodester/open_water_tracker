@@ -1,6 +1,6 @@
 module SwimmersHelper
   SWIMMER_PARAMS = [:first_name,
-                    :middle_initial,
+                    :mi,
                     :last_name,
                     :usms_number,
                     :lmsc,

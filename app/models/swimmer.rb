@@ -6,4 +6,8 @@ class Swimmer < ActiveRecord::Base
   validates_presence_of :usms_number
 
   has_many :swim_records
+
+  def self.search(query)
+    where("last_name like ?", "%#{query}%")
+  end
 end

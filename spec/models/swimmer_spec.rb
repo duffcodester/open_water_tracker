@@ -5,7 +5,7 @@ describe Swimmer do
   before do
     @swimmer = Swimmer.new(first_name:     'First',
                            last_name:      'Last',
-                           middle_initial: 'Dubs',
+                           mi: 'Dubs',
                            usms_number:    'ABCD-1234',
                            phone_number:   '720-387-9691',
                            in_state:       false
@@ -16,7 +16,7 @@ describe Swimmer do
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
-  it { should respond_to(:middle_initial) }
+  it { should respond_to(:mi) }
   it { should respond_to(:usms_number) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:in_state) }

@@ -14,7 +14,7 @@ json.array!(@swim_records) do |swim_record|
   json.swimmer do
     json.id swim_record.swimmer.id
     json.first_name swim_record.swimmer.first_name
-    json.middle_initial swim_record.swimmer.middle_initial
+    json.mi swim_record.swimmer.mi
     json.last_name swim_record.swimmer.last_name
     json.phone_number swim_record.swimmer.phone_number
     json.usms_number swim_record.swimmer.usms_number

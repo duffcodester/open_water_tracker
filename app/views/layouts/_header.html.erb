@@ -8,7 +8,7 @@
         <% if user_signed_in? %>
         <li><%= link_to 'Check In', swimmers_path %></li>
         <li><%= link_to 'Check Out', swim_records_path %></li>
-        <li><a href='/swimmers?in_state=false'>Out of State</a></li>
+        <li><%= link_to 'Out of State', out_of_state_path %></li>
           <% if current_user.admin? %>
             <li><%= link_to 'Monitors', users_path %></li>
             <li><%= link_to 'Analytics', analytics_path %></li>

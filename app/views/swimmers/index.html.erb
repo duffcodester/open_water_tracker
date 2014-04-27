@@ -69,7 +69,7 @@
             </td>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{swimmer.id}}'>
-                {{swimmer.last_name}}, {{swimmer.first_name}} {{swimmer.middle_initial}}
+                {{swimmer.last_name}}, {{swimmer.first_name}} {{swimmer.mi}}
               </a>
             </td>
             <td class='hidden-xs'>
@@ -78,7 +78,7 @@
               </a>
             </td>
             <td class='hidden-xs'>{{swimmer.first_name}}</td>
-            <td class='hidden-xs'>{{swimmer.middle_initial}}</td>
+            <td class='hidden-xs'>{{swimmer.mi}}</td>
             <td class='hidden-xs'>{{swimmer.usms_number}}</td>
             <th class='hidden-xs'>{{swimmer.lmsc}}</td>
           </tr>
@@ -87,7 +87,7 @@
     </div>
     <center>
       <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
-      <a href='/swimmers?in_state=false' class='btn btn-default'>Search Out of State</a>
+      <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
     </center>
   </div>
 </div>

@@ -58,7 +58,7 @@
               <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
                 {{swimRecord.swimmer.last_name}},
                 {{swimRecord.swimmer.first_name}}
-                {{swimRecord.swimmer.middle_initial}}
+                {{swimRecord.swimmer.mi}}
               </a>
             </td>
             <td class='hidden-xs'>
@@ -67,7 +67,7 @@
               </a>
             </td>
             <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
-            <td class='hidden-xs'>{{swimRecord.swimmer.middle_initial}}</td>
+            <td class='hidden-xs'>{{swimRecord.swimmer.mi}}</td>
             <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
             <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
             <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>

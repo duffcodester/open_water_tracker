@@ -7,7 +7,7 @@ class SwimRecord < ActiveRecord::Base
   comma do
     swimmer last_name: 'Last Name'
     swimmer first_name: 'First Name'
-    swimmer middle_initial: 'Middle Initial'
+    swimmer mi: 'Middle Initial'
     swimmer usms_number: 'USMS'
     swimmer lmsc: 'LMSC'
     check_in 'Check In'

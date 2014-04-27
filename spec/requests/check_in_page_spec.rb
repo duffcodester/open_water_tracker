@@ -33,8 +33,13 @@ describe 'Check In' do
     # tests for angular tags in ng-repeat
     it { should have_content('swimmer.first_name') }
     it { should have_content('swimmer.last_name') }
-    it { should have_content('swimmer.middle_initial') }
+    it { should have_content('swimmer.mi') }
     it { should have_content('swimmer.usms_number') }
     it { should have_content('swimmer.lmsc') }
+  end
+
+  describe 'footer links' do
+    it { should have_content('Load Additional Records') }
+    it { should have_link('Search Out of State') }
   end
 end

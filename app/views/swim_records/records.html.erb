@@ -53,7 +53,7 @@
                          filter:search | limitTo:totalDisplayed'>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{record.swimmer.id}}'>
-                {{record.swimmer.last_name}}, {{record.swimmer.first_name}} {{record.swimmer.middle_initial}}
+                {{record.swimmer.last_name}}, {{record.swimmer.first_name}} {{record.swimmer.mi}}
               </a>
             </td>
             <td class='hidden-xs'>
@@ -62,7 +62,7 @@
               </a>
            </td>
            <td class='hidden-xs'>{{record.swimmer.first_name}}</td>
-           <td class='hidden-xs'>{{record.swimmer.middle_initial}}</td>
+           <td class='hidden-xs'>{{record.swimmer.mi}}</td>
             <td class = 'hidden-xs'>{{record.swimmer.usms_number}}</td>
             <th class = 'hidden-xs'>{{record.swimmer.lmsc}}</td>
             <td class = 'hidden-xs'>{{record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
