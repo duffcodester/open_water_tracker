@@ -8,7 +8,8 @@ describe User do
                      password: 'foobar77',
                      password_confirmation: 'foobar77',
                      admin: false,
-                     phone_number: '720-387-9691'
+                     phone_number: '720-387-9691',
+                     time_zone: 'Mountain Time (US & Canada)'
                      )
   end
 
@@ -21,6 +22,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:admin) }
   it { should respond_to(:phone_number) }
+  it { should respond_to(:time_zone) }
   it { should be_valid }
   it { should_not be_admin }
 

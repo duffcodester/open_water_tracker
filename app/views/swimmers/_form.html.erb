@@ -1,3 +1,4 @@
+<div class='visible-xs'><br><br></div>
 <div class='userform well'>
   <%= bootstrap_form_for(@swimmer,
     style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
@@ -8,6 +9,4 @@
     <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
     'Save Changes' ) %>
   <% end %>
-</div>
-</div>
 </div>

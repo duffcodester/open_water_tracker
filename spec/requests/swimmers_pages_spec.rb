@@ -7,6 +7,11 @@ describe 'Swimmers' do
   let!(:swimmer_with_phone) do
     FactoryGirl.create(:swimmer, phone_number: '3039218628')
   end
+  let!(:swimmer_checked_in) do
+    FactoryGirl.create(:swimmer,
+                       phone_number: '3039218628',
+                       swimmer_checked_in: true)
+  end
 
   subject { page }
 

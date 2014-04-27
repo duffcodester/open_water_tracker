@@ -8,9 +8,7 @@ describe Swimmer do
                            mi: 'Dubs',
                            usms_number:    'ABCD-1234',
                            phone_number:   '720-387-9691',
-                           in_state:       false
-                           )
-  end
+                           in_state:       false)
 
   subject { @swimmer }
 
@@ -20,6 +18,8 @@ describe Swimmer do
   it { should respond_to(:usms_number) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:in_state) }
+  it { should respond_to(:phone_added) }
+  it { should respond_to(:swimmer_checked_in) }
   it { should be_valid }
 
   describe 'when first name is not present' do

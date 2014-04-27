@@ -10,7 +10,8 @@ describe SwimRecord do
                                   check_in_last_name: 'Pierce',
                                   check_out_user_id: 1,
                                   check_out_first_name: 'Josh',
-                                  check_out_last_name: 'Duffy'
+                                  check_out_last_name: 'Duffy',
+                                  completed: false
                                   )
   end
 
@@ -25,6 +26,7 @@ describe SwimRecord do
   it { should respond_to(:check_out_user_id) }
   it { should respond_to(:check_out_first_name) }
   it { should respond_to(:check_out_last_name) }
+  it { should respond_to(:completed) }
 
   it { should be_valid }
 

@@ -27,7 +27,6 @@
     <div class='hidden-xs'>
       <br><br><br>
     </div>
-    <div class='table-responsive'>
       <table class='table table-hover table-condensed' >
         <thead>
           <tr>
@@ -53,14 +52,14 @@
             <td style='width:80px;'>
               <span>
                 <div ng-show='swimmerCheckedIn(swimmer)'>
-                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                  <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
                 </div>
                 <div ng-hide='swimmerCheckedIn(swimmer)'>
-                  <button class='btn-sm btn' style='width:80px;' disabled="disabled">Checked In</button>
+                  <button class='btn-sm btn btn-default' style='width:80px;' disabled="disabled">Checked In</button>
                 </div>
               </span>
             </td>
-            <td style='width:105px;'>
+            <td style='width:112px;'>
               <div ng-if='noPhone(swimmer)'>
                 <form novalidate class="simple-form">
                   <input type="tel" ng-model="swimmer.phone_number" placeholder="Add Phone" />
@@ -84,10 +83,14 @@
           </tr>
         </tbody>
       </table>
-    </div>
     <center>
+<<<<<<< HEAD
       <btn class="btn btn-default" ng-click="loadMore()">Load Additional Records</btn>
       <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
+=======
+      <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+      <a href='/swimmers?in_state=false' class='btn btn-default'>Search Out of State</a>
+>>>>>>> master
     </center>
   </div>
 </div>

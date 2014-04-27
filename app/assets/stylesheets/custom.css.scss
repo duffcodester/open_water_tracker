@@ -182,21 +182,15 @@ legend{
   }
 }
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-}
+// .field_with_errors {
+//   @extend .control-group;
+//   @extend .error;
+// }
 
 .btnfix{
   width: 150px;
   display: block;
   margin: auto;
-}
-
-// Default form width convenience class
-.userform{
-  @extend .col-sm-8;
-  @extend .col-sm-offset-2;
 }
 
 /* tables */
@@ -220,18 +214,13 @@ legend{
 
 .alert {
   padding: 0px;
+  margin: 0px;
   button {
     line-height: 13px;
     position:relative;
     top:3px;
     right: 10px;
   }
-}
-
-.desktop-alert-centering {
-  margin-left: auto;
-  margin-right: auto;
-  width:718px;
 }
 
 .inputfix {
@@ -258,6 +247,42 @@ legend{
     clear: left;
     width:205px; // adjust
     height:115px; // adjust
+}
+
+@media (min-width: 992px) {
+  .userform{
+    width: 66%;
+    margin: 0 auto;
+  }
+
+  .desktop-alert-centering {
+    margin-left: auto;
+    margin-right: auto;
+    width:66%;
+  }
+
+  .table-width-desktop {
+    width: 66%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .userform{
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .desktop-alert-centering {
+    margin-left: auto;
+    margin-right: auto;
+    width:95%;
+  }
+
+  .table-width-desktop {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 
 

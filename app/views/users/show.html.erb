@@ -1,29 +1,30 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name.each_char.first}.") %>
+<div class='visible-xs'><br><br></div>
 <h1 class='hidden-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 <center>
   <h4 class='visible-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h4>
 </center>
-<% if current_user.admin? && @user != current_user %>
-  <ul class='pull-right'>
-    <% if @user.admin? %>
-      <%= bootstrap_form_for @user do |f| %>
-        <%= f.hidden_field :admin, value: false %>
-        <%= f.submit 'Remove Admin' %>
+<div class='table-width-desktop'>
+  <% if current_user.admin? && @user != current_user %>
+    <div class='pull-right'>
+      <% if @user.admin? %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.hidden_field :admin, value: false %>
+          <%= f.submit 'Remove Admin' %>
+        <% end %>
+      <% else %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.hidden_field :admin, value: true %>
+          <%= f.submit 'Add Admin'%>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= bootstrap_form_for @user do |f| %>
-        <%= f.hidden_field :admin, value: true %>
-        <%= f.submit 'Add Admin'%>
-      <% end %>
-    <% end %>
-  </ul>
-<% end %>
-<div class='pull-left'>
-  <%=link_to 'Edit', edit_user_path(@user), type: 'button',
-                                 class: 'btn btn-primary btn-sm'%>
-</div>
-<br><br>
-<div class='table-responsive'>
+    </div>
+  <% end %>
+  <div class='pull-left'>
+    <%=link_to 'Edit', edit_user_path(@user), type: 'button',
+                                   class: 'btn btn-primary btn-sm'%>
+  </div>
+  <br><br>
   <table class='table table-bordered table-condensed' >
     <tr>
     <th style='width:25%'>First Name</th>
@@ -49,4 +50,3 @@
     </tr>
   </table>
 </div>
-

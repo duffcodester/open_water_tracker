@@ -1,28 +1,32 @@
 <% provide(:title, "#{@swimmer.first_name} #{@swimmer.last_name.each_char.first}.") %>
+<div class='visible-xs'><br><br></div>
 <h1 class='hidden-xs'><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
 <center>
   <h4 class='visible-xs'><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h4>
 </center>
-<div class='pull-left'>
-  <%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
-                                 class: 'btn btn-primary btn-sm'%>
-</div>
-<ul class='pull-right'>
-  <%= bootstrap_form_for SwimRecord.create do |f| %>
-    <%= f.hidden_field :last_name, value: @swimmer.last_name %>
-    <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
-    <%= f.hidden_field :check_in, value: Time.now %>
-    <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
-    <%= f.hidden_field :check_in_user_id, value: current_user.id %>
-    <% if @swimmer.phone_number? %>
-      <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
-    <% else %>
-      <%= f.submit 'Check In', class: "btn disabled btn-sm" %>
+
+<div class='table-width-desktop'>
+  <div class='pull-left'>
+    <%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
+                                   class: 'btn btn-primary btn-sm'%>
+  </div>
+  <div class='pull-right'>
+    <%= bootstrap_form_for SwimRecord.create do |f| %>
+      <%= f.hidden_field :last_name, value: @swimmer.last_name %>
+      <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
+      <%= f.hidden_field :check_in, value: Time.now %>
+      <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
+      <%= f.hidden_field :check_in_user_id, value: current_user.id %>
+      <% if @swimmer.phone_number? && !@swimmer.swimmer_checked_in %>
+        <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
+      <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
+        <%= f.submit 'Checked In', class: "btn btn-default btn-sm disabled"%>
+      <% else %>
+        <%= f.submit 'Check In', class: "btn btn-default btn-sm disabled" %>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
-<br> <br>
-<div class='table-responsive'>
+  </div>
+  <br> <br>
   <table class='table table-bordered table-condensed' >
     <tr>
     <th style='width:25%'>First Name</th>

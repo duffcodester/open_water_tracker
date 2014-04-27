@@ -23,12 +23,13 @@
         </div>
         <br>
         <%= bootstrap_form_tag(url: '/analytics', method: "post") do |f| %>
-          <%= f.hidden_field :start_date, value: "{{dt1 | date:'yyyy-MM-dd'}} 00:00:01 -0600" %>
-          <%= f.hidden_field :end_date, value: "{{dt2 | date:'yyyy-MM-dd'}} 23:59:59 -0600" %>
+          <%= f.hidden_field :start_date, value: "{{dt1 | date:'yyyy-MM-dd'}} #{Time.now}" %>
+          <%= f.hidden_field :end_date, value: "{{dt2 | date:'yyyy-MM-dd'}} #{Time.now}" %>
           <%= f.primary 'Query Database' %>
         <% end %>
       </div>
 
+    <br>
     <center>
       <table class='table table-bordered table-condensed' style='width:50%'>
         <tr>
@@ -38,8 +39,10 @@
           <td align="center">
             <h4>
               <%= @records.count %>
-              <%= SwimRecord.where(check_out: @start_date..@end_date,
-                                   completed: true) %>
+              <%= @start_date %>
+              <%= @end_date %>
+              <%= Time.now %>
+              <%= Time.zone.now %>
             </h4>
           </td>
       </table>
