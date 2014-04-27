@@ -33,14 +33,14 @@
         <th class='hidden-xs'>First Name</th>
         <th class='hidden-xs'>MI</th>
         <th class='hidden-xs'>USMS Number</th>
-        <th class='hidden-xs'>LMSC</th>
+        <th>LMSC</th>
       </tr>
     </thead>
     <tbody>
       <% @swimmers.each do |swimmer| %>
         <tr>
           <td style='width:80px;'>
-            <%= link_to('Add to Database', swimmers_path(swimmer), method: 'post', class: 'btn btn-sm btn-primary') %>
+            <%= link_to('Add', swimmers_path(swimmer), method: 'post', class: 'btn btn-sm btn-primary') %>
           </td>
           <td class='visible-xs'>
             <%= "#{swimmer[:swimmer][:last_name]}, #{swimmer[:swimmer][:first_name]} #{swimmer[:swimmer][:mi]}" %>
@@ -57,7 +57,7 @@
           <td class='hidden-xs'>
             <%= swimmer[:swimmer][:usms_number] %>
           </td>
-          <th class='hidden-xs'>
+          <th>
             <%= swimmer[:swimmer][:lmsc] %>
           </td>
         </tr>
