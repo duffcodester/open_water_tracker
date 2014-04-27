@@ -13,7 +13,7 @@ class SwimmersController < ApplicationController
 
   def index
     @check_in = false
-    @swimmers = Swimmer.where(in_state: params[:in_state] == 'true')
+    @swimmers = Swimmer.all
   end
 
   def out_of_state

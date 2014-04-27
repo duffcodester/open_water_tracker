@@ -7,7 +7,6 @@ module SwimmersHelper
                     :phone_number,
                     :phone_added,
                     :id,
-                    :in_state,
                     :swimmer_checked_in
                    ]
 

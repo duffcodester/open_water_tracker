@@ -25,7 +25,6 @@ namespace :db do
                       usms_number: "ABCD-10#{n}",
                       lmsc: LMSC.sample,
                       phone_number: nil,
-                      in_state: true,
                       swimmer_checked_in: false,
                       phone_added: false
                       )
