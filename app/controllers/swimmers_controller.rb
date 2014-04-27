@@ -42,7 +42,7 @@ class SwimmersController < ApplicationController
 
   def create
     @swimmer = Swimmer.new(swimmer_params)
-    @swimmer.save ? (render :show) : create_and_update_json_else
+    @swimmer.save ? (redirect_to swimmers_url) : create_and_update_json_else
   end
 
   def update
