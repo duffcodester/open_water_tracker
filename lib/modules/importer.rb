@@ -39,10 +39,10 @@ module Importer
   end
 
   def self.update_swimmer(row)
-    @swimmer.update_attributes(first_name:      row[:first_name],
-                               last_name:       row[:last_name],
-                               mi:  row[:mi],
-                               lmsc:            row[:lmsc])
+    @swimmer.update_attributes(first_name: row[:first_name],
+                               last_name:  row[:last_name],
+                               mi:         row[:mi],
+                               lmsc:       row[:lmsc])
   end
 
   def self.from_colorado?(row)
@@ -51,10 +51,10 @@ module Importer
 
   def self.create_colorado_swimmer(row)
     Swimmer.where(usms_number: row[:usms_number])
-    .first_or_create(first_name:      row[:first_name],
-                     last_name:       row[:last_name],
-                     mi:  row[:mi],
-                     lmsc:            row[:lmsc])
+    .first_or_create(first_name: row[:first_name],
+                     last_name:  row[:last_name],
+                     mi:         row[:mi],
+                     lmsc:       row[:lmsc])
     $colorado_count += 1
     puts $colorado_count
   end
