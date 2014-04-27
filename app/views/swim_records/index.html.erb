@@ -50,8 +50,8 @@
         <tbody>
           <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
                          filter:search'>
-            <td ng-click="search.swimmer.last_name=''" ng-click='deleteRow(swimRecord)'>
-              <check-out ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
+            <td ng-click='checkOut(swimRecord)'>
+              <check-out ng-click="search.swimmer.last_name=''" info='swimRecord'></check-out>
             </td>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>

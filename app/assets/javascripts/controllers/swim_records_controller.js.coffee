@@ -19,6 +19,10 @@
     $scope.deleteRow = (swimRecord) ->
       $scope.SwimRecords.splice $scope.SwimRecords.indexOf(swimRecord), 1
 
+    $scope.checkOut = (swimRecord) ->
+      $scope.addAlert(swimRecord)
+      $scope.deleteRow(swimRecord)
+
     SwimRecords.index (data) ->
       $scope.SwimRecords = data
 ]
