@@ -39,7 +39,7 @@ describe 'Check In' do
   end
 
   describe 'footer links' do
-    it { should have_content('Load Additional Records') }
+    it { should have_content('Load More') }
     it { should have_link('Search Out of State') }
   end
 end

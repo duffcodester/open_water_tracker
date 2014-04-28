@@ -59,4 +59,3 @@ module Importer
     puts $colorado_count
   end
 end
-
