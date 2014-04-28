@@ -6,7 +6,7 @@ describe 'Sign In Page' do
 
   subject { page }
 
-  it { should have_title('COMSA Tracker | Monitor Sign In') }
+  it { should have_title(full_title('Monitor Sign In')) }
 
   describe 'on mobile view' do
     it { should have_content('COMSA TRACKER 1.0') }

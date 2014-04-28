@@ -147,7 +147,7 @@ describe 'Users' do
       visit users_path
     end
 
-    it { should have_title('COMSA Tracker | Monitors') }
+    it { should have_title(full_title('Monitors')) }
     it { should have_selector('h1', text: 'Monitors') }
     it { should have_content('Last Name') }
     it { should have_content('First Name') }

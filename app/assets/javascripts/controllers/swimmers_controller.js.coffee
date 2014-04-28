@@ -27,6 +27,9 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 20
 
+    $scope.checkIn = (swimmer) ->
+      $scope.addAlert(swimmer)
+
     Swimmers.index (data) ->
       $scope.Swimmers = data
 ]

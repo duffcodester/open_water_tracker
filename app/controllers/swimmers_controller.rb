@@ -9,7 +9,7 @@ class SwimmersController < ApplicationController
   OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
   OpenURI::Buffer.const_set 'StringMax', 0
 
-  SWIMMER_HEADERS = %w{first_name, mi, last_name, lmsc, usms_number}
+  SWIMMER_HEADERS = %w(first_name, mi, last_name, lmsc, usms_number)
 
   def index
     @check_in = false
@@ -23,8 +23,8 @@ class SwimmersController < ApplicationController
       url = "http://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2014&LastName=#{query}&oper=csv&_search=false&nd=1398554078479&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1"
       key = 'swimmer'
       @swimmers = CSV.open(open(url).path,
-                  headers: true,
-                  header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
+                           headers: true,
+                           header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
     else
       @swimmers = nil
     end

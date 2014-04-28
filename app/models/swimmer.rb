@@ -8,6 +8,6 @@ class Swimmer < ActiveRecord::Base
   has_many :swim_records
 
   def self.search(query)
-    where("last_name like ?", "%#{query}%")
+    where('last_name like ?', "%#{query}%")
   end
 end

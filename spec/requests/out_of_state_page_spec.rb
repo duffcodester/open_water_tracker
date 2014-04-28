@@ -18,7 +18,7 @@ describe 'Out of State' do
       click_button 'Search'
     end
 
-    it { should have_title('COMSA Tracker | Out of State') }
+    it { should have_title(full_title('Out of State')) }
     it { should have_selector('h1', text: 'Out of State') }
 
     let(:add) { 'Add to Database' }
