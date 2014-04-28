@@ -38,29 +38,31 @@
     </thead>
     <tbody>
       <% @swimmers.each do |swimmer| %>
-        <tr>
-          <td style='width:80px;'>
-            <%= link_to('Add', swimmers_path(swimmer), method: 'post', class: 'btn btn-sm btn-primary') %>
-          </td>
-          <td class='visible-xs'>
-            <%= "#{swimmer[:swimmer][:last_name]}, #{swimmer[:swimmer][:first_name]} #{swimmer[:swimmer][:mi]}" %>
-          </td>
-          <td class='hidden-xs'>
-            <%= swimmer[:swimmer][:last_name] %>
-          </td>
-          <td class='hidden-xs'>
-            <%= swimmer[:swimmer][:first_name] %>
-          </td>
-          <td class='hidden-xs'>
-            <%= swimmer[:swimmer][:mi] %>
-          </td>
-          <td class='hidden-xs'>
-            <%= swimmer[:swimmer][:usms_number] %>
-          </td>
-          <th>
-            <%= swimmer[:swimmer][:lmsc] %>
-          </td>
-        </tr>
+        <% unless swimmer[:swimmer][:lmsc] == 'CO' %>
+          <tr>
+            <td style='width:80px;'>
+              <%= link_to('Add', swimmers_path(swimmer), method: 'post', class: 'btn btn-sm btn-primary') %>
+            </td>
+            <td class='visible-xs'>
+              <%= "#{swimmer[:swimmer][:last_name]}, #{swimmer[:swimmer][:first_name]} #{swimmer[:swimmer][:mi]}" %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:last_name] %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:first_name] %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:mi] %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:usms_number] %>
+            </td>
+            <th>
+              <%= swimmer[:swimmer][:lmsc] %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
