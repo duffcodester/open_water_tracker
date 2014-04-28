@@ -71,6 +71,7 @@ class SwimmersController < ApplicationController
 
   include ApplicationHelper
   include SwimmersHelper
+  include ScopeHelper
 
   def set_swimmer
     @swimmer = Swimmer.find(params[:id])
