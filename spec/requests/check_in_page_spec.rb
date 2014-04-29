@@ -12,7 +12,7 @@ describe 'Check In' do
 
   subject { page }
 
-  it { should have_title('COMSA Tracker | Check In') }
+  it { should have_title(full_title('Check In')) }
 
   describe 'on mobile view' do
     it { should have_content('Last Name') }
@@ -33,8 +33,13 @@ describe 'Check In' do
     # tests for angular tags in ng-repeat
     it { should have_content('swimmer.first_name') }
     it { should have_content('swimmer.last_name') }
-    it { should have_content('swimmer.middle_initial') }
+    it { should have_content('swimmer.mi') }
     it { should have_content('swimmer.usms_number') }
     it { should have_content('swimmer.lmsc') }
+  end
+
+  describe 'footer links' do
+    it { should have_content('Load More') }
+    it { should have_link('Search Out of State') }
   end
 end

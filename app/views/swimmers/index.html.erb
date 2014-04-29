@@ -49,13 +49,10 @@
         <tbody>
           <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
                          filter:search | limitTo:totalDisplayed'>
-            <td style='width:80px;'>
+            <td ng-click='checkIn(swimmer)' style='width:80px;'>
               <span>
-                <div ng-hide='inState(swimmer)'>
-                  <in-state ng-click='deleteRow(swimmer)' info='swimmer'></in-state>
-                </div>
-                <div ng-show='swimmerCheckedIn(swimmer)' ng-click="search.last_name ='' ">
-                    <check-in ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                <div ng-show='swimmerCheckedIn(swimmer)'>
+                  <check-in ng-click="search.last_name=''" info='swimmer'></check-in>
                 </div>
                 <div ng-hide='swimmerCheckedIn(swimmer)'>
                   <button class='btn-sm btn btn-default' style='width:80px;' disabled="disabled">Checked In</button>
@@ -71,7 +68,7 @@
             </td>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{swimmer.id}}'>
-                {{swimmer.last_name}}, {{swimmer.first_name}} {{swimmer.middle_initial}}
+                {{swimmer.last_name}}, {{swimmer.first_name}}
               </a>
             </td>
             <td class='hidden-xs'>
@@ -80,7 +77,7 @@
               </a>
             </td>
             <td class='hidden-xs'>{{swimmer.first_name}}</td>
-            <td class='hidden-xs'>{{swimmer.middle_initial}}</td>
+            <td class='hidden-xs'>{{swimmer.mi}}</td>
             <td class='hidden-xs'>{{swimmer.usms_number}}</td>
             <th class='hidden-xs'>{{swimmer.lmsc}}</td>
           </tr>
@@ -88,7 +85,7 @@
       </table>
     <center>
       <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
-      <a href='/swimmers?in_state=false' class='btn btn-default'>Search Out of State</a>
+      <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
     </center>
   </div>
 </div>

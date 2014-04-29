@@ -6,13 +6,13 @@ describe 'Sign In Page' do
 
   subject { page }
 
-  it { should have_title('COMSA Tracker | Sign In') }
+  it { should have_title(full_title('Monitor Sign In')) }
 
   describe 'on mobile view' do
-    it { should have_selector('h4', text: 'COMSA TRACKER 1.0') }
+    it { should have_content('COMSA TRACKER 1.0') }
   end
 
   describe 'on desktop view' do
-    it { should have_selector('h1', text: 'COMSA TRACKER 1.0') }
+    it { should have_content('COMSA TRACKER 1.0') }
   end
 end

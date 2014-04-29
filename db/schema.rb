@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422181406) do
+ActiveRecord::Schema.define(version: 20140428222930) do
 
   create_table "swim_records", force: true do |t|
     t.datetime "created_at"
@@ -35,10 +35,9 @@ ActiveRecord::Schema.define(version: 20140422181406) do
     t.string   "lmsc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "middle_initial"
+    t.string   "mi"
     t.string   "phone_number"
     t.boolean  "phone_added",        default: false
-    t.boolean  "in_state",           default: false
     t.boolean  "swimmer_checked_in", default: false
   end
 
@@ -61,7 +60,6 @@ ActiveRecord::Schema.define(version: 20140422181406) do
     t.string   "last_name"
     t.string   "phone_number"
     t.boolean  "admin",                  default: false
-    t.boolean  "active",                 default: true
     t.string   "time_zone"
     t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"

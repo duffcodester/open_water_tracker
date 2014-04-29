@@ -10,7 +10,7 @@ describe 'Analytics' do
 
   subject { page }
 
-  it { should have_title('COMSA Tracker | Analytics') }
+  it { should have_title(full_title('Analytics')) }
 
   describe 'on mobile view' do
     it { should have_selector('h4', text: 'Analytics') }

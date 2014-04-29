@@ -1,0 +1,75 @@
+<% provide(:title, 'Out of State') %>
+<div class='hidden-xs desktop-alert-centering'>
+  <h1>Out of State</h1>
+</div>
+<div class='visible-xs'>
+  <br><br>
+  <center>
+    <h4>Out of State Search</h4>
+  </center>
+</div>
+<div class='row'>
+  <div class='col-md-3'>
+      <%= form_tag out_of_state_path, method: 'get' do %>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search Last Name' %>
+        <%= submit_tag 'Search', name: nil, class: 'btn btn-info' %>
+      <% end %>
+    </div>
+  </div>
+  <div class='col-md-7'></div>
+  <div class='col-md-2'>
+</div>
+<div class='hidden-xs'>
+  <br><br><br>
+</div>
+
+<% if @swimmers %>
+  <table class='table table-hover table-condensed' >
+    <thead>
+      <tr>
+        <th></th>
+        <th class='visible-xs'>Full Name</th>
+        <th class='hidden-xs'>Last Name</th>
+        <th class='hidden-xs'>First Name</th>
+        <th class='hidden-xs'>MI</th>
+        <th class='hidden-xs'>USMS Number</th>
+        <th>LMSC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @swimmers.each do |swimmer| %>
+        <% unless swimmer[:swimmer][:lmsc] == 'CO' %>
+          <tr>
+            <td style='width:80px;'>
+              <%= link_to('Add', swimmers_path(swimmer), method: 'post', class: 'btn btn-sm btn-primary') %>
+            </td>
+            <td class='visible-xs'>
+              <%= "#{swimmer[:swimmer][:last_name]}, #{swimmer[:swimmer][:first_name]} #{swimmer[:swimmer][:mi]}" %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:last_name] %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:first_name] %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:mi] %>
+            </td>
+            <td class='hidden-xs'>
+              <%= swimmer[:swimmer][:usms_number] %>
+            </td>
+            <th>
+              <%= swimmer[:swimmer][:lmsc] %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <center>
+    <h2>No Matches Found</h2>
+  </center>
+<% end %>
+

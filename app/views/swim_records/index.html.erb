@@ -32,11 +32,11 @@
           <tr>
             <th></th>
             <th class='visible-xs'>
-             <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
+             <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
                Full Name</a>
             </th>
             <th class='hidden-xs'>
-              <a href="" ng-click="predicate.value = 'last_name'; reverse=!reverse">
+              <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
                 Last Name</a>
             </th>
             <th class='hidden-xs'>First Name</th>
@@ -50,14 +50,13 @@
         <tbody>
           <tr ng-repeat='swimRecord in SwimRecords | orderBy:predicate.value:reverse |
                          filter:search'>
-            <td ng-click="search.swimmer.last_name=''" ng-click='deleteRow(swimRecord)'>
-              <check-out ng-click='addAlert(swimRecord)' info='swimRecord'></check-out>
+            <td ng-click='checkOut(swimRecord)'>
+              <check-out ng-click="search.swimmer.last_name=''" info='swimRecord'></check-out>
             </td>
             <td class='visible-xs'>
               <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
                 {{swimRecord.swimmer.last_name}},
                 {{swimRecord.swimmer.first_name}}
-                {{swimRecord.swimmer.middle_initial}}
               </a>
             </td>
             <td class='hidden-xs'>
@@ -66,7 +65,7 @@
               </a>
             </td>
             <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
-            <td class='hidden-xs'>{{swimRecord.swimmer.middle_initial}}</td>
+            <td class='hidden-xs'>{{swimRecord.swimmer.mi}}</td>
             <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
             <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
             <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
