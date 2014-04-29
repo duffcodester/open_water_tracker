@@ -28,7 +28,7 @@
       <br><br><br>
     </div>
       <table class='table table-hover table-condensed' >
-        <thead>
+        <thead ng-show='(Swimmers | filter:search).length > 0'>
           <tr>
             <th></th>
             <th></th>
@@ -84,8 +84,14 @@
         </tbody>
       </table>
     <center>
-      <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
-      <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
+      <div ng-show="(Swimmers | filter:search).length == 0">
+        <h4>No results found</h4>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
+      </div>
+      <div ng-hide="(Swimmers | filter:search).length == 0">
+        <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
+      </div>
     </center>
   </div>
 </div>
