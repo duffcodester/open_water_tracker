@@ -1,14 +1,13 @@
   #devise_html {
     overflow-y: scroll;
     position: relative;
-    height: 100%;
+    width: 100%;
     background-color:#ECEEF2;
   }
 
   #devise_body {
-    height: 100%;
+    height: 80%;
     padding-top: 0px;
-    margin: 0 0 100px; /* bottom = footer height */
     background-color:#ECEEF2;
   }
 
@@ -41,7 +40,7 @@
 
     .box-position {
       position:absolute;
-      top: 12%;
+      top: 7%;
       margin: 0 auto;
       left: 0;
       right: 0;
