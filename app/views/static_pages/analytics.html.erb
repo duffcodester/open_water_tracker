@@ -23,8 +23,8 @@
         </div>
         <br>
         <%= bootstrap_form_tag(url: '/analytics', method: "post") do |f| %>
-          <%= f.hidden_field :start_date, value: "{{dt1 | date:'yyyy-MM-dd'}} #{Time.now}" %>
-          <%= f.hidden_field :end_date, value: "{{dt2 | date:'yyyy-MM-dd'}} #{Time.now}" %>
+          <%= f.hidden_field :start_date, value: "{{dt1 | date:'yyyy-MM-dd'}} 00:00:01" %>
+          <%= f.hidden_field :end_date, value: "{{dt2 | date:'yyyy-MM-dd'}} 23:59:59" %>
           <%= f.primary 'Query Database' %>
         <% end %>
       </div>
@@ -39,10 +39,16 @@
           <td align="center">
             <h4>
               <%= @records.count %>
+              <br>
               <%= @start_date %>
+              <br>
               <%= @end_date %>
-              <%= Time.now %>
-              <%= Time.zone.now %>
+              <br>
+              <%= @start_adj %>
+              <br>
+              <%= @end_adj %>
+              <br>
+              <%= Time.now + 8.hours %>
             </h4>
           </td>
       </table>

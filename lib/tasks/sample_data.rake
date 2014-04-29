@@ -30,5 +30,25 @@ namespace :db do
                       )
     end
 
+    20.times do |n|
+
+      SwimRecord.create!(swimmer_id: rand(15) + 1,
+                         check_in_user_id: rand(15) + 1,
+                         check_out_user_id: rand(15) + 1,
+                         check_in: Time.now + 8.hours,
+                         check_out: Time.now + 8.hours,
+                         completed: true)
+    end
+
+    20.times do |n|
+
+      SwimRecord.create!(swimmer_id: rand(15) + 1,
+                         check_in_user_id: rand(15) + 1,
+                         check_out_user_id: rand(15) + 1,
+                         check_in: Time.now,
+                         check_out: Time.now,
+                         completed: true)
+    end
+
   end
 end
