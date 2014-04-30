@@ -35,8 +35,8 @@ namespace :db do
       SwimRecord.create!(swimmer_id: rand(15) + 1,
                          check_in_user_id: rand(15) + 1,
                          check_out_user_id: rand(15) + 1,
-                         check_in: Time.now + 8.hours,
-                         check_out: Time.now + 8.hours,
+                         check_in: Time.now - 24.hours,
+                         check_out: Time.now - 24.hours,
                          completed: true)
     end
 
@@ -45,8 +45,8 @@ namespace :db do
       SwimRecord.create!(swimmer_id: rand(15) + 1,
                          check_in_user_id: rand(15) + 1,
                          check_out_user_id: rand(15) + 1,
-                         check_in: Time.now,
-                         check_out: Time.now,
+                         check_in: Time.now - 19.hours,
+                         check_out: Time.now - 19.hours,
                          completed: true)
     end
 

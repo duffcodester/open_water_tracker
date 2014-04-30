@@ -27,5 +27,7 @@
       "year-format": "'yy'"
       "starting-day": 1
 
+    $scope.format = 'MM-dd-yyyy'
+
     return
 ]

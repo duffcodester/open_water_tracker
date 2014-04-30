@@ -34,21 +34,35 @@
       <table class='table table-bordered table-condensed' style='width:50%'>
         <tr>
           <td>
-            <h4>Total Number of Swims</h4>
+            <h4>Start Date</h4>
+          </td>
+          <td align="center">
+            <h4>
+              <% if @start_date %>
+                <%= @start_adj.strftime('%m-%d-%Y') %>
+              <% end %>
+            </h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>End Date</h4>
+          </td>
+          <td align="center">
+            <h4>
+              <% if @start_date %>
+                <%= @end_adj.strftime('%m-%d-%Y') %>
+              <% end %>
+            </h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>Number of Swims</h4>
           </td>
           <td align="center">
             <h4>
               <%= @records.count %>
-              <br>
-              <%= @start_date %>
-              <br>
-              <%= @end_date %>
-              <br>
-              <%= @start_adj %>
-              <br>
-              <%= @end_adj %>
-              <br>
-              <%= Time.now + 8.hours %>
             </h4>
           </td>
       </table>
