@@ -52,7 +52,7 @@
             <td style='width:80px;'>
               <span>
                 <div ng-show='swimmerCheckedIn(swimmer)'>
-                  <check-in ng-click="search.last_name=''" ng-click='addAlert(swimmer)' info='swimmer'></check-in>
+                  <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
                 </div>
                 <div ng-hide='swimmerCheckedIn(swimmer)'>
                   <button class='btn-sm btn btn-default' style='width:80px;' disabled="disabled">Checked In</button>

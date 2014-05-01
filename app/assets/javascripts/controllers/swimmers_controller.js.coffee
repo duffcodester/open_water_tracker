@@ -27,6 +27,10 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 20
 
+    $scope.checkIn = (swimmer) ->
+      $scope.addAlert(swimmer)
+      $scope.search.last_name = ''
+
     Swimmers.index (data) ->
       $scope.Swimmers = data
 ]
