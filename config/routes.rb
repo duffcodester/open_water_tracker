@@ -20,4 +20,5 @@ Comsa::Application.routes.draw do
   match '/import', to: 'swimmers#import', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/tos', to: 'static_pages#tos', via: 'get'
+  match '/faq', to: 'static_pages#faq', via: 'get'
 end

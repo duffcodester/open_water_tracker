@@ -1,0 +1,59 @@
+<% provide(:title, 'FAQ') %>
+
+<center>
+  <p class='header-font'>FAQ</p>
+</center>
+
+<div class='box'>
+
+  <h4> Frequently Asked Questions </h4>
+  <a href="#question-1">Question #1</a><br><br>
+  <a href="#question-2">Question #2</a><br><br>
+  <a href="#question-3">Question #3</a><br><br>
+  <a href="#question-4">Question #4</a><br><br>
+  <a href="#question-5">Question #5</a><br>
+  <hr>
+
+  <div id="question-1">
+    <h4> Question #1 </h4>
+    <p> Answer #1 </p>
+  </div>
+  <br>
+
+  <div id="question-2">
+    <h4> Question #2 </h4>
+    <p> Answer #2 </p>
+  </div>
+  <br>
+
+  <div id="question-3">
+    <h4> Question #3 </h4>
+    <p> Answer #3 </p>
+  </div>
+  <br>
+
+  <div id="question-4">
+    <h4> Question #4 </h4>
+    <p> Answer #4 </p>
+  </div>
+  <br>
+
+  <div id="question-5">
+    <h4> Question #5 </h4>
+    <p> Answer #5 </p>
+  </div>
+  <br>
+
+</div>
+
+<br>
+
+<% unless signed_in? %>
+  <center>
+    <%= link_to 'Back To Sign In', root_path, class: 'devise-buttons' %>
+  </center>
+<% end %>
+
+<div class='hidden-xs'><hr></div>
+  <%= render "devise/shared/copyright" %>
+</div>

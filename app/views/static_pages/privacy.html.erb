@@ -156,9 +156,11 @@
 
 <br>
 
-<center>
-  <%= link_to 'Back To Sign In', root_path, class: 'devise-buttons' %>
-</center>
+<% unless signed_in? %>
+  <center>
+    <%= link_to 'Back To Sign In', root_path, class: 'devise-buttons' %>
+  </center>
+<% end %>
 
 <div class='hidden-xs'><hr></div>
   <%= render "devise/shared/copyright" %>

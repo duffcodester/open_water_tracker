@@ -23,4 +23,10 @@ class StaticPagesController < ApplicationController
       render layout: "devise"
     end
   end
+
+  def faq
+    unless signed_in?
+      render layout: "devise"
+    end
+  end
 end
