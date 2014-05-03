@@ -10,6 +10,7 @@ class SwimRecord < ActiveRecord::Base
     swimmer mi: 'Middle Initial'
     swimmer usms_number: 'USMS'
     swimmer lmsc: 'LMSC'
+    swimmer phone_number: 'Phone Number'
     check_in 'Check In'
     check_in_user_id 'User ID'
     check_in_first_name 'First Name'
