@@ -14,19 +14,19 @@ class StaticPagesController < ApplicationController
 
   def privacy
     unless signed_in?
-      render layout: "devise"
+      render layout: 'devise'
     end
   end
 
   def tos
     unless signed_in?
-      render layout: "devise"
+      render layout: 'devise'
     end
   end
 
   def faq
     unless signed_in?
-      render layout: "devise"
+      render layout: 'devise'
     end
   end
 end

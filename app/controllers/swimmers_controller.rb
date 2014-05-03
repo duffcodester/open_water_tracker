@@ -29,7 +29,7 @@ class SwimmersController < ApplicationController
                            headers: true,
                            header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
       if stale?(@swimmers)
-        index_respond_to_format_methods
+        index_respond_to_format_methods(@swimmers)
       end
     else
       @swimmers = nil
