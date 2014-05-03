@@ -18,4 +18,6 @@ Comsa::Application.routes.draw do
   match '/out_of_state', to: 'swimmers#out_of_state', via: 'get'
   match '/records', to: 'swim_records#records',    via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+  match '/tos', to: 'static_pages#tos', via: 'get'
 end

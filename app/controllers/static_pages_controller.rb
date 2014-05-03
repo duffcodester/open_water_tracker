@@ -11,4 +11,16 @@ class StaticPagesController < ApplicationController
     @records = SwimRecord.where(check_out: @start_adj..@end_adj,
                                 completed: true)
   end
+
+  def privacy
+    unless signed_in?
+      render layout: "devise"
+    end
+  end
+
+  def tos
+    unless signed_in?
+      render layout: "devise"
+    end
+  end
 end
