@@ -4,11 +4,16 @@ class SwimRecordsController < ApplicationController
   def index
     @check_out = false
     @swim_records = SwimRecord.where(completed: false)
+    if stale?(@swim_records)
+      index_respond_to_format_methods
+    end
   end
 
   def records
     @records = SwimRecord.where(completed: true)
-    records_respond_to_format_methods
+    if stale?(@records)
+      records_respond_to_format_methods
+    end
   end
 
   def show
@@ -82,6 +87,13 @@ class SwimRecordsController < ApplicationController
 
   def create_and_update_json_else
     render json: @swim_record.errors, status: :unprocessable_entity
+  end
+
+  def index_respond_to_format_methods
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def records_respond_to_format_methods

@@ -14,6 +14,9 @@ class SwimmersController < ApplicationController
   def index
     @check_in = false
     @swimmers = Swimmer.all
+    if stale?(@swimmers)
+      index_respond_to_format_methods
+    end
   end
 
   def out_of_state
@@ -25,6 +28,9 @@ class SwimmersController < ApplicationController
       @swimmers = CSV.open(open(url).path,
                            headers: true,
                            header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
+      if stale?(@swimmers)
+        index_respond_to_format_methods
+      end
     else
       @swimmers = nil
     end
@@ -78,5 +84,12 @@ class SwimmersController < ApplicationController
 
   def create_and_update_json_else
     render json: @swimmer.errors, status: :unprocessable_entity
+  end
+
+  def index_respond_to_format_methods
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 end
