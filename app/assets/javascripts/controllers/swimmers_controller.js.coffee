@@ -22,7 +22,7 @@
     $scope.swimmerCheckedIn = (swimmer) ->
       swimmer.swimmer_checked_in is false
 
-    $scope.totalDisplayed = 6
+    $scope.totalDisplayed = 10
 
     $scope.loadMore = ->
       $scope.totalDisplayed += 20
