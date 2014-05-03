@@ -5,11 +5,11 @@
     <center><h4 class='visible-xs'>Historical Swimmer Data</h4></center>
     <div class='row'>
       <div class='col-md-3'>
-        <div class="input-group">
-          <input class="form-control" ng-model="search.swimmer.last_name"
-                 placeholder="Search Last Name"/>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-search"></span>
+        <div class='input-group'>
+          <input class='form-control' ng-model='search.swimmer.last_name'
+                 placeholder='Search Last Name' autocorrect='off'/>
+          <span class='input-group-addon'>
+            <span class='glyphicon glyphicon-search'></span>
           </span>
         </div>
       </div>
@@ -61,8 +61,8 @@
                 {{record.swimmer.last_name}}
               </a>
            </td>
-           <td class='hidden-xs'>{{record.swimmer.first_name}}</td>
-           <td class='hidden-xs'>{{record.swimmer.mi}}</td>
+            <td class ='hidden-xs'>{{record.swimmer.first_name}}</td>
+            <td class ='hidden-xs'>{{record.swimmer.mi}}</td>
             <td class = 'hidden-xs'>{{record.swimmer.usms_number}}</td>
             <th class = 'hidden-xs'>{{record.swimmer.lmsc}}</td>
             <td class = 'hidden-xs'>{{record.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
@@ -78,7 +78,7 @@
       </table>
     </div>
     <center>
-      <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
+      <btn class='btn btn-default' ng-click='loadMore()'>Load More</btn>
     </center>
   </div>
 </div>
