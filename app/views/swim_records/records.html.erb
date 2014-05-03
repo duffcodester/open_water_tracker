@@ -22,7 +22,7 @@
     <br>
     <div class='table-responsive'>
       <table class='table table-hover table-condensed'>
-        <thead>
+        <thead ng-show='(SwimRecords | filter:search).length > 0'>
           <tr>
             <th class='visible-xs'>
              <a href='' ng-click="predicate.value = 'last_name'; reverse=!reverse">
@@ -78,7 +78,15 @@
       </table>
     </div>
     <center>
-      <btn class='btn btn-default' ng-click='loadMore()'>Load More</btn>
+      <div ng-show='(Records | filter:search).length == 0'>
+        <hr>
+        <h4>No results found</h4>
+        <br>
+        <btn class="btn btn-default" ng-click="search=''">New Search</btn>
+      </div>
+      <div ng-hide='(Records | filter:search).length == 0'>
+        <hr><br>
+      </div>
     </center>
   </div>
 </div>

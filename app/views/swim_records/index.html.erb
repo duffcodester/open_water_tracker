@@ -28,7 +28,7 @@
       <br><br><br>
     </div>
       <table class='table table-hover table-condensed'>
-        <thead>
+        <thead ng-show='(SwimRecords | filter:search).length > 0'>
           <tr>
             <th></th>
             <th class='visible-xs'>
@@ -75,5 +75,16 @@
           </tr>
         </tbody>
       </table>
+      <center>
+        <div ng-show='(SwimRecords | filter:search).length == 0'>
+          <hr>
+          <h4>No results found</h4>
+          <br>
+          <btn class="btn btn-default" ng-click="search=''">New Search</btn>
+        </div>
+        <div ng-hide='(SwimRecords | filter:search).length == 0'>
+          <hr><br>
+        </div>
+      </center>
   </div>
 </div>

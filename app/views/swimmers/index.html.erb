@@ -85,13 +85,18 @@
       </table>
     <center>
       <div ng-show='(Swimmers | filter:search).length == 0'>
+        <hr>
         <h4>No results found</h4>
+        <br>
+        <btn class="btn btn-default" ng-click="search=''">New Search</btn>
         <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
       </div>
       <div ng-hide='(Swimmers | filter:search).length == 0'>
+        <hr><br>
         <btn class='btn btn-default' ng-click='loadMore()'>Load More</btn>
         <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
       </div>
     </center>
   </div>
 </div>
+
