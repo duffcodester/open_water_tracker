@@ -23,6 +23,7 @@ gem 'angular-ui-bootstrap-rails'
 gem 'sendgrid'
 gem 'newrelic_rpm'
 gem 'oj'
+gem 'redis'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -34,7 +35,6 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'teaspoon'
   gem 'debugger'
-  gem 'mailcatcher'
 end
 
 group :test do
