@@ -53,6 +53,12 @@ class SwimmersController < ApplicationController
 
   def update
     if @swimmer.update(swimmer_params)
+      if @swimmer.phone_number == ''
+        @swimmer.phone_added = false
+      elsif @swimmer.phone_number != nil
+        @swimmer.phone_added = true
+      end
+      @swimmer.save!
       render :show
     else
       create_and_update_json_else
