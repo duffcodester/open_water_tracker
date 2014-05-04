@@ -20,6 +20,7 @@ describe 'Out of State' do
 
     it { should have_title(full_title('Out of State')) }
     it { should have_selector('h1', text: 'Out of State') }
+    it { should have_selector('h4', text: 'Out of State') }
 
     let(:add) { 'Add to Database' }
 

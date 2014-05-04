@@ -5,6 +5,7 @@
     <%= render 'shared/error_messages_swimmers' %>
     <h1 class='hidden-xs'><%= legend %></h1>
     <center><h4 class='visible-xs'><%= legend %></h4></center>
+    <%= f.hidden_field :phone_added, value: true %>
     <%= f.telephone_field :phone_number, label: 'Phone Number *' %>
     <%= f.primary ( f.object.new_record? ?  'Create Swimmer' :
     'Save Changes' ) %>

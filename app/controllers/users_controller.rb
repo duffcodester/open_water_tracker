@@ -5,7 +5,9 @@ class UsersController < ApplicationController
     @users = User.all
     @check_in = true
     @check_out = true
-    users_respond_to_format_methods
+    if stale?(@users)
+      users_respond_to_format_methods(@users)
+    end
   end
 
   def edit
@@ -47,10 +49,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def users_respond_to_format_methods
+  def users_respond_to_format_methods(view)
     respond_to do |format|
       format.html
-      format.json
+      format.json do
+        render json: oj_dumper(view)
+      end
     end
   end
 
@@ -58,5 +62,10 @@ class UsersController < ApplicationController
     sign_in(@user, bypass: true) if @user == current_user
     flash[:success] = 'Profile updated'
     redirect_to @user
+  end
+
+  def oj_dumper(view)
+    Oj.dump(view.select([:id, :last_name, :first_name, :email, :phone_number,
+                         :admin]), mode: :compat)
   end
 end

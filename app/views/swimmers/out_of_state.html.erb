@@ -8,12 +8,16 @@
     <h4>Out of State Search</h4>
   </center>
 </div>
+
 <div class='row'>
   <div class='col-md-3'>
-      <%= form_tag out_of_state_path, method: 'get' do %>
-        <%= text_field_tag :search, params[:search], placeholder: 'Search Last Name' %>
-        <%= submit_tag 'Search', name: nil, class: 'btn btn-info' %>
-      <% end %>
+    <%= form_tag out_of_state_path, method: 'get' do %>
+      <%= text_field_tag :search, params[:search],
+                         placeholder: 'Search Last Name' %>
+      <%= link_to 'Clear Search', out_of_state_path,
+                  class: 'btn btn-info btn-block btn-adjust' %>
+      <%= submit_tag 'Search', name: nil, class: 'btn btn-primary' %>
+    <% end %>
     </div>
   </div>
   <div class='col-md-7'></div>
@@ -41,10 +45,13 @@
         <% unless swimmer[:swimmer][:lmsc] == 'CO' %>
           <tr>
             <td style='width:80px;'>
-              <%= link_to('Add', swimmers_path(swimmer), method: 'post', class: 'btn btn-sm btn-primary') %>
+              <%= link_to('Add', swimmers_path(swimmer), method: 'post',
+                          class: 'btn btn-sm btn-primary') %>
             </td>
             <td class='visible-xs'>
-              <%= "#{swimmer[:swimmer][:last_name]}, #{swimmer[:swimmer][:first_name]} #{swimmer[:swimmer][:mi]}" %>
+              <%= "#{swimmer[:swimmer][:last_name]},
+                   #{swimmer[:swimmer][:first_name]}
+                   #{swimmer[:swimmer][:mi]}" %>
             </td>
             <td class='hidden-xs'>
               <%= swimmer[:swimmer][:last_name] %>

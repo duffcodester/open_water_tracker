@@ -19,6 +19,7 @@ describe 'Check Out' do
     it { should have_content('USMS Number') }
     it { should have_content('LMSC') }
     it { should have_content('Check In') }
+    it { should have_selector('h4', text: 'Check Out') }
   end
 
   describe 'on desktop view' do

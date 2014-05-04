@@ -2,22 +2,23 @@
   <div ng-controller='SwimmersCtrl'>
     <% provide(:title, 'Check In') %>
     <div class='hidden-xs desktop-alert-centering'>
-      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+      <alert ng-repeat='alert in alerts' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
       <h1>Swimmer Check In</h1>
     </div>
     <div class='visible-xs'>
       <div class='navbar-fixed-top'>
-          <alert ng-repeat="alert in alerts" style='text-align: center;' type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+          <alert ng-repeat='alert in alerts' style='text-align: center;' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
       </div>
       <br><br>
     </div>
+    <div class='visible-xs'><center><h4> Swimmer Check In </h4></center> </div>
     <div class='row'>
       <div class='col-md-3'>
-        <div class="input-group">
-          <input class="form-control" ng-model="search.last_name"
-                 placeholder="Search Last Name"/>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-search"></span>
+        <div class='input-group'>
+          <input class='form-control' ng-model='search.last_name'
+                 placeholder='Search Last Name' autocorrect='off'/>
+          <span class='input-group-addon'>
+            <span class='glyphicon glyphicon-search'></span>
           </span>
         </div>
       </div>
@@ -55,14 +56,14 @@
                   <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
                 </div>
                 <div ng-hide='swimmerCheckedIn(swimmer)'>
-                  <button class='btn-sm btn btn-default' style='width:80px;' disabled="disabled">Checked In</button>
+                  <button class='btn-sm btn btn-danger' style='width:80px;' disabled='disabled'>Checked In</button>
                 </div>
               </span>
             </td>
             <td style='width:112px;'>
               <div ng-if='noPhone(swimmer)'>
-                <form novalidate class="simple-form">
-                  <input type="tel" ng-model="swimmer.phone_number" placeholder="Add Phone" />
+                <form novalidate class='simple-form'>
+                  <input type='tel' ng-model='swimmer.phone_number' placeholder='10-digit Phone' />
                 </form>
               </div>
             </td>
@@ -84,14 +85,19 @@
         </tbody>
       </table>
     <center>
-      <div ng-show="(Swimmers | filter:search).length == 0">
+      <div ng-show='(Swimmers | filter:search).length == 0'>
+        <hr>
         <h4>No results found</h4>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
+        <br>
+        <btn class="btn btn-info" ng-click="search=''">New Search</btn>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-info' %>
       </div>
-      <div ng-hide="(Swimmers | filter:search).length == 0">
-        <btn class="btn btn-default" ng-click="loadMore()">Load More</btn>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-default' %>
+      <div ng-hide='(Swimmers | filter:search).length == 0'>
+        <hr><br>
+        <btn class='btn btn-info' ng-click='loadMore()'>Load More</btn>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-info' %>
       </div>
     </center>
   </div>
 </div>
+

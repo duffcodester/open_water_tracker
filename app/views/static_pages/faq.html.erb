@@ -1,0 +1,24 @@
+<% provide(:title, 'FAQ') %>
+
+<center>
+  <p class='header-font'>FAQ</p>
+</center>
+
+<% if signed_in? %>
+  <%= render "static_pages/partials/faq" %>
+<% end %>
+
+<% unless signed_in? %>
+  <div class='box'>
+    <%= render "static_pages/partials/faq" %>
+  </div>
+  <br>
+  <center>
+    <%= link_to 'Back To Sign In', root_path, class: 'devise-buttons' %>
+  </center>
+  <div class='hidden-xs'><hr></div>
+    <%= render "devise/shared/copyright" %>
+  </div>
+<% end %>
+
+

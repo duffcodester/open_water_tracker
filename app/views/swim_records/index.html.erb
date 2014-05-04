@@ -2,22 +2,23 @@
   <div ng-controller='SwimRecordsCtrl'>
     <% provide(:title, 'Check Out') %>
     <div class='hidden-xs desktop-alert-centering'>
-        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-        <h1>Swimmer Check Out</h1>
+      <alert ng-repeat='alert in alerts' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
+      <h1>Swimmer Check Out</h1>
     </div>
     <div class='visible-xs'>
       <div class='navbar-fixed-top'>
-          <alert ng-repeat="alert in alerts" style='text-align: center;' type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+          <alert ng-repeat='alert in alerts' style='text-align: center;' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
       </div>
       <br><br>
     </div>
+    <div class='visible-xs'><center><h4> Swimmer Check Out </h4></center> </div>
     <div class='row'>
       <div class='col-md-3'>
-        <div class="input-group">
-          <input class="form-control" ng-model="search.swimmer.last_name"
-                 placeholder="Search Last Name"/>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-search"></span>
+        <div class='input-group'>
+          <input class='form-control' ng-model='search.swimmer.last_name'
+                 placeholder='Search Last Name' autocorrect='off'/>
+          <span class='input-group-addon'>
+            <span class='glyphicon glyphicon-search'></span>
           </span>
         </div>
       </div>
@@ -28,7 +29,7 @@
       <br><br><br>
     </div>
       <table class='table table-hover table-condensed'>
-        <thead>
+        <thead ng-show='(SwimRecords | filter:search).length > 0'>
           <tr>
             <th></th>
             <th class='visible-xs'>
@@ -75,5 +76,16 @@
           </tr>
         </tbody>
       </table>
+      <center>
+        <div ng-show='(SwimRecords | filter:search).length == 0'>
+          <hr>
+          <h4>No results found</h4>
+          <br>
+          <btn class="btn btn-info" ng-click="search=''">New Search</btn>
+        </div>
+        <div ng-hide='(SwimRecords | filter:search).length == 0'>
+          <hr><br>
+        </div>
+      </center>
   </div>
 </div>

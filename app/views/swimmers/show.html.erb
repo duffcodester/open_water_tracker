@@ -20,9 +20,9 @@
       <% if @swimmer.phone_number? && !@swimmer.swimmer_checked_in %>
         <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
       <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
-        <%= f.submit 'Checked In', class: "btn btn-default btn-sm disabled"%>
+        <%= f.submit 'Checked In', class: "btn btn-danger btn-sm disabled"%>
       <% else %>
-        <%= f.submit 'Check In', class: "btn btn-default btn-sm disabled" %>
+        <%= f.submit 'Check In', class: "btn btn-warning btn-sm disabled" %>
       <% end %>
     <% end %>
   </div>

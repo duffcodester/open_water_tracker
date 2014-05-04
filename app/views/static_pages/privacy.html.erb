@@ -1,0 +1,22 @@
+<% provide(:title, 'Privacy Policy') %>
+
+<center>
+   <p class='header-font'>Privacy Policy</p>
+</center>
+
+<% if signed_in? %>
+  <%= render "static_pages/partials/privacy" %>
+<% end %>
+
+<% unless signed_in? %>
+  <div class='box'>
+    <%= render "static_pages/partials/privacy" %>
+  </div>
+  <br>
+  <center>
+    <%= link_to 'Back To Sign In', root_path, class: 'devise-buttons' %>
+  </center>
+  <div class='hidden-xs'><hr></div>
+    <%= render "devise/shared/copyright" %>
+  </div>
+<% end %>
