@@ -82,8 +82,9 @@ describe 'Swimmers' do
           visit swimmer_path(swimmer_with_phone)
         end
 
-        it 'should check in swimmer' do
+        it 'should check in swimmer and redirect to check in page' do
           expect { click_button submit }.to change(SwimRecord, :count).by(1)
+          expect(current_path).to eq(swimmers_path)
         end
       end
     end

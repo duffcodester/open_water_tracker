@@ -29,7 +29,7 @@ class SwimRecordsController < ApplicationController
   def create
     swim_record_params_create
     @swim_record.swimmer.save
-    @swim_record.save ? (render :show) : create_and_update_json_else
+    @swim_record.save ? (redirect_to swimmers_path) : create_and_update_json_else
   end
 
   def update
