@@ -1,66 +1,18 @@
 <% provide(:title, 'FAQ') %>
 
-<% if signed_in? %><br><br><% end %>
 <center>
   <p class='header-font'>FAQ</p>
 </center>
 
-<div class='box'>
-
-  <h4> Frequently Asked Questions </h4>
-
-  <a href="#question-1">
-    What if a swimmer needs to update their phone number?
-  </a>
-  <br><br>
-
-  <a href="#question-2">Question #2</a><br><br>
-  <a href="#question-3">Question #3</a><br><br>
-  <a href="#question-4">Question #4</a><br><br>
-  <a href="#question-5">Question #5</a><br>
-  <hr>
-
-  <div id="question-1">
-    <h4> What if a swimmer needs to update their phone number? </h4>
-      <p>
-        Visit the 'Check In' page and search for the swimmer in the search box
-        at the top of the screen, once the swimmer is identified click the
-        swimmers name to go to their profile. Click the 'Edit' button to
-        redirect to the swimmer edit page, update the phone number within
-        the form field and click 'Save Changes' to update the record.
-      </p>
-  </div>
-  <br>
-
-  <div id="question-2">
-    <h4> Question #2 </h4>
-    <p> Answer #2 </p>
-  </div>
-  <br>
-
-  <div id="question-3">
-    <h4> Question #3 </h4>
-    <p> Answer #3 </p>
-  </div>
-  <br>
-
-  <div id="question-4">
-    <h4> Question #4 </h4>
-    <p> Answer #4 </p>
-  </div>
-  <br>
-
-  <div id="question-5">
-    <h4> Question #5 </h4>
-    <p> Answer #5 </p>
-  </div>
-  <br>
-
-</div>
-
-<br>
+<% if signed_in? %>
+  <%= render "static_pages/partials/faq" %>
+<% end %>
 
 <% unless signed_in? %>
+  <div class='box'>
+    <%= render "static_pages/partials/faq" %>
+  </div>
+  <br>
   <center>
     <%= link_to 'Back To Sign In', root_path, class: 'devise-buttons' %>
   </center>
