@@ -28,9 +28,7 @@ class SwimmersController < ApplicationController
       @swimmers = CSV.open(open(url).path,
                            headers: true,
                            header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
-      if stale?(@swimmers)
-        index_respond_to_format_methods(@swimmers)
-      end
+      index_respond_to_format_methods(@swimmers)
     else
       @swimmers = nil
     end
