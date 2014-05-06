@@ -48,8 +48,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="swimmer in Swimmers | orderBy:[predicate.value:reverse, 'first_name'] |
-                         filter:search | limitTo:totalDisplayed">
+          <tr ng-repeat='swimmer in Swimmers | orderBy:predicate.value:reverse |
+                         filter:search | limitTo:totalDisplayed'>
             <td style='width:80px;'>
               <span>
                 <div ng-show='swimmerCheckedIn(swimmer)'>
