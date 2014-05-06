@@ -14,9 +14,9 @@ class SwimmersController < ApplicationController
   def index
     @check_in = false
     @swimmers = Swimmer.all
-    # if stale?(@swimmers)
+    if stale?(@swimmers)
       index_respond_to_format_methods(@swimmers)
-    # end
+    end
   end
 
   def out_of_state

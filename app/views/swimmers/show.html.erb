@@ -7,8 +7,8 @@
 
 <div class='table-width-desktop'>
   <div class='pull-left'>
-    <%=link_to 'Edit', edit_swimmer_path(@swimmer), type: 'button',
-                                   class: 'btn btn-primary btn-sm'%>
+    <%=link_to 'Edit Swimmer', edit_swimmer_path(@swimmer), type: 'button',
+                                   class: 'btn btn-primary'%>
   </div>
   <div class='pull-right'>
     <%= bootstrap_form_for SwimRecord.create do |f| %>
@@ -18,11 +18,11 @@
       <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
       <%= f.hidden_field :check_in_user_id, value: current_user.id %>
       <% if @swimmer.phone_number? && !@swimmer.swimmer_checked_in %>
-        <%= f.submit 'Check In', class: "btn btn-success btn-sm" %>
+        <%= f.submit 'Check In', class: "btn btn-success" %>
       <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
-        <%= f.submit 'Checked In', class: "btn btn-danger btn-sm disabled"%>
+        <%= f.submit 'Checked In', class: "btn btn-danger disabled"%>
       <% else %>
-        <%= f.submit 'Check In', class: "btn btn-warning btn-sm disabled" %>
+        <%= f.submit 'Check In', class: "btn btn-warning disabled" %>
       <% end %>
     <% end %>
   </div>
