@@ -21,7 +21,7 @@ gem 'comma', '~> 3.0'
 gem 'unicorn'
 gem 'angular-ui-bootstrap-rails'
 gem 'sendgrid'
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 gem 'oj'
 gem 'redis'
 
