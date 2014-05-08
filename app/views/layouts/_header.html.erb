@@ -48,7 +48,8 @@
         <div class="btn-group dropdown">
           <div class="btn-group">
           <% unless @check_in == false %>
-            <%= link_to 'Check In', swimmers_path, class: 'btn btn-success', role: 'button' %>
+            <%= link_to 'Check In', swimmers_path, class: 'btn btn-success',
+                        role: 'button' %>
           <% end %>
           <% unless @check_out == false %>
             <%= link_to 'Check Out', swim_records_path, class: 'btn btn-danger', role: 'button' %>

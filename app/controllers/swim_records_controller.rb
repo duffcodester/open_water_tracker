@@ -4,16 +4,12 @@ class SwimRecordsController < ApplicationController
   def index
     @check_out = false
     @swim_records = SwimRecord.where(completed: false)
-    if stale?(@swim_records)
-      index_respond_to_format_methods
-    end
+    index_respond_to_format_methods
   end
 
   def records
     @records = SwimRecord.where(completed: true)
-    if stale?(@records)
-      records_respond_to_format_methods
-    end
+    records_respond_to_format_methods
   end
 
   def show
