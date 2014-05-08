@@ -29,4 +29,8 @@ class StaticPagesController < ApplicationController
       render layout: 'devise'
     end
   end
+
+  def admin
+    @users = User.all
+  end
 end

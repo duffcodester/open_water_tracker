@@ -21,4 +21,5 @@ Comsa::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/tos', to: 'static_pages#tos', via: 'get'
   match '/faq', to: 'static_pages#faq', via: 'get'
+  match '/admin', to: 'static_pages#admin', via: 'get'
 end
