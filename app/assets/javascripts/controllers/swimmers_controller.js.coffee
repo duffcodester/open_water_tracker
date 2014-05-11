@@ -1,9 +1,6 @@
 @comsatrack.controller 'SwimmersCtrl', ['$location', '$scope', 'Swimmers',
   @SwimmersCtrl = ($location, $scope, Swimmers) ->
 
-    $scope.predicate =
-      value: 'last_name'
-
     $scope.alerts = []
 
     $scope.addAlert = (swimmer) ->

@@ -5,9 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
     @check_in = true
     @check_out = true
-    if stale?(@users)
-      users_respond_to_format_methods(@users)
-    end
+    users_respond_to_format_methods(@users)
   end
 
   def edit

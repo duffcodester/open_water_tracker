@@ -9,7 +9,6 @@
       <div class='navbar-fixed-top'>
           <alert ng-repeat='alert in alerts' style='text-align: center;' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
       </div>
-      <br><br>
     </div>
     <div class='visible-xs'><center><h4> Swimmer Check Out </h4></center> </div>
     <div class='row'>
@@ -28,7 +27,7 @@
     <div class='hidden-xs'>
       <br><br><br>
     </div>
-      <table class='table table-hover table-condensed'>
+      <table class='table table-hover'>
         <thead ng-show='(SwimRecords | filter:search).length > 0'>
           <tr>
             <th></th>

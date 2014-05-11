@@ -14,9 +14,7 @@ class SwimmersController < ApplicationController
   def index
     @check_in = false
     @swimmers = Swimmer.all
-    if stale?(@swimmers)
-      index_respond_to_format_methods(@swimmers)
-    end
+    index_respond_to_format_methods(@swimmers)
   end
 
   def out_of_state
@@ -28,9 +26,7 @@ class SwimmersController < ApplicationController
       @swimmers = CSV.open(open(url).path,
                            headers: true,
                            header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
-      if stale?(@swimmers)
-        index_respond_to_format_methods(@swimmers)
-      end
+      index_respond_to_format_methods(@swimmers)
     else
       @swimmers = nil
     end
@@ -55,7 +51,7 @@ class SwimmersController < ApplicationController
     if @swimmer.update(swimmer_params)
       if @swimmer.phone_number == ''
         @swimmer.phone_added = false
-      elsif @swimmer.phone_number != nil
+      elsif @swimmer.phone_number
         @swimmer.phone_added = true
       end
       @swimmer.save!

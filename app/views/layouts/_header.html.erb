@@ -4,7 +4,7 @@
       <%= link_to 'COMSA Tracker', root_path, id: 'logo' %>
     <% end %>
     <div class = 'collapse navbar-collapse navbar-custom navHeaderCollapse'>
-      <ul class = 'nav navbar-nav navbar-custom navbar-right' >
+      <ul class = 'nav navbar-nav navbar-custom navbar-right' id='big-nav' >
         <% if user_signed_in? %>
         <li><%= link_to 'Check In', swimmers_path %></li>
         <li><%= link_to 'Check Out', swim_records_path %></li>
@@ -16,7 +16,7 @@
           <li class = 'dropdown'>
             <a href = '#' class = 'dropdown-toggle' data-toggle = 'dropdown'>
               Account<b class = 'caret'></b></a>
-            <ul class = 'dropdown-menu'>
+            <ul class = 'dropdown-menu' id='color-fix'>
               <li><%= link_to 'My Profile', current_user %></li>
               <li><%= link_to 'Edit My Profile', edit_user_path(current_user) %></li>
               <li class='divider'></li>
@@ -25,6 +25,9 @@
               </li>
               <li class='divider'></li>
               <li><%= link_to 'FAQ', faq_path %></li>
+              <li><%= link_to 'Instructions',
+                              '/COMSA_Tracker_Quick_Reference_rev2.pdf' %>
+              </li>
               <li class='divider'></li>
               <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete %>
@@ -45,7 +48,8 @@
         <div class="btn-group dropdown">
           <div class="btn-group">
           <% unless @check_in == false %>
-            <%= link_to 'Check In', swimmers_path, class: 'btn btn-success', role: 'button' %>
+            <%= link_to 'Check In', swimmers_path, class: 'btn btn-success',
+                        role: 'button' %>
           <% end %>
           <% unless @check_out == false %>
             <%= link_to 'Check Out', swim_records_path, class: 'btn btn-danger', role: 'button' %>

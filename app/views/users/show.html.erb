@@ -1,5 +1,4 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name.each_char.first}.") %>
-<div class='visible-xs'><br><br></div>
 <h1 class='hidden-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 <center>
   <h4 class='visible-xs'><%= "#{@user.first_name} #{@user.last_name}" %></h4>
@@ -21,8 +20,8 @@
     </div>
   <% end %>
   <div class='pull-left'>
-    <%=link_to 'Edit', edit_user_path(@user), type: 'button',
-                                   class: 'btn btn-primary btn-sm'%>
+    <%=link_to 'Edit Monitor', edit_user_path(@user), type: 'button',
+                                   class: 'btn btn-primary'%>
   </div>
   <br><br>
   <table class='table table-bordered table-condensed' >

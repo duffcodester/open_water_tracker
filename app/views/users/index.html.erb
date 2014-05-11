@@ -2,7 +2,7 @@
   <div ng-controller='UsersCtrl'>
     <% provide(:title, 'Monitors') %>
     <h1 class='hidden-xs'>Monitors</h1>
-    <div class='visible-xs'><br><br><center><h4> Monitors </h4></center> </div>
+    <div class='visible-xs'><center><h4> Monitors </h4></center> </div>
     <div class='row'>
       <div class='col-md-3 col-xs-8'>
         <div class='input-group'>
@@ -18,7 +18,7 @@
       <% if current_user.admin? %>
         <div class='btn-group'>
           <%= link_to 'Add Monitor', new_user_path,
-            class: 'btn btn-primary btn-sm', role: 'button' %>
+            class: 'btn btn-primary', role: 'button' %>
         </div>
       <% end %>
     </div>
@@ -26,7 +26,7 @@
       <br><br>
     </div>
     <br>
-    <table class='table table-hover table-condensed' >
+    <table class='table table-hover' >
       <thead ng-show='(Users | filter:search).length > 0'>
         <tr>
           <th class='visible-xs'>

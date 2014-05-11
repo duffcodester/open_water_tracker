@@ -10,10 +10,10 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class='visible-xs'><br></div>
+    <div class='visible-xs'><br><br><br></div>
     <div class='container'>
-      <% browser_check %>
       <%= flash_messages %>
+      <% browser_check %>
       <div class="wrapper">
       <%= yield %>
       <div class="push"></div>
