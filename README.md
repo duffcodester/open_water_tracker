@@ -66,3 +66,8 @@ Server logs: `heroku logs` or for more information `heroku logs --tail`
 
 ## Line Count
 `find . -name '*.rb' | xargs wc -l`
+
+## SubDomain 
+Bought comsatracker.com and forwarded * and www. to comsatracker.herokuapp.com
+For staging, added CNAME record called 'test' and redirected to staging-comsatracker.herokuapp.com
+Console: 'heroku domains:add test.comsatracker.com --app staging-comsatracker'
