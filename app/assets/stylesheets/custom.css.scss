@@ -3,6 +3,7 @@
 /* universal */
 
 $lightgrey: #999;
+$green: #006600;
 
 html {
   overflow-y: scroll;
@@ -316,3 +317,6 @@ legend{
   margin-bottom: 5px;
 }
 
+#support {
+  color: $green;
+}
