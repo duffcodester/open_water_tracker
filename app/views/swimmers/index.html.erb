@@ -15,7 +15,7 @@
     </div>
 
     <table class='u-full-width'>
-      <thead ng-show='(Swimmers | filter:search).length > 0'>
+      <thead ng-show='(Swimmers | filter:search.last_name).length > 0'>
         <tr>
           <th></th>
           <th></th>
@@ -30,7 +30,7 @@
       <tbody>
         <tr ng-repeat="swimmer in Swimmers
                       | orderBy:['last_name','first_name']
-                      | filter:search
+                      | filter:search.last_name
                       | limitTo:totalDisplayed">
           <td>
             <span>
@@ -64,7 +64,7 @@
     </table>
 
     <center>
-      <div ng-show='(Swimmers | filter:search).length == 0'>
+      <div ng-show='(Swimmers | filter:search.last_name).length == 0'>
         <hr>
         <h4>No results found</h4>
         <br>
