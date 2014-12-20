@@ -14,14 +14,12 @@
       </div>
     </div>
 
-    <br><br><br>
-
     <table class='u-full-width'>
       <thead ng-show='(Swimmers | filter:search).length > 0'>
         <tr>
           <th></th>
           <th></th>
-          <th class='visible-xs'>Full Name </th>
+          <th class='visible-xs'></th>
           <th class='hidden-xs'>Last Name </th>
           <th class='hidden-xs'>First Name </th>
           <th class='hidden-xs'>MI</th>
@@ -40,7 +38,7 @@
                 <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
               </div>
               <div ng-hide='swimmerCheckedIn(swimmer)'>
-                <button class='button button-danger button-width-default button-disabled'>Checked In</button>
+                <button class='button button-danger button-width-default'>Check Out</button>
               </div>
             </span>
           </td>
