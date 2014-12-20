@@ -23,4 +23,4 @@
 
 #= require modules
 #= require_tree .
-
+#= require toastr

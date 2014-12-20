@@ -14,12 +14,14 @@ html {
   overflow-y: scroll;
   position: relative;
   height: 100%;
+  background-color: #FFFFFF;
 }
 
 body {
   height: 100%;
   padding-top: 0px;
   margin: 0 0 100px; /* bottom = footer height */
+  background-color: #FFFFFF;
 }
 
 html,body{background-color:#fff;}
@@ -114,20 +116,9 @@ footer ul li {
   margin-left: 10px;
 }
 
-.wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
-}
-
-.footer, .push {
-    height: 50px; /* .push must be the same height as .footer */
-}
-
 .footer { /* centers the text */
+    padding: 50px;
     text-align: center; /* horizontal centering */
-    line-height: 50px; /* vertical centering; should be equal to the footer height */
 }
 
 .mobile-nav { /* centers the text */
@@ -222,19 +213,6 @@ legend{
   white-space: nowrap ;
 }
 
-.alert {
-  padding: 0px;
-  margin: 0px;
-  left: 0px;
-  right: 0px;
-  button {
-    line-height: 13px;
-    position:relative;
-    top:3px;
-    right: 10px;
-  }
-}
-
 .inputfix {
   margin: 0px;
 }
@@ -303,4 +281,18 @@ legend{
 
 #support {
   color: $green;
+}
+
+.u-grey-border {
+  border-style: solid;
+  border-width: 1px;
+  border-color:#E1E1E1;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+@media (min-width: 500px) {
+  .u-input-width{
+    width:300px;
+  }
 }
