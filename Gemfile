@@ -10,7 +10,6 @@ gem 'bcrypt'
 gem 'jquery-turbolinks'
 gem 'angularjs-rails'
 gem 'jbuilder', '~> 1.2'
-gem 'browser', github: 'fnando/browser'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -20,10 +19,13 @@ gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
 gem 'unicorn'
 gem 'angular-ui-bootstrap-rails'
-gem 'sendgrid'
 gem 'newrelic_rpm'
 gem 'oj'
 gem 'redis'
+
+#Front End
+gem 'font-awesome-rails'
+gem 'toastr-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -41,10 +43,6 @@ group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.1'
-end
-
-group :doc do
-  gem 'sdoc', '0.3.20', require: false
 end
 
 group :production do

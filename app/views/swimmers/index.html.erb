@@ -1,96 +1,81 @@
+<% provide(:title, 'Check In') %>
+
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
-    <% provide(:title, 'Check In') %>
-    <div class='hidden-xs desktop-alert-centering'>
-      <alert ng-repeat='alert in alerts' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
-      <h1>Swimmer Check In</h1>
-    </div>
-    <div class='visible-xs'>
-      <div class='navbar-fixed-top'>
-          <alert ng-repeat='alert in alerts' style='text-align: center;' type='alert.type' close='closeAlert($index)'>{{alert.msg}}</alert>
+    <h1>Swimmer Check In</h1>
+
+    <div class='u-pull-left u-input-width'>
+      <div class='input-group'>
+        <input class='form-control' ng-model='search.last_name'
+        placeholder='Search Last Name' autocorrect='off'/>
+        <span class='input-group-addon'>
+          <span class='fa fa-search fa-lg'></span>
+        </span>
       </div>
     </div>
-    <div class='visible-xs'><center><h4> Swimmer Check In </h4></center> </div>
-    <div class='row'>
-      <div class='col-md-3'>
-        <div class='input-group'>
-          <input class='form-control' ng-model='search.last_name'
-                 placeholder='Search Last Name' autocorrect='off'/>
-          <span class='input-group-addon'>
-            <span class='glyphicon glyphicon-search'></span>
-          </span>
-        </div>
-      </div>
-      <div class='col-md-7'></div>
-      <div class='col-md-2'>
-    </div>
-    <div class='hidden-xs'>
-      <br><br><br>
-    </div>
-      <table class='table table-hover' >
-        <thead ng-show='(Swimmers | filter:search).length > 0'>
-          <tr>
-            <th class="tall-row"></th>
-            <th></th>
-            <th class='visible-xs'>Full Name </th>
-            <th class='hidden-xs'>Last Name </th>
-            <th class='hidden-xs'>First Name </th>
-            <th class='hidden-xs'>MI</th>
-            <th class='hidden-xs'>USMS Number</th>
-            <th class='hidden-xs'>LMSC</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="swimmer in Swimmers | orderBy:['last_name','first_name']|
-                         filter:search | limitTo:totalDisplayed">
-            <td style='width:80px;'>
-              <span>
-                <div ng-show='swimmerCheckedIn(swimmer)'>
-                  <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
-                </div>
-                <div ng-hide='swimmerCheckedIn(swimmer)'>
-                  <button class='btn-sm btn btn-danger' style='width:80px;' disabled='disabled'>Checked In</button>
-                </div>
-              </span>
-            </td>
-            <td style='width:112px;'>
-              <div ng-if='noPhone(swimmer)'>
-                <form novalidate class='simple-form'>
-                  <input type='tel' ng-model='swimmer.phone_number' placeholder='Full Phone' />
-                </form>
+
+    <table class='u-full-width'>
+      <thead ng-show='(Swimmers | filter:search.last_name).length > 0'>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class='visible-xs'></th>
+          <th class='hidden-xs'>Last Name </th>
+          <th class='hidden-xs'>First Name </th>
+          <th class='hidden-xs'>MI</th>
+          <th class='hidden-xs'>USMS Number</th>
+          <th class='hidden-xs'>LMSC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="swimmer in Swimmers
+                      | orderBy:['last_name','first_name']
+                      | filter:search.last_name
+                      | limitTo:totalDisplayed">
+          <td>
+            <span>
+              <div ng-show='swimmerCheckedIn(swimmer)'>
+                <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
               </div>
-            </td>
-            <td class='visible-xs'>
-              <a ng-href='/swimmers/{{swimmer.id}}'>
-                {{swimmer.last_name}}, {{swimmer.first_name}}
-              </a>
-            </td>
-            <td class='hidden-xs'>
-              <a ng-href='/swimmers/{{swimmer.id}}'>
-                {{swimmer.last_name}}
-              </a>
-            </td>
-            <td class='hidden-xs'>{{swimmer.first_name}}</td>
-            <td class='hidden-xs'>{{swimmer.mi}}</td>
-            <td class='hidden-xs'>{{swimmer.usms_number}}</td>
-            <th class='hidden-xs'>{{swimmer.lmsc}}</td>
-          </tr>
-        </tbody>
-      </table>
+              <div ng-hide='swimmerCheckedIn(swimmer)'>
+                <button class='button button-danger button-width-default'>Check Out</button>
+              </div>
+            </span>
+          </td>
+          <td>
+            <div ng-if='noPhone(swimmer)'>
+              <form novalidate class='simple-form'>
+                <input type='tel' ng-model='swimmer.phone_number' placeholder='Full Phone'/>
+              </form>
+            </div>
+          </td>
+          <td class='visible-xs'>
+            <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}, {{swimmer.first_name}}</a>
+          </td>
+          <td class='hidden-xs'>
+            <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}</a>
+          </td>
+          <td class='hidden-xs'>{{swimmer.first_name}}</td>
+          <td class='hidden-xs'>{{swimmer.mi}}</td>
+          <td class='hidden-xs'>{{swimmer.usms_number}}</td>
+          <th class='hidden-xs'>{{swimmer.lmsc}}</td>
+        </tr>
+      </tbody>
+    </table>
+
     <center>
-      <div ng-show='(Swimmers | filter:search).length == 0'>
+      <div ng-show='(Swimmers | filter:search.last_name).length == 0'>
         <hr>
         <h4>No results found</h4>
         <br>
-        <btn class="btn btn-info" ng-click="search=''">Clear Search</btn>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-info' %>
+        <btn class='button button-primary' ng-click="search=''">Clear Search</btn>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-primary' %>
       </div>
       <div ng-hide='(Swimmers | filter:search).length == 0'>
-        <hr><br>
-        <btn class='btn btn-info' ng-click='loadMore()'>Load More</btn>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'btn btn-info' %>
+        <btn class='button button-primary button-width-extended' ng-click='loadMore()'>Load More</btn>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-primary' %>
       </div>
     </center>
+
   </div>
 </div>
-

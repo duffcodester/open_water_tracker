@@ -6,7 +6,7 @@
       swimmer: '=info'
 
     link: (scope, element, attrs) ->
-      element.find('.btn').bind 'click', ->
+      element.find('.button').bind 'click', ->
         SwimRecords.create
           swimmer_id: scope.swimmer.id
 

@@ -1,25 +1,34 @@
-<% provide(:title, 'Monitor Sign In') %>
+<% provide(:title, 'Sign In') %>
 
-<div class='box-position'>
-  <center>
-    <p class='header-font'>COMSA TRACKER 1.0</p>
-  </center>
-  <div class='fixwidth box'>
-    <%= bootstrap_form_for(resource, :as => resource_name,
-                           :url => session_path(resource_name)) do |f| %>
-      <center><h4>Monitor Sign In</h4></center><hr>
-      <%= f.email_field :email, :autofocus => true, hide_label: :true,  placeholder: 'Email' %>
-      <%= f.password_field :password, hide_label: :true, placeholder: 'Password' %>
+<div class='devise devise-screen'>
+  <div class='u-full-width-title'><h1 class='devise-title'>Login</h1></div>
+    <%= bootstrap_form_for(resource, :as => resource_name,:url => session_path(resource_name)) do |f| %>
+      <input class='u-full-width' type='email' id='user_email' name='user[email]' placeholder='user@example.com' autofocus='true'>
+      <input class='u-full-width' type='password' id='user_password' name='user[password]' placeholder='Password'>
+      <button class='u-full-width button-primary'>Login</button>
+      <hr>
       <center>
-        <%= f.submit 'Sign In To Your Account', class: 'devise-buttons' %>
+        <a href='/COMSA_Tracker_Quick_Reference_rev2.pdf'>Instructions</a>
+        <div class='visible-xs light-grey-text'><br>&#169; 2014 Affektive Software LLC</div>
       </center>
     <% end %>
-    <div class='hidden-xs'><hr></div>
-    <%= render 'devise/shared/links' %>
-    <%= render 'devise/shared/copyright' %>
-    <a href='/COMSA_Tracker_Quick_Reference_rev2.pdf'>Instructions</a>
   </div>
 </div>
 
-
-
+<footer class='footer hidden-xs'>
+  <nav class='navbar-fixed-bottom'>
+    <p class='light-grey-text'>
+      <a class='light-grey-text' href = '/privacy'>
+        Privacy
+      </a> |
+      <a class='light-grey-text' href = '/tos'>
+        Terms of Service
+      </a> |
+      <a class='light-grey-text' href = '/faq'>
+        FAQ
+      </a>
+      <br>
+      &#169; 2014 Affektive Software LLC
+    </p>
+  </nav>
+</footer>
