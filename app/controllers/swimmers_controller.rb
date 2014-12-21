@@ -39,9 +39,6 @@ class SwimmersController < ApplicationController
     @swimmer = Swimmer.new
   end
 
-  def edit
-  end
-
   def create
     @swimmer = Swimmer.new(swimmer_params)
     @swimmer.save ? (redirect_to swimmers_url) : create_and_update_json_else
@@ -58,14 +55,6 @@ class SwimmersController < ApplicationController
       render :show
     else
       create_and_update_json_else
-    end
-  end
-
-  def destroy
-    @swimmer.destroy
-    respond_to do |format|
-      format.html { redirect_to swimmers_url }
-      format.json { head :no_content }
     end
   end
 

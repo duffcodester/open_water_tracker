@@ -8,9 +8,6 @@ class UsersController < ApplicationController
     users_respond_to_format_methods(@users)
   end
 
-  def edit
-  end
-
   def new
     current_user ? @user = User.new : devise_user_render
   end

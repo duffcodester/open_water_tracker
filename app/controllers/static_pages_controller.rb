@@ -1,15 +1,8 @@
 class StaticPagesController < ApplicationController
   def analytics
-    @start_date = params[:start_date]
-    if @start_date
-      @start_adj = DateTime.strptime(@start_date, '%Y-%m-%d %H:%M:%S').in_time_zone(Time.zone) + 6.hours
-    end
-    @end_date = params[:end_date]
-    if @end_date
-      @end_adj = DateTime.strptime(@end_date, '%Y-%m-%d %H:%M:%S').in_time_zone(Time.zone) + 6.hours
-    end
-    @records = SwimRecord.where(check_out: @start_adj..@end_adj,
-                                completed: true)
+    @records_2015 = SwimRecord.where(completed: true, check_out: "2014-01-01".."2014-12-31")
+    @records_2014 = SwimRecord.where(completed: true, check_out: "2015-01-01".."2015-12-31")
+    @unique_2015 = @records_2015.distinct.count('swimmer_id')
   end
 
   def privacy

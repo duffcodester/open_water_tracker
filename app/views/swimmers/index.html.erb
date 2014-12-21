@@ -2,16 +2,10 @@
 
 <div ng-app='comsatrack'>
   <div ng-controller='SwimmersCtrl'>
-    <h1>Swimmer Check In</h1>
+    <h1>Check In</h1>
 
-    <div class='u-pull-left u-input-width'>
-      <div class='input-group'>
-        <input class='form-control' ng-model='search.last_name'
-        placeholder='Search Last Name' autocorrect='off'/>
-        <span class='input-group-addon'>
-          <span class='fa fa-search fa-lg'></span>
-        </span>
-      </div>
+    <div class='u-pull-left'>
+      <input class='u-input-width' type='text' ng-model='search.last_name' placeholder='Search Last Name' autocorrect='off'/>
     </div>
 
     <table class='u-full-width'>
@@ -65,15 +59,11 @@
 
     <center>
       <div ng-show='(Swimmers | filter:search.last_name).length == 0'>
-        <hr>
-        <h4>No results found</h4>
-        <br>
-        <btn class='button button-primary' ng-click="search=''">Clear Search</btn>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-primary' %>
+        <p>No results found <a href='#' ng-click="search.last_name=''"> new search?</a></p>
+        <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-info button-info-solid' %>
       </div>
-      <div ng-hide='(Swimmers | filter:search).length == 0'>
-        <btn class='button button-primary button-width-extended' ng-click='loadMore()'>Load More</btn>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-primary' %>
+      <div ng-show='((Swimmers | filter:search.last_name).length)'>
+        <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>
       </div>
     </center>
 

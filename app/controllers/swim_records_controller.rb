@@ -12,14 +12,8 @@ class SwimRecordsController < ApplicationController
     records_respond_to_format_methods
   end
 
-  def show
-  end
-
   def new
     @swim_record = SwimRecord.new
-  end
-
-  def edit
   end
 
   def create

@@ -1,2 +1,14 @@
 <% provide(:title, 'Edit Swimmer') %>
-<%= render 'form', legend: "Update #{@swimmer.first_name} #{@swimmer.last_name}", user: @swimmer %>
+
+<h1><%= "Update #{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
+<div class='table-width-desktop u-grey-border'>
+  <%= bootstrap_form_for(@swimmer,
+  style: :horizontal, left: 'col-sm-4', right: 'col-sm-8') do |f| %>
+  <%= render 'shared/error_messages_swimmers' %>
+  <%= f.text_field :first_name, label: 'First Name *' %>
+  <%= f.text_field :last_name, label: 'Last Name *' %>
+  <%= f.text_field :usms_number, label: 'USMS *' %>
+  <%= f.telephone_field :phone_number, label: 'Phone Number *' %>
+  <button class='u-full-width button-info button-info-solid'>Submit</button>
+  <% end %>
+</div>

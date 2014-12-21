@@ -12,6 +12,6 @@
     <% if current_user.admin? && @user != current_user %>
       <%= f.select :admin, [['Yes', true], ['No', false]] %>
     <% end %>
-    <button class='u-full-width button-primary'>Submit</button>
+    <button class='u-full-width button-info button-info-solid'>Submit</button>
   <% end %>
 </div>

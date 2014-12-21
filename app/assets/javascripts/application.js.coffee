@@ -18,8 +18,6 @@
 
 #= require angular
 #= require angular-resource
-#= require angular-animate
-#= require angular-ui-bootstrap-tpls
 
 #= require modules
 #= require_tree .

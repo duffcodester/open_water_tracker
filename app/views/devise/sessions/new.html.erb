@@ -1,11 +1,11 @@
 <% provide(:title, 'Sign In') %>
 
 <div class='devise devise-screen'>
-  <div class='u-full-width-title'><h1 class='devise-title'>Login</h1></div>
+  <div class='u-full-width-title'><h1 class='devise-title'>COMSA TRACKER</h1></div>
     <%= bootstrap_form_for(resource, :as => resource_name,:url => session_path(resource_name)) do |f| %>
       <input class='u-full-width' type='email' id='user_email' name='user[email]' placeholder='user@example.com' autofocus='true'>
       <input class='u-full-width' type='password' id='user_password' name='user[password]' placeholder='Password'>
-      <button class='u-full-width button-primary'>Login</button>
+      <button class='u-full-width button-info button-info-solid'>Login</button>
       <hr>
       <center>
         <a href='/COMSA_Tracker_Quick_Reference_rev2.pdf'>Instructions</a>
