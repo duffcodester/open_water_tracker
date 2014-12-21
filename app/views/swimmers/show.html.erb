@@ -21,7 +21,7 @@
       <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
         <%= f.submit 'Checked In', class: 'button button-danger button-danger-solid'%>
       <% else %>
-        <%= f.submit 'Check In', class: 'button button-warning button-warning-solid' %>
+        <%= f.submit 'Add Phone', class: 'button button-primary button-primary-solid button-disabled' %>
       <% end %>
     <% end %>
   </div>

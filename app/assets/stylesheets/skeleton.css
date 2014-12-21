@@ -415,6 +415,18 @@ p {
   float: right; }
 .u-pull-left {
   float: left; }
+.u-grey-border {
+  border-style: solid;
+  border-width: 1px;
+  border-color:#E1E1E1;
+  padding: 10px;
+  border-radius: 8px;
+}
+@media (min-width: 500px) {
+  .u-input-width{
+    width:300px;
+  }
+}
 
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

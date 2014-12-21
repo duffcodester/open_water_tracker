@@ -12,10 +12,9 @@
       <thead ng-show='(Swimmers | filter:search.last_name).length > 0'>
         <tr>
           <th></th>
-          <th></th>
           <th class='visible-xs'></th>
-          <th class='hidden-xs'>Last Name </th>
-          <th class='hidden-xs'>First Name </th>
+          <th class='hidden-xs'>Last Name</th>
+          <th class='hidden-xs'>First Name</th>
           <th class='hidden-xs'>MI</th>
           <th class='hidden-xs'>USMS Number</th>
           <th class='hidden-xs'>LMSC</th>
@@ -29,19 +28,17 @@
           <td>
             <span>
               <div ng-show='swimmerCheckedIn(swimmer)'>
-                <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
+                <div ng-if='!swimmer.phone'>
+                  <button class='button button-primary button-width-default'>Add Phone</button>
+                </div>
+                <div ng-if='swimmer.phone'>
+                  <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
+                </div>
               </div>
               <div ng-hide='swimmerCheckedIn(swimmer)'>
                 <button class='button button-danger button-width-default'>Check Out</button>
               </div>
             </span>
-          </td>
-          <td>
-            <div ng-if='noPhone(swimmer)'>
-              <form novalidate class='simple-form'>
-                <input type='tel' ng-model='swimmer.phone_number' placeholder='Full Phone'/>
-              </form>
-            </div>
           </td>
           <td class='visible-xs'>
             <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}, {{swimmer.first_name}}</a>
@@ -66,6 +63,5 @@
         <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>
       </div>
     </center>
-
   </div>
 </div>

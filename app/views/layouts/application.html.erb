@@ -13,13 +13,14 @@
     <div class='container'>
       <%= custom_bootstrap_flash %>
       <%= yield %>
-      <footer class='footer'>
+      <center>
+        <br><br><br>
         <p class='light-grey-text'>
           &#169; 2014 Affektive Software LLC
           <br>
           For Support <a href='mailto:matchmike1313@gmail.com'>matchmike1313@gmail.com</a>
         </p>
-      </footer>
+      </center>
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>

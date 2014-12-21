@@ -23,7 +23,6 @@ gem 'oj'
 gem 'angularjs-rails'
 
 #Front End
-gem 'font-awesome-rails'
 gem 'toastr-rails'
 
 group :development, :test do
