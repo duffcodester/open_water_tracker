@@ -8,20 +8,87 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <br><br><br>
+    <nav class='navbar navbar-default navbar-fixed-top'>
+      <div class='container'>
+        <div class='navbar-header'>
+          <% if signed_in? %>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+            </button>
+          <% end %>
+          <% unless signed_in? %>
+            <a class="navbar-brand" href='/users/sign_in'>COMSA TRACKER</a>
+          <% end %>
+          <% if signed_in? %>
+          <div class='visible-xs'>
+            <% unless @check_in == false %>
+              <%= link_to 'CHECK IN', swimmers_path, class: 'button button-success button-success-solid button-width-default button-on-nav' %>
+            <% end %>
+            <% if @check_in== false %>
+              <%= link_to 'CHECK OUT', swim_records_path, class: 'button button-danger button-danger-solid button-width-default button-on-nav' %>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+        <div class='collapse navbar-collapse' id='myNavbar'>
+          <ul class='nav navbar-nav u-ul-position-fix'>
+            <% if signed_in? %>
+            <li><%= link_to 'MY PROFILE', current_user, class:'navbar-link visible-xs' %></li>
+            <li><a class='navbar-link hidden-xs' href='/swimmers'>CHECK IN</a></li>
+            <li><a class='navbar-link hidden-xs' href='/swim_records'>CHECK OUT</a></li>
+            <li><a class='navbar-link' href='/users'>MONITORS</a></li>
+            <li><a class='navbar-link' href='/out_of_state'>OUT OF STATE</a></li>
+            <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get, class:'navbar-link visible-xs' %>
+              <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete, class:'navbar-link visible-xs' %></li>
+              <% if current_user.admin? %>
+              <li><a class='navbar-link hidden-xs' href='/analytics'>ANALYTICS</a></li>
+              <% end %>
+              <% end %>
+            </ul>
+            <% if signed_in? %>
+            <ul class='nav navbar-nav navbar-right u-ul-position-fix hidden-xs'>
+              <li class='dropdown'>
+                <a href='#' class='dropdown-toggle navbar-link' data-toggle='dropdown'>
+                  ACCOUNT<b class='caret'></b>
+                </a>
+                <ul class='dropdown-menu'>
+                  <li><%= link_to 'MY PROFILE', current_user %></li>
+                  <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get %></li>
+                  <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            </ul>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+      <br><br><br>
     <div class='container'>
       <%= custom_bootstrap_flash %>
       <%= yield %>
-      <center>
-        <br><br><br>
-        <p class='light-grey-text'>
-          &#169; 2014 Affektive Software LLC
-          <br>
-          For Support <a href='mailto:matchmike1313@gmail.com'>matchmike1313@gmail.com</a>
-        </p>
-      </center>
-      <%= debug(params) if Rails.env.development? %>
+      <% if signed_in? %>
+        <center>
+          <br><br><br>
+          <p class='light-grey-text'>
+            For Support <a href='mailto:matchmike1313@gmail.com'>matchmike1313@gmail.com</a>
+            <br>
+            <a class='light-grey-text' href = '/privacy'>
+              Privacy
+            </a> |
+            <a class='light-grey-text' href = '/tos'>
+              Terms of Service
+            </a> |
+            <a class='light-grey-text' href = '/faq'>
+              FAQ
+            </a>
+            <br>
+            &#169; 2014 Affektive Software LLC
+          </p>
+        </center>
+        <%= debug(params) if Rails.env.development?%>
+      <% end %>
     </div>
   </body>
 </html>

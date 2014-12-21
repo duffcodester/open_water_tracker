@@ -6,21 +6,12 @@ class StaticPagesController < ApplicationController
   end
 
   def privacy
-    unless signed_in?
-      render layout: 'devise'
-    end
   end
 
   def tos
-    unless signed_in?
-      render layout: 'devise'
-    end
   end
 
   def faq
-    unless signed_in?
-      render layout: 'devise'
-    end
   end
 
   def admin

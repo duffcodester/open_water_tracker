@@ -11,9 +11,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-SESSIONS = proc { |controller| user_signed_in? ? 'application' : 'devise' }
-REGISTRATION = proc { |controller| user_signed_in? ? 'application' : 'devise' }
-
 module Comsa
   class Application < Rails::Application
     system("rubocop -D #{Rails.root}") if Rails.env.development?
@@ -44,11 +41,7 @@ module Comsa
     config.i18n.enforce_available_locales = true
 
     config.to_prepare do
-      Devise::SessionsController.layout SESSIONS
-      Devise::RegistrationsController.layout SESSIONS
-      Devise::ConfirmationsController.layout SESSIONS
-      Devise::UnlocksController.layout SESSIONS
-      Devise::PasswordsController.layout SESSIONS
+      Devise::SessionsController.layout 'application'
     end
 
     config.assets.precompile += %w( *.js *.scss )
