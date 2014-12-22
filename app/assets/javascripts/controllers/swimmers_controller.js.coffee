@@ -12,9 +12,10 @@
     $scope.totalDisplayed = 10
 
     $scope.loadMore = ->
-      $scope.totalDisplayed += 20
+      $scope.totalDisplayed += 10
 
     $scope.checkIn = (swimmer) ->
+      toastr.options.positionClass = "toast-bottom-left"
       toastr.success 'Swimmer has been checked in.'
       $scope.search.last_name = ''
 

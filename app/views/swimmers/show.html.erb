@@ -1,16 +1,15 @@
 <% provide(:title, "#{@swimmer.first_name} #{@swimmer.last_name.each_char.first}.") %>
-<div class='visible-xs'><br><br></div>
-<h1 class='hidden-xs'><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
-<center>
-  <h4 class='visible-xs'><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h4>
-</center>
+
+<h1><%= "#{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
 
 <div class='table-width-desktop'>
-  <div class='pull-left'>
-    <%=link_to 'Edit Swimmer', edit_swimmer_path(@swimmer), type: 'button',
-                                   class: 'btn btn-primary'%>
+
+  <div class='u-pull-left'>
+    <%=link_to 'Edit Swimmer', edit_swimmer_path(@swimmer),
+               class:'button button-info button-info-solid'%>
   </div>
-  <div class='pull-right'>
+
+  <div class='u-pull-right'>
     <%= bootstrap_form_for SwimRecord.create do |f| %>
       <%= f.hidden_field :last_name, value: @swimmer.last_name %>
       <%= f.hidden_field :first_name, value: @swimmer.first_name  %>
@@ -18,34 +17,34 @@
       <%= f.hidden_field :swimmer_id, value: @swimmer.id %>
       <%= f.hidden_field :check_in_user_id, value: current_user.id %>
       <% if @swimmer.phone_number? && !@swimmer.swimmer_checked_in %>
-        <%= f.submit 'Check In', class: "btn btn-success" %>
+        <%= f.submit 'Check In', class: 'button button-success button-success-solid' %>
       <% elsif @swimmer.swimmer_checked_in && @swimmer.phone_number?%>
-        <%= f.submit 'Checked In', class: "btn btn-danger disabled"%>
+        <%= f.submit 'Checked In', class: 'button button-danger button-danger-solid'%>
       <% else %>
-        <%= f.submit 'Check In', class: "btn btn-warning disabled" %>
+        <%= f.submit 'Add Phone', class: 'button button-primary button-primary-solid button-disabled' %>
       <% end %>
     <% end %>
   </div>
-  <br> <br>
+
   <table class='table table-bordered table-condensed' >
     <tr>
-    <th style='width:25%'>First Name</th>
+    <th>First Name</th>
       <td><%= @swimmer.first_name %></td>
     </tr>
     <tr>
-    <th>Middle Initial</th>
+      <th>Middle Initial</th>
       <td><%= @swimmer.mi %></td>
     </tr>
     <tr>
-    <th>Last Name</th>
+      <th>Last Name</th>
       <td><%= @swimmer.last_name %></td>
     </tr>
     <tr>
-    <th>USMS Number</th>
+      <th>USMS Number</th>
       <td><%= @swimmer.usms_number %></td>
     </tr>
     <tr>
-    <th>LMSC</th>
+      <th>LMSC</th>
       <td><%= @swimmer.lmsc %></td>
     </tr>
     <tr>

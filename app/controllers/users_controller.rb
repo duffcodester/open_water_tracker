@@ -8,11 +8,8 @@ class UsersController < ApplicationController
     users_respond_to_format_methods(@users)
   end
 
-  def edit
-  end
-
   def new
-    current_user ? @user = User.new : devise_user_render
+    @user = User.new
   end
 
   def edit
@@ -37,11 +34,6 @@ class UsersController < ApplicationController
 
   include ApplicationHelper
   include UsersHelper
-
-  def devise_user_render
-    @user = User.new
-    render layout: 'devise'
-  end
 
   def set_user
     @user = User.find(params[:id])

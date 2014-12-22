@@ -1,5 +1,5 @@
 module ApplicationHelper
-  BASE_TITLE = 'COMSA Tracker'
+  BASE_TITLE = 'COMSA TRACKER'
 
   def full_title(page_title)
     if page_title.empty?

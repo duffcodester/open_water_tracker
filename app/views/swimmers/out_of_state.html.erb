@@ -1,32 +1,17 @@
-<% provide(:title, 'Out of State') %>
-<div class='hidden-xs desktop-alert-centering'>
-  <h1>Out of State</h1>
-</div>
-<div class='visible-xs'>
-  <br><br>
-  <center>
-    <h4>Out of State Search</h4>
-  </center>
-</div>
+<% provide(:title, 'OUT OF STATE') %>
 
-<div class='row'>
-  <div class='col-md-3'>
-    <%= form_tag out_of_state_path, method: 'get' do %>
-      <%= text_field_tag :search, params[:search],
-                         placeholder: 'Search Last Name', autocorrect: 'off' %>
-      <%= submit_tag 'Search', name: nil, class: 'btn btn-info' %>
-    <% end %>
-    </div>
-  </div>
-  <div class='col-md-7'></div>
-  <div class='col-md-2'>
-</div>
-<div class='hidden-xs'>
-  <br><br><br>
-</div>
+<h1>Out of State</h1>
+
+<center>
+  <%= form_tag out_of_state_path, method: 'get' do %>
+    <%= text_field_tag :search, params[:search],
+                       placeholder: 'Search Last Name', autocorrect: 'off' %>
+    <%= submit_tag 'Search', name: nil, class: 'button button-info button-info-solid' %>
+  <% end %>
+</center>
 
 <% if @swimmers %>
-  <table class='table table-hover table-condensed' >
+  <table class='u-full-width'>
     <thead>
       <tr>
         <th></th>
@@ -42,9 +27,9 @@
       <% @swimmers.each do |swimmer| %>
         <% unless swimmer[:swimmer][:lmsc] == 'CO' %>
           <tr>
-            <td style='width:80px;'>
+            <td>
               <%= link_to('Add', swimmers_path(swimmer), method: 'post',
-                          class: 'btn btn-sm btn-primary') %>
+                          class: 'button button-primary') %>
             </td>
             <td class='visible-xs'>
               <%= "#{swimmer[:swimmer][:last_name]},
@@ -71,10 +56,4 @@
       <% end %>
     </tbody>
   </table>
-
-<% else %>
-  <center>
-    <h2>No Matches Found</h2>
-  </center>
 <% end %>
-

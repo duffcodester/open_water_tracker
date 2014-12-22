@@ -8,7 +8,6 @@ gem 'devise'
 gem 'faker', '1.1.2'
 gem 'bcrypt'
 gem 'jquery-turbolinks'
-gem 'angularjs-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -17,14 +16,13 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '3.0.3.0'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
-gem 'unicorn'
-gem 'angular-ui-bootstrap-rails'
 gem 'newrelic_rpm'
 gem 'oj'
-gem 'redis'
+
+#Angular
+gem 'angularjs-rails'
 
 #Front End
-gem 'font-awesome-rails'
 gem 'toastr-rails'
 
 group :development, :test do
@@ -48,12 +46,5 @@ end
 group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor'
+  gem 'unicorn'
 end
-
-group :development do
-  gem 'capistrano-bundler', '~> 1.0.0'
-  gem 'capistrano-rails', '~> 1.0.0'
-  # gem 'capistrano-unicorn', require: false
-end
-
-gem 'capistrano-rvm', github: 'capistrano/rvm'
