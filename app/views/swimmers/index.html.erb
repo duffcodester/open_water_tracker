@@ -9,7 +9,7 @@
     </div>
 
     <table class='u-full-width'>
-      <thead ng-show='(Swimmers | filter:search.last_name).length > 0'>
+      <thead ng-show='(swimmers | filter:search.last_name).length > 0'>
         <tr>
           <th></th>
           <th class='visible-xs'></th>
@@ -21,23 +21,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="swimmer in Swimmers
+        <tr ng-repeat="swimmer in swimmers
                       | orderBy:['last_name','first_name']
                       | filter:search.last_name
                       | limitTo:totalDisplayed">
           <td>
             <span>
               <div ng-show='swimmerCheckedIn(swimmer)'>
-                <div ng-if='!swimmer.phone'>
-                  <button class='button button-primary button-width-default'>Add Phone</button>
+                <div ng-if='!swimmer.phone_number'>
+                  <button class='button button-primary button-width-default' ng-click="open(swimmer)">Add Phone</button>
                 </div>
-                <div ng-if='swimmer.phone'>
+                <!-- <div ng-if='swimmer.phone_number'>
                   <check-in ng-click="checkIn(swimmer)" info='swimmer'></check-in>
-                </div>
+                </div> -->
               </div>
-              <div ng-hide='swimmerCheckedIn(swimmer)'>
+              <!-- <div ng-hide='swimmerCheckedIn(swimmer)'>
                 <button class='button button-danger button-width-default'>Check Out</button>
-              </div>
+              </div> -->
             </span>
           </td>
           <td class='visible-xs'>
@@ -55,11 +55,11 @@
     </table>
 
     <center>
-      <div ng-show='(Swimmers | filter:search.last_name).length == 0'>
+      <div ng-show='(swimmers | filter:search.last_name).length == 0'>
         <p>No results found <a href='#' ng-click="search.last_name=''"> new search?</a></p>
         <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-info button-info-solid' %>
       </div>
-      <div ng-show='((Swimmers | filter:search.last_name).length)'>
+      <div ng-show='((swimmers | filter:search.last_name).length)'>
         <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>
       </div>
     </center>
