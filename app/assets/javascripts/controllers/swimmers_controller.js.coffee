@@ -2,37 +2,41 @@
   '$location',
   '$scope',
   'Swimmers',
+  'SwimRecords'
   '$modal'
   '$q'
 
-  @SwimmersCtrl = ($location, $scope, Swimmers, $modal, $q) ->
+  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $q) ->
 
     $scope.swimmers = Swimmers.index()
 
-    swimmers = Swimmers.index()
-
     $scope.search = {}
 
-    $scope.noPhone = (swimmer) ->
-      swimmer.phone_added == false
-
-    $scope.swimmerCheckedIn = (swimmer) ->
-      swimmer.swimmer_checked_in is false
-
     $scope.totalDisplayed = 5
-
     $scope.loadMore = ->
       $scope.totalDisplayed += 5
 
-    # $scope.checkIn = (swimmer) ->
-    #   toastr.options.positionClass = 'toast-bottom-left'
-    #   toastr.success 'Swimmer has been checked in.'
-    #   $scope.search.last_name = ''
+    $scope.checkIn = (swimmer) ->
+      toastr.options.positionClass = 'toast-bottom-left'
+      toastr.success 'Swimmer has been checked in.'
+      $scope.search.last_name = ''
 
-    $q.all {swimmers}
-      .then (resources) =>
-        angular.extend $scope, resources
-        update()
+      SwimRecords.create
+        swimmer_id: swimmer.id
+
+      swimmerData =
+        id: swimmer.id
+        phone_added: true
+        swimmer_checked_in: true
+
+      Swimmers.update id: swimmerData.id, swimmerData
+      .$promise.then (updatedSwimmer) ->
+        $scope.swimmers.push updatedSwimmer
+
+    # $q.all {swimmers}
+    #   .then (resources) =>
+    #     angular.extend $scope, resources
+    #     update()
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open

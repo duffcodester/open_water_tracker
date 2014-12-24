@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: User.all }
+    end
     @check_in = true
     @check_out = true
-    users_respond_to_format_methods(@users)
   end
 
   def new
@@ -22,7 +24,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(user_params) ? user_update : (render 'edit')
+    if @user.update_attributes(user_params)
+      flash[:success] = 'Employee Profile updated'
+
+      respond_to do |format|
+        format.html { redirect_to @user }
+
+        format.json do
+          render json: @user
+        end
+      end
+    else
+      render 'edit'
+    end
   end
 
   def show
@@ -32,30 +46,9 @@ class UsersController < ApplicationController
 
   private
 
-  include ApplicationHelper
   include UsersHelper
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def users_respond_to_format_methods(view)
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: oj_dumper(view)
-      end
-    end
-  end
-
-  def user_update
-    sign_in(@user, bypass: true) if @user == current_user
-    flash[:success] = 'Profile updated'
-    redirect_to @user
-  end
-
-  def oj_dumper(view)
-    Oj.dump(view.select([:id, :last_name, :first_name, :email, :phone_number,
-                         :admin]), mode: :compat)
   end
 end

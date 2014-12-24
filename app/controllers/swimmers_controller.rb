@@ -33,7 +33,6 @@ class SwimmersController < ApplicationController
   end
 
   def show
-    render json: @swimmer
   end
 
   def new

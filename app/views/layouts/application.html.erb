@@ -67,7 +67,9 @@
       <br><br><br>
     <div class='container'>
       <%= custom_bootstrap_flash %>
-      <%= yield %>
+      <div ng-app='comsatrack'>
+        <%= yield %>
+      </div>
       <% if signed_in? %>
         <center>
           <br><br><br>

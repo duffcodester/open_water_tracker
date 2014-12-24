@@ -1,67 +1,64 @@
 <% provide(:title, 'CHECK OUT') %>
 
-<div ng-app='comsatrack'>
-  <div ng-controller='SwimRecordsCtrl'>
-    <h1>Check Out</h1>
+<div ng-controller='SwimRecordsCtrl'>
+  <h1>Check Out</h1>
 
-    <div class='u-pull-left'>
-      <input class='u-input-width' type='text' ng-model='search.last_name' placeholder='Search Last Name' autocorrect='off'/>
-    </div>
-
-    <br><br><br>
-
-    <table class='u-full-width'>
-      <thead ng-show='(SwimRecords | filter:search.last_name).length > 0'>
-        <tr>
-          <th></th>
-          <th class='visible-xs'></th>
-          <th class='hidden-xs'>
-            <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
-              Last Name</a>
-          </th>
-          <th class='hidden-xs'>First Name</th>
-          <th class='hidden-xs'>MI</th>
-          <th class='hidden-xs'>USMS Number</th>
-          <th class='hidden-xs'>LMSC</th>
-          <th class='hidden-xs'>Check In</th>
-          <th class='hidden-xs'>Phone Number</th>
-          <th class='visible-xs'></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat='swimRecord in SwimRecords
-                      | orderBy:predicate.value:reverse
-                      | filter:search.last_name'>
-          <td ng-click='checkOut(swimRecord)'>
-            <check-out ng-click="search.swimmer.last_name=''" info='swimRecord'></check-out>
-          </td>
-          <td class='visible-xs'>
-            <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
-              {{swimRecord.swimmer.last_name}},
-              {{swimRecord.swimmer.first_name}}
-            </a>
-          </td>
-          <td class='hidden-xs'>
-            <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>{{swimRecord.swimmer.last_name}}</a>
-          </td>
-          <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
-          <td class='hidden-xs'>{{swimRecord.swimmer.mi}}</td>
-          <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
-          <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
-          <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
-          <td>
-            <a ng-href='tel:{{swimRecord.swimmer.phone_number}}'>
-              <i class='fa fa-phone fa-lg'></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <center>
-      <div ng-show='(SwimRecords | filter:search.last_name).length == 0'>
-        <p>No results found <a href='#' ng-click="search.last_name=''"> new search?</a></p>
-      </div>
-    </center>
+  <div class='u-pull-left'>
+    <input class='u-input-width' type='text' ng-model='search.last_name' placeholder='Search Last Name' autocorrect='off'/>
   </div>
+
+  <table class='u-full-width'>
+    <thead ng-show='filterSwimRecords.length'>
+      <tr>
+        <th></th>
+        <th class='visible-xs'></th>
+        <th class='hidden-xs'>
+          <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
+            Last Name</a>
+        </th>
+        <th class='hidden-xs'>First Name</th>
+        <th class='hidden-xs'>MI</th>
+        <th class='hidden-xs'>USMS Number</th>
+        <th class='hidden-xs'>LMSC</th>
+        <th class='hidden-xs'>Check In</th>
+        <th class='hidden-xs'>Phone Number</th>
+        <th class='visible-xs'></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='swimRecord in filterSwimRecords = (SwimRecords
+                    | orderBy:predicate.value:reverse
+                    | filter:search.last_name)'>
+        <td ng-click='checkOut(swimRecord)'>
+          <check-out ng-click="search.swimmer.last_name=''" info='swimRecord'></check-out>
+        </td>
+        <td class='visible-xs'>
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
+            {{swimRecord.swimmer.last_name}},
+            {{swimRecord.swimmer.first_name}}
+          </a>
+        </td>
+        <td class='hidden-xs'>
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>{{swimRecord.swimmer.last_name}}</a>
+        </td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.mi}}</td>
+        <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
+        <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
+        <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td>
+          <a ng-href='tel:{{swimRecord.swimmer.phone_number}}'>
+            CALL
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <center>
+    <div ng-show='!filterSwimRecords.length'>
+      <p>No swimmers are found or you have none checked in.<br>
+        <a href='#' ng-click="search.last_name=''">NEW SEARCH</a></p>
+    </div>
+  </center>
 </div>
