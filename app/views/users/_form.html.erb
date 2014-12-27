@@ -1,12 +1,10 @@
   <h1><%= legend %></h1>
   <div class='table-width-desktop u-grey-border'>
   <%= bootstrap_form_for(@user) do |f| %>
-    <%= render 'shared/error_messages_users' %>
-    <p>Required *</p>
     <%= f.text_field :first_name, label: 'First Name *' %>
     <%= f.text_field :last_name, label: 'Last Name *' %>
     <%= f.text_field :email, label: 'Email *' %>
-    <%= f.telephone_field :phone_number, label: 'Phone Number *' %>
+    <%= f.telephone_field :phone_number, label: 'Phone Number' %>
     <%= f.password_field :password, label: 'Password *' %>
     <%= f.password_field :password_confirmation, label: 'Password Confirmation *' %>
     <% if current_user.admin? && @user != current_user %>

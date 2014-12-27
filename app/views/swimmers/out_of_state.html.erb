@@ -15,12 +15,11 @@
     <thead>
       <tr>
         <th></th>
-        <th class='visible-xs'>Full Name</th>
-        <th class='hidden-xs'>Last Name</th>
-        <th class='hidden-xs'>First Name</th>
-        <th class='hidden-xs'>MI</th>
-        <th class='hidden-xs'>USMS Number</th>
-        <th>LMSC</th>
+        <th class='visible-xs'></th>
+        <th class='hidden-xs medium-grey-text'>Name</th>
+        <th class='hidden-xs medium-grey-text'>USMS#</th>
+        <th class='hidden-xs medium-grey-text'>LMSC</th>
+        <th class='visible-xs'></th>
       </tr>
     </thead>
     <tbody>
@@ -31,24 +30,15 @@
               <%= link_to('Add', swimmers_path(swimmer), method: 'post',
                           class: 'button button-primary') %>
             </td>
-            <td class='visible-xs'>
+            <td class='medium-grey-text'>
               <%= "#{swimmer[:swimmer][:last_name]},
                    #{swimmer[:swimmer][:first_name]}
                    #{swimmer[:swimmer][:mi]}" %>
             </td>
-            <td class='hidden-xs'>
-              <%= swimmer[:swimmer][:last_name] %>
-            </td>
-            <td class='hidden-xs'>
-              <%= swimmer[:swimmer][:first_name] %>
-            </td>
-            <td class='hidden-xs'>
-              <%= swimmer[:swimmer][:mi] %>
-            </td>
-            <td class='hidden-xs'>
+            <td class='hidden-xs medium-grey-text'>
               <%= swimmer[:swimmer][:usms_number] %>
             </td>
-            <th>
+            <th class='medium-grey-text'>
               <%= swimmer[:swimmer][:lmsc] %>
             </td>
           </tr>

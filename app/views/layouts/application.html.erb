@@ -35,17 +35,17 @@
         <div class='collapse navbar-collapse' id='myNavbar'>
           <ul class='nav navbar-nav u-ul-position-fix'>
             <% if signed_in? %>
-            <li><%= link_to 'MY PROFILE', current_user, class:'navbar-link visible-xs' %></li>
-            <li><a class='navbar-link hidden-xs' href='/swimmers'>CHECK IN</a></li>
-            <li><a class='navbar-link hidden-xs' href='/swim_records'>CHECK OUT</a></li>
-            <li><a class='navbar-link' href='/users'>MONITORS</a></li>
-            <li><a class='navbar-link' href='/out_of_state'>OUT OF STATE</a></li>
-            <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get, class:'navbar-link visible-xs' %>
-              <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete, class:'navbar-link visible-xs' %></li>
+              <li><%= link_to 'MY PROFILE', current_user, class:'navbar-link visible-xs' %></li>
+              <li><a class='navbar-link hidden-xs' href='/swimmers'>CHECK IN</a></li>
+              <li><a class='navbar-link hidden-xs' href='/swim_records'>CHECK OUT</a></li>
+              <li><a class='navbar-link' href='/users'>MONITORS</a></li>
+              <li><a class='navbar-link' href='/out_of_state'>OUT OF STATE</a></li>
               <% if current_user.admin? %>
-              <li><a class='navbar-link hidden-xs' href='/analytics'>ANALYTICS</a></li>
+              <li><a class='navbar-link' href='/analytics'>ANALYTICS</a></li>
               <% end %>
-              <% end %>
+              <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get, class:'navbar-link visible-xs' %>
+                <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete, class:'navbar-link visible-xs' %></li>
+            <% end %>
             </ul>
             <% if signed_in? %>
             <ul class='nav navbar-nav navbar-right u-ul-position-fix hidden-xs'>
@@ -67,20 +67,22 @@
       <br><br><br>
     <div class='container'>
       <%= custom_bootstrap_flash %>
-      <%= yield %>
+      <div ng-app='comsatrack'>
+        <%= yield %>
+      </div>
       <% if signed_in? %>
         <center>
           <br><br><br>
           <p class='light-grey-text'>
             For Support <a href='mailto:matchmike1313@gmail.com'>matchmike1313@gmail.com</a>
             <br>
-            <a class='light-grey-text' href = '/privacy'>
+            <a class='light-grey-text footer-link' href = '/privacy'>
               Privacy
             </a> |
-            <a class='light-grey-text' href = '/tos'>
+            <a class='light-grey-text footer-link' href = '/tos'>
               Terms of Service
             </a> |
-            <a class='light-grey-text' href = '/faq'>
+            <a class='light-grey-text footer-link' href = '/faq'>
               FAQ
             </a>
             <br>

@@ -1,4 +1,17 @@
-@comsatrack.factory 'Users', ['$resource',
+@comsatrack.factory 'Users', [
+  '$resource'
   ($resource) ->
-    $resource('/users.json', {}, { index: { method: 'GET', isArray: true}})
+    $resource('/users/:id.json',
+      id: '@id',
+    ,
+      index:
+        method: 'GET'
+        isArray: true
+
+      update:
+        method: 'PUT'
+
+      create:
+        method: 'POST'
+    )
 ]

@@ -1,55 +1,52 @@
 <% provide(:title, 'MONITORS') %>
 
-<div ng-app='comsatrack'>
-  <div ng-controller='UsersCtrl'>
-    <h1>Monitors</h1>
+<div ng-controller='UsersCtrl'>
+  <h1>Monitors</h1>
 
-    <div class='u-pull-left'>
-      <input class='u-input-width' type='text' ng-model='search.last_name' placeholder='Search Last Name' autocorrect='off'/>
-    </div>
-
-    <div class='u-pull-right hidden-xs'>
-      <% if current_user.admin? %>
-        <a class='button button-solid button-info-solid' href='/users/new'>Add Monitor</a>
-      <% end %>
-    </div>
-
-    <br><br><br>
-
-    <table class='u-full-width'>
-      <thead ng-show='(Users | filter:search).length > 0'>
-        <tr>
-          <th class='visible-xs'>
-            <a ng-click="predicate.value = 'last_name'; reverse=!reverse">Full Name</a>
-          </th>
-          <th class='hidden-xs'>
-            <a ng-click="predicate.value = 'last_name'; reverse=!reverse">Last Name</a>
-          </th>
-          <th class='hidden-xs'>First Name</th>
-          <th class='hidden-xs'>Email</th>
-          <th>Phone Number</th>
-          <th class='hidden-xs'>Admin</th>
-        </tr>
-      </thead>
-      <tbody ng-repeat='user in Users | orderBy:predicate.value:reverse | filter:search'>
-        <tr>
-          <td class='visible-xs'>
-            <a ng-href='/users/{{user.id}}'>{{user.last_name}}, {{user.first_name}}</a>
-          </td>
-          <td class='hidden-xs'><a ng-href='/users/{{user.id}}'>{{user.last_name}}</a></td>
-          <td class='hidden-xs'>{{user.first_name}}</td>
-          <td class='hidden-xs'>{{user.email}}</td>
-          <td class='hidden-xs'>{{user.phone_number}}</td>
-          <td class='visible-xs'><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</a></td>
-          <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <center>
-      <div ng-show='(Users | filter:search).length == 0'>
-        <p>No results found <a href='#' ng-click="search=''"> new search?</a></p>
-      </div>
-    </center>
+  <div class='u-pull-left'>
+    <input class='u-input-width'
+           type='text'
+           ng-model='search.last_name'
+           placeholder='Search Last Name'
+           autocorrect='off'/>
   </div>
+
+  <div class='u-pull-right hidden-xs'>
+    <a class='button button-info button-info-solid' href='/users/new'>
+      Add Monitor
+    </a>
+  </div>
+
+  <table class='u-full-width'>
+    <thead ng-show='filterUsers.length'>
+      <tr>
+        <th class='visible-xs'></th>
+        <th class='hidden-xs medium-grey-text'>Name</th>
+        <th class='hidden-xs medium-grey-text'>Email</th>
+        <th class='hidden-xs medium-grey-text'>Phone Number</th>
+        <th class='visible-xs'></th>
+        <th class='hidden-xs medium-grey-text'>Admin</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat='user in filterUsers = (users
+                     | orderBy:predicate.value:reverse
+                     | filter:search.last_name)'>
+      <tr>
+        <td>
+          <a ng-href='/users/{{user.id}}'>{{user.last_name}}, {{user.first_name}}</a>
+        </td>
+        <td class='hidden-xs'>
+          <a href='mailto:{{user.email}}'>{{user.email}}</a>
+        </td>
+        <td><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</a></td>
+        <td class='hidden-xs'>{{user.admin | booleanToWords}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <center>
+    <div ng-hide='filterUsers.length'>
+      <p>No results found.<br><a href='#' ng-click="search.last_name=''">NEW SEARCH</a></p>
+    </div>
+  </center>
 </div>

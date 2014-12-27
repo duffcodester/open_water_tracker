@@ -1,35 +1,32 @@
 <% provide(:title, 'ANALYTICS') %>
-<div ng-app='comsatrack'>
-  <div ng-controller='AnalyticsCtrl'>
 
-    <h1>Analytics</h1>
+<h1>Analytics</h1>
 
-    <div class='u-pull-right'>
-      <%= link_to 'Export All Records', records_path(format: 'csv'),
-      class: 'button button-primary button-primary-solid' %>
-    </div>
+<table class='u-full-width'>
+  <thead>
+    <th class='medium-grey-text'>Metric</th>
+    <th class='medium-grey-text'>Count</th>
+  </thead>
+  <tr>
+    <td class='medium-grey-text'>2015: Number of Swims</td>
+    <td class='medium-grey-text'><%= @records_2015.count %></td>
+  </tr>
+  <tr>
+    <td class='medium-grey-text'>2015: Unique Swimmers</td>
+    <td class='medium-grey-text'><%= @unique_2015 %></td>
+  </tr>
+  <tr>
+    <td class='medium-grey-text'>2014: Number of Swims</td>
+    <td class='medium-grey-text'><%= @records_2014.count %></td>
+  </tr>
+  <tr>
+    <td class='medium-grey-text'>2014: Unique Swimmers</td>
+    <td class='medium-grey-text'><%= @unique_2014 %></td>
+  </tr>
+</table>
 
-    <table class='u-full-width'>
-      <thead>
-        <th>Metric</th>
-        <th>Count</th>
-      </thead>
-      <tr>
-        <td>2015: Number of Swims</td>
-        <td><%= @records_2015.count %></td>
-      </tr>
-      <tr>
-        <td>2015: Unique Swimmers</td>
-        <td><%= @unique_2015 %></td>
-      </tr>
-      <tr>
-        <td>2014: Number of Swims</td>
-        <td><%= @records_2014.count %></td>
-      </tr>
-      <tr>
-        <td>2014: Unique Swimmers</td>
-        <td><%= @unique_2014 %></td>
-      </tr>
-    </table>
-  </div>
+<div class='u-pull-left'>
+  <a class='button button-primary button-primary-solid' href='/records.csv'>
+    Export All Records
+  </a>
 </div>
