@@ -4,16 +4,27 @@ class SwimRecordsController < ApplicationController
   def index
     @check_out = false
     @swim_records = SwimRecord.where(completed: false)
-    index_respond_to_format_methods
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @swim_records.to_json(include: [:swimmer])
+      end
+    end
+
   end
 
   def records
     @records = SwimRecord.where(completed: true)
-    records_respond_to_format_methods
+    render csv: @records, filename: 'records'
   end
 
   def new
     @swim_record = SwimRecord.new
+  end
+
+  def show
+    render json: @swim_record.include[:swimmer]
   end
 
   def create
@@ -24,14 +35,6 @@ class SwimRecordsController < ApplicationController
 
   def update
     swim_record_update? ? swim_record_if_logic : create_and_update_json_else
-  end
-
-  def destroy
-    @swim_record.destroy
-    respond_to do |format|
-      format.html { redirect_to swim_records_url }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -77,20 +80,5 @@ class SwimRecordsController < ApplicationController
 
   def create_and_update_json_else
     render json: @swim_record.errors, status: :unprocessable_entity
-  end
-
-  def index_respond_to_format_methods
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
-
-  def records_respond_to_format_methods
-    respond_to do |format|
-      format.html
-      format.json
-      format.csv { render csv: @records, filename: 'records' }
-    end
   end
 end
