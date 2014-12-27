@@ -12,16 +12,11 @@
       <tr>
         <th></th>
         <th class='visible-xs'></th>
-        <th class='hidden-xs'>
-          <a href='' ng-click="predicate.value = 'swimmer.last_name'; reverse=!reverse">
-            Last Name</a>
-        </th>
-        <th class='hidden-xs'>First Name</th>
-        <th class='hidden-xs'>MI</th>
-        <th class='hidden-xs'>USMS Number</th>
-        <th class='hidden-xs'>LMSC</th>
-        <th class='hidden-xs'>Check In</th>
-        <th class='hidden-xs'>Phone Number</th>
+        <th class='hidden-xs medium-grey-text'>Name</th>
+        <th class='hidden-xs medium-grey-text'>USMS#</th>
+        <th class='hidden-xs medium-grey-text'>LMSC</th>
+        <th class='hidden-xs medium-grey-text'>Check In</th>
+        <th class='hidden-xs medium-grey-text'>Phone Number</th>
         <th class='visible-xs'></th>
       </tr>
     </thead>
@@ -34,18 +29,17 @@
         </td>
         <td class='visible-xs'>
           <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
-            {{swimRecord.swimmer.last_name}},
-            {{swimRecord.swimmer.first_name}}
+            {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}} {{swimRecord.swimmer.mi}}
           </a>
         </td>
         <td class='hidden-xs'>
-          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>{{swimRecord.swimmer.last_name}}</a>
+          <a ng-href='/swimmers/{{swimRecord.swimmer.id}}'>
+            {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}} {{swimRecord.swimmer.mi}}
+          </a>
         </td>
-        <td class='hidden-xs'>{{swimRecord.swimmer.first_name}}</td>
-        <td class='hidden-xs'>{{swimRecord.swimmer.mi}}</td>
-        <td class='hidden-xs'>{{swimRecord.swimmer.usms_number}}</td>
-        <th class='hidden-xs'>{{swimRecord.swimmer.lmsc}}</td>
-        <td class='hidden-xs'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+        <td class='hidden-xs medium-grey-text'>{{swimRecord.swimmer.usms_number}}</td>
+        <th class='hidden-xs medium-grey-text'>{{swimRecord.swimmer.lmsc}}</td>
+        <td class='hidden-xs medium-grey-text'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <td>
           <a ng-href='tel:{{swimRecord.swimmer.phone_number}}'>
             CALL

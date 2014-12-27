@@ -1,33 +1,15 @@
-@import "bootstrap";
+@import 'bootstrap';
 
 $lightGrey: #C0C0C0;
+$mediumGrey: #757575;
 
 /* universal */
-
-.u-ul-position-fix {
-  position: relative;
-  top: 5px;
-}
 .button-on-nav {
   position: relative;
   top: 7px;
 }
-
 .navbar-default {
   background-color: #FFF;
-}
-
-#devise_html {
-  overflow-y: scroll;
-  position: relative;
-  width: 100%;
-  background-color:#ECEEF2;
-}
-
-#devise_body {
-  height: 80%;
-  padding-top: 0px;
-  background-color:#ECEEF2;
 }
 
 * {
@@ -52,6 +34,17 @@ $lightGrey: #C0C0C0;
   color: $lightGrey
 }
 
+@media (min-width: 768px) {
+  .medium-grey-text {
+    color: $mediumGrey
+  }
+  .u-ul-position-fix {
+    position: relative;
+    top: 5px;
+  }  
+}
+
+
 html {
   overflow-y: scroll;
   position: relative;
@@ -73,6 +66,10 @@ html {
     color: #0FA0CE !important;
   }
 
+}
+
+* a{
+  text-decoration: none !important
 }
 
 .nav > li > a {
