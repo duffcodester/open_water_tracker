@@ -138,6 +138,8 @@ GEM
       mini_portile (~> 0.6.0)
     oj (2.8.1)
     orm_adapter (0.5.0)
+    pace-rails (0.1.1)
+      jquery-rails
     parser (2.1.7)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
@@ -277,6 +279,7 @@ DEPENDENCIES
   lodash-rails
   newrelic_rpm
   oj
+  pace-rails
   pg (= 0.15.1)
   rails (= 4.0.2)
   rails_12factor

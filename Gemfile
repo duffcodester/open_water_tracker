@@ -26,6 +26,7 @@ gem 'lodash-rails'
 
 #Front End
 gem 'toastr-rails'
+gem 'pace-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
