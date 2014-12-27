@@ -11,7 +11,5 @@
       scope.swimRecord.swimmer.$update
 
       scope.swimRecord.$update (newSwimRecord, putResponseHeaders) ->
-        console.log 'Great Success!'
         console.log newSwimRecord
-
       scope.$apply()

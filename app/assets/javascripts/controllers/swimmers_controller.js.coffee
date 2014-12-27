@@ -4,11 +4,15 @@
   'Swimmers',
   'SwimRecords'
   '$modal'
-  '$q'
 
-  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $q) ->
+  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal) ->
 
     $scope.swimmers = Swimmers.index()
+    SwimRecords.index (data) ->
+      $scope.swimRecords = data
+
+    $scope.predicate =
+      value: 'swimmer.last_name'
 
     $scope.search = {}
 
@@ -16,27 +20,29 @@
     $scope.loadMore = ->
       $scope.totalDisplayed += 5
 
-    $scope.checkIn = (swimmer) ->
-      toastr.options.positionClass = 'toast-bottom-left'
-      toastr.success 'Swimmer has been checked in.'
-      $scope.search.last_name = ''
+    $scope.deleteRow = (swimRecord) ->
+      $scope.swimRecords.splice $scope.swimRecords.indexOf(swimRecord), 1
 
+    $scope.checkOut = (swimRecord) ->
+      toastr.options.positionClass = 'toast-bottom-left'
+      toastr.success 'Swimmer has been checked out'
+      $scope.deleteRow(swimRecord)
+
+    $scope.checkIn = (swimmer) ->
       SwimRecords.create
         swimmer_id: swimmer.id
 
-      swimmerData =
-        id: swimmer.id
+      swimmerData =  angular.extend swimmer,
         phone_added: true
         swimmer_checked_in: true
 
       Swimmers.update id: swimmerData.id, swimmerData
       .$promise.then (updatedSwimmer) ->
+        $scope.search.last_name = ''
+        $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
         $scope.swimmers.push updatedSwimmer
-
-    # $q.all {swimmers}
-    #   .then (resources) =>
-    #     angular.extend $scope, resources
-    #     update()
+        toastr.options.positionClass = 'toast-bottom-left'
+        toastr.success 'Swimmer has been checked in'
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
@@ -53,7 +59,7 @@
       $scope.update = ->
         updateExistingSwimmer(swimmer).then ->
           $modalInstance.close swimmer
-          toastr.success 'Swimmer phone number was successfully updated.'
+          toastr.success 'Swimmer phone number updated'
 
       updateExistingSwimmer = (swimmer) ->
         swimmerData = angular.extend swimmer,
@@ -61,6 +67,7 @@
 
         Swimmers.update id: swimmerData.id, swimmerData
         .$promise.then (updatedSwimmer) ->
+          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
           $scope.swimmers.push updatedSwimmer
 
       $scope.cancel = ->

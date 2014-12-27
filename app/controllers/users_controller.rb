@@ -19,13 +19,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    message = 'User account was successfully created.'
+    message = 'Monitor account was successfully created'
     handle_action(@user, message, :new, &:save)
   end
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = 'Employee Profile updated'
+      flash[:success] = 'Monitor Profile updated'
 
       respond_to do |format|
         format.html { redirect_to @user }

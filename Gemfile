@@ -19,12 +19,12 @@ gem 'comma', '~> 3.0'
 gem 'newrelic_rpm'
 gem 'oj'
 
-#Angular
+# Angular
 gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
 gem 'lodash-rails'
 
-#Front End
+# Front End
 gem 'toastr-rails'
 gem 'pace-rails'
 
@@ -32,10 +32,6 @@ group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.20.1'
-  gem 'guard-rspec'
-  gem 'guard-bundler'
-  gem 'spork-rails', '4.0.0'
-  gem 'guard-spork', '1.5.0'
   gem 'teaspoon'
   gem 'debugger'
 end

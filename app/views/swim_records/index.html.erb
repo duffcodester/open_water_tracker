@@ -1,6 +1,6 @@
 <% provide(:title, 'CHECK OUT') %>
 
-<div ng-controller='SwimRecordsCtrl'>
+<div ng-controller='SwimmersCtrl'>
   <h1>Check Out</h1>
 
   <div class='u-pull-left'>
@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat='swimRecord in filterSwimRecords = (SwimRecords
+      <tr ng-repeat='swimRecord in filterSwimRecords = (swimRecords
                     | orderBy:predicate.value:reverse
                     | filter:search.last_name)'>
         <td ng-click='checkOut(swimRecord)'>

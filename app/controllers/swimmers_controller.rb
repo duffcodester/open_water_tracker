@@ -60,7 +60,7 @@ class SwimmersController < ApplicationController
 
   def import
     call_rake :import
-    flash[:success] = 'Please allow one minute to update.'
+    flash[:success] = 'Please allow one minute to update'
     redirect_to swimmers_path
   end
 

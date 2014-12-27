@@ -17,7 +17,7 @@
         Users.update id: $scope.user.id, userData
         .$promise.then (updatedUser) ->
           $scope.users.push updatedUser
-          toastr.success('Monitor administrative rights have been invoked.')
+          toastr.success('Monitor administrative rights have been invoked')
 
       else
         userData = angular.extend user,
@@ -26,5 +26,5 @@
         Users.update id: $scope.user.id, userData
         .$promise.then (updatedUser) ->
           $scope.users.push updatedUser
-          toastr.success('Monitor administrative rights have been granted.')
+          toastr.success('Monitor administrative rights have been granted')
 ]

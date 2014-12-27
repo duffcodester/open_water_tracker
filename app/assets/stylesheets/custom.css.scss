@@ -41,7 +41,7 @@ $mediumGrey: #757575;
   .u-ul-position-fix {
     position: relative;
     top: 5px;
-  }  
+  }
 }
 
 
@@ -90,6 +90,18 @@ html {
     width: 95%;
     margin: 0 auto;
   }
+}
+
+#toast-container > .toast {
+  background-image: none !important;
+  padding-left: 25px;
+}
+
+#toast-container > .toast:before {
+  position: fixed;
+  font-size: 24px;
+  line-height: 18px;
+  float: right;
 }
 
 #toast-container > div {
