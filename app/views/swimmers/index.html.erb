@@ -1,65 +1,63 @@
 <% provide(:title, 'CHECK IN') %>
 
-<div ng-app='comsatrack'>
-  <div ng-controller='SwimmersCtrl'>
-    <h1>Check In</h1>
+<div ng-controller='SwimmersCtrl'>
+  <h1>Check In</h1>
 
-    <div class='u-pull-left'>
-      <input class='u-input-width'
-             type='text'
-             ng-model='search.last_name'
-             placeholder='Search Last Name'
-             autocorrect='off'/>
-    </div>
-
-    <table class='u-full-width'>
-      <thead ng-show='filterSwimmers.length'>
-        <tr>
-          <th></th>
-          <th></th>
-          <th class='hidden-xs'>Last Name</th>
-          <th class='hidden-xs'>First Name</th>
-          <th class='hidden-xs'>MI</th>
-          <th class='hidden-xs'>USMS Number</th>
-          <th class='hidden-xs'>LMSC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="swimmer in filterSwimmers = (swimmers
-                      | orderBy:['last_name','first_name']
-                      | filter:search.last_name
-                      | limitTo:totalDisplayed)">
-          <td ng-if='!swimmer.swimmer_checked_in && !swimmer.phone_number'>
-            <button class='button button-primary button-width-default' ng-click="open(swimmer)">Add Phone</button>
-          </td>
-          <td ng-if='!swimmer.swimmer_checked_in && swimmer.phone_number'>
-            <button ng-click="checkIn(swimmer)" class='button button-success button-width-default'>Check In</button>
-          </td>
-          <td ng-if='swimmer.swimmer_checked_in'>
-            <button class='button button-danger button-width-default button-disabled'>Checked In</button>
-          </td>
-          <td class='visible-xs'>
-            <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}, {{swimmer.first_name}}</a>
-          </td>
-          <td class='hidden-xs'>
-            <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}</a>
-          </td>
-          <td class='hidden-xs'>{{swimmer.first_name}}</td>
-          <td class='hidden-xs'>{{swimmer.mi}}</td>
-          <td class='hidden-xs'>{{swimmer.usms_number}}</td>
-          <th class='hidden-xs'>{{swimmer.lmsc}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <center>
-      <div ng-show='!filterSwimmers.length'>
-        <p>No results found <a href='#' ng-click="search.last_name=''"> new search?</a></p>
-        <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-info button-info-solid' %>
-      </div>
-      <div ng-show='filterSwimmers.length'>
-        <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>
-      </div>
-    </center>
+  <div class='u-pull-left'>
+    <input class='u-input-width'
+           type='text'
+           ng-model='search.last_name'
+           placeholder='Search Last Name'
+           autocorrect='off'/>
   </div>
+
+  <table class='u-full-width'>
+    <thead ng-show='filterSwimmers.length'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class='hidden-xs'>Last Name</th>
+        <th class='hidden-xs'>First Name</th>
+        <th class='hidden-xs'>MI</th>
+        <th class='hidden-xs'>USMS Number</th>
+        <th class='hidden-xs'>LMSC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="swimmer in filterSwimmers = (swimmers
+                    | orderBy:['last_name','first_name']
+                    | filter:search.last_name
+                    | limitTo:totalDisplayed)">
+        <td ng-if='!swimmer.swimmer_checked_in && !swimmer.phone_number'>
+          <button class='button button-primary button-width-default' ng-click="open(swimmer)">Add Phone</button>
+        </td>
+        <td ng-if='!swimmer.swimmer_checked_in && swimmer.phone_number'>
+          <button ng-click="checkIn(swimmer)" class='button button-success button-width-default'>Check In</button>
+        </td>
+        <td ng-if='swimmer.swimmer_checked_in'>
+          <button class='button button-danger button-width-default button-disabled'>Checked In</button>
+        </td>
+        <td class='visible-xs'>
+          <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}, {{swimmer.first_name}}</a>
+        </td>
+        <td class='hidden-xs'>
+          <a ng-href='/swimmers/{{swimmer.id}}'>{{swimmer.last_name}}</a>
+        </td>
+        <td class='hidden-xs'>{{swimmer.first_name}}</td>
+        <td class='hidden-xs'>{{swimmer.mi}}</td>
+        <td class='hidden-xs'>{{swimmer.usms_number}}</td>
+        <th class='hidden-xs'>{{swimmer.lmsc}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <center>
+    <div ng-show='!filterSwimmers.length'>
+      <p>No results found <a href='#' ng-click="search.last_name=''"> new search?</a></p>
+      <%= link_to 'Search Out of State', out_of_state_path, class: 'button button-info button-info-solid' %>
+    </div>
+    <div ng-show='filterSwimmers.length'>
+      <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>
+    </div>
+  </center>
 </div>
