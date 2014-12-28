@@ -26,13 +26,9 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = 'Monitor Profile updated'
-
       respond_to do |format|
         format.html { redirect_to @user }
-
-        format.json do
-          render json: @user
-        end
+        format.json { render json: @user }
       end
     else
       render 'edit'
