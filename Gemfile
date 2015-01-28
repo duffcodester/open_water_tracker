@@ -13,7 +13,7 @@ gem 'newrelic_rpm'
 gem 'oj'
 
 # Angualr
-gem 'angularjs-rails', '~> 1.3.36'
+gem 'angularjs-rails', '1.3.10'
 gem 'angular-ui-bootstrap-rails'
 
 # Front End
