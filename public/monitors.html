@@ -29,6 +29,7 @@
   <tr>
     <td>
       <a ng-if='currentUser.admin' ng-click='open(user)'>{{user.last_name}}, {{user.first_name}}</a>
+      <a ng-if='!currentUser.admin'>{{user.last_name}}, {{user.first_name}}</a>
     </td>
     <td class='hidden-xs'><a href='mailto:{{user.email}}'>{{user.email}}</a></td>
     <td><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</a></td>
