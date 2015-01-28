@@ -3,10 +3,10 @@
   <head>
     <title>COMSA TRACKER</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
-    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <script src='http://bouil.github.io/angular-google-chart/ng-google-chart.js'></script>
-    <script src='//angular-ui.github.io/ui-router/release/angular-ui-router.js'></script>
+    <script src='https://bouil.github.io/angular-google-chart/ng-google-chart.js'></script>
+    <script src='https://angular-ui.github.io/ui-router/release/angular-ui-router.js'></script>
     <%= csrf_meta_tags %>
     <% if signed_in? %>
       <script type='text/javascript'>
@@ -35,7 +35,7 @@
           <div class='visible-xs'>
             <a ui-sref='checkIn' ng-show="state != '/check_in'"
                class='button button-success button-success-solid button-width-default button-on-nav'>
-               CHECK IN ({{checkOutCount.length}})
+               CHECK IN
             </a>
             <a ui-sref='checkOut' ng-show="state == '/check_in'"
               class='button button-danger button-danger-solid button-width-default button-on-nav'>

@@ -13,6 +13,6 @@
 
       create:
         method: 'POST'
-        isArray: false
+        isArray: true
     )
 ]

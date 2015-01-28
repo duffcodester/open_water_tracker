@@ -1,6 +1,3 @@
-<div ui-view></div>
-
-
 <h1>Check In</h1>
 <ng-include src="'/search.html'"></ng-include>
 
@@ -16,6 +13,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="swimmer in filterSwimmers = (swimmers
+                   | unique: 'usms_number'
                    | orderBy:['last_name','first_name']
                    | filter:search.last_name
                    | limitTo:totalDisplayed )">
@@ -40,7 +38,7 @@
 </table>
 <center>
   <div ng-show='!filterSwimmers.length'>
-    <p>No swimmers found. <a href='#' ng-click="search.last_name=''"> New search?</a></p>
+    <p>No swimmers found.<br><a href='#' ng-click="search.last_name=''">NEW SEARCH</a></p>
     <a ng-href='/out_of_state' class='button button-info button-info-solid'>Search Out of State</a>
   </div>
   <div ng-show='filterSwimmers.length'>

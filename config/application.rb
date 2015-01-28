@@ -19,8 +19,6 @@ module Comsa
 
     config.time_zone = 'Mountain Time (US & Canada)'
 
-    config.angular_templates.ignore_prefix  = %w(templates/)
-
     config.assets.initialize_on_precompile = false
     config.i18n.enforce_available_locales = true
 

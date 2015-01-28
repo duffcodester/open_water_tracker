@@ -16,7 +16,8 @@
   </div>
 </div>
 
-<table class='u-full-width' ng-show='filteredSwimmers.length'>
+
+<table class='u-full-width' ng-show='filteredSwimmers.length > 0'>
   <thead>
     <tr>
       <th></th>
@@ -28,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="data in filteredSwimmers = (swimmers
+    <tr ng-repeat="data in filteredSwimmers = (outOfState
                    | orderBy:predicate.value:reverse
                    | filter: search.swimmer.first_name
                    | limitTo:totalDisplayed )"
@@ -48,7 +49,7 @@
 <br><br><br>
 <center>
   <div ng-show='!filteredSwimmers.length'>
-    <p>No swimmers found. <a href='#' ng-click="search.swimmer.last_name=''"> New search?</a></p>
+    <p>No swimmers found.<br><a href='#' ng-click="search.swimmer.last_name=''">NEW SEARCH</a></p>
   </div>
   <div ng-show='filteredSwimmers.length'>
     <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>

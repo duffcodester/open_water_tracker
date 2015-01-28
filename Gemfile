@@ -2,10 +2,8 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.2'
-gem 'bootstrap_form', github: 'potenza/bootstrap_form'
 gem 'devise'
 gem 'faker', '1.1.2'
-gem 'bcrypt'
 gem 'jbuilder', '~> 1.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -13,11 +11,9 @@ gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
 gem 'newrelic_rpm'
 gem 'oj'
-gem 'bower-rails'
-gem 'turbolinks'
 
 # Angualr
-gem 'angular-rails-templates'
+gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
 
 # Front End

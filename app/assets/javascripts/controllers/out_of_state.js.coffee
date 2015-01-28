@@ -2,39 +2,36 @@
   '$scope'
   '$http'
   'Swimmers'
+  'OutOfState'
+  '$location'
 
-  @OutOfStateCtrl = ($scope, $http, Swimmers) ->
-    $scope.swimmers = Swimmers.index()
+  @OutOfStateCtrl = ($scope, $http, Swimmers, OutOfState, $location) ->
+    OutOfState.data()
+    .$promise.then (outOfState) ->
+      $scope.outOfState = outOfState
 
-    $scope.lastName = ''
+    Swimmers.index()
+    .$promise.then (swimmers) ->
+      $scope.swimmers = swimmers
 
-    $scope.predicate =
-      value: 'swimmer.first_name'
+      $scope.lastName = ''
 
-    $scope.totalDisplayed = 5
-    $scope.loadMore = ->
-      $scope.totalDisplayed += 5
+      $scope.predicate =
+        value: 'swimmer.first_name'
 
-    $scope.search = ->
-      base_url = '/api/out_of_state?search='
-      $http.get(base_url.concat($scope.lastName)).success (data) ->
-        $scope.swimmers = data
+      $scope.totalDisplayed = 5
+      $scope.loadMore = ->
+        $scope.totalDisplayed += 5
 
-    $scope.addSwimmer = (swimmer) ->
-      Swimmers.create
-        first_name: swimmer.first_name
-        mi: swimmer.mi
-        last_name: swimmer.last_name
-        usms_number: swimmer.usms_number
-        lmsc: swimmer.lmsc
-        phone_number: swimmer.phone_number
+      $scope.search = ->
+        base_url = '/api/out_of_state?search='
+        $http.get(base_url.concat($scope.lastName)).success (data) ->
+          $scope.outOfState = data
 
-      .$promise.then (newSwimmer) ->
-        console.log 'Hi'
-        $scope.search.swimmer.first_name = ''
-        $scope.swimmers.splice $scope.swimmers.indexOf(newSwimmer), 1
-        # $scope.swimmers.push newSwimmer
-        toastr.options.positionClass = 'toast-bottom-left'
-        swimmer = swimmer.first_name + ' ' + swimmer.last_name
-        toastr.success(' has been added.')
+      $scope.addSwimmer = (swimmer) ->
+        Swimmers.create(swimmer).$promise.then (newSwimmer) ->
+          $location.path('/check_in')
+          toastr.options.positionClass = 'toast-bottom-left'
+          message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added.'
+          toastr.success message
 ]
