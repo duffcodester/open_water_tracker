@@ -1,25 +1,19 @@
 Comsa::Application.routes.draw do
 
-  root 'swimmers#index'
+  root 'application#private'
 
-  devise_for :users
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
 
-  resources :users
-  resources :swim_records
-  resources :swimmers
+  scope 'api' do
+    resources :swimmers
+    resources :swim_records
+    resources :users
+    get '/analytics' => 'api#analytics'
+    get '/records' => 'api#records'
+    match 'out_of_state', to: 'api#out_of_state', via: [:post, :get]
+  end
 
-  match '/analytics',
-        to: 'static_pages#analytics',
-        via: 'get'
-  match '/analytics',
-        to: 'static_pages#analytics',
-        via: 'post'
-
-  match '/out_of_state', to: 'swimmers#out_of_state', via: 'get'
-  match '/records', to: 'swim_records#records',    via: 'get'
+  match '/instructions', to: 'public#instructions', via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'
-  match '/privacy', to: 'static_pages#privacy', via: 'get'
-  match '/tos', to: 'static_pages#tos', via: 'get'
-  match '/faq', to: 'static_pages#faq', via: 'get'
-  match '/admin', to: 'static_pages#admin', via: 'get'
+
 end

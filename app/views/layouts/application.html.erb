@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title))%></title>
+    <title>COMSA TRACKER</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
-    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src='http://bouil.github.io/angular-google-chart/ng-google-chart.js'></script>
+    <script src='//angular-ui.github.io/ui-router/release/angular-ui-router.js'></script>
     <%= csrf_meta_tags %>
+    <% if signed_in? %>
+      <script type='text/javascript'>
+      window.Application = Object.freeze({
+        currentUser: <%= current_user.to_json.html_safe %>,
+      });
+      </script>
+    <% end %>
   </head>
-  <body>
+  <body ng-app='comsatrack' ng-controller='NavigationCtrl'>
+
     <nav class='navbar navbar-default navbar-fixed-top'>
       <div class='container'>
         <div class='navbar-header'>
@@ -19,29 +29,33 @@
             </button>
           <% end %>
           <% unless signed_in? %>
-            <a class="navbar-brand" href='/users/sign_in'>COMSA TRACKER</a>
+            <a class='navbar-brand' href='/login'>COMSA TRACKER</a>
           <% end %>
           <% if signed_in? %>
           <div class='visible-xs'>
-            <% unless @check_in == false %>
-              <%= link_to 'CHECK IN', swimmers_path, class: 'button button-success button-success-solid button-width-default button-on-nav' %>
-            <% end %>
-            <% if @check_in== false %>
-              <%= link_to 'CHECK OUT', swim_records_path, class: 'button button-danger button-danger-solid button-width-default button-on-nav' %>
-          </div>
-          <% end %>
+            <a ui-sref='checkIn' ng-show="state != '/check_in'"
+               class='button button-success button-success-solid button-width-default button-on-nav'>
+               CHECK IN ({{checkOutCount.length}})
+            </a>
+            <a ui-sref='checkOut' ng-show="state == '/check_in'"
+              class='button button-danger button-danger-solid button-width-default button-on-nav'>
+              CHECK OUT ({{checkOutCount.length}})
+            </a>
         </div>
         <% end %>
         <div class='collapse navbar-collapse' id='myNavbar'>
           <ul class='nav navbar-nav u-ul-position-fix'>
             <% if signed_in? %>
               <li><%= link_to 'MY PROFILE', current_user, class:'navbar-link visible-xs' %></li>
-              <li><a class='navbar-link hidden-xs' href='/swimmers'>CHECK IN</a></li>
-              <li><a class='navbar-link hidden-xs' href='/swim_records'>CHECK OUT</a></li>
-              <li><a class='navbar-link' href='/users'>MONITORS</a></li>
-              <li><a class='navbar-link' href='/out_of_state'>OUT OF STATE</a></li>
+              <li><a class='navbar-link hidden-xs' ui-sref='checkIn'>CHECK IN</a></li>
+              <li>
+                <a class='navbar-link hidden-xs' ui-sref='checkOut'>
+                  CHECK OUT ({{checkOutCount.length}})</a>
+              </li>
+              <li><a class='navbar-link' ui-sref='monitors'>MONITORS</a></li>
+              <li><a class='navbar-link' ui-sref='outOfState'>OUT OF STATE</a></li>
               <% if current_user.admin? %>
-              <li><a class='navbar-link' href='/analytics'>ANALYTICS</a></li>
+              <li><a class='navbar-link' ui-sref='analytics'>ANALYTICS</a></li>
               <% end %>
               <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get, class:'navbar-link visible-xs' %>
                 <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete, class:'navbar-link visible-xs' %></li>
@@ -54,7 +68,7 @@
                   ACCOUNT<b class='caret'></b>
                 </a>
                 <ul class='dropdown-menu'>
-                  <li><%= link_to 'MY PROFILE', current_user %></li>
+                  <li><a ui-sref='myProfile'>MY PROFILE</a></li>
                   <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get %></li>
                   <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
                 </ul>
@@ -67,26 +81,20 @@
       <br><br><br>
     <div class='container'>
       <%= custom_bootstrap_flash %>
-      <div ng-app='comsatrack'>
-        <%= yield %>
-      </div>
+      <div ui-view></div>
+      <%= yield %>
       <% if signed_in? %>
         <center>
           <br><br><br>
           <p class='light-grey-text'>
-            For Support <a href='mailto:matchmike1313@gmail.com'>matchmike1313@gmail.com</a>
+            For Support <a href='tel:720.387.9691'>CALL</a> -
+            <a href='mailto:matchmike1313@gmail.com'>EMAIL</a>
             <br>
-            <a class='light-grey-text footer-link' href = '/privacy'>
-              Privacy
-            </a> |
-            <a class='light-grey-text footer-link' href = '/tos'>
-              Terms of Service
-            </a> |
-            <a class='light-grey-text footer-link' href = '/faq'>
-              FAQ
-            </a>
+            <a class='light-grey-text footer-link' ui-sref='privacy'>Privacy</a> |
+            <a class='light-grey-text footer-link' ui-sref='tos'>Terms of Service</a> |
+            <a class='light-grey-text footer-link' ui-sref='faq'>FAQ</a>
             <br>
-            &#169; 2014 Affektive Software LLC
+            &#169; 2015 Affektive Software LLC
           </p>
         </center>
         <%= debug(params) if Rails.env.development?%>

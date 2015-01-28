@@ -1,12 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: proc { |c| c.request.format == 'application/json' }
-  before_filter :authenticate_user!, except: [:new, :privacy, :tos, :faq]
-  around_filter :user_time_zone, if: :current_user
+  before_filter :authenticate_user!, except: [:new, :instructions, :tos, :privacy, :faq]
+
+  def private
+  end
 
   private
 
-  def user_time_zone(&block)
-    Time.use_zone(current_user.time_zone, &block)
+  def after_sign_in_path_for(user)
+    return '/#/check_in'
   end
 
   def after_sign_out_path_for(resource_or_scope)

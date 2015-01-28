@@ -1,32 +1,30 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-# ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
 gem 'bootstrap_form', github: 'potenza/bootstrap_form'
 gem 'devise'
 gem 'faker', '1.1.2'
 gem 'bcrypt'
-gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
-gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', '3.0.3.0'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
 gem 'newrelic_rpm'
 gem 'oj'
+gem 'bower-rails'
+gem 'turbolinks'
 
-# Angular
-gem 'angularjs-rails'
+# Angualr
+gem 'angular-rails-templates'
 gem 'angular-ui-bootstrap-rails'
-gem 'lodash-rails'
 
 # Front End
 gem 'toastr-rails'
 gem 'pace-rails'
+gem 'sass-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '3.0.3.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

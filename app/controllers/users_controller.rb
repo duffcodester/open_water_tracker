@@ -2,51 +2,32 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: User.all }
-    end
-    @check_in = true
-    @check_out = true
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def edit
+    render json: User.all
   end
 
   def create
     @user = User.new(user_params)
-    message = 'Monitor account was successfully created'
-    handle_action(@user, message, :new, &:save)
+    user_setup(@user)
   end
 
   def update
-    if @user.update_attributes(user_params)
-      flash[:success] = 'Monitor Profile updated'
-
-      respond_to do |format|
-        format.html { redirect_to @user }
-
-        format.json do
-          render json: @user
-        end
-      end
-    else
-      render 'edit'
-    end
-  end
-
-  def show
-    @check_in = true
-    @check_out = true
+    user_setup(@user)
   end
 
   private
 
   include UsersHelper
+
+  def user_setup(user)
+    user.password = params[:password]
+    user.password_confirmation = params[:password_confirmation]
+    user.save!
+    if user.update_attributes(user_params)
+      render json: user.as_json
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
+  end
 
   def set_user
     @user = User.find(params[:id])

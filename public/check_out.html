@@ -1,1 +1,46 @@
-<button class='button button-danger button-width-default'>Check Out</button>
+<h1>Check Out</h1>
+<ng-include src="'/search.html'"></ng-include>
+
+<table class='u-full-width'>
+  <thead ng-show='filterSwimRecords.length'>
+    <tr>
+      <th></th>
+      <th class='visible-xs'></th>
+      <th class='hidden-xs medium-grey-text'>Name</th>
+      <th class='hidden-xs medium-grey-text'>USMS</th>
+      <th class='hidden-xs medium-grey-text'>LMSC</th>
+      <th class='hidden-xs medium-grey-text'>Check In</th>
+      <th class='hidden-xs medium-grey-text'>Phone</th>
+      <th class='visible-xs'></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='swimRecord in filterSwimRecords = (swimRecords
+                   | orderBy:predicate.value:reverse
+                   | filter: { completed: false }
+                   | filter:search.last_name)'>
+    <td>
+      <button ng-click='checkOut(swimRecord)' class='button button-danger button-width-default'>
+        Check Out
+      </button>
+    </td>
+    <td>
+      <a ng-click='viewSwimmer(swimRecord.swimmer)'>
+        {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}}
+      </a>
+    </td>
+    <td class='hidden-xs medium-grey-text'>{{swimRecord.swimmer.usms_number}}</td>
+    <th class='hidden-xs medium-grey-text'>{{swimRecord.swimmer.lmsc}}</td>
+      <td class='hidden-xs medium-grey-text'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
+      <td>
+        <a ng-href='tel:{{swimRecord.swimmer.phone_number}}'>CALL</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<center>
+  <div ng-show='!filterSwimRecords.length'>
+    <p>No swimmers found.<br>
+    <a href='#' ng-click="search.last_name=''">NEW SEARCH</a></p>
+  </div>
+</center>

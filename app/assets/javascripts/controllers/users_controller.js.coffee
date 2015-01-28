@@ -1,30 +1,67 @@
 @comsatrack.controller 'UsersCtrl', [
-  '$scope',
+  '$scope'
   'Users'
+  '$modal'
 
-  @UsersCtrl = ($scope, Users) ->
+  @UsersCtrl = ($scope, Users, $modal) ->
 
     $scope.users = Users.index()
 
     $scope.predicate =
       value: 'last_name'
 
-    $scope.updateAdmin = (user) ->
-      if user.admin
-        userData = angular.extend user,
-          admin: false
+    $scope.open = (user) ->
+      modalInstance = $modal.open
+        templateUrl: 'user.html',
+        controller: ModalCtrl,
+        scope: $scope
+        resolve:
+          user: -> user
 
-        Users.update id: $scope.user.id, userData
-        .$promise.then (updatedUser) ->
-          $scope.users.push updatedUser
-          toastr.success('Monitor administrative rights have been invoked')
+    ModalCtrl = ($scope, $modalInstance, user, Users) ->
+      angular.extend $scope,
+        user: user
 
-      else
-        userData = angular.extend user,
-          admin: true
+      $scope.updateAdmin = ->
+        if user.admin
+          userData = angular.extend user,
+            id: user.id
+            admin: false
 
-        Users.update id: $scope.user.id, userData
-        .$promise.then (updatedUser) ->
-          $scope.users.push updatedUser
-          toastr.success('Monitor administrative rights have been granted')
+          Users.update id: user.id, userData
+          $modalInstance.close swimmer
+          .$promise.then (updatedUser) ->
+            $scope.users.splice $scope.users.indexOf(userData), 1
+            $scope.users.push updatedUser
+
+            toastr.options.positionClass = 'toast-bottom-left'
+            user = user.first_name + ' ' + user.last_name + "'s'"
+            toastr.success user.concat(' administrative rights have been invoked.')
+
+
+
+        else
+          userData = angular.extend user,
+            id: user.id
+            admin: true
+
+          Users.update id: user.id, userData
+          $modalInstance.close swimmer
+          .$promise.then (updatedUser) ->
+            $scope.users.splice $scope.users.indexOf(userData), 1
+            $scope.users.push updatedUser
+
+            toastr.options.positionClass = 'toast-bottom-left'
+            user = user.first_name + ' ' + user.last_name
+            toastr.success user.concat(' has been granted administrative rights.')
+        
+      $scope.cancel = ->
+        $modalInstance.dismiss 'Cancel'
+
+      ModalCtrl['$inject'] = [
+        '$scope'
+        '$modalInstance'
+        'user'
+        'Users'
+      ]
 ]

@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require pace/pace-theme-big-counter
+ *= require pace/pace-theme-corner-indicator
  *= require toastr
  *= require_tree .
  */

@@ -2,14 +2,8 @@ class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
   def index
-    @check_out = false
     @swim_records = SwimRecord.where(completed: false)
     index_respond_to_format_methods
-  end
-
-  def records
-    @records = SwimRecord.where(completed: true)
-    records_respond_to_format_methods
   end
 
   def new
