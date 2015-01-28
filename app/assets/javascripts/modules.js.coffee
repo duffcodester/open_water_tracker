@@ -1,18 +1,15 @@
 @comsatrack = angular.module 'comsatrack',
   ['ngResource',
-    'ngRoute',
-    'templates',
-    'comsatrackFilters',
-    'googlechart',
-    'ui.bootstrap',
-    'ui.router']
+   'comsatrackFilters',
+   'googlechart',
+   'ui.bootstrap',
+   'ui.router']
 
 .config ($httpProvider) ->
   authToken = $('meta[name="csrf-token"]').attr('content')
   $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = authToken
 
 .config ($stateProvider, $urlRouterProvider) ->
-
   $stateProvider.state 'index',
     url: '/'
     templateUrl: '/check_in.html'
@@ -61,9 +58,5 @@
   .state 'tos',
     url: '/tos'
     templateUrl: '/public/tos.html'
-
-.run ($rootScope, $location) ->
-  $rootScope.$on "$stateChangeStart", (event, toState, toParams) ->
-    console.log toParams
 
 @comsatrackFilters = angular.module 'comsatrackFilters', []

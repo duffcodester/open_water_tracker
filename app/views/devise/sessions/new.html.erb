@@ -1,6 +1,6 @@
 <div class='devise devise-screen u-grey-border'>
   <div class='u-full-width-title'><h1 class='devise-title'>LOGIN</h1></div>
-    <%= bootstrap_form_for(resource, :as => resource_name,:url => session_path(resource_name)) do |f| %>
+    <%= form_for(resource, :as => resource_name,:url => session_path(resource_name)) do |f| %>
       <input class='u-full-width' type='email' id='user_email' name='user[email]' placeholder='user@example.com' autofocus='true'>
       <input class='u-full-width' type='password' id='user_password' name='user[password]' placeholder='Password'>
       <button class='u-full-width button-info button-info-solid'>Login</button>

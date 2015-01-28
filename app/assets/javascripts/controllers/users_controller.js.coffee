@@ -2,11 +2,13 @@
   '$scope'
   'Users'
   '$modal'
+  'Application'
 
-  @UsersCtrl = ($scope, Users, $modal) ->
+  @UsersCtrl = ($scope, Users, $modal, Application) ->
 
     $scope.users = Users.index()
-
+    $scope.currentUser = Application.currentUser
+    
     $scope.predicate =
       value: 'last_name'
 
@@ -23,38 +25,12 @@
         user: user
 
       $scope.updateAdmin = ->
-        if user.admin
-          userData = angular.extend user,
-            id: user.id
-            admin: false
+        Users.update id: $scope.user.id, admin: !$scope.user.admin
+        .$promise.then (updatedUser) ->
+          $scope.user.admin = !$scope.user.admin
+          message = $scope.user.first_name + ' ' + $scope.user.last_name + "'s" + ' administrative rights have been updated.'
+          toastr.success message
 
-          Users.update id: user.id, userData
-          $modalInstance.close swimmer
-          .$promise.then (updatedUser) ->
-            $scope.users.splice $scope.users.indexOf(userData), 1
-            $scope.users.push updatedUser
-
-            toastr.options.positionClass = 'toast-bottom-left'
-            user = user.first_name + ' ' + user.last_name + "'s'"
-            toastr.success user.concat(' administrative rights have been invoked.')
-
-
-
-        else
-          userData = angular.extend user,
-            id: user.id
-            admin: true
-
-          Users.update id: user.id, userData
-          $modalInstance.close swimmer
-          .$promise.then (updatedUser) ->
-            $scope.users.splice $scope.users.indexOf(userData), 1
-            $scope.users.push updatedUser
-
-            toastr.options.positionClass = 'toast-bottom-left'
-            user = user.first_name + ' ' + user.last_name
-            toastr.success user.concat(' has been granted administrative rights.')
-        
       $scope.cancel = ->
         $modalInstance.dismiss 'Cancel'
 

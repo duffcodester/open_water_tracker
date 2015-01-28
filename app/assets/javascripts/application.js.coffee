@@ -1,12 +1,10 @@
 #= require jquery
 #= require jquery_ujs
-#= require bootstrap
-#= require turbolinks
+#= require bootstrap/transition
+#= require bootstrap/collapse
 
 #= require angular
 #= require angular-resource
-#= require angular-route
-#= require angular-rails-templates
 #= require angular-ui-bootstrap-tpls
 
 #= require modules
