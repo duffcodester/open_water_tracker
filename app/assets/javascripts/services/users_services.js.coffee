@@ -1,7 +1,7 @@
 @comsatrack.factory 'Users', [
   '$resource'
   ($resource) ->
-    $resource('/users/:id.json',
+    $resource('/api/users/:id.json',
       id: '@id',
     ,
       index:

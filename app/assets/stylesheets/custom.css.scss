@@ -1,7 +1,18 @@
 @import 'bootstrap';
 
-$lightGrey: #C0C0C0;
-$mediumGrey: #757575;
+@media (max-width: 767px) {
+  .search { width:100%; }
+}
+
+
+@media (max-width: 767px) {
+  .image-mobile {
+    width:80%;height:80%;
+  }
+}
+.green-text {
+  color:#28AFB0;
+}
 
 /* universal */
 .button-on-nav {
@@ -31,12 +42,12 @@ $mediumGrey: #757575;
 }
 
 .light-grey-text {
-  color: $lightGrey
+  color: #C0C0C0
 }
 
 @media (min-width: 768px) {
   .medium-grey-text {
-    color: $mediumGrey
+    color: #757575;
   }
   .u-ul-position-fix {
     position: relative;

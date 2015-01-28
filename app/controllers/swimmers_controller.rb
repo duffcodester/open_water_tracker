@@ -12,9 +12,7 @@ class SwimmersController < ApplicationController
   SWIMMER_HEADERS = %w(first_name, mi, last_name, lmsc, usms_number)
 
   def index
-    @check_in = false
-    @swimmers = Swimmer.all
-    index_respond_to_format_methods(@swimmers)
+    render json: oj_dumper(Swimmer.all)
   end
 
   def out_of_state
@@ -30,10 +28,6 @@ class SwimmersController < ApplicationController
     else
       @swimmers = nil
     end
-  end
-
-  def show
-    render json: @swimmer
   end
 
   def new

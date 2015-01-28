@@ -1,7 +1,9 @@
 @comsatrack.factory 'SwimRecords', [
   '$resource'
   ($resource) ->
-    $resource('/swim_records/:id.json', {id: '@id'},
+    $resource('/api/swim_records/:id.json',
+      id: '@id',
+    ,
       index:
         method: 'GET'
         isArray: true

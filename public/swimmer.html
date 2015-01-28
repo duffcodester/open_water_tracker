@@ -1,0 +1,25 @@
+<div class='modal-header'>
+  <center>
+    <h3 class='modal-title'>{{swimmer.first_name}} {{swimmer.mi}} {{swimmer.last_name}}</h3>
+  </center>
+</div>
+<div class='modal-body'>
+  <table class='u-full-width table-width-desktop'>
+    <tr><th></th><td></td></tr>
+    <tr>
+      <th>USMS</th>
+      <td>{{swimmer.usms_number}}</td>
+    </tr>
+    <tr>
+      <th>LMSC</th>
+      <td>{{swimmer.lmsc}}</td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><a href='tel:{{swimmer.phone_number}}'>{{swimmer.phone_number}}</a></td>
+    </tr>
+  </table>
+</div>
+<div class='modal-footer'>
+  <button class='u-full-width button-danger button-danger-solid' ng-click='cancel()'>Close</button>
+</div>

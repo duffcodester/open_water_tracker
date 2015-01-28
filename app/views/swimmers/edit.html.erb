@@ -1,9 +1,0 @@
-<% provide(:title, 'EDIT SWIMMER') %>
-
-<h1><%= "Update #{@swimmer.first_name} #{@swimmer.last_name}" %></h1>
-<div class='table-width-desktop u-grey-border'>
-  <%= bootstrap_form_for(@swimmer) do |f| %>
-    <%= f.telephone_field :phone_number, label: 'Phone Number *' %>
-    <button class='u-full-width button-info button-info-solid'>Update</button>
-  <% end %>
-</div>
