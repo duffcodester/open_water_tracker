@@ -23,9 +23,9 @@
           Add Phone
         </button>
         <button ng-if='swimmer.phone_added' ng-click="checkIn(swimmer)"
-                ng-class="!swimmer.swimmer_checked_in && swimmer.phone_added ? 'button-success' : 'button-danger button-disabled'"
+                ng-class="!swimmer.swimmer_checked_in && swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
                 class='button button-width-default'>
-          {{!swimmer.swimmer_checked_in && swimmer.phone_added ? 'Check In' : 'Checked In'}}
+          {{!swimmer.swimmer_checked_in && swimmer.phone_number ? 'Check In' : 'Checked In'}}
         </button>
       </td>
       <td>
