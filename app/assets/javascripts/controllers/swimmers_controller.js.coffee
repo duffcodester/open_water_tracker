@@ -22,6 +22,7 @@
     $scope.checkOut = (swimRecord) ->
       swimmerData =  angular.extend swimRecord,
         completed: true
+        swimmer_checked_in: false
 
       SwimRecords.update id: swimmerData.id, swimmerData
       .$promise.then (updatedSwimmer) ->
