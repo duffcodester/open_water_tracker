@@ -9,6 +9,9 @@
 
     $scope.checkOutCount = SwimRecords.index()
 
-    $rootScope.$on "countUpdated", ->
-      $scope.checkOutCount = SwimRecords.index()
+    $rootScope.$on "countUp", ->
+      $scope.checkOutCount.length += 1
+
+    $rootScope.$on "countDown", ->
+      $scope.checkOutCount.length -= 1
 ]
