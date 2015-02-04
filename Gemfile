@@ -27,7 +27,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.20.1'
   gem 'teaspoon'
-  gem 'debugger'
 end
 
 group :test do
