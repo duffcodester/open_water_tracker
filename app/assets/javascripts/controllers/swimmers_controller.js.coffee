@@ -29,7 +29,7 @@
         $scope.search.last_name = ''
         $scope.swimRecords.splice $scope.swimRecords.indexOf(swimmerData), 1
         $scope.swimmers.push updatedSwimmer
-        $rootScope.$broadcast('countUpdated')
+        $rootScope.$broadcast('countDown')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimRecord.swimmer.first_name + ' ' + swimRecord.swimmer.last_name
         toastr.success swimmer.concat(' has been checked out.')
@@ -47,7 +47,7 @@
         $scope.search.last_name = ''
         $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
         $scope.swimmers.push updatedSwimmer
-        $rootScope.$broadcast('countUpdated')
+        $rootScope.$broadcast('countUp')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
         toastr.success swimmer.concat(' has been checked in.')
