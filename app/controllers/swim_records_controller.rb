@@ -3,7 +3,10 @@ class SwimRecordsController < ApplicationController
 
   def index
     @swim_records = SwimRecord.where(completed: false)
-    index_respond_to_format_methods
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
@@ -71,13 +74,6 @@ class SwimRecordsController < ApplicationController
 
   def create_and_update_json_else
     render json: @swim_record.errors, status: :unprocessable_entity
-  end
-
-  def index_respond_to_format_methods
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def records_respond_to_format_methods

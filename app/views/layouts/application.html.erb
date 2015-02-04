@@ -17,7 +17,6 @@
     <% end %>
   </head>
   <body ng-app='comsatrack' ng-controller='NavigationCtrl'>
-
     <nav class='navbar navbar-default navbar-fixed-top'>
       <div class='container'>
         <div class='navbar-header'>
@@ -39,7 +38,7 @@
             </a>
             <a ui-sref='checkOut' ng-show="state == '/check_in'"
               class='button button-danger button-danger-solid button-width-default button-on-nav'>
-              CHECK OUT ({{checkOutCount}})
+              CHECK OUT ({{checkOutCount.length}})
             </a>
         </div>
         <% end %>
@@ -50,7 +49,7 @@
               <li><a class='navbar-link hidden-xs' ui-sref='checkIn'>CHECK IN</a></li>
               <li>
                 <a class='navbar-link hidden-xs' ui-sref='checkOut'>
-                  CHECK OUT ({{checkOutCount}})</a>
+                  CHECK OUT ({{checkOutCount.length}})</a>
               </li>
               <li><a class='navbar-link' ui-sref='monitors'>MONITORS</a></li>
               <li><a class='navbar-link' ui-sref='outOfState'>OUT OF STATE</a></li>
