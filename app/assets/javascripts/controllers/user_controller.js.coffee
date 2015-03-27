@@ -30,6 +30,8 @@
         last_name: $scope.user.last_name
         phone_number: $scope.user.phone_number
         email: $scope.user.email
+        password: $scope.user.password
+        password_confirmation: $scope.user.password_confirmation
 
       Users.update id: userData.id, userData
       .$promise.then (updateUser) ->
