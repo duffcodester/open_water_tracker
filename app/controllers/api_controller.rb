@@ -24,7 +24,9 @@ class ApiController < ApplicationController
   end
 
   def records
-    respond_to.csv { render csv: SwimRecord.where(completed: true), filename: 'records' }
+    respond_to do |format|
+      format.csv { render csv: SwimRecord.where(completed: true), filename: 'records' }
+    end
   end
 
   def out_of_state
