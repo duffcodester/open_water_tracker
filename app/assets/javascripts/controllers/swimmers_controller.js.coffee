@@ -5,9 +5,12 @@
   'SwimRecords'
   '$modal'
   '$rootScope'
+  '$http'
 
-  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope) ->
-    $scope.swimmers = Swimmers.index()
+  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
+    $http.get('/api/swimmers.json').success (data) ->
+      $scope.swimmers = _.where data, {lmsc: "CO"}
+
     $scope.swimRecords = SwimRecords.index()
 
     $scope.predicate =
@@ -15,9 +18,16 @@
 
     $scope.search = {}
 
-    $scope.totalDisplayed = 5
-    $scope.loadMore = ->
-      $scope.totalDisplayed += 5
+    $scope.filterSwimmersData = {}
+
+    $scope.findSwimmers =->
+      result =  _.where $scope.swimmers, {last_name: $scope.search.last_name}
+      if result.length is 0
+        $scope.noResults = true
+        $scope.filterSwimmersData = []
+      else
+        $scope.noResults = false
+        $scope.filterSwimmersData = result
 
     $scope.checkOut = (swimRecord) ->
       swimmerData =  angular.extend swimRecord,
