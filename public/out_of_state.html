@@ -3,7 +3,9 @@
 <div class='row'>
   <div class='col-md-5 col-xs-12'>
     <input ng-model='lastName' class='search' autocorrect='off' placeholder='Find by Last Name' type='text'/>
-    <input class='button button-info button-info-solid search' ng-click='search()' value='Search'/>
+    <button class='button button-info button-info-solid search' ng-click='search()'>
+      Search
+    </button>
   </div>
   <div class='col-md-3 col-xs-12'>
     <input class='u-pull-left search'
@@ -48,7 +50,8 @@
 <br><br><br>
 <center>
   <div ng-show='!filteredSwimmers.length'>
-    <p>No swimmers found.<br><a href='#' ng-click="search.swimmer.last_name=''">NEW SEARCH</a></p>
+    <h5>No swimmers found.</h5>
+    <a href='#' ng-click="search.swimmer.last_name=''">NEW SEARCH</a>
   </div>
   <div ng-show='filteredSwimmers.length'>
     <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>

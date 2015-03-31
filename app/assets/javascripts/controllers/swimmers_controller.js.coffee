@@ -21,7 +21,13 @@
     $scope.filterSwimmersData = {}
 
     $scope.findSwimmers =->
-      $scope.filterSwimmersData = _.where $scope.swimmers, {last_name: $scope.search.last_name}
+      result =  _.where $scope.swimmers, {last_name: $scope.search.last_name}
+      if result.length is 0
+        $scope.noResults = true
+        $scope.filterSwimmersData = []
+      else
+        $scope.noResults = false
+        $scope.filterSwimmersData = result
 
     $scope.checkOut = (swimRecord) ->
       swimmerData =  angular.extend swimRecord,
