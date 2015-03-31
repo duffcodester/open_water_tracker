@@ -15,7 +15,6 @@
   </thead>
   <tbody>
     <tr ng-repeat="swimmer in filterSwimmers = (swimmers
-                   | unique: 'usms_number'
                    | orderBy:['last_name','first_name']
                    | filter:search.last_name
                    | limitTo:totalDisplayed )">
