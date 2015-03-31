@@ -22,11 +22,6 @@
 
     $scope.findSwimmers =->
       $scope.filterSwimmersData = _.where $scope.swimmers, {last_name: $scope.search.last_name}
-      console.log $scope.filterSwimmersData
-
-    $scope.totalDisplayed = 5
-    $scope.loadMore = ->
-      $scope.totalDisplayed += 5
 
     $scope.checkOut = (swimRecord) ->
       swimmerData =  angular.extend swimRecord,

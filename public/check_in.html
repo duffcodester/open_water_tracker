@@ -1,16 +1,18 @@
 <h1>Check In</h1>
-<!-- <ng-include src="'/search.html'"></ng-include> -->
 
-<input class='u-pull-left search'
-       type='text'
-       ng-model='search.last_name'
-       ng-model-options='{debounce: 1500}'
-       immediate='true'
-       placeholder='Search Last Name'
-       autocorrect='off'/>
-<button ng-click='findSwimmers(search.last_name)'>Search</button>
-
-<br><br>
+<div class='row'>
+  <div class='col-md-3 col-xs-12'>
+    <input class='u-pull-left search'
+           type='text'
+           ng-model='search.last_name'
+           immediate='true'
+           placeholder='Search Last Name'
+           autocorrect='off'/>
+  </div>
+  <div class='col-md-3 col-xs-12'>
+    <input class='button button-info button-info-solid search' ng-click='findSwimmers(search.last_name)' value='Search'/>
+  </div>
+</div>
 
 <table class='u-full-width'>
   <thead ng-show='filterSwimmers.length'>
@@ -24,8 +26,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="swimmer in filterSwimmers = (filterSwimmersData
-                   | orderBy:['last_name','first_name']
-                   | limitTo:totalDisplayed )">
+                   | orderBy:['last_name','first_name'])">
       <td>
         <button ng-if='!swimmer.phone_added' ng-click="open(swimmer)"
                class='button button-primary button-width-default'>
@@ -45,12 +46,3 @@
     </tr>
   </tbody>
 </table>
-<center>
-  <div ng-show='!filterSwimmers.length'>
-    <p>No swimmers found.<br><a href='#' ng-click="search.last_name=''">NEW SEARCH</a></p>
-    <a ng-href='/out_of_state' class='button button-info button-info-solid'>Search Out of State</a>
-  </div>
-  <div ng-show='filterSwimmers.length'>
-    <btn class='button button-info button-width-extended button-info-solid' ng-click='loadMore()'>Load More</btn>
-  </div>
-</center>
