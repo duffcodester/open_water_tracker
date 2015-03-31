@@ -15,6 +15,7 @@ gem 'oj'
 # Angualr
 gem 'angularjs-rails', '1.3.10'
 gem 'angular-ui-bootstrap-rails'
+gem 'lodash-rails'
 
 # Front End
 gem 'toastr-rails'
