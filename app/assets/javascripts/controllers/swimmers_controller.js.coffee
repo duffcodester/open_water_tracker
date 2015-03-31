@@ -54,7 +54,7 @@
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
-        templateUrl: 'add_phone_modal.html',
+        templateUrl: 'phone_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
