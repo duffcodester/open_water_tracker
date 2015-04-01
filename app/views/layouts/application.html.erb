@@ -45,7 +45,7 @@
         <div class='collapse navbar-collapse' id='myNavbar'>
           <ul class='nav navbar-nav u-ul-position-fix'>
             <% if signed_in? %>
-              <li><%= link_to 'MY PROFILE', current_user, class:'navbar-link visible-xs' %></li>
+              <li><a ui-sref='myProfile' class='navbar-link visible-xs'>MY PROFILE</a></li>
               <li><a class='navbar-link hidden-xs' ui-sref='checkIn'>CHECK IN</a></li>
               <li>
                 <a class='navbar-link hidden-xs' ui-sref='checkOut'>
