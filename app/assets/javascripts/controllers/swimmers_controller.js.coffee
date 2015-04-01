@@ -9,7 +9,7 @@
 
   @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
     $http.get('/api/swimmers.json').success (data) ->
-      $scope.swimmers = _.where data, {lmsc: "CO"}
+      $scope.swimmers = data
 
     $scope.swimRecords = SwimRecords.index()
 
@@ -64,7 +64,7 @@
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
-        templateUrl: 'phone_modal.html',
+        templateUrl: 'add_phone_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:

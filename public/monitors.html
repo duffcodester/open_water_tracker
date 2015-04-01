@@ -2,10 +2,11 @@
 <input class='u-pull-left search'
        type='text'
        ng-model='search.last_name'
-       ng-model-options='{debounce: 1500}'
+       ng-model-options='{debounce: 800}'
        immediate="true"
        placeholder='Search Last Name'
        autocorrect='off'/>
+
 <div class='u-pull-right hidden-xs'>
   <a class='button button-info button-info-solid' ui-sref='monitorsNew'>
     Add Monitor
@@ -21,23 +22,34 @@
       <th class='hidden-xs medium-grey-text'>Phone Number</th>
       <th class='visible-xs'></th>
       <th class='hidden-xs medium-grey-text'>Admin</th>
+      <div ng-if='currentUser.admin'>
+        <th class='hidden-xs'></th>
+      </div>
     </tr>
   </thead>
   <tbody ng-repeat='user in filterUsers = (users
                    | orderBy:predicate.value:reverse
                    | filter:search.last_name)'>
   <tr>
-    <td>
-      <a ng-if='currentUser.admin' ng-click='open(user)'>{{user.last_name}}, {{user.first_name}}</a>
-      <a ng-if='!currentUser.admin'>{{user.last_name}}, {{user.first_name}}</a>
+    <td class='medium-grey-text'>
+      {{user.last_name}}, {{user.first_name}}
     </td>
     <td class='hidden-xs'><a href='mailto:{{user.email}}'>{{user.email}}</a></td>
     <td><a ng-href='tel:{{user.phone_number}}'>{{user.phone_number}}</a></td>
     <td class='hidden-xs medium-grey-text'>{{user.admin | booleanToWords}}</td>
+    <td ng-if='currentUser.admin' class='hidden-xs'>
+      <a class='button button-info button-info-solid' ng-click='updateAdmin(user)' style='width:165px;'>
+        <span ng-if='!user.admin'>
+          Add Admin
+        </span>
+        <span ng-if='user.admin'>
+          Remove Admin
+        </span>
+      </a>
+    </td>
   </tr>
 </tbody>
 </table>
-
 <center>
   <div ng-hide='filterUsers.length'>
     <h5>No monitors found.</h5>

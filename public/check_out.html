@@ -1,4 +1,5 @@
 <h1>Check Out</h1>
+
 <ng-include src="'/search.html'"></ng-include>
 
 <table class='u-full-width'>
@@ -24,10 +25,8 @@
         Check Out
       </button>
     </td>
-    <td>
-      <a ng-click='viewSwimmer(swimRecord.swimmer)'>
-        {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}}
-      </a>
+    <td class='medium-grey-text'>
+      {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}}
     </td>
     <td class='hidden-xs medium-grey-text'>{{swimRecord.swimmer.usms_number}}</td>
     <th class='hidden-xs medium-grey-text'>{{swimRecord.swimmer.lmsc}}</td>
