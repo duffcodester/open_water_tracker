@@ -22,7 +22,7 @@
     $scope.filterSwimmersData = {}
 
     $scope.findSwimmers =->
-      result =  _.find $scope.swimmers, {last_name: $scope.search.last_name}
+      result =  _.where $scope.swimmers, {last_name: $scope.search.last_name}
       if result.length is 0
         $scope.noResults = true
         $scope.filterSwimmersData = []
