@@ -28,9 +28,14 @@
         $http.get(base_url.concat($scope.lastName)).success (data) ->
           $scope.outOfState = data
 
+        if $scope.outOfState.length
+          $scope.noResults = true
+        else
+          $scope.noResults = false
+
       $scope.addSwimmer = (swimmer) ->
         Swimmers.create(swimmer).$promise.then (newSwimmer) ->
-          $location.path('/check_in')
+          $scope.outOfState = ''
           toastr.options.positionClass = 'toast-bottom-left'
           message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added.'
           toastr.success message

@@ -11,6 +11,18 @@ class SwimmersController < ApplicationController
 
   SWIMMER_HEADERS = %w(first_name, mi, last_name, lmsc, usms_number)
 
+  def check_in
+  end
+
+  def check_out
+  end
+
+  def out_of_state
+  end
+
+  def analytics
+  end
+
   def index
     render json: oj_dumper(Swimmer.all)
   end

@@ -40,4 +40,6 @@
         toastr.success 'Profile has been updated.'
         $location.path('/my_profile')
 
+
+
 ]

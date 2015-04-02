@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-
   def index
     render json: User.all
+  end
+
+  def monitors
   end
 
   def create
@@ -27,9 +28,5 @@ class UsersController < ApplicationController
     else
       render json: user.errors, status: :unprocessable_entity
     end
-  end
-
-  def set_user
-    @user = User.find(params[:id])
   end
 end
