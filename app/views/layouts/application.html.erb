@@ -33,12 +33,13 @@
             <a class='navbar-brand' href='/login'>COMSA TRACKER 2015</a>
           <% else signed_in? %>
           <div class='visible-xs'>
-            <% if current_page?(:controller => 'swimmers', :action => 'check_in') %>
+            <% if action_name == 'check_in' %>
               <a href='/check_out'
                  class='button button-danger button-danger-solid button-width-default button-on-nav'>
                 CHECK OUT ({{checkOutCount.length}})
               </a>
-            <% else %>
+            <% end %>
+            <% unless action_name == 'check_in' %>
               <a href='/check_in'
                  class='button button-success button-success-solid button-width-default button-on-nav'>
                  CHECK IN

@@ -20,8 +20,8 @@
         ]
         [
           '2014'
-          swimmerCount2014
-          uniqueSwimmers2014
+          5481
+          772
         ]
         [
           '2015'
@@ -36,7 +36,7 @@
         displayExactValues: true
         is3D: true
         legend: { position: 'bottom', textStyle: {color: '#797575' } }
-        colors: ['#7937A0', '#9459B6']
+        colors: ['#4A148C', '#AB47BC']
         hAxis: { textStyle: {color: '#797575' } }
         vAxis: { textStyle: {color: '#797575'} }
 
