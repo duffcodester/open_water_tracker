@@ -19,10 +19,12 @@
 
     $scope.filterSwimmersData = {}
 
+    $scope.search = {}
+
     $scope.findSwimmers =->
       filtered = []
       _.forEach $scope.swimmers, (swimmer) ->
-        if swimmer.last_name.toLowerCase().indexOf('Duff'.toLowerCase()) >= 0
+        if swimmer.last_name.toLowerCase().indexOf($scope.search.last_name.toLowerCase()) >= 0
           filtered.push(swimmer)
       result = filtered
 
