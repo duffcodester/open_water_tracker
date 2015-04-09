@@ -43,7 +43,7 @@
         $rootScope.$broadcast('countDown')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimRecord.swimmer.first_name + ' ' + swimRecord.swimmer.last_name
-        toastr.success swimmer.concat(' has been checked out.')
+        toastr.success swimmer.concat(' has been checked out')
 
     $scope.checkIn = (swimmer) ->
       SwimRecords.create
@@ -60,7 +60,7 @@
         $rootScope.$broadcast('countUp')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
-        toastr.success swimmer.concat(' has been checked in.')
+        toastr.success swimmer.concat(' has been checked in')
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
@@ -102,7 +102,7 @@
           $rootScope.$broadcast('countUp')
           toastr.options.positionClass = 'toast-bottom-left'
           swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
-          toastr.success swimmer.concat(' has been checked in.')
+          toastr.success swimmer.concat(' has been checked in')
           console.log updatedSwimmer
 
       $scope.cancel = ->

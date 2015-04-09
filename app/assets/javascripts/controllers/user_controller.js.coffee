@@ -21,8 +21,6 @@
       .$promise.then (newMonitor) ->
         $scope.users.push newMonitor
         $window.location.assign('/monitors')
-        toastr.success('Monitor has been successfully created.')
-
 
     $scope.update = ->
       userData =
@@ -38,6 +36,5 @@
       .$promise.then (updateUser) ->
         $scope.users.push updateUser
         toastr.options.positionClass = 'toast-bottom-left'
-        toastr.success 'Profile has been updated.'
         $window.location.assign('/my_profile')
 ]

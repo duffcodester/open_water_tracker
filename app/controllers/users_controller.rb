@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
     if @user.update_attributes(user_params)
       render json: @user.as_json
+      flash[:success] = 'Monitor has been updated'
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
     user.password_confirmation = params[:password_confirmation]
     user.save!
     if user.update_attributes(user_params)
+      flash[:success] = 'Monitor has been created'
       render json: user.as_json
     else
       render json: user.errors, status: :unprocessable_entity
