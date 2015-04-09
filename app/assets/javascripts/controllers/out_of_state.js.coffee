@@ -3,9 +3,10 @@
   '$http'
   'Swimmers'
   'OutOfState'
-  '$location'
+  '$window'
+  '$timeout'
 
-  @OutOfStateCtrl = ($scope, $http, Swimmers, OutOfState, $location) ->
+  @OutOfStateCtrl = ($scope, $http, Swimmers, OutOfState, $window, $timeout) ->
     OutOfState.data()
     .$promise.then (outOfState) ->
       $scope.outOfState = outOfState
@@ -37,6 +38,12 @@
         Swimmers.create(swimmer).$promise.then (newSwimmer) ->
           $scope.outOfState = ''
           toastr.options.positionClass = 'toast-bottom-left'
-          message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added.'
+          message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added'
           toastr.success message
+
+          $timeout (->
+            $window.location.assign('/check_in')
+            return
+          ), 3000
+          return
 ]
