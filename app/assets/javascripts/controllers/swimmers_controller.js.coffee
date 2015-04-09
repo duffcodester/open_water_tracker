@@ -17,12 +17,17 @@
     $scope.predicate =
       value: 'swimmer.last_name'
 
-    $scope.search = {}
-
     $scope.filterSwimmersData = {}
 
+    $scope.search = {}
+
     $scope.findSwimmers =->
-      result =  _.where $scope.swimmers, {last_name: $scope.search.last_name}
+      filtered = []
+      _.forEach $scope.swimmers, (swimmer) ->
+        if swimmer.last_name.toLowerCase().indexOf($scope.search.last_name.toLowerCase()) >= 0
+          filtered.push(swimmer)
+      result = filtered
+
       if result.length is 0
         $scope.noResults = true
         $scope.filterSwimmersData = []
