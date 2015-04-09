@@ -12,7 +12,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user_setup(@user)
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      render json: @user.as_json
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   private
