@@ -9,9 +9,10 @@
 
   @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
     $http.get('/api/swimmers.json').success (data) ->
-      $scope.swimmers = _.where data, {lmsc: "CO"}
+      $scope.swimmers = data
 
-    $scope.swimRecords = SwimRecords.index()
+    $http.get('/api/swim_records.json').success (data) ->
+      $scope.swimRecords = data
 
     $scope.predicate =
       value: 'swimmer.last_name'
@@ -42,7 +43,7 @@
         $rootScope.$broadcast('countDown')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimRecord.swimmer.first_name + ' ' + swimRecord.swimmer.last_name
-        toastr.success swimmer.concat(' has been checked out.')
+        toastr.success swimmer.concat(' has been checked out')
 
     $scope.checkIn = (swimmer) ->
       SwimRecords.create
@@ -54,17 +55,16 @@
 
       Swimmers.update id: swimmerData.id, swimmerData
       .$promise.then (updatedSwimmer) ->
-        $scope.search.last_name = ''
         $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
         $scope.swimmers.push updatedSwimmer
         $rootScope.$broadcast('countUp')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
-        toastr.success swimmer.concat(' has been checked in.')
+        toastr.success swimmer.concat(' has been checked in')
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
-        templateUrl: 'phone_modal.html',
+        templateUrl: 'add_phone_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
@@ -97,12 +97,13 @@
 
         Swimmers.update id: swimmerData.id, swimmerData
         .$promise.then (updatedSwimmer) ->
-          $scope.search.last_name = ''
           $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
           $scope.swimmers.push updatedSwimmer
+          $rootScope.$broadcast('countUp')
           toastr.options.positionClass = 'toast-bottom-left'
           swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
-          toastr.success swimmer.concat(' has been checked in.')
+          toastr.success swimmer.concat(' has been checked in')
+          console.log updatedSwimmer
 
       $scope.cancel = ->
         $modalInstance.dismiss 'Cancel'

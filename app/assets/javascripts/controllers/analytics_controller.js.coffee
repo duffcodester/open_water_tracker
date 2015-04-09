@@ -19,12 +19,12 @@
           'Unique Swimmers'
         ]
         [
-          "2014"
+          '2014'
           swimmerCount2014
           uniqueSwimmers2014
         ]
         [
-          "2015"
+          '2015'
           swimmerCount2015
           uniqueSwimmers2015
         ]

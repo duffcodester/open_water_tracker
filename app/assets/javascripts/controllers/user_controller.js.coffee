@@ -2,10 +2,10 @@
   '$scope'
   'Application'
   'Users'
-  '$location'
+  '$window'
+  '$rootScope'
 
-  @UserCtrl = ($scope, Application, Users, $location) ->
-
+  @UserCtrl = ($scope, Application, Users, $window, $rootScope) ->
     $scope.user = Application.currentUser
     $scope.users = Users.index()
 
@@ -20,8 +20,7 @@
 
       .$promise.then (newMonitor) ->
         $scope.users.push newMonitor
-        toastr.success('Monitor has been successfully created.')
-        $location.path('/monitors')
+        $window.location.assign('/monitors')
 
     $scope.update = ->
       userData =
@@ -37,7 +36,5 @@
       .$promise.then (updateUser) ->
         $scope.users.push updateUser
         toastr.options.positionClass = 'toast-bottom-left'
-        toastr.success 'Profile has been updated.'
-        $location.path('/my_profile')
-
+        $window.location.assign('/my_profile')
 ]

@@ -1,0 +1,51 @@
+<div ng-controller='SwimmersCtrl'>
+  <h1>Check In</h1>
+
+  <input class='search'
+         type='text'
+         ng-model='search.last_name'
+         placeholder='Search Last Name'
+         autocorrect='off'/>
+  <button class='button button-info button-info-solid search' ng-click='findSwimmers(search.last_name)'>
+   Search
+  </button>
+
+  <table class='u-full-width'>
+    <thead ng-show='filterSwimmers.length'>
+      <tr>
+        <th></th>
+        <th class='visible-xs'></th>
+        <th class='hidden-xs medium-grey-text'>Name</th>
+        <th class='hidden-xs medium-grey-text'>USMS</th>
+        <th class='hidden-xs medium-grey-text'>LMSC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="swimmer in filterSwimmers = (filterSwimmersData
+                     | orderBy:['last_name','first_name'])">
+        <td>
+          <button ng-if='!swimmer.phone_added' ng-click="open(swimmer)"
+                 class='button button-primary button-width-default'>
+            Add Phone
+          </button>
+          <button ng-if='swimmer.phone_added' ng-click="checkIn(swimmer)"
+                  ng-class="!swimmer.swimmer_checked_in && swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
+                  class='button button-width-default'>
+            {{!swimmer.swimmer_checked_in && swimmer.phone_number ? 'Check In' : 'Checked In'}}
+          </button>
+        </td>
+        <td>
+          <a ng-click='viewSwimmer(swimmer)'>{{swimmer.last_name}}, {{swimmer.first_name}}</a>
+        </td>
+        <td class='hidden-xs medium-grey-text'>{{swimmer.usms_number}}</td>
+        <th class='hidden-xs medium-grey-text'>{{swimmer.lmsc}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div ng-show='noResults'>
+    <center>
+      <h5>No swimmers found.</h5>
+    </center>
+  </div>
+</div>

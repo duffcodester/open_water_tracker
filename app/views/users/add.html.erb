@@ -1,0 +1,18 @@
+<div ng-controller='UserCtrl'>
+  <h1>Add Monitor</h1>
+  <form class='table-width-desktop u-grey-border'>
+    <label>First Name</label>
+    <input ng-model='newUser.first_name' class='u-full-width' type='text' placeholder='Robb'>
+    <label>Last Name</label>
+    <input ng-model='newUser.last_name' class='u-full-width' type='text' placeholder='Stark'>
+    <label>Email</label>
+    <input ng-model='newUser.email' class='u-full-width' type='email' placeholder='rob.stark@got.com'>
+    <label>Phone</label>
+    <input ng-model='newUser.phone_number' class='u-full-width' type='text' placeholder='111-222-3333'>
+    <label>Password</label>
+    <input ng-model='newUser.password' class='u-full-width' type='password' placeholder='Password'>
+    <label>Password Confirmation</label>
+    <input ng-model='newUser.password_confirmation' class='u-full-width' type='password' placeholder='Password Confirmation'>
+    <button ng-click='create()' class='u-full-width button-info button-info-solid'>Submit</button>
+  </form>
+</div>
