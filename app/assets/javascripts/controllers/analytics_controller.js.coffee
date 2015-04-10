@@ -16,22 +16,27 @@
         [
           'Year'
           'Total Swims'
+          { role: 'annotation' }
           'Unique Swimmers'
+          { role: 'annotation' }
         ]
         [
           '2014'
           5481
+          '5481'
           772
+          '772'
         ]
         [
           '2015'
           swimmerCount2015
+          swimmerCount2015
+          uniqueSwimmers2015
           uniqueSwimmers2015
         ]
       ]
 
       chart1.options =
-        title: 'Total swims and unique swimmers for 2014-2015'
         titleTextStyle: {color: '#797575' }
         displayExactValues: true
         is3D: true
@@ -39,6 +44,7 @@
         colors: ['#4A148C', '#AB47BC']
         hAxis: { textStyle: {color: '#797575' } }
         vAxis: { textStyle: {color: '#797575'} }
+        annotations: { textStyle: { color: '#797575' } }
 
       $scope.chart = chart1
 ]
