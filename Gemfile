@@ -11,6 +11,7 @@ gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
 gem 'newrelic_rpm'
 gem 'oj'
+gem 'rack-zippy'
 
 # Angualr
 gem 'angularjs-rails', '1.3.10'
