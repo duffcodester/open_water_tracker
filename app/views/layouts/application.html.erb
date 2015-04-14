@@ -3,9 +3,10 @@
   <head>
     <title>COMSA TRACKER 2015</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
-    <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false, :media => 'all', :cache => 'cached/all' %>
     <%= csrf_meta_tags %>
   </head>
+
   <body ng-app='comsatrack' ng-controller='NavigationCtrl'>
     <nav class='navbar navbar-default navbar-fixed-top'>
       <div class='container'>
@@ -108,7 +109,7 @@
     </div>
 
     <!-- Scripts -->
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :cache => 'cached/all' %>
     <% if signed_in? %>
       <script type='text/javascript'>
       window.Application = Object.freeze({
