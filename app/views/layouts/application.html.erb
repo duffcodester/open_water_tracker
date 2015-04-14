@@ -3,7 +3,7 @@
   <head>
     <title>COMSA TRACKER 2015</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
-    <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false, :media => 'all', :cache => 'cached/all' %>
+    <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -109,7 +109,7 @@
     </div>
 
     <!-- Scripts -->
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :cache => 'cached/all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <% if signed_in? %>
       <script type='text/javascript'>
       window.Application = Object.freeze({
