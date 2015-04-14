@@ -7,6 +7,7 @@
       index:
         method: 'GET'
         isArray: true
+        cache: true
 
       update:
         method: 'PUT'

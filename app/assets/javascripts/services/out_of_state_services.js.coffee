@@ -5,5 +5,6 @@
       data:
         method: 'GET'
         isArray: true
+        cache: true
     )
 ]
