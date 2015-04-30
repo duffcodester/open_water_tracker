@@ -10,6 +10,13 @@
    Search
   </button>
 
+  <br><br>
+  <div ng-hide='filterSwimmers.length'>
+    <center>
+      <h5 class='medium-grey-text'>Enter a swimmer’s last name and click the SEARCH button to get started.</h5>
+    </center>
+  </div>
+
   <table class='u-full-width'>
     <thead ng-show='filterSwimmers.length'>
       <tr>
@@ -45,7 +52,7 @@
 
   <div ng-show='noResults'>
     <center>
-      <h5>No swimmers found.</h5>
+      <h5 class='medium-grey-text'>No swimmers found.</h5>
     </center>
   </div>
 </div>
