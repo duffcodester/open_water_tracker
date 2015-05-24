@@ -66,6 +66,7 @@
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
         toastr.success swimmer.concat(' has been checked in')
+        $scope.search.last_name = ''
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
@@ -108,7 +109,7 @@
           toastr.options.positionClass = 'toast-bottom-left'
           swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
           toastr.success swimmer.concat(' has been checked in')
-          console.log updatedSwimmer
+          $scope.search.last_name = ''
 
       $scope.cancel = ->
         $modalInstance.dismiss 'Cancel'
