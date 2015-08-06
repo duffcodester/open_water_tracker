@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Record</th>
+    <th>Swimmer ID</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+  </tr>
+  <% @records.each do |record| %>
+    <tr>
+      <td><%= record.id %></td>
+      <td>
+        <% if Swimmer.find_by_id(record.swimmer_id) %>
+          <%= "#{Swimmer.find_by_id(record.swimmer_id).first_name} #{Swimmer.find_by_id(record.swimmer_id).last_name}" %>
+        <% else %>
+           <%= record.swimmer_id %>
+        <% end %>
+      </td>
+      <td><%= record.check_in.strftime("%m/%d/%Y %I:%M%p") %></td>
+      <td><%= record.check_out.strftime("%m/%d/%Y %I:%M%p") %></td>
+    </tr>
+  <% end %>
+</table>

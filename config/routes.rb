@@ -21,6 +21,7 @@ Comsa::Application.routes.draw do
   match '/check_out', to: 'swimmers#check_out', via: 'get'
   match '/out_of_state', to: 'swimmers#out_of_state', via: 'get'
   match '/analytics', to: 'swimmers#analytics', via: 'get'
+  match '/records', to: 'swimmers#records', via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'
 
   match '/monitors', to: 'users#monitors', via: 'get'
