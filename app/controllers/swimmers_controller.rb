@@ -23,8 +23,9 @@ class SwimmersController < ApplicationController
   end
 
   def records
-    @records = SwimRecord.where(completed: true).all
+    @records = (SwimRecord.where(completed: true).sort_by &:created_at).reverse
     render :layout => false
+
   end
 
   def index
