@@ -1,9 +1,12 @@
 @import 'bootstrap';
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 @media (max-width: 767px) {
   .search { width:100%; }
 }
-
 
 @media (max-width: 1155px) {
   .image-mobile {

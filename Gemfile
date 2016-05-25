@@ -9,10 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
-gem 'newrelic_rpm'
 gem 'oj'
-gem 'rack-zippy'
-gem 'htmlcompressor'
 
 # Angualr
 gem 'angularjs-rails', '1.3.10'
@@ -28,7 +25,6 @@ gem 'bootstrap-sass', '3.0.3.0'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.20.1'
   gem 'teaspoon'
 end
 

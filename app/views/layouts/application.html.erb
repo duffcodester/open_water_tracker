@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>COMSA TRACKER 2015</title>
+    <title><%= full_title(yield(:title))%></title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
     <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css', 'application', media: 'all', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body ng-app='comsatrack' ng-controller='NavigationCtrl'>
+  <body ng-app='comsatrack' ng-controller='NavigationCtrl' class='ng-cloak' ng-cloak>
     <nav class='navbar navbar-default navbar-fixed-top'>
       <div class='container'>
         <div class='navbar-header'>
