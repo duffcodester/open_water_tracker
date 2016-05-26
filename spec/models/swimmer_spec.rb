@@ -19,6 +19,9 @@ describe Swimmer do
   it { should respond_to(:phone_number) }
   it { should respond_to(:phone_added) }
   it { should respond_to(:swimmer_checked_in) }
+  it { should respond_to(:reviewed_waiver) }
+  it { should respond_to(:reviewed_waiver_date) }
+
   it { should be_valid }
 
   describe 'when first name is not present' do
