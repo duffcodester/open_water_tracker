@@ -2,7 +2,6 @@
 
 <div ng-controller='SwimmersCtrl'>
   <h1>Check In</h1>
-
   <input class='search'
          type='text'
          ng-model='search.last_name'
@@ -11,14 +10,12 @@
   <button class='button button-info button-info-solid search' ng-click='findSwimmers()'>
    Search
   </button>
-
   <br><br>
   <div ng-hide='filterSwimmers.length'>
     <center>
       <h5 class='medium-grey-text'>Enter a swimmer’s last name and click the SEARCH button to get started.</h5>
     </center>
   </div>
-
   <table class='u-full-width'>
     <thead ng-show='filterSwimmers.length'>
       <tr>
@@ -35,26 +32,28 @@
         <td>
           <button ng-if='!swimmer.phone_added' ng-click="open(swimmer)"
                  class='button button-primary button-width-default'>
-            Add Phone
+            Setup
           </button>
           <button ng-if='swimmer.phone_added' ng-click="checkIn(swimmer)"
-                  ng-class="!swimmer.swimmer_checked_in && swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
+                  ng-class="!swimmer.swimmer_checked_in &&
+                            swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
                   class='button button-width-default'>
             {{!swimmer.swimmer_checked_in && swimmer.phone_number ? 'Check In' : 'Checked In'}}
           </button>
         </td>
         <td>
-          <a ng-click='viewSwimmer(swimmer)'>{{swimmer.last_name}}, {{swimmer.first_name}}</a>
+          <a ng-click='viewSwimmer(swimmer)'>
+            {{swimmer.last_name}}, {{swimmer.first_name}}
+          </a>
         </td>
         <td class='hidden-xs medium-grey-text'>{{swimmer.usms_number}}</td>
         <th class='hidden-xs medium-grey-text'>{{swimmer.lmsc}}</td>
       </tr>
     </tbody>
   </table>
-
   <div ng-show='noResults'>
     <center>
-      <h5 class='medium-grey-text'>No swimmers found.</h5>
+      <h5 class='medium-grey-text'>No swimmers found</h5>
     </center>
   </div>
 </div>

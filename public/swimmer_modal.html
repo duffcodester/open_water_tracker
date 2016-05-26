@@ -18,6 +18,15 @@
       <th>Phone</th>
       <td><a href='tel:{{swimmer.phone_number}}'>{{swimmer.phone_number}}</a></td>
     </tr>
+    <tr>
+      <th>Reviewed Waiver</th>
+      <td ng-if='swimmer.reviewed_waiver'>
+        YES
+      </td>
+      <td ng-if='!swimmer.reviewed_waiver'>
+        NO
+      </td>
+    </tr>
   </table>
 </div>
 <div class='modal-footer'>
