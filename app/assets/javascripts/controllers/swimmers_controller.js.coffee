@@ -70,7 +70,7 @@
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
-        templateUrl: 'setup_swimmer.html',
+        templateUrl: 'setup_new_swimmer_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
@@ -91,6 +91,8 @@
       $scope.agreeToWaiver = =>
         $scope.swimmer.reviewed_waiver = true
         $scope.swimmer.reviewed_waiver_date = new Date()
+        toastr.options.positionClass = 'toast-bottom-left'
+        toastr.success 'Thank you for agreeing to the waiver'
 
       $scope.update = ->
         updateExistingSwimmer(swimmer).then ->
