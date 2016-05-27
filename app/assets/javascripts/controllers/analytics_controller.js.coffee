@@ -5,10 +5,8 @@
   @AnalyticsCtrl = ($scope, Analytics) ->
     Analytics.data()
     .$promise.then (data) ->
-      swimmerCount2014 = data.total_swims_2014
-      uniqueSwimmers2014 = data.unique_swimmers_2014
-      swimmerCount2015 = data.total_swims_2015
-      uniqueSwimmers2015 = data.unique_swimmers_2015
+      swimmerCount2016 = data.total_swims_2016
+      uniqueSwimmers2016 = data.unique_swimmers_2016
 
       chart1 = {}
       chart1.type = 'ColumnChart'
@@ -29,10 +27,17 @@
         ]
         [
           '2015'
-          swimmerCount2015
-          swimmerCount2015
-          uniqueSwimmers2015
-          uniqueSwimmers2015
+          1979
+          '1979'
+          417
+          '417'
+        ]
+        [
+          '2016'
+          swimmerCount2016
+          swimmerCount2016
+          uniqueSwimmers2016
+          uniqueSwimmers2016
         ]
       ]
 

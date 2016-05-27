@@ -70,7 +70,7 @@
 
     $scope.open = (swimmer, editMode) ->
       modalInstance = $modal.open
-        templateUrl: 'add_phone_modal.html',
+        templateUrl: 'setup_swimmer.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
@@ -78,7 +78,7 @@
 
     $scope.viewSwimmer = (swimmer) ->
       modalInstance = $modal.open
-        templateUrl: 'swimmer.html',
+        templateUrl: 'swimmer_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
@@ -87,6 +87,10 @@
     ModalCtrl = ($scope, $modalInstance, swimmer, Swimmers) ->
       angular.extend $scope,
         swimmer: swimmer
+
+      $scope.agreeToWaiver = =>
+        $scope.swimmer.reviewed_waiver = true
+        $scope.swimmer.reviewed_waiver_date = new Date()
 
       $scope.update = ->
         updateExistingSwimmer(swimmer).then ->

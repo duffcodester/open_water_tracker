@@ -10,13 +10,13 @@ Comsa::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 
-  config.cache_classes = true
+  config.cache_classes = false
 
   # Do not eager load code on boot.
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -32,4 +32,8 @@ Comsa::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.reload_classes_only_on_change = false
+
+  config.serve_static_assets = true
 end

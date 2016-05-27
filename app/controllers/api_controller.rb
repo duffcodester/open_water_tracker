@@ -9,14 +9,11 @@ class ApiController < ApplicationController
   SWIMMER_HEADERS = %w(first_name, mi, last_name, lmsc, usms_number)
 
   def analytics
-    records_2014 = SwimRecord.where(completed: true, check_out: '2014-01-01'..'2014-12-31')
-    records_2015 = SwimRecord.where(completed: true, check_out: '2015-01-01'..'2015-12-31')
+    records_2016 = SwimRecord.where(completed: true, check_out: '2016-01-01'..'2016-12-31')
 
     data = {
-      total_swims_2014: records_2014.count,
-      unique_swimmers_2014: records_2014.distinct.count('swimmer_id'),
-      total_swims_2015: records_2015.count,
-      unique_swimmers_2015: records_2015.distinct.count('swimmer_id')
+      total_swims_2016: records_2016.count,
+      unique_swimmers_2016: records_2016.distinct.count('swimmer_id')
     }
 
     render json: data.to_json
@@ -32,7 +29,7 @@ class ApiController < ApplicationController
     query = params[:search]
     @swimmers = {}
     if query
-      url = "http://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2014&LastName=#{query}&oper=csv&_search=false&nd=1398554078479&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1"
+      url = "http://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2016&LastName=#{query}&oper=csv&_search=false&nd=1398554078479&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1"
       key = 'swimmer'
       @swimmers = CSV.open(open(url).path,
       headers: true,

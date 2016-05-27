@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428222930) do
+ActiveRecord::Schema.define(version: 20160525202411) do
 
   create_table "swim_records", force: true do |t|
     t.datetime "created_at"
@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 20140428222930) do
     t.datetime "updated_at"
     t.string   "mi"
     t.string   "phone_number"
-    t.boolean  "phone_added",        default: false
-    t.boolean  "swimmer_checked_in", default: false
+    t.boolean  "phone_added",          default: false
+    t.boolean  "swimmer_checked_in",   default: false
+    t.boolean  "reviewed_waiver",      default: false
+    t.datetime "reviewed_waiver_date"
   end
 
   add_index "swimmers", ["usms_number"], name: "index_swimmers_on_usms_number"
