@@ -28,10 +28,15 @@
     <div class='form-group'
          ng-class="{ 'has-error' : userForm.reviewed_waiver.$invalid && !userForm.reviewed_waiver.$pristine }">
       <p class='help-block'>
-          I HAVE READ THE WAIVER AND AGREE TO THE TERMS
+        I HAVE READ THE WAIVER AND AGREE TO THE TERMS
       </p>
       <button ng-click='agreeToWaiver()'
-              class='u-full-width button button-warning button-width-default'>
+              class='u-full-width button button-warning button-width-default'
+              ng-hide='swimmer.reviewed_waiver'>
+        AGREE
+      </button>
+      <button class='u-full-width button button-warning button-width-default button-disabled'
+              ng-show='swimmer.reviewed_waiver'>
         AGREE
       </button>
     </div>
