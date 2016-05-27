@@ -47,7 +47,7 @@
         toastr.success message
         toastr.success 'Redirecting to Check In Page'
 
-        $timeout (->
-          $window.location.assign('/check_in')
-        ), 1500
+        # $timeout (->
+        #   $window.location.assign('/check_in')
+        # ), 1500
 ]
