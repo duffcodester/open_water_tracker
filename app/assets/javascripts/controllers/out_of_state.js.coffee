@@ -41,9 +41,9 @@
           message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added'
           toastr.success message
 
-          $timeout (->
-            $window.location.assign('/check_in')
-            return
-          ), 3000
-          return
+          # $timeout (->
+          #   $window.location.assign('/check_in')
+          #   return
+          # ), 3000
+          # return
 ]
