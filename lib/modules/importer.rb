@@ -2,7 +2,7 @@
 require 'csv'
 require 'open-uri'
 
-URL = 'http://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2015&oper=csv&_search=false&nd=1396542916605&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1'
+URL = 'http://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2016&oper=csv&_search=false&nd=1396542916605&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1'
 
 module Importer
   $colorado_count = 0
@@ -15,12 +15,10 @@ module Importer
                   header_converters: :symbol) do |row|
         update_or_create_swimmer(row)
         @usms_count += 1
-        # puts @usms_count
       end
       puts 'done'
     end
   end
-  # rubocop:enable all
 
   def self.open_file
     open(URL).path
