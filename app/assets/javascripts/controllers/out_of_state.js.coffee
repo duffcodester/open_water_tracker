@@ -40,6 +40,7 @@
           last_name: swimmer.last_name
           mi: swimmer.mi
           lmsc: swimmer.lmsc
+          usms: usms_number.usms_number
 
         $scope.outOfState = ''
         toastr.options.positionClass = 'toast-bottom-left'
@@ -47,7 +48,7 @@
         toastr.success message
         toastr.success 'Redirecting to Check In Page'
 
-        # $timeout (->
-        #   $window.location.assign('/check_in')
-        # ), 1500
+        $timeout (->
+          $window.location.assign('/check_in')
+        ), 1500
 ]
