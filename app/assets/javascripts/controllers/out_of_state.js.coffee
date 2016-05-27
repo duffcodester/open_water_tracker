@@ -40,7 +40,7 @@
           last_name: swimmer.last_name
           mi: swimmer.mi
           lmsc: swimmer.lmsc
-          usms: usms_number.usms_number
+          usms: swimmer.usms_number
 
         $scope.outOfState = ''
         toastr.options.positionClass = 'toast-bottom-left'
