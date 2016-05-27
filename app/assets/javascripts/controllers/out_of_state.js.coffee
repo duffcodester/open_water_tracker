@@ -35,15 +35,19 @@
           $scope.noResults = false
 
       $scope.addSwimmer = (swimmer) ->
-        Swimmers.create(swimmer).$promise.then (newSwimmer) ->
-          $scope.outOfState = ''
-          toastr.options.positionClass = 'toast-bottom-left'
-          message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added'
-          toastr.success message
+        Swimmers.create
+          first_name: swimmer.first_name
+          last_name: swimmer.last_name
+          mi: swimmer.mi
+          lmsc: swimmer.lmsc
 
-          # $timeout (->
-          #   $window.location.assign('/check_in')
-          #   return
-          # ), 3000
-          # return
+        $scope.outOfState = ''
+        toastr.options.positionClass = 'toast-bottom-left'
+        message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added'
+        toastr.success message
+        toastr.success 'Redirecting to Check In Page'
+
+        $timeout (->
+          $window.location.assign('/check_in')
+        ), 1500
 ]

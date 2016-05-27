@@ -1,4 +1,3 @@
-# rubocop:disable all
 require 'csv'
 require 'open-uri'
 
