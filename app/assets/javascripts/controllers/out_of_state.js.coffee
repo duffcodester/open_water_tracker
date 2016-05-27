@@ -35,18 +35,20 @@
           $scope.noResults = false
 
       $scope.addSwimmer = (swimmer) ->
+        console.log swimmer
+
         Swimmers.create
           first_name: swimmer.first_name
           last_name: swimmer.last_name
           mi: swimmer.mi
           lmsc: swimmer.lmsc
-          usms: swimmer.usms_number
+          usms_number: swimmer.usms_number
 
         $scope.outOfState = ''
         toastr.options.positionClass = 'toast-bottom-left'
         message = swimmer.first_name + ' ' + swimmer.last_name + ' has been added'
         toastr.success message
-        toastr.success 'Redirecting to Check In Page'
+        toastr.success "Redirecting to Check In page"
 
         $timeout (->
           $window.location.assign('/check_in')

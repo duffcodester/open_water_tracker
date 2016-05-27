@@ -19,5 +19,7 @@ json.array!(@swimmer) do |data|
     json.usms_number data.swimmer.usms_number
     json.lmsc data.swimmer.lmsc
     json.club data.swimmer.club
+    json.club data.swimmer.reviewed_waiver
+    json.club data.swimmer.reviewed_waiver_date
   end
 end

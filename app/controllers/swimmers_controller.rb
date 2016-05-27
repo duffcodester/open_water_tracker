@@ -25,7 +25,6 @@ class SwimmersController < ApplicationController
   def records
     @records = (SwimRecord.where(completed: true).sort_by &:created_at).reverse
     render :layout => false
-
   end
 
   def index
@@ -73,7 +72,7 @@ class SwimmersController < ApplicationController
   def import
     call_rake :import
     flash[:success] = 'Please allow one minute to update'
-    redirect_to '/#/check_in'
+    redirect_to '/check_in'
   end
 
   private
