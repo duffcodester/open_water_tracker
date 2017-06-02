@@ -10,6 +10,7 @@
   @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
     $http.get('/api/swimmers.json').success (data) ->
       $scope.swimmers = data
+      console.log $scope.swimmers
 
     $http.get('/api/swim_records.json').success (data) ->
       $scope.swimRecords = data

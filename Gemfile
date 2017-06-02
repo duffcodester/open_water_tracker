@@ -9,11 +9,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
-gem 'oj'
+gem 'oj', '2.8.1'
 
 # Angualr
 gem 'angularjs-rails', '1.3.10'
-gem 'angular-ui-bootstrap-rails'
+gem 'angular-ui-bootstrap-rails', '0.11.2'
 gem 'lodash-rails'
 
 # Front End
@@ -22,6 +22,11 @@ gem 'pace-rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '3.0.3.0'
 
+# Spreadsheets
+gem 'rubyzip', '1.2.1'
+gem "roo", "~> 2.7.0"
+gem 'roo-xls'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
@@ -29,8 +34,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
+  gem 'capybara'
   gem 'factory_girl_rails', '4.2.1'
 end
 

@@ -34,11 +34,6 @@ describe Swimmer do
     it { should_not be_valid }
   end
 
-  describe 'when usms_number is not present' do
-    before { @swimmer.usms_number = ' ' }
-    it { should_not be_valid }
-  end
-
   describe 'when first name is too long' do
     before { @swimmer.first_name = 'a' * 16 }
     it { should_not be_valid }

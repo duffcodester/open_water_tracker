@@ -22,6 +22,12 @@ class SwimmersController < ApplicationController
   def analytics
   end
 
+  def swimmer_import
+    Swimmer.import(params[:file])
+    redirect_to check_in_path
+    flash[:success] = 'Swimmers Imported'
+  end
+
   def records
     @records = (SwimRecord.where(completed: true).sort_by &:created_at).reverse
     render :layout => false
@@ -70,9 +76,6 @@ class SwimmersController < ApplicationController
   end
 
   def import
-    call_rake :import
-    flash[:success] = 'Please allow one minute to update'
-    redirect_to '/check_in'
   end
 
   private

@@ -8,8 +8,9 @@
 #= require angular-ui-bootstrap-tpls
 #= require ng-google-chart.js
 #= require lodash
-#= require pace/pace
 #= require toastr
+#= require pace/pace
+
 
 #= require modules
 #= require_tree .

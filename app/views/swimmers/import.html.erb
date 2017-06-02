@@ -1,0 +1,20 @@
+<% provide(:title, 'Add Multiple Employees') %>
+
+<h1>Import Swimmers</h1>
+<div class='u-form-width-fix well shadowDepth1'>
+  <p>
+    <b>Instructions</b>
+    <br />
+    To swimmers download and complete
+    this
+    <%= link_to 'Excel template',
+                'https://docs.google.com/a/digiquatics.com/spreadsheets/d/1dWf3YG-Tk_ayuheQWb_wO3nZKWorV0zSObZmhdJvQ90/edit?usp=sharing',
+                class: 'styled-link' %>.
+    Required fields will
+    be colored red.
+  </p>
+  <hr />
+  <%= form_tag swimmer_import_path, multipart: true do %>
+    <%= file_field_tag :file, class:'button' %> <%= submit_tag 'IMPORT', class: 'button button-primary' %>
+  <% end %>
+</div>
