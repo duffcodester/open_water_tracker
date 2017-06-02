@@ -8,7 +8,7 @@ require 'rails/all'
 
 Bundler.require(:default, Rails.env)
 
-module Comsa
+module OpenWaterTracker
   class Application < Rails::Application
     config.generators do |g|
       g.stylesheets false

@@ -1,4 +1,4 @@
-Comsa::Application.routes.draw do
+OpenWaterTracker::Application.routes.draw do
   root 'swimmers#check_in'
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}

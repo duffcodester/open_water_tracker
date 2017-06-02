@@ -22,7 +22,7 @@
             </button>
           <% end %>
           <% unless signed_in? %>
-            <a class='navbar-brand' href='/login'>COMSA TRACKER</a>
+            <a class='navbar-brand' href='/login'>Open Water Tracker</a>
           <% else signed_in? %>
           <div class='visible-xs'>
             <% if action_name == 'check_in' %>
@@ -49,7 +49,6 @@
                   CHECK OUT ({{checkOutCount.length}})</a>
               </li>
               <li><a href='/monitors' class='navbar-link'>MONITORS</a></li>
-              <li><a href='/out_of_state' class='navbar-link'>OUT OF STATE</a></li>
               <% if current_user.admin? %>
               <li><a href='/analytics' class='navbar-link'>ANALYTICS</a></li>
               <% end %>

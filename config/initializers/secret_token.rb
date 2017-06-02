@@ -26,4 +26,4 @@ def secure_token
 end
 # rubocop:enable all
 
-Comsa::Application.config.secret_key_base = secure_token
+OpenWaterTracker::Application.config.secret_key_base = secure_token

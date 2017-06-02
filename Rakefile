@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Comsa::Application.load_tasks
+OpenWaterTracker::Application.load_tasks
