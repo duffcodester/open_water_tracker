@@ -217,3 +217,9 @@ DEPENDENCIES
   toastr-rails
   uglifier (~> 2.5.0)
   unicorn
+
+RUBY VERSION
+   ruby 2.1.10p492
+
+BUNDLED WITH
+   1.15.1

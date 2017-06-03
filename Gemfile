@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '2.1.3'
+ruby '2.1.10'
 
 gem 'rails', '4.0.2'
 gem 'devise'
