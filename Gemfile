@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
-ruby '2.1.10'
+ruby '2.2.7'
 
-gem 'rails', '4.0.2'
+gem 'rails', '~>4.1'
 gem 'devise'
 gem 'faker', '1.1.2'
 gem 'jbuilder', '~> 1.2'
