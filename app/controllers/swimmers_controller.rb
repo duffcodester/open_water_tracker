@@ -102,7 +102,6 @@ class SwimmersController < ApplicationController
 
   def oj_dumper(view)
     Oj.dump(view.select([:id, :last_name, :first_name, :mi, :phone_number,
-                         :usms_number, :lmsc, :phone_added, :swimmer_checked_in,
-                         :reviewed_waiver, :reviewed_waiver_date]), mode: :compat)
+                         :phone_added, :swimmer_checked_in]), mode: :compat)
   end
 end

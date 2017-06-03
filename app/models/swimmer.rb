@@ -18,6 +18,12 @@ class Swimmer < ActiveRecord::Base
 
         if @swimmer # existing
           if @swimmer.update(user_hash)
+            if @swimmer.phone_number == ''
+              @swimmer.phone_added = false
+            elsif @swimmer.phone_number
+              @swimmer.phone_added = true
+            end
+            @swimmer.save!
           	puts "updated: " + @swimmer.reload.to_s
           else
             puts "update error" + @swimmer.to_s
@@ -26,6 +32,12 @@ class Swimmer < ActiveRecord::Base
           @swimmer = Swimmer.new(user_hash)
 
           if @swimmer.save
+            if @swimmer.phone_number == ''
+              @swimmer.phone_added = false
+            elsif @swimmer.phone_number
+              @swimmer.phone_added = true
+            end
+            @swimmer.save!
             puts "created" + @swimmer.reload.to_s
           else
             puts "create error:" + @swimmer.to_s

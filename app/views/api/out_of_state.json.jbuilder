@@ -16,10 +16,5 @@ json.array!(@swimmer) do |data|
     json.first_name data.swimmer.first_name
     json.mi data.swimmer.mi
     json.last_name data.swimmer.last_name
-    json.usms_number data.swimmer.usms_number
-    json.lmsc data.swimmer.lmsc
-    json.club data.swimmer.club
-    json.club data.swimmer.reviewed_waiver
-    json.club data.swimmer.reviewed_waiver_date
   end
 end

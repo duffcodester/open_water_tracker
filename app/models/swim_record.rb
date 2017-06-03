@@ -8,8 +8,6 @@ class SwimRecord < ActiveRecord::Base
     swimmer last_name: 'Last Name'
     swimmer first_name: 'First Name'
     swimmer mi: 'Middle Initial'
-    swimmer usms_number: 'USMS'
-    # swimmer lmsc: 'LMSC'
     swimmer phone_number: 'Phone Number'
     check_in 'Check In'
     # check_in_user_id 'User ID'

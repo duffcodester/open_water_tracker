@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.0.2)
       actionpack (= 4.0.2)
@@ -217,9 +217,3 @@ DEPENDENCIES
   toastr-rails
   uglifier (~> 2.5.0)
   unicorn
-
-RUBY VERSION
-   ruby 2.2.0p0
-
-BUNDLED WITH
-   1.13.6

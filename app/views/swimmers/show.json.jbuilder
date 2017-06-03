@@ -1,3 +1,2 @@
 json.extract! @swimmer, :id, :first_name, :mi, :last_name,
-:phone_number, :usms_number, :lmsc, :phone_added, :swimmer_checked_in,
-:reviewed_waiver, :reviewed_waiver_date
+:phone_number, :phone_added, :swimmer_checked_in

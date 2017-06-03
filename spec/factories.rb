@@ -24,8 +24,6 @@ FactoryGirl.define do
     first_name 'Swimmer'
     last_name 'Duffy'
     mi 'M'
-    usms_number '1ADE-ABC'
-    lmsc 'CO'
   end
 
   factory :swim_record do

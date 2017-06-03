@@ -8,9 +8,9 @@
   '$http'
 
   @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
+    console.log 'heu'
     $http.get('/api/swimmers.json').success (data) ->
       $scope.swimmers = data
-      console.log $scope.swimmers
 
     $http.get('/api/swim_records.json').success (data) ->
       $scope.swimRecords = data
@@ -88,12 +88,6 @@
     ModalCtrl = ($scope, $modalInstance, swimmer, Swimmers) ->
       angular.extend $scope,
         swimmer: swimmer
-
-      $scope.agreeToWaiver = =>
-        $scope.swimmer.reviewed_waiver = true
-        $scope.swimmer.reviewed_waiver_date = new Date()
-        toastr.options.positionClass = 'toast-bottom-left'
-        toastr.success 'Thank you for agreeing to the waiver'
 
       $scope.update = ->
         updateExistingSwimmer(swimmer).then ->

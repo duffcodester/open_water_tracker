@@ -1,5 +1,6 @@
 module UsersHelper
-  USER_PARAMS = [:email,
+  USER_PARAMS = [:id,
+                 :email,
                  :first_name,
                  :last_name,
                  :phone_number,

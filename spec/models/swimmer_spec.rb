@@ -6,7 +6,6 @@ describe Swimmer do
     @swimmer = Swimmer.new(first_name:     'First',
                            last_name:      'Last',
                            mi: 'Dubs',
-                           usms_number:    'ABCD-1234',
                            phone_number:   '720-387-9691')
   end
 
@@ -15,12 +14,9 @@ describe Swimmer do
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:mi) }
-  it { should respond_to(:usms_number) }
   it { should respond_to(:phone_number) }
   it { should respond_to(:phone_added) }
   it { should respond_to(:swimmer_checked_in) }
-  it { should respond_to(:reviewed_waiver) }
-  it { should respond_to(:reviewed_waiver_date) }
 
   it { should be_valid }
 
