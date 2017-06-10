@@ -35,5 +35,5 @@ OpenWaterTracker::Application.configure do
 
   config.reload_classes_only_on_change = false
 
-  config.serve_static_assets = true
+  config.serve_static_files = true
 end

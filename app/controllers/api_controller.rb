@@ -6,14 +6,14 @@ class ApiController < ApplicationController
   OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
   OpenURI::Buffer.const_set 'StringMax', 0
 
-  SWIMMER_HEADERS = %w(first_name, mi, last_name, lmsc, usms_number)
+  SWIMMER_HEADERS = %w(first_name, mi, last_name)
 
   def analytics
-    records_2016 = SwimRecord.where(completed: true, check_out: '2016-01-01'..'2016-12-31')
+    records_2017 = SwimRecord.where(completed: true, check_out: '2017-01-01'..'2017-12-31')
 
     data = {
-      total_swims_2016: records_2016.count,
-      unique_swimmers_2016: records_2016.distinct.count('swimmer_id')
+      total_swims_2017: records_2017.count,
+      unique_swimmers_2017: records_2017.distinct.count('swimmer_id')
     }
 
     render json: data.to_json
