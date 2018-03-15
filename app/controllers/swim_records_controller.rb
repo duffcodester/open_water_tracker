@@ -2,7 +2,7 @@ class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
   def index
-    @swim_records = SwimRecord.where(completed: false)
+    @swim_records = SwimRecord.where(account_id: current_user.account_id, completed: false)
     respond_to do |format|
       format.html
       format.json
@@ -46,6 +46,7 @@ class SwimRecordsController < ApplicationController
 
   def swim_record_params_create
     @swim_record = SwimRecord.new(swim_record_params)
+    @swim_record.account_id = current_user.account_id
     @swim_record.check_in_user_id = current_user.id
     @swim_record.check_in_first_name = current_user.first_name
     @swim_record.check_in_last_name = current_user.last_name

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    render json: User.all
+    render json: User.where(account_id: current_user.account_id)
   end
 
   def monitors
@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def user_setup(user)
+    user.account_id = current_user.account_id
     user.password = params[:password]
     user.password_confirmation = params[:password_confirmation]
     user.save!

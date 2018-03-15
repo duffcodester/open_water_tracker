@@ -4,7 +4,7 @@ module UsersHelper
                  :first_name,
                  :last_name,
                  :phone_number,
-                 :dealer_id,
+                 :account_id,
                  :admin,
                  :password,
                  :password_confirmation

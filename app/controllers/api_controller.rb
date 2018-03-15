@@ -9,7 +9,7 @@ class ApiController < ApplicationController
   SWIMMER_HEADERS = %w(first_name, mi, last_name)
 
   def analytics
-    records_2017 = SwimRecord.where(completed: true, check_out: '2017-01-01'..'2017-12-31')
+    records_2017 = SwimRecord.where(account_id: current_user.account_id, completed: true, check_out: '2017-01-01'..'2017-12-31')
 
     data = {
       total_swims_2017: records_2017.count,
@@ -21,7 +21,7 @@ class ApiController < ApplicationController
 
   def records
     respond_to do |format|
-      format.csv { render csv: SwimRecord.where(completed: true), filename: 'records' }
+      format.csv { render csv: SwimRecord.where(account_id: current_user.account_id, completed: true), filename: 'records' }
     end
   end
 

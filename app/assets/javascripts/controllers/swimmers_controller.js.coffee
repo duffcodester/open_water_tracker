@@ -8,7 +8,6 @@
   '$http'
 
   @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
-    console.log 'heu'
     $http.get('/api/swimmers.json').success (data) ->
       $scope.swimmers = data
 
