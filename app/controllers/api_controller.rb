@@ -9,11 +9,11 @@ class ApiController < ApplicationController
   SWIMMER_HEADERS = %w(first_name, mi, last_name)
 
   def analytics
-    records_2017 = SwimRecord.where(account_id: current_user.account_id, completed: true, check_out: '2017-01-01'..'2017-12-31')
+    records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true, check_out: '2018-01-01'...'2018-12-31')
 
     data = {
-      total_swims_2017: records_2017.count,
-      unique_swimmers_2017: records_2017.distinct.count('swimmer_id')
+      total_swims: records.count,
+      unique_swimmers: records.distinct.count('swimmer_id')
     }
 
     render json: data.to_json

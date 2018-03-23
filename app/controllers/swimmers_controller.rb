@@ -23,7 +23,7 @@ class SwimmersController < ApplicationController
   end
 
   def swimmer_import
-    Swimmer.import(params[:file])
+    Swimmer.import(params[:file], current_user.account_id)
     redirect_to check_in_path
     flash[:success] = 'Swimmers Imported'
   end
@@ -103,6 +103,6 @@ class SwimmersController < ApplicationController
 
   def oj_dumper(view)
     Oj.dump(view.select([:id, :last_name, :first_name, :mi, :phone_number,
-                         :phone_added, :swimmer_checked_in]), mode: :compat)
+                         :phone_added, :swimmer_checked_in, :account_id]), mode: :compat)
   end
 end

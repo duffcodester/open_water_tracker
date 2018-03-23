@@ -1,5 +1,9 @@
 FactoryGirl.define do
 
+  factory :account do
+    name 'COMSA'
+  end
+
   factory :user do
     first_name 'Josh'
     last_name 'Duffy'
@@ -8,6 +12,7 @@ FactoryGirl.define do
     password_confirmation 'foobar77'
     admin false
     phone_number '720-387-9691'
+    account_id 1
   end
 
   factory :admin, class: User do
@@ -18,12 +23,14 @@ FactoryGirl.define do
     password_confirmation 'foobar22'
     admin true
     phone_number '720-387-9655'
+    account_id 1
   end
 
   factory :swimmer do
     first_name 'Swimmer'
     last_name 'Duffy'
     mi 'M'
+    account_id 1
   end
 
   factory :swim_record do

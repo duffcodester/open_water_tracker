@@ -1,9 +1,8 @@
 class SwimRecord < ActiveRecord::Base
   belongs_to :swimmer
   belongs_to :user
-  belongs_to :account
 
-  validates_presence_of :swimmer_id, :check_in_user_id, :check_in, :account_id
+  validates_presence_of :swimmer_id, :check_in_user_id, :check_in
 
   comma do
     swimmer last_name: 'Last Name'

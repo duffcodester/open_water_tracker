@@ -12,10 +12,6 @@ describe 'Analytics' do
 
   it { should have_title(full_title('Analytics')) }
 
-  describe 'on mobile view' do
-    it { should have_selector('h4', text: 'Analytics') }
-  end
-
   describe 'on desktop view' do
     it { should have_selector('h1', text: 'Analytics') }
   end

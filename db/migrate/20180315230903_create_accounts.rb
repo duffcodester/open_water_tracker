@@ -8,6 +8,5 @@ class CreateAccounts < ActiveRecord::Migration
 
     add_column :users, :account_id, :integer
     add_column :swimmers, :account_id, :integer
-    add_column :swim_records, :account_id, :integer
   end
 end

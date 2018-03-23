@@ -22,3 +22,8 @@ User.create!(first_name: 'Admin',
              admin: true,
              account_id: Account.first.id
              )
+
+100.times.do {
+
+  Swimmer.create(first)
+}

@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20180315230903) do
     t.string   "check_in_last_name",   limit: 255
     t.string   "check_out_first_name", limit: 255
     t.string   "check_out_last_name",  limit: 255
-    t.integer  "account_id"
   end
 
   create_table "swimmers", force: :cascade do |t|

@@ -5,8 +5,8 @@
   @AnalyticsCtrl = ($scope, Analytics) ->
     Analytics.data()
     .$promise.then (data) ->
-      swimmerCount2017 = data.total_swims_2017
-      uniqueSwimmers2017 = data.unique_swimmers_2017
+      swimmerCount = data.total_swims
+      uniqueSwimmers = data.unique_swimmers
 
       chart1 = {}
       chart1.type = 'ColumnChart'
@@ -19,11 +19,11 @@
           { role: 'annotation' }
         ]
         [
-          '2017'
-          swimmerCount2017
-          swimmerCount2017
-          uniqueSwimmers2017
-          uniqueSwimmers2017
+          '2018'
+          swimmerCount
+          swimmerCount
+          uniqueSwimmers
+          uniqueSwimmers
         ]
       ]
 
