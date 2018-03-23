@@ -21,7 +21,7 @@ class ApiController < ApplicationController
 
   def records
     respond_to do |format|
-      format.csv { render csv: SwimRecord.where(account_id: current_user.account_id, completed: true), filename: 'records' }
+      format.csv { render csv: SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true), filename: 'records' }
     end
   end
 
