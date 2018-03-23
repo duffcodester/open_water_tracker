@@ -29,7 +29,7 @@ class SwimmersController < ApplicationController
   end
 
   def records
-    @records = (SwimRecord.where(account_id: current_user.account_id, completed: true).sort_by &:created_at).reverse
+    @records = (SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true).sort_by &:created_at).reverse
     render :layout => false
   end
 
