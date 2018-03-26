@@ -28,7 +28,6 @@
       <tr ng-repeat="swimmer in filterSwimmers = (filterSwimmersData
                      | orderBy:['last_name','first_name'])">
         <td>
-          {{swimmer}}
           <button ng-if='!swimmer.phone_added' ng-click="open(swimmer)"
                  class='button button-primary button-width-default'>
             Setup
@@ -42,7 +41,7 @@
         </td>
         <td>
           <a ng-click='viewSwimmer(swimmer)'>
-            {{swimmer.last_name}}, {{swimmer.first_name}} ({{swimmer.account_id}})
+            {{swimmer.last_name}}, {{swimmer.first_name}}
           </a>
         </td>
       </tr>
