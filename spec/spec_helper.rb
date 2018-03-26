@@ -44,4 +44,7 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.include Capybara::DSL
+
+  # path helpers
+  config.include Rails.application.routes.url_helpers
 end

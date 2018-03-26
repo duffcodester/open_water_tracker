@@ -28,7 +28,10 @@ class User < ActiveRecord::Base
             on: :update,
             allow_blank: true
 
+  validates :account_id, presence: true
+
   has_many :swim_records
+  belongs_to :account
 
   def self.new_remember_token
     SecureRandom.urlsafe_base64

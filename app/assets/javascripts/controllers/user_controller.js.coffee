@@ -17,6 +17,7 @@
         email: $scope.newUser.email
         password: $scope.newUser.password
         password_confirmation: $scope.newUser.password_confirmation
+        account_id: Application.currentUser.account_id
 
       .$promise.then (newMonitor) ->
         $scope.users.push newMonitor
@@ -31,6 +32,7 @@
         email: $scope.user.email
         password: $scope.user.password
         password_confirmation: $scope.user.password_confirmation
+        account_id: Application.currentUser.account_id
 
       Users.update id: userData.id, userData
       .$promise.then (updateUser) ->

@@ -3,8 +3,7 @@ require 'spec_helper'
 describe 'Users' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:admin) { FactoryGirl.create(:admin) }
-  let!(:admin_too) do FactoryGirl.create(:admin,
-                                         email: 'newuser3@example.com')
+  let!(:admin_too) do FactoryGirl.create(:admin, email: 'newuser3@example.com')
   end
 
   subject { page }
@@ -14,6 +13,7 @@ describe 'Users' do
       Warden.test_reset!
       login_as(admin, scope: :user)
       visit new_user_path
+      pp page.body
     end
 
     let(:submit) { 'Create Monitor' }
@@ -28,10 +28,10 @@ describe 'Users' do
 
     describe 'with valid information' do
       before do
-        fill_in 'First Name *',              with: 'First'
-        fill_in 'Last Name *',               with: 'Last'
-        fill_in 'Phone Number *',            with: '1234'
-        fill_in 'Email *',                   with: 'user@example.com'
+        fill_in 'First Name *',            with: 'First'
+        fill_in 'Last Name *',             with: 'Last'
+        fill_in 'Phone Number *',          with: '1234'
+        fill_in 'Email *',                 with: 'user@example.com'
         fill_in('Password *',              with: 'foobar77', exact: true)
         fill_in('Password Confirmation *', with: 'foobar77', exact: true)
       end

@@ -9,7 +9,8 @@ describe User do
                      password_confirmation: 'foobar77',
                      admin: false,
                      phone_number: '720-387-9691',
-                     time_zone: 'Mountain Time (US & Canada)'
+                     time_zone: 'Mountain Time (US & Canada)',
+                     account_id: 1
                      )
   end
 

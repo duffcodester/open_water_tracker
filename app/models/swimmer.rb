@@ -3,9 +3,12 @@ class Swimmer < ActiveRecord::Base
 
   validates :first_name, presence: true, length: { maximum: 15 }
   validates :last_name,  presence: true, length: { maximum: 25 }
+  validates :account_id, presence: true
   has_many :swim_records
+  belongs_to :account
 
-  def self.import(file)
+  def self.import(file, account_id)
+    @account_id = account_id
     # :nocov:
     if file && correct_file_type(file)
       ext = File.extname(file.original_filename)[1..-1]
@@ -14,7 +17,7 @@ class Swimmer < ActiveRecord::Base
 
       (2..spreadsheet.last_row).each do |i|
         @row = Hash[[header, spreadsheet.row(i)].transpose]
-        @swimmer = Swimmer.find_by(first_name: @row['first_name'], last_name: @row['last_name'])
+        @swimmer = Swimmer.find_by(first_name: @row['first_name'], last_name: @row['last_name'], account_id: @account_id)
 
         if @swimmer # existing
           if @swimmer.update(user_hash)
@@ -60,7 +63,8 @@ class Swimmer < ActiveRecord::Base
     {
       first_name: @row['first_name'].to_s.squish,
       last_name: @row['last_name'].to_s.squish,
-      phone_number: @row['phone_number'].to_s.squish
+      phone_number: @row['phone_number'].to_s.squish,
+      account_id: @account_id
     }
     # :nocov:
   end

@@ -6,9 +6,9 @@
   '$modal'
   '$rootScope'
   '$http'
+  'Application'
 
-  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http) ->
-    console.log 'heu'
+  @SwimmersCtrl = ($location, $scope, Swimmers, SwimRecords, $modal, $rootScope, $http, Application) ->
     $http.get('/api/swimmers.json').success (data) ->
       $scope.swimmers = data
 
@@ -54,6 +54,7 @@
     $scope.checkIn = (swimmer) ->
       SwimRecords.create
         swimmer_id: swimmer.id
+        account_id: Application.currentUser.account_id
 
       swimmerData =  angular.extend swimmer,
         phone_added: true
@@ -96,6 +97,7 @@
       updateExistingSwimmer = (swimmer) ->
         SwimRecords.create
           swimmer_id: swimmer.id
+          account_id: Application.currentUser.account_id
 
         swimmerData =  angular.extend swimmer,
           phone_added: true

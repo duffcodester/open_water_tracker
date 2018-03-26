@@ -23,18 +23,18 @@ class SwimmersController < ApplicationController
   end
 
   def swimmer_import
-    Swimmer.import(params[:file])
+    Swimmer.import(params[:file], current_user.account_id)
     redirect_to check_in_path
     flash[:success] = 'Swimmers Imported'
   end
 
   def records
-    @records = (SwimRecord.where(completed: true).sort_by &:created_at).reverse
+    @records = (SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true).sort_by &:created_at).reverse
     render :layout => false
   end
 
   def index
-    render json: oj_dumper(Swimmer.all)
+    render json: oj_dumper(Swimmer.where(account_id: current_user.account_id))
   end
 
   def out_of_state
@@ -58,6 +58,7 @@ class SwimmersController < ApplicationController
 
   def create
     @swimmer = Swimmer.new(swimmer_params)
+    @swimmer.account_id = current_user.account_id
     @swimmer.save ? (redirect_to swimmers_url) : create_and_update_json_else
   end
 
@@ -102,6 +103,6 @@ class SwimmersController < ApplicationController
 
   def oj_dumper(view)
     Oj.dump(view.select([:id, :last_name, :first_name, :mi, :phone_number,
-                         :phone_added, :swimmer_checked_in]), mode: :compat)
+                         :phone_added, :swimmer_checked_in, :account_id]), mode: :compat)
   end
 end

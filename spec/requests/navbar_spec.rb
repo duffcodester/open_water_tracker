@@ -12,7 +12,7 @@ describe 'Navbar' do
       before do
         Warden.test_reset!
         login_as(admin, scope: :user)
-        visit users_path
+        visit root_path
       end
 
       it { should have_link('Check In', swimmers_path) }
@@ -31,7 +31,7 @@ describe 'Navbar' do
       before do
         Warden.test_reset!
         login_as(user, scope: :user)
-        visit swimmers_path
+        visit root_path
       end
 
       it { should have_link('Check In', swimmers_path) }

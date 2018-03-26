@@ -2,7 +2,7 @@ class SwimRecordsController < ApplicationController
   before_action :set_swim_record, only: [:show, :edit, :update, :destroy]
 
   def index
-    @swim_records = SwimRecord.where(completed: false)
+    @swim_records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: false)
     respond_to do |format|
       format.html
       format.json
