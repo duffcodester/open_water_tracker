@@ -1,7 +1,7 @@
 namespace :db do
   desc 'Fill database with sample data'
   task add_account_info: :environment do
-    Account.create(name: 'Colorado Wild Women')
+    Account.find_or_create_by(name: 'Colorado Wild Women')
 
     account = Account.find_by(name: 'Colorado Wild Women')
 
