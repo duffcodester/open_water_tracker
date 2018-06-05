@@ -3,7 +3,9 @@
     <th>Record</th>
     <th>Swimmer</th>
     <th>Check In</th>
+    <th>Checked In By</th>
     <th>Check Out</th>
+    <th>Checked Out By</th>
   </tr>
   <% @records.each do |record| %>
     <tr>
@@ -16,7 +18,9 @@
         <% end %>
       </td>
       <td><%= record.check_in.strftime("%m/%d/%Y %I:%M%p") %></td>
+      <td><%= "#{record.check_in_first_name} #{record.check_in_last_name}" %></td>
       <td><%= record.check_out.strftime("%m/%d/%Y %I:%M%p") %></td>
+      <td><%= "#{record.check_out_first_name} #{record.check_out_last_name}" %></td>
     </tr>
   <% end %>
 </table>
