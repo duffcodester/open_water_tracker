@@ -90,6 +90,14 @@
       angular.extend $scope,
         swimmer: swimmer
 
+      $scope.agreeToWaiver = ->
+        console.log 'hey'
+        $scope.swimmer.waiver_received = true
+        $scope.swimmer.waiver_received_on = new Date()
+        toastr.options.positionClass = 'toast-bottom-left'
+        toastr.success 'Thank you for agreeing to the waiver'
+        return false
+
       $scope.update = ->
         updateExistingSwimmer(swimmer).then ->
           $modalInstance.close swimmer

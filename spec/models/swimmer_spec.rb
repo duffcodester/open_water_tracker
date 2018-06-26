@@ -6,7 +6,9 @@ describe Swimmer do
     @swimmer = Swimmer.new(first_name:     'First',
                            last_name:      'Last',
                            mi: 'Dubs',
-                           phone_number:   '720-387-9691')
+                           phone_number:   '720-387-9691',
+                           waiver_received: true,
+                           waiver_received_on: Time.now)
   end
 
   subject { @swimmer }
@@ -17,6 +19,8 @@ describe Swimmer do
   it { should respond_to(:phone_number) }
   it { should respond_to(:phone_added) }
   it { should respond_to(:swimmer_checked_in) }
+  it { should respond_to(:waiver_received) }
+  it { should respond_to(:waiver_received_on) }
 
   it { should be_valid }
 

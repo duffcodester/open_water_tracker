@@ -25,22 +25,39 @@
         Phone number not valid
       </p>
     </div>
+    <div class='form-group'
+         ng-class="{ 'has-error' : userForm.waiver_received.$invalid && !userForm.waiver_received.$pristine }">
+      <p class='help-block'>
+        WAIVER ON FILE?
+      </p>
+      <button ng-click='agreeToWaiver()'
+              class='u-full-width button button-warning button-width-default'
+              ng-hide='swimmer.waiver_received'>
+        RECEIVED WAIVER
+      </button>
+      <button class='u-full-width button button-warning button-width-default button-disabled'
+              ng-show='swimmer.waiver_received'>
+        RECEIVED WAIVER
+      </button>
+    </div>
   </form>
 </div>
 <div class='modal-footer'>
-  <button type='submit'
-          class='u-full-width button-info button-success-solid button-disabled'
-          ng-if='userForm.$invalid'>
-    Check In
-  </button>
-  <button type='submit'
-          class='u-full-width button-info button-success-solid'
-          ng-click='update()'
-          ng-if='!userForm.$invalid'>
-    Check In
-  </button>
+  <span ng-show='swimmer.waiver_received'>
+    <button type='submit'
+            class='u-full-width button-info button-success-solid button-disabled'
+            ng-if='userForm.$invalid'>
+      Check In
+    </button>
+    <button type='submit'
+            class='u-full-width button-info button-success-solid'
+            ng-click='update()'
+            ng-if='!userForm.$invalid'>
+      Check In
+    </button>
+  </span>
   <button class='u-full-width button-danger button-danger-solid'
           ng-click='cancel()'>
-    Cancel
+    Cancel ME
   </button>
 </div>
