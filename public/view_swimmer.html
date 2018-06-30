@@ -10,6 +10,14 @@
       <th>Phone</th>
       <td><a href='tel:{{swimmer.phone_number}}'>{{swimmer.phone_number}}</a></td>
     </tr>
+    <tr>
+      <th>Waiver Received?</th>
+      <td>{{swimmer.waiver_received | booleanToWords}}</td>
+    </tr>
+    <tr>
+      <th>Waiver Received On</th>
+      <td>{{swimmer.waiver_received_on | date:'M/d/yyyy'}}</td>
+    </tr>
   </table>
 </div>
 <div class='modal-footer'>

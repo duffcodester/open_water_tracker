@@ -5,7 +5,9 @@ module SwimmersHelper
                     :phone_number,
                     :phone_added,
                     :id,
-                    :swimmer_checked_in
+                    :swimmer_checked_in,
+                    :waiver_received,
+                    :waiver_received_on
                    ]
 
   def swimmer_params

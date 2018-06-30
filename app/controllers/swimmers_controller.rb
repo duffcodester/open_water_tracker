@@ -34,6 +34,7 @@ class SwimmersController < ApplicationController
   end
 
   def index
+    puts "index"
     render json: oj_dumper(Swimmer.where(account_id: current_user.account_id))
   end
 
@@ -103,6 +104,7 @@ class SwimmersController < ApplicationController
 
   def oj_dumper(view)
     Oj.dump(view.select([:id, :last_name, :first_name, :mi, :phone_number,
-                         :phone_added, :swimmer_checked_in, :account_id]), mode: :compat)
+                         :phone_added, :swimmer_checked_in, :account_id,
+                         :waiver_received, :waiver_received_on]), mode: :compat)
   end
 end
