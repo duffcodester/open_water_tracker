@@ -17,13 +17,10 @@ describe 'Navbar' do
 
       it { should have_link('Check In', swimmers_path) }
       it { should have_link('Check Out', swim_records_path) }
-      it { should have_link('Out of State', out_of_state_path) }
       it { should have_link('Monitors', users_path) }
       it { should have_link('Analytics', analytics_path) }
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }
-      it { should have_link('Edit My Profile', edit_user_path(admin)) }
-      it { should have_link('Update Local USMS Database', '/import') }
       it { should have_link('Logout', destroy_user_session_path) }
     end
 
@@ -36,14 +33,10 @@ describe 'Navbar' do
 
       it { should have_link('Check In', swimmers_path) }
       it { should have_link('Check Out', swim_records_path) }
-      it { should have_link('Out of State', out_of_state_path) }
-      it { should have_link('Search Out of State', out_of_state_path) }
       it { should_not have_link('Users', users_path) }
       it { should_not have_link('Analytics', analytics_path) }
       it { should have_link('Account') }
       it { should have_link('My Profile', user_path(admin)) }
-      it { should have_link('Edit My Profile', edit_user_path(admin)) }
-      it { should have_link('Update Local USMS Database', '/import') }
       it { should have_link('Logout', destroy_user_session_path) }
     end
   end

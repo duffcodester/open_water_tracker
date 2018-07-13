@@ -3,12 +3,13 @@ require Rails.root.join('lib/modules/importer')
 
 describe Swimmer do
   before do
+    @account = Account.create(name: 'account')
     @swimmer = Swimmer.new(first_name:     'First',
                            last_name:      'Last',
                            mi: 'Dubs',
                            phone_number:   '720-387-9691',
                            waiver_received: true,
-                           waiver_received_on: Time.now)
+                           account_id: @account.id)
   end
 
   subject { @swimmer }
@@ -17,10 +18,8 @@ describe Swimmer do
   it { should respond_to(:last_name) }
   it { should respond_to(:mi) }
   it { should respond_to(:phone_number) }
-  it { should respond_to(:phone_added) }
   it { should respond_to(:swimmer_checked_in) }
   it { should respond_to(:waiver_received) }
-  it { should respond_to(:waiver_received_on) }
 
   it { should be_valid }
 

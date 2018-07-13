@@ -65,11 +65,6 @@ class SwimmersController < ApplicationController
 
   def update
     if @swimmer.update(swimmer_params)
-      if @swimmer.phone_number == ''
-        @swimmer.phone_added = false
-      elsif @swimmer.phone_number
-        @swimmer.phone_added = true
-      end
       @swimmer.save!
       render :show
     else
@@ -104,7 +99,7 @@ class SwimmersController < ApplicationController
 
   def oj_dumper(view)
     Oj.dump(view.select([:id, :last_name, :first_name, :mi, :phone_number,
-                         :phone_added, :swimmer_checked_in, :account_id,
-                         :waiver_received, :waiver_received_on]), mode: :compat)
+                         :swimmer_checked_in, :account_id,
+                         :waiver_received]), mode: :compat)
   end
 end

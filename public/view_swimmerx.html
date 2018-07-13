@@ -1,12 +1,10 @@
 <div class='modal-header'>
   <center>
-    <h3 class='modal-title'>{{swimmer.first_name}} {{swimmer.last_name}}</h3>
+    <h3 class='modal-title'>{{swimmer.last_name}}, {{swimmer.first_name}}</h3>
   </center>
 </div>
 <div class='modal-body'>
-  <form name='userForm'
-        ng-submit='submitForm(userForm.$valid)'
-        novalidate>
+  <form name='userForm' ng-submit='submitForm(userForm.$valid)' novalidate>
     <div class='form-group'
          ng-class="{ 'has-error' : userForm.phone_number.$invalid && !userForm.phone_number.$pristine }">
       <label>Phone Number<span style='color: red'> *</span></label>
@@ -35,16 +33,13 @@
   <button type='submit'
           class='u-full-width button-info button-success-solid button-disabled'
           ng-if='userForm.$invalid'>
-    Check In
+    Save
   </button>
   <button type='submit'
           class='u-full-width button-info button-success-solid'
-          ng-click='checkInSwimmer()'
+          ng-click='save()'
           ng-if='!userForm.$invalid'>
-    Check In
+    Save
   </button>
-  <button class='u-full-width button-danger button-danger-solid'
-          ng-click='cancel()'>
-    Cancel
-  </button>
+  <button class='u-full-width button-danger button-danger-solid' ng-click='cancel()'>Close</button>
 </div>

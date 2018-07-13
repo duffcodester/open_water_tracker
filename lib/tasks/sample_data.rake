@@ -66,7 +66,6 @@ namespace :db do
                       last_name: Faker::Name.last_name,
                       phone_number: nil,
                       swimmer_checked_in: false,
-                      phone_added: false,
                       account_id: account_ids.sample)
     end
 

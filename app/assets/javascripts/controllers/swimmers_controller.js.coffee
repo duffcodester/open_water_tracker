@@ -57,7 +57,6 @@
         account_id: Application.currentUser.account_id
 
       swimmerData =  angular.extend swimmer,
-        phone_added: true
         swimmer_checked_in: true
 
       Swimmers.update id: swimmerData.id, swimmerData
@@ -80,7 +79,7 @@
 
     $scope.viewSwimmer = (swimmer) ->
       modalInstance = $modal.open
-        templateUrl: 'view_swimmer.html',
+        templateUrl: 'view_swimmerx.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
@@ -89,28 +88,23 @@
     ModalCtrl = ($scope, $modalInstance, swimmer, Swimmers) ->
       angular.extend $scope,
         swimmer: swimmer
+        data: {}
 
-      $scope.agreeToWaiver = ->
-        console.log 'hey'
-        $scope.swimmer.waiver_received = true
-        $scope.swimmer.waiver_received_on = new Date()
-        toastr.options.positionClass = 'toast-bottom-left'
-        toastr.success 'Waiver Received'
-        return false
+      $scope.data.phone_number = swimmer.phone_number
+      $scope.data.waiver_received = swimmer.waiver_received
 
-      $scope.update = ->
-        updateExistingSwimmer(swimmer).then ->
+      $scope.checkInSwimmer = ->
+        checkInAndUpdate(swimmer).then ->
           $modalInstance.close swimmer
 
-      updateExistingSwimmer = (swimmer) ->
+      checkInAndUpdate = (swimmer) ->
         SwimRecords.create
           swimmer_id: swimmer.id
           account_id: Application.currentUser.account_id
 
         swimmerData =  angular.extend swimmer,
-          phone_added: true
           swimmer_checked_in: true
-          phone_number: $scope.swimmer.phone_number
+          phone_number: $scope.data.phone_number
 
         Swimmers.update id: swimmerData.id, swimmerData
         .$promise.then (updatedSwimmer) ->
@@ -121,6 +115,23 @@
           swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
           toastr.success swimmer.concat(' has been checked in')
           $scope.search.last_name = ''
+
+      $scope.save = ->
+        saveSwimmer(swimmer).then ->
+          $modalInstance.close swimmer
+
+      saveSwimmer = (swimmer) ->
+        swimmerData = {
+          phone_number: $scope.data.phone_number
+          waiver_received: $scope.data.waiver_received
+        }
+
+        Swimmers.update id: swimmer.id, swimmerData
+        .$promise.then (updatedSwimmer) ->
+
+          #TODO FIX SPLICE ON INDEXOF
+          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
+          $scope.swimmers.push updatedSwimmer
 
       $scope.cancel = ->
         $modalInstance.dismiss 'Cancel'

@@ -12,7 +12,7 @@ describe 'Users' do
     before do
       Warden.test_reset!
       login_as(admin, scope: :user)
-      visit new_user_path
+      visit '/monitors/add'
       pp page.body
     end
 
@@ -89,54 +89,6 @@ describe 'Users' do
       describe 'after updating the user' do
         it { should have_selector('div.alert') }
       end
-    end
-  end
-
-  describe 'show' do
-    describe 'as admin' do
-      before do
-        Warden.test_reset!
-        login_as(admin, scope: :user)
-        visit user_path(user)
-      end
-
-      it do should have_selector('h1',
-                                 text: "#{user.first_name} #{user.last_name}")
-      end
-    end
-
-    describe 'should not be able to delete my own admin status' do
-      before do
-        Warden.test_reset!
-        login_as(admin, scope: :user)
-        visit user_path(admin)
-      end
-
-      it { should_not have_button('Remove Admin') }
-    end
-
-    describe 'should be able to delete another users admin status' do
-      before do
-        Warden.test_reset!
-        login_as(admin, scope: :user)
-        visit user_path(admin_too)
-      end
-
-      it { should have_button('Remove Admin') }
-    end
-
-    describe 'as non-admin' do
-      before do
-        Warden.test_reset!
-        login_as(user, scope: :user)
-        visit user_path(user)
-      end
-
-      it do should have_selector('h1',
-                                 text: "#{user.first_name} #{user.last_name}")
-      end
-
-      it { should_not have_button('Add Admin') }
     end
   end
 

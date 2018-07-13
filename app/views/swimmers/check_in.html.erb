@@ -28,11 +28,11 @@
       <tr ng-repeat="swimmer in filterSwimmers = (filterSwimmersData
                      | orderBy:['last_name','first_name'])">
         <td>
-          <button ng-if='!swimmer.phone_added' ng-click="open(swimmer)"
+          <button ng-if='!swimmer.phone_number' ng-click="open(swimmer)"
                  class='button button-primary button-width-default'>
             Setup
           </button>
-          <button ng-if='swimmer.phone_added' ng-click="checkIn(swimmer)"
+          <button ng-if='swimmer.phone_number.length > 9' ng-click="checkIn(swimmer)"
                   ng-class="!swimmer.swimmer_checked_in &&
                             swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
                   class='button button-width-default'>
