@@ -72,6 +72,11 @@ class SwimmersController < ApplicationController
     end
   end
 
+  def destroy
+    @swimmer.destroy
+    head :no_content
+  end
+
   def import
   end
 

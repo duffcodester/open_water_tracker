@@ -33,13 +33,18 @@
   <button type='submit'
           class='u-full-width button-info button-success-solid button-disabled'
           ng-if='userForm.$invalid'>
-    Save
+    SAVE
   </button>
   <button type='submit'
           class='u-full-width button-info button-success-solid'
           ng-click='save()'
           ng-if='!userForm.$invalid'>
-    Save
+    SAVE
   </button>
-  <button class='u-full-width button-danger button-danger-solid' ng-click='cancel()'>Close</button>
+  <button type='submit'
+          class='u-full-width button-info button-danger-solid'
+          ng-click='delete()'>
+    DELETE
+  </button>
+  <button class='u-full-width button-info button-info-solid' ng-click='cancel()'>CANCEL</button>
 </div>

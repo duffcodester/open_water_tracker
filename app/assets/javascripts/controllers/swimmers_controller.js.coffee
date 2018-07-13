@@ -79,7 +79,7 @@
 
     $scope.viewSwimmer = (swimmer) ->
       modalInstance = $modal.open
-        templateUrl: 'view_swimmerx.html',
+        templateUrl: 'view_swimmer_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
@@ -132,6 +132,19 @@
           #TODO FIX SPLICE ON INDEXOF
           $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
           $scope.swimmers.push updatedSwimmer
+
+      $scope.delete = ->
+        console.log 'delete'
+        Swimmers.destroy id: swimmer.id
+        .$promise.then (response) ->
+
+          #TODO FIX SPLICE FROM VIEW WHEN DELETNG
+          $scope.swimmers.splice $scope.swimmers.indexOf(swimmer), 1
+          $modalInstance.close swimmer
+          toastr.options.positionClass = 'toast-bottom-left'
+          swimmer = swimmer.first_name + ' ' + swimmer.last_name
+          toastr.success swimmer.concat(' has been deleted')
+
 
       $scope.cancel = ->
         $modalInstance.dismiss 'Cancel'
