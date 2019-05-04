@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626183944) do
+ActiveRecord::Schema.define(version: 20180315230903) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 20180626183944) do
     t.boolean  "phone_added",        default: false
     t.boolean  "swimmer_checked_in", default: false
     t.integer  "account_id"
-    t.boolean  "waiver_received",    default: false
-    t.datetime "waiver_received_on"
   end
 
   create_table "users", force: :cascade do |t|
