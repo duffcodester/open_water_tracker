@@ -19,7 +19,7 @@
           { role: 'annotation' }
         ]
         [
-          '2018'
+          '2019'
           swimmerCount
           swimmerCount
           uniqueSwimmers
