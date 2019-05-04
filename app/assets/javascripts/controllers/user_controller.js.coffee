@@ -7,6 +7,7 @@
 
   @UserCtrl = ($scope, Application, Users, $window, $rootScope) ->
     $scope.user = Application.currentUser
+    $scope.currentUserAccount = Application.currentAccount
     $scope.users = Users.index()
 
     $scope.create = ->

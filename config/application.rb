@@ -26,6 +26,6 @@ module OpenWaterTracker
 
     config.assets.precompile += %w( *.js *.scss )
 
-    config.serve_static_assets = true
+    config.serve_static_files = true
   end
 end
