@@ -79,6 +79,14 @@ class SwimmersController < ApplicationController
   def import
   end
 
+  def destroy
+    if @swimmer.destroy
+      head :no_content
+    else
+      render json: @swimmer.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   include ApplicationHelper

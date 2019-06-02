@@ -25,4 +25,14 @@
         data.admin = !data.admin
         message = data.first_name + ' ' + data.last_name + "'s" + ' administrative rights have been updated.'
         toastr.success message
+
+    $scope.delete = (data) ->
+      Users.delete id: data.id
+      .$promise
+      .then () ->
+        message = 'Monitor has been deleted.'
+        toastr.success message
+        _.remove $scope.users, id: data.id
+      .catch () ->
+        toastr.error "An error occurred."
 ]

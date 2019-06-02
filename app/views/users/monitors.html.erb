@@ -27,6 +27,7 @@
         <th class='hidden-xs medium-grey-text'>Admin</th>
         <div ng-if='currentUser.admin'>
           <th class='hidden-xs'></th>
+          <th class='hidden-xs'></th>
         </div>
       </tr>
     </thead>
@@ -49,6 +50,13 @@
             Remove Admin
           </span>
         </a>
+      </td>
+      <td>
+        <div ng-if='user.id != currentUser.id'>
+          <a class='button button-danger button-danger-solid' ng-click='delete(user)' style='width:100px;'>
+            DELETE
+          </a>
+        </div>
       </td>
     </tr>
   </tbody>
