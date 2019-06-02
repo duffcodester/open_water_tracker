@@ -22,6 +22,8 @@
 
     $scope.search = {}
 
+    $scope.currentUser = Application.currentUser
+
     $scope.findSwimmers =->
       filtered = []
       _.forEach $scope.swimmers, (swimmer) ->
@@ -85,6 +87,15 @@
         scope: $scope
         resolve:
           swimmer: -> swimmer
+
+    $scope.delete = (swimmer) ->
+      Swimmers.delete id: swimmer.id
+      .$promise
+      .then () ->
+        toastr.success 'Swimmer deleted.'
+        _.remove $scope.filterSwimmersData, id: swimmer.id
+      .catch () ->
+        toastr.error 'An error occurred.'
 
     ModalCtrl = ($scope, $modalInstance, swimmer, Swimmers) ->
       angular.extend $scope,

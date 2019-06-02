@@ -34,5 +34,5 @@
         toastr.success message
         _.remove $scope.users, id: data.id
       .catch () ->
-        toastr.error "An error occured."
+        toastr.error "An error occurred."
 ]

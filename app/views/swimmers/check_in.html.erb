@@ -22,6 +22,7 @@
         <th></th>
         <th class='visible-xs'></th>
         <th class='hidden-xs medium-grey-text'>Name</th>
+        <th ng-if='currentUser.admin' class='hidden-xs'></th>
       </tr>
     </thead>
     <tbody>
@@ -42,6 +43,11 @@
         <td>
           <a ng-click='viewSwimmer(swimmer)'>
             {{swimmer.last_name}}, {{swimmer.first_name}}
+          </a>
+        </td>
+        <td ng-if='currentUser.admin' class='hidden-xs'>
+          <a class='button button-danger button-danger-solid' ng-click='delete(swimmer)' style='width:100px;'>
+            DELETE
           </a>
         </td>
       </tr>

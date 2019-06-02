@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:update, :destroy]
+
   def index
     render json: User.where(account_id: current_user.account_id)
   end
@@ -12,8 +14,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update_attributes(user_params)
       render json: @user.as_json
       flash[:success] = 'Monitor has been updated'
@@ -23,8 +23,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-
     if @user.destroy!
       head :no_content
     else
@@ -35,6 +33,11 @@ class UsersController < ApplicationController
   private
 
   include UsersHelper
+
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_setup(user)
     user.account_id = current_user.account_id
