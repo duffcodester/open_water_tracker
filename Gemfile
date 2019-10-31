@@ -23,7 +23,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '3.0.3.0'
 
 # Spreadsheets
-gem 'rubyzip', '1.2.1'
+gem 'rubyzip', '1.3.0'
 gem "roo", "~> 2.7.0"
 gem 'roo-xls'
 
