@@ -9,12 +9,19 @@ class ApiController < ApplicationController
   SWIMMER_HEADERS = %w(first_name, mi, last_name)
 
   def analytics
-    records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true, check_out: '2019-01-01'...'2019-12-31')
+    records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true)
 
-    data = {
-      total_swims: records.count,
-      unique_swimmers: records.distinct.count('swimmer_id')
-    }
+    # query three years of data including this year
+    years = (DateTime.now - 2.years).year..DateTime.now.year
+
+    data = []
+
+    years.each do |year|
+      beginning_of_year = DateTime.new(year).beginning_of_year
+      end_of_year = DateTime.new(year).end_of_year
+      year_swim_records = records.where(check_in: beginning_of_year..end_of_year)
+      data << {year: year, total_swims: year_swim_records.count, unique_swimmers: year_swim_records.distinct.count('swimmer_id')}
+    end
 
     render json: data.to_json
   end

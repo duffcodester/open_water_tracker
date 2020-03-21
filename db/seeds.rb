@@ -31,3 +31,33 @@ User.create(first_name: 'Admin',
                  account_id: Account.first.id)
   
 end
+
+100.times do |m|
+  monitor = User.first
+
+  3.times do |y|
+    # completed swims
+    SwimRecord.create(swimmer_id: Swimmer.pluck(:id).sample,
+                      check_in: DateTime.now - y.years - m.minutes,
+                      check_out: DateTime.now - y.years - m.minutes + 1.hours,
+                      completed: true,
+                      check_in_user_id: monitor.id,
+                      check_out_user_id: monitor.id,
+                      check_in_first_name: monitor.first_name,
+                      check_in_last_name: monitor.last_name,
+                      check_out_first_name: monitor.first_name,
+                      check_out_last_name: monitor.last_name)
+
+    # uncompleted swims
+    SwimRecord.create(swimmer_id: Swimmer.pluck(:id).sample,
+                      check_in: DateTime.now - y.years - m.minutes,
+                      check_out: nil,
+                      completed: true,
+                      check_in_user_id: monitor.id,
+                      check_out_user_id: monitor.id,
+                      check_in_first_name: monitor.first_name,
+                      check_in_last_name: monitor.last_name,
+                      check_out_first_name: monitor.first_name,
+                      check_out_last_name: monitor.last_name)
+  end
+end
