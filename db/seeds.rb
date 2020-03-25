@@ -73,10 +73,10 @@ end
                       check_out: nil,
                       completed: true,
                       check_in_user_id: monitor.id,
-                      check_out_user_id: monitor.id,
+                      check_out_user_id: nil,
                       check_in_first_name: monitor.first_name,
                       check_in_last_name: monitor.last_name,
-                      check_out_first_name: monitor.first_name,
-                      check_out_last_name: monitor.last_name)
+                      check_out_first_name: nil,
+                      check_out_last_name: nil)
   end
 end

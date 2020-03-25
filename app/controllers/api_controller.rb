@@ -26,12 +26,6 @@ class ApiController < ApplicationController
     render json: data.to_json
   end
 
-  def records
-    respond_to do |format|
-      format.csv { render csv: SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true), filename: 'records' }
-    end
-  end
-
   def out_of_state
     query = params[:search]
     @swimmers = {}

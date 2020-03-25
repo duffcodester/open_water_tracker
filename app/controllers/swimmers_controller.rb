@@ -85,6 +85,7 @@ class SwimmersController < ApplicationController
   end
 
   def import
+    # show swimmers import page 
   end
 
   def destroy
