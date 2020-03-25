@@ -2,22 +2,36 @@
 
 <div ng-controller='SwimmersCtrl'>
   <h1>Swimmers</h1>
-  <input class='search'
-         type='text'
-         ng-model='search.last_name'
-         placeholder='Search Last Name'
-         autocorrect='off'/>
-  <button class='button button-info button-info-solid search' ng-click='searchSwimmers()'>
-    Search
-  </button>
-  <button class='pull-right button button-success button-success-solid search' ng-click='openAddSwimmerModal()'>
-    Add Swimmer
-  </button>
-  <a class='pull-right button button-success button-success-solid search' href='/import'>
-    Import Swimmers
-  </a>
+  <div class='row'>
+    <input class='search'
+           type='text'
+           ng-model='search.last_name'
+           placeholder='Search Last Name'
+           autocorrect='off'/>
+    <button class='button button-info button-info-solid search' ng-click='searchSwimmers()'>
+      Search
+    </button>
+    <div class='hidden-xs' style='float:right;'>
+      <button class='button button-success button-success-solid search' ng-click='openAddSwimmerModal()'>
+        Add Swimmer
+      </button>
+      <a class='button button-primary button-primary-solid search' href='/import'>
+        Import Swimmers
+      </a>
+    </div>
+
+    <div class='visible-xs'>
+      <button class='button button-success button-success-solid search' ng-click='openAddSwimmerModal()'>
+        Add Swimmer
+      </button>
+      <a class='button button-primary button-primary-solid search' href='/import'>
+        Import Swimmers
+      </a>
+    </div>
+  </div>
   <br><br>
   <div ng-hide='filteredSwimmers.length'>
+    <br class='visible-xs'>
     <center>
       <h5 class='medium-grey-text'>Enter a swimmer’s last name and click the SEARCH button to get started.</h5>
     </center>
@@ -25,10 +39,10 @@
   <table class='u-full-width'>
     <thead ng-show='filteredSwimmers.length'>
       <tr>
-        <th class='hidden-xs medium-grey-text'>Name</th>
-        <th class='hidden-xs medium-grey-text'>Phone Number</th>
+        <th class='medium-grey-text'>Name</th>
+        <th class='medium-grey-text'>Phone Number</th>
         <th ng-if='currentUser.admin' class='hidden-xs'></th>
-        <th ng-if='currentUser.admin' class='hidden-xs'></th>
+        <th ng-if='currentUser.admin'></th>
       </tr>
     </thead>
     <tbody>
@@ -55,7 +69,7 @@
             EDIT
           </a>
         </td>
-        <td ng-if='currentUser.admin' class='hidden-xs'>
+        <td ng-if='currentUser.admin'>
           <a class='button button-danger button-danger-solid' ng-click='delete(swimmer)' style='width:110px;'>
             DELETE
           </a>

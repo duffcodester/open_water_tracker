@@ -54,9 +54,6 @@
               <li><a href='/analytics' class='navbar-link'>ANALYTICS</a></li>
               <% end %>
               <li>
-                <%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get, class:'navbar-link visible-xs' %>
-              </li>
-              <li>
                 <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete, class:'navbar-link visible-xs' %>
               </li>
             <% end %>
