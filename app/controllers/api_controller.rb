@@ -9,20 +9,21 @@ class ApiController < ApplicationController
   SWIMMER_HEADERS = %w(first_name, mi, last_name)
 
   def analytics
-    records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true, check_out: '2019-01-01'...'2019-12-31')
+    swim_records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true).order(check_in: :asc)
 
-    data = {
-      total_swims: records.count,
-      unique_swimmers: records.distinct.count('swimmer_id')
-    }
+    # query years of analytics starting with the first swim_record under the account
+    years = swim_records.first.check_in.year..DateTime.now.year
+
+    data = []
+
+    years.each do |year|
+      beginning_of_year = DateTime.new(year).beginning_of_year
+      end_of_year = DateTime.new(year).end_of_year
+      year_swim_records = swim_records.where(check_in: beginning_of_year..end_of_year)
+      data << {year: year, total_swims: year_swim_records.count, unique_swimmers: year_swim_records.distinct.count('swimmer_id')}
+    end
 
     render json: data.to_json
-  end
-
-  def records
-    respond_to do |format|
-      format.csv { render csv: SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true), filename: 'records' }
-    end
   end
 
   def out_of_state

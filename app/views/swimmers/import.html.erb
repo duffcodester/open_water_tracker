@@ -5,16 +5,18 @@
   <p>
     <b>Instructions</b>
     <br />
-    To swimmers download and complete
+    To import swimmers in bulk, please download and complete
     this
     <%= link_to 'Excel template',
                 'https://docs.google.com/spreadsheets/d/1dWf3YG-Tk_ayuheQWb_wO3nZKWorV0zSObZmhdJvQ90/export?format=xlsx',
                 class: 'styled-link' %>.
-    Required fields will
-    be colored red.
+    First name and last name are required. Phone number is not required on import, but is required before
+    the swimmer can be checked in for the first time. Then, choose your file to upload and click IMPORT! 
+    Note: Swimmers found in the database by first name and last name will have their phone number updated 
+    (if changed). Swimmers not found in the database by first name and last name will be created as new swimmers. 
   </p>
   <hr />
   <%= form_tag swimmer_import_path, multipart: true do %>
-    <%= file_field_tag :file, class:'button' %> <%= submit_tag 'IMPORT', class: 'button button-primary' %>
+    <%= file_field_tag :file, class:'button' %> <%= submit_tag 'IMPORT', class: 'button button-primary button-primary-solid' %>
   <% end %>
 </div>

@@ -49,13 +49,10 @@
                   CHECK OUT ({{checkOutCount.length}})</a>
               </li>
               <% if current_user.admin? %>
+              <li><a href='/swimmers' class='navbar-link'>SWIMMERS</a></li>
               <li><a href='/monitors' class='navbar-link'>MONITORS</a></li>
-              <li><a href='/import' class='navbar-link'>IMPORT</a></li>
               <li><a href='/analytics' class='navbar-link'>ANALYTICS</a></li>
               <% end %>
-              <li>
-                <%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get, class:'navbar-link visible-xs' %>
-              </li>
               <li>
                 <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete, class:'navbar-link visible-xs' %>
               </li>
@@ -69,7 +66,6 @@
                 </a>
                 <ul class='dropdown-menu'>
                   <li><a href='/my_profile'>MY PROFILE</a></li>
-                  <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get %></li>
                   <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
                 </ul>
               </li>
@@ -99,7 +95,7 @@
               FAQ
             </a>
             <br>
-            &#169; 2016-2019 Affektive Software LLC
+            &#169; 2016-<%= DateTime.now.year%> Affektive Software LLC
           </p>
         </center>
       <% end %>

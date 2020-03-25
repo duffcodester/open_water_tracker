@@ -10,7 +10,7 @@
          placeholder='Search Last Name'
          autocorrect='off'/>
 
-  <div class='u-pull-right hidden-xs'>
+  <div class='u-pull-right'>
     <a href='/monitors/add' class='button button-info button-info-solid'>
       Add Monitor
     </a>
@@ -19,10 +19,9 @@
   <table class='u-full-width'>
     <thead ng-show='filterUsers.length'>
       <tr>
-        <th class='visible-xs'></th>
-        <th class='hidden-xs medium-grey-text'>Name</th>
+        <th class='medium-grey-text'>Name</th>
         <th class='hidden-xs medium-grey-text'>Email</th>
-        <th class='hidden-xs medium-grey-text'>Phone Number</th>
+        <th class='medium-grey-text'>Phone Number</th>
         <th class='visible-xs'></th>
         <th class='hidden-xs medium-grey-text'>Admin</th>
         <div ng-if='currentUser.admin'>

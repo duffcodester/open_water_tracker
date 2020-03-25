@@ -24,7 +24,7 @@
 
     $scope.currentUser = Application.currentUser
 
-    $scope.findSwimmers =->
+    $scope.searchSwimmers =->
       filtered = []
       _.forEach $scope.swimmers, (swimmer) ->
         if swimmer.last_name.toLowerCase().indexOf($scope.search.last_name.toLowerCase()) >= 0
@@ -48,7 +48,7 @@
         $scope.search.last_name = ''
         $scope.swimRecords.splice $scope.swimRecords.indexOf(swimmerData), 1
         $scope.swimmers.push updatedSwimmer
-        $rootScope.$broadcast('countDown')
+        $rootScope.$broadcast('decrementCheckOutCount')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimRecord.swimmer.first_name + ' ' + swimRecord.swimmer.last_name
         toastr.success swimmer.concat(' has been checked out')
@@ -66,29 +66,47 @@
       .$promise.then (updatedSwimmer) ->
         $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
         $scope.swimmers.push updatedSwimmer
-        $rootScope.$broadcast('countUp')
+        $rootScope.$broadcast('incrementCheckOutCount')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
         toastr.success swimmer.concat(' has been checked in')
         $scope.search.last_name = ''
 
-    $scope.open = (swimmer, editMode) ->
+    $scope.openAddSwimmerModal = ->
+      swimmer = {}
+
       modalInstance = $modal.open
-        templateUrl: 'setup_new_swimmer_modal.html',
+        templateUrl: 'add_swimmer_modal.html'
+        controller: ModalCtrl,
+        scope: $scope,
+        resolve:
+          swimmer: -> swimmer
+
+    $scope.openSetupModal = (swimmer) ->
+      modalInstance = $modal.open
+        templateUrl: 'setup_swimmer_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
           swimmer: -> swimmer
 
-    $scope.viewSwimmer = (swimmer) ->
+    $scope.openViewSwimmerModal = (swimmer) ->
       modalInstance = $modal.open
-        templateUrl: 'swimmer_modal.html',
+        templateUrl: 'view_swimmer_modal.html',
         controller: ModalCtrl,
         scope: $scope
         resolve:
           swimmer: -> swimmer
 
-    $scope.delete = (swimmer) ->
+    $scope.openEditSwimmerModal = (swimmer) ->
+      modalInstance = $modal.open
+        templateUrl: 'edit_swimmer_modal.html',
+        controller: ModalCtrl,
+        scope: $scope
+        resolve:
+          swimmer: -> swimmer
+
+    $scope.deleteSwimmer = (swimmer) ->
       Swimmers.delete id: swimmer.id
       .$promise
       .then () ->
@@ -101,16 +119,12 @@
       angular.extend $scope,
         swimmer: swimmer
 
-      $scope.update = ->
-        updateExistingSwimmer(swimmer).then ->
-          $modalInstance.close swimmer
-
-      updateExistingSwimmer = (swimmer) ->
+      $scope.checkInSetupSwimmer = ->
         SwimRecords.create
           swimmer_id: swimmer.id
           account_id: Application.currentUser.account_id
 
-        swimmerData =  angular.extend swimmer,
+        swimmerData = angular.extend swimmer,
           phone_added: true
           swimmer_checked_in: true
           phone_number: $scope.swimmer.phone_number
@@ -119,11 +133,39 @@
         .$promise.then (updatedSwimmer) ->
           $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
           $scope.swimmers.push updatedSwimmer
-          $rootScope.$broadcast('countUp')
+          $rootScope.$broadcast('incrementCheckOutCount')
           toastr.options.positionClass = 'toast-bottom-left'
-          swimmer = swimmerData.first_name + ' ' + swimmerData.last_name
-          toastr.success swimmer.concat(' has been checked in')
+          toastr.success swimmerData.first_name + ' ' + swimmerData.last_name + ' has been checked in'
           $scope.search.last_name = ''
+          $modalInstance.close swimmer
+
+      $scope.updateSwimmer = ->
+        swimmerData = angular.extend swimmer,
+          phone_added: true
+          swimmer_checked_in: true
+          phone_number: $scope.swimmer.phone_number
+
+        Swimmers.update id: swimmerData.id, swimmerData
+        .$promise.then (updatedSwimmer) ->
+          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
+          $scope.swimmers.push updatedSwimmer
+          toastr.options.positionClass = 'toast-bottom-left'
+          toastr.success swimmerData.first_name + ' ' + swimmerData.last_name + ' has been updated'
+          $modalInstance.close swimmer
+
+      $scope.createSwimmer = ->
+        swimmerData = angular.extend swimmer,
+          phone_added: true
+          swimmer_checked_in: false
+          phone_number: $scope.swimmer.phone_number
+
+        Swimmers.create swimmerData
+        .$promise.then (createdSwimmer) ->
+          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
+          $scope.swimmers.push createdSwimmer
+          toastr.options.positionClass = 'toast-bottom-left'
+          toastr.success swimmerData.first_name + ' ' + swimmerData.last_name + ' has been created'
+          $modalInstance.close swimmer
 
       $scope.cancel = ->
         $modalInstance.dismiss 'Cancel'

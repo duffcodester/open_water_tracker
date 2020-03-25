@@ -1,0 +1,64 @@
+<div class='modal-header'>
+  <center>
+    <h3 class='modal-title'>Edit Swimmer</h3>
+    <p>{{::swimmer.last_name}}, {{::swimmer.first_name}}</p>
+  </center>
+</div>
+<div class='modal-body'>
+  <form name='userForm'
+        ng-submit='submitForm(userForm.$valid)'
+        novalidate>
+    <div class='form-group'
+         ng-class="{ 'has-error' : userForm.phone_number.$invalid && !userForm.phone_number.$pristine }">
+      <label>Phone Number<span style='color: red'> *</span></label>
+      <input style='width:100%'
+             type='tel'
+             name='phone_number'
+             class='form-control'
+             ng-model='swimmer.phone_number'
+             ng-minlength='10'
+             placeholder='7778889999'
+             autocorrect='off'
+             required>
+      <p ng-show='userForm.phone_number.$error.minlength'
+         class='help-block'>
+        Phone number not valid
+      </p>
+      <label>First Name<span style='color: red'> *</span></label>
+      <input style='width:100%'
+             name='first_name'
+             class='form-control'
+             ng-model='swimmer.first_name'
+             ng-minlength='1'
+             placeholder='First'
+             autocorrect='off'
+             required>
+      <label>Last Name<span style='color: red'> *</span></label>
+      <input style='width:100%'
+             name='last_name'
+             class='form-control'
+             ng-model='swimmer.last_name'
+             ng-minlength='1'
+             placeholder='Last'
+             autocorrect='off'
+             required>
+    </div>
+  </form>
+</div>
+<div class='modal-footer'>
+  <button type='submit'
+          class='u-full-width button-info button-success-solid button-disabled'
+          ng-if='userForm.$invalid'>
+    Save
+  </button>
+  <button type='submit'
+          class='u-full-width button-info button-success-solid'
+          ng-click='updateSwimmer()'
+          ng-if='!userForm.$invalid'>
+    Save
+  </button>
+  <button class='u-full-width button-info'
+          ng-click='cancel()'>
+    Cancel
+  </button>
+</div>

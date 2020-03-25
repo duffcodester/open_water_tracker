@@ -7,17 +7,17 @@
          ng-model='search.last_name'
          placeholder='Search Last Name'
          autocorrect='off'/>
-  <button class='button button-info button-info-solid search' ng-click='findSwimmers()'>
+  <button class='button button-info button-info-solid search' ng-click='searchSwimmers()'>
    Search
   </button>
   <br><br>
-  <div ng-hide='filterSwimmers.length'>
+  <div ng-hide='filteredSwimmers.length'>
     <center>
       <h5 class='medium-grey-text'>Enter a swimmer’s last name and click the SEARCH button to get started.</h5>
     </center>
   </div>
   <table class='u-full-width'>
-    <thead ng-show='filterSwimmers.length'>
+    <thead ng-show='filteredSwimmers.length'>
       <tr>
         <th></th>
         <th class='visible-xs'></th>
@@ -26,10 +26,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="swimmer in filterSwimmers = (filterSwimmersData
+      <tr ng-repeat="swimmer in filteredSwimmers = (filterSwimmersData
                      | orderBy:['last_name','first_name'])">
         <td>
-          <button ng-if='!swimmer.phone_added' ng-click="open(swimmer)"
+          <button ng-if='!swimmer.phone_added' ng-click="openSetupModal(swimmer)"
                  class='button button-primary button-width-default'>
             Setup
           </button>
@@ -41,12 +41,15 @@
           </button>
         </td>
         <td>
-          <a ng-click='viewSwimmer(swimmer)'>
+          <a ng-if='!currentUser.admin' ng-click='openViewSwimmerModal(swimmer)'>
+            {{swimmer.last_name}}, {{swimmer.first_name}}
+          </a>
+          <a ng-if='currentUser.admin' ng-click='openEditSwimmerModal(swimmer)'>
             {{swimmer.last_name}}, {{swimmer.first_name}}
           </a>
         </td>
         <td ng-if='currentUser.admin' class='hidden-xs'>
-          <a class='button button-danger button-danger-solid' ng-click='delete(swimmer)' style='width:100px;'>
+          <a class='button button-danger button-danger-solid' ng-click='deleteSwimmer(swimmer)' style='width:110px;'>
             DELETE
           </a>
         </td>

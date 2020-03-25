@@ -5,12 +5,10 @@
   @AnalyticsCtrl = ($scope, Analytics) ->
     Analytics.data()
     .$promise.then (data) ->
-      swimmerCount = data.total_swims
-      uniqueSwimmers = data.unique_swimmers
 
-      chart1 = {}
-      chart1.type = 'ColumnChart'
-      chart1.data = [
+      chart = {}
+      chart.type = 'ColumnChart'
+      chart.data = [
         [
           'Year'
           'Total Swims'
@@ -18,16 +16,18 @@
           'Unique Swimmers'
           { role: 'annotation' }
         ]
-        [
-          '2019'
-          swimmerCount
-          swimmerCount
-          uniqueSwimmers
-          uniqueSwimmers
-        ]
       ]
 
-      chart1.options =
+      for yearData in data
+        chart.data.push [
+          yearData.year.toString()
+          yearData.total_swims
+          yearData.total_swims
+          yearData.unique_swimmers
+          yearData.unique_swimmers
+        ]
+
+      chart.options =
         titleTextStyle: {color: '#797575' }
         displayExactValues: true
         is3D: true
@@ -37,5 +37,5 @@
         vAxis: { textStyle: {color: '#797575'} }
         annotations: { textStyle: { color: '#797575' } }
 
-      $scope.chart = chart1
+      $scope.chart = chart
 ]
