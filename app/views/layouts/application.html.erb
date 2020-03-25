@@ -66,7 +66,6 @@
                 </a>
                 <ul class='dropdown-menu'>
                   <li><a href='/my_profile'>MY PROFILE</a></li>
-                  <li><%= link_to 'UPDATE DATABASE', { controller: 'swimmers', action: 'import' }, method: :get %></li>
                   <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
                 </ul>
               </li>
