@@ -6,9 +6,9 @@
   @NavigationCtrl = ($scope, SwimRecords, $rootScope) ->
     $scope.checkOutCount = SwimRecords.index()
 
-    $rootScope.$on 'countUp', ->
+    $rootScope.$on 'incrementCheckOutCount', ->
       $scope.checkOutCount.length += 1
 
-    $rootScope.$on 'countDown', ->
+    $rootScope.$on 'decrementCheckOutCount', ->
       $scope.checkOutCount.length -= 1
 ]

@@ -34,7 +34,11 @@ class SwimmersController < ApplicationController
   end
 
   def index
-    render json: oj_dumper(Swimmer.where(account_id: current_user.account_id))
+    respond_to do |format|
+      puts "Josh: calling swimmers controller #index"
+      format.html # index page
+      format.json {render json: oj_dumper(Swimmer.where(account_id: current_user.account_id))}
+    end
   end
 
   def out_of_state
@@ -59,7 +63,11 @@ class SwimmersController < ApplicationController
   def create
     @swimmer = Swimmer.new(swimmer_params)
     @swimmer.account_id = current_user.account_id
-    @swimmer.save ? (redirect_to swimmers_url) : create_and_update_json_else
+    if @swimmer.save 
+      render json: @swimmer.to_json
+    else
+      render json: @swimmer.errors, status: :unprocessable_entity
+    end
   end
 
   def update

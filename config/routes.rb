@@ -23,6 +23,7 @@ OpenWaterTracker::Application.routes.draw do
   match '/analytics', to: 'swimmers#analytics', via: 'get'
   match '/records', to: 'swimmers#records', via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'
+  match '/swimmers', to: 'swimmers#index', via: 'get'
   match '/swimmer_import', to: 'swimmers#swimmer_import', via: 'post'
 
   match '/monitors', to: 'users#monitors', via: 'get'

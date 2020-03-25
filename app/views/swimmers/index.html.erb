@@ -1,14 +1,17 @@
-<% provide(:title, 'Check In') %>
+<% provide(:title, 'Swimmers') %>
 
 <div ng-controller='SwimmersCtrl'>
-  <h1>Check In</h1>
+  <h1>Swimmers</h1>
   <input class='search'
          type='text'
          ng-model='search.last_name'
          placeholder='Search Last Name'
          autocorrect='off'/>
   <button class='button button-info button-info-solid search' ng-click='searchSwimmers()'>
-   Search
+    Search
+  </button>
+  <button class='pull-right button button-success button-success-solid search' ng-click='openAddSwimmerModal()'>
+    Add Swimmer
   </button>
   <br><br>
   <div ng-hide='filteredSwimmers.length'>
@@ -19,27 +22,15 @@
   <table class='u-full-width'>
     <thead ng-show='filteredSwimmers.length'>
       <tr>
-        <th></th>
-        <th class='visible-xs'></th>
         <th class='hidden-xs medium-grey-text'>Name</th>
+        <th class='hidden-xs medium-grey-text'>Phone Number</th>
+        <th ng-if='currentUser.admin' class='hidden-xs'></th>
         <th ng-if='currentUser.admin' class='hidden-xs'></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="swimmer in filteredSwimmers = (filterSwimmersData
                      | orderBy:['last_name','first_name'])">
-        <td>
-          <button ng-if='!swimmer.phone_added' ng-click="openSetupModal(swimmer)"
-                 class='button button-primary button-width-default'>
-            Setup
-          </button>
-          <button ng-if='swimmer.phone_added' ng-click="checkIn(swimmer)"
-                  ng-class="!swimmer.swimmer_checked_in &&
-                            swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
-                  class='button button-width-default'>
-            {{!swimmer.swimmer_checked_in && swimmer.phone_number ? 'Check In' : 'Checked In'}}
-          </button>
-        </td>
         <td>
           <a ng-if='!currentUser.admin' ng-click='openViewSwimmerModal(swimmer)'>
             {{swimmer.last_name}}, {{swimmer.first_name}}
@@ -48,8 +39,21 @@
             {{swimmer.last_name}}, {{swimmer.first_name}}
           </a>
         </td>
+        <td>
+          <a ng-if='!currentUser.admin' ng-click='openViewSwimmerModal(swimmer)'>
+            {{swimmer.phone_number}}
+          </a>
+          <a ng-if='currentUser.admin' ng-click='openEditSwimmerModal(swimmer)'>
+            {{swimmer.phone_number}}
+          </a>
+        </td>
         <td ng-if='currentUser.admin' class='hidden-xs'>
-          <a class='button button-danger button-danger-solid' ng-click='deleteSwimmer(swimmer)' style='width:110px;'>
+          <a class='button button-info button-info-solid' ng-click='openEditSwimmerModal(swimmer)' style='width:110px;'>
+            EDIT
+          </a>
+        </td>
+        <td ng-if='currentUser.admin' class='hidden-xs'>
+          <a class='button button-danger button-danger-solid' ng-click='delete(swimmer)' style='width:110px;'>
             DELETE
           </a>
         </td>

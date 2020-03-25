@@ -14,7 +14,6 @@
 
       create:
         method: 'POST'
-        isArray: true
 
       destroy:
         method: 'DELETE'
