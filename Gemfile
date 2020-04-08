@@ -9,7 +9,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
-gem 'oj'
 
 # Angualr
 gem 'angularjs-rails', '1.3.10'

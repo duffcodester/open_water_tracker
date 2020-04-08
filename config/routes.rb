@@ -9,7 +9,6 @@ OpenWaterTracker::Application.routes.draw do
     resources :users
     get '/analytics' => 'api#analytics'
     get '/records' => 'api#records'
-    match 'out_of_state', to: 'api#out_of_state', via: [:post, :get]
   end
 
   match '/instructions', to: 'public#instructions', via: 'get'
@@ -19,7 +18,6 @@ OpenWaterTracker::Application.routes.draw do
 
   match '/check_in', to: 'swimmers#check_in', via: 'get'
   match '/check_out', to: 'swimmers#check_out', via: 'get'
-  match '/out_of_state', to: 'swimmers#out_of_state', via: 'get'
   match '/analytics', to: 'swimmers#analytics', via: 'get'
   match '/records', to: 'swimmers#records', via: 'get'
   match '/import', to: 'swimmers#import', via: 'get'

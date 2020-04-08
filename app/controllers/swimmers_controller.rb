@@ -16,9 +16,6 @@ class SwimmersController < ApplicationController
   def check_out
   end
 
-  def out_of_state
-  end
-
   def analytics
   end
 
@@ -37,22 +34,7 @@ class SwimmersController < ApplicationController
     respond_to do |format|
       puts "Josh: calling swimmers controller #index"
       format.html # index page
-      format.json {render json: oj_dumper(Swimmer.where(account_id: current_user.account_id))}
-    end
-  end
-
-  def out_of_state
-    query = params[:search]
-    @swimmers = {}
-    if query
-      url = "https://www.usms.org/reg/members/jqs/searchmembers.php?RegYear=2016&LastName=#{query}&oper=csv&_search=false&nd=1398554078479&rows=200&page=1&sidx=BinaryLastName+asc%2C+FirstName+asc%2C+RegDate&sord=asc&totalrows=-1"
-      key = 'swimmer'
-      @swimmers = CSV.open(open(url).path,
-                           headers: true,
-                           header_converters: :symbol).to_a.map { |row| Hash[key.to_sym, row.to_hash] }
-      index_respond_to_format_methods(@swimmers)
-    else
-      @swimmers = nil
+      format.json {render json: Swimmer.where(account_id: current_user.account_id)}
     end
   end
 
@@ -107,19 +89,5 @@ class SwimmersController < ApplicationController
 
   def create_and_update_json_else
     render json: @swimmer.errors, status: :unprocessable_entity
-  end
-
-  def index_respond_to_format_methods(view)
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: oj_dumper(view)
-      end
-    end
-  end
-
-  def oj_dumper(view)
-    Oj.dump(view.select([:id, :last_name, :first_name, :mi, :phone_number,
-                         :phone_added, :swimmer_checked_in, :account_id]), mode: :compat)
   end
 end
