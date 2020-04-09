@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '2.2.7'
+ruby '2.5.8'
 
 gem 'rails', '~>4.1'
 gem 'devise'
@@ -9,7 +9,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'uglifier', '~> 2.5.0'
 gem 'comma', '~> 3.0'
-gem 'oj', '2.8.1'
 
 # Angualr
 gem 'angularjs-rails', '1.3.10'

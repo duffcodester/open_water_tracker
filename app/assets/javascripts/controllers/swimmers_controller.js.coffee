@@ -112,6 +112,7 @@
       .then () ->
         toastr.success 'Swimmer deleted.'
         _.remove $scope.filterSwimmersData, id: swimmer.id
+        _.remove $scope.swimmers, id: swimmer.id
       .catch () ->
         toastr.error 'An error occurred.'
 
