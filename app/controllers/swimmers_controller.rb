@@ -34,7 +34,7 @@ class SwimmersController < ApplicationController
     respond_to do |format|
       puts "Josh: calling swimmers controller #index"
       format.html # index page
-      format.json {render json: Swimmer.where(account_id: current_user.account_id)}
+      format.json { render json: Swimmer.where(deleted_at: nil, account_id: current_user.account_id) }
     end
   end
 
@@ -71,7 +71,7 @@ class SwimmersController < ApplicationController
   end
 
   def destroy
-    if @swimmer.destroy
+    if @swimmer.update(deleted_at: DateTime.now)
       head :no_content
     else
       render json: @swimmer.errors, status: :unprocessable_entity

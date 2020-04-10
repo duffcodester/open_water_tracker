@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626183944) do
+ActiveRecord::Schema.define(version: 20200410154158) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20180626183944) do
     t.integer  "account_id"
     t.boolean  "waiver_received",    default: false
     t.datetime "waiver_received_on"
+    t.datetime "deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
