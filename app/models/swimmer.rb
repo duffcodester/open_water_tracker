@@ -17,7 +17,7 @@ class Swimmer < ActiveRecord::Base
 
       (2..spreadsheet.last_row).each do |i|
         @row = Hash[[header, spreadsheet.row(i)].transpose]
-        @swimmer = Swimmer.find_by(first_name: @row['first_name'], last_name: @row['last_name'], account_id: @account_id)
+        @swimmer = Swimmer.find_by(first_name: @row['first_name'], last_name: @row['last_name'], account_id: @account_id, deleted_at: nil)
 
         if @swimmer # existing
           if @swimmer.update(user_hash)
