@@ -3,9 +3,23 @@
 <div ng-controller='SwimmersCtrl'>
   <h1>Check Out</h1>
 
-  <ng-include src="'/search.html'"></ng-include>
-
-  <table class='u-full-width'>
+  <input class='u-pull-left search'
+         type='text'
+         ng-model='search.last_name'
+         ng-model-options='{debounce: 800}'
+         immediate='true'
+         placeholder='Search Last Name'
+         autocorrect='off'/>
+  <button class='button button-info button-info-solid search' ng-click='searchSwimmers()'>
+    Search
+  </button>
+  <br><br>
+  <div ng-if='loading'>
+    <center>
+      <h5 class='medium-grey-text'>Loading your swimmers...</h5>
+    </center>
+  </div>
+  <table ng-if='!loading' class='u-full-width'>
     <thead ng-show='filterSwimRecords.length'>
       <tr>
         <th></th>
@@ -19,12 +33,19 @@
     <tbody>
       <tr ng-repeat='swimRecord in filterSwimRecords = (swimRecords
                      | orderBy:predicate.value:reverse
-                     | filter: { completed: false }
                      | filter:search.last_name)'>
       <td>
-        <button ng-click='checkOut(swimRecord)' class='button button-danger button-width-default'>
-          Check Out
-        </button>
+        <div ng-switch="swimRecord.state">
+          <button ng-switch-when='0' 
+                  ng-click='checkOut(swimRecord)' 
+                  class='button button-danger button-width-default'>
+            Check Out
+          </button>
+          <button ng-switch-when='1' 
+                  class='button button-danger button-width-default button-disabled'>
+            Checking Out...
+          </button>
+        </div>
       </td>
       <td class='medium-grey-text'>
         {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}}
