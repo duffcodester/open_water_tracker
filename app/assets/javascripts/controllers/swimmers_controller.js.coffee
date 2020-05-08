@@ -45,7 +45,7 @@
         swimmer.state = 0
 
       if swimmer.phone_number and not swimmer.checked_in
-        # can check in
+        # ready to check in
         swimmer.state = 1
 
       if swimmer.phone_number and not swimmer.checked_in and swimmer.loading
@@ -99,8 +99,7 @@
 
     $scope.checkOut = (swimRecord) ->
       swimmer = swimRecord.swimmer
-      swimRecord.loading = true
-      setSwimRecordState(swimRecord)
+      swimRecord.state = 1
 
       SwimRecords.update id: swimRecord.id, 
         completed: true
@@ -110,10 +109,7 @@
         check_out_last_name: $scope.currentUser.last_name
       .$promise
       .then (completedSwimRecord) ->
-        swimRecord.loading = false
-        swimRecord.checked_in = false
         resetSearch()
-        setSwimRecordState(swimRecord)
 
         #remove swimmer row
         $scope.swimRecords.splice $scope.swimRecords.indexOf(swimRecord), 1
@@ -126,8 +122,7 @@
         toastr.error "An error occurred. Please try again."
 
     $scope.checkIn = (swimmer) ->
-      swimmer.loading = true
-      addViewDataToSwimmer(swimmer)
+      swimmer.state = 2 # checking in 
       SwimRecords.create
         swimmer_id: swimmer.id
         account_id: $scope.currentUser.account_id
@@ -138,16 +133,14 @@
       .$promise
       .then (createdSwimRecord) ->
         $scope.swimRecords.push createdSwimRecord
-        swimmer.loading = false
-        swimmer.checked_in = true
-        addViewDataToSwimmer(swimmer)
+        swimmer.state = 3 # checked in
         $rootScope.$broadcast('incrementCheckOutCount')
         toastr.options.positionClass = 'toast-bottom-left'
         swimmer = swimmer.first_name + ' ' + swimmer.last_name
         toastr.success swimmer.concat(' has been checked in')
         resetSearch()
       .catch ->
-        swimmer.loading = false
+        swimmer.state = 1 # ready to check in 
         toastr.error "An error occurred. Please try again."
 
     $scope.openAddSwimmerModal = ->
@@ -200,7 +193,6 @@
 
       $scope.checkInSetupSwimmer = (swimmer) ->
         $scope.swimmer.loading = true
-        addViewDataToSwimmer(swimmer)
 
         swimmerData = angular.extend swimmer,
           phone_number: $scope.swimmer.phone_number
@@ -214,8 +206,7 @@
             swimmerData
           .$promise
         .then (updatedSwimmer) ->
-          $scope.swimmer.loading = false
-          $scope.swimmer.checked_in = true
+          $scope.swimmer.state = 3 # checked in
           $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
           $scope.swimmers.push addViewDataToSwimmer(swimmer)
           $rootScope.$broadcast('incrementCheckOutCount')
@@ -232,11 +223,9 @@
         Swimmers.update id: swimmerData.id, swimmerData
         .$promise
         .then (updatedSwimmer) ->
-          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
-          $scope.swimmers.push updatedSwimmer
+          $modalInstance.close swimmer
           toastr.options.positionClass = 'toast-bottom-left'
           toastr.success swimmerData.first_name + ' ' + swimmerData.last_name + ' has been updated'
-          $modalInstance.close swimmer
         .catch ->
           toastr.error "An error occurred. Please try again."
 
@@ -246,11 +235,10 @@
         Swimmers.create swimmerData
         .$promise
         .then (createdSwimmer) ->
-          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
           $scope.swimmers.push createdSwimmer
+          $modalInstance.close swimmer
           toastr.options.positionClass = 'toast-bottom-left'
           toastr.success swimmerData.first_name + ' ' + swimmerData.last_name + ' has been created'
-          $modalInstance.close swimmer
         .catch ->
           toastr.error "An error occurred. Please try again."
 
