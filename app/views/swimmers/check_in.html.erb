@@ -11,7 +11,12 @@
    Search
   </button>
   <br><br>
-  <div ng-hide='filteredSwimmers.length'>
+  <div ng-if='loading'>
+    <center>
+      <h5 class='medium-grey-text'>Loading your swimmers...</h5>
+    </center>
+  </div>
+  <div ng-if='!loading' ng-hide='filteredSwimmers.length'>
     <center>
       <h5 class='medium-grey-text'>Enter a swimmer’s last name and click the SEARCH button to get started.</h5>
     </center>
@@ -29,16 +34,24 @@
       <tr ng-repeat="swimmer in filteredSwimmers = (filterSwimmersData
                      | orderBy:['last_name','first_name'])">
         <td>
-          <button ng-if='!swimmer.phone_added' ng-click="openSetupModal(swimmer)"
-                 class='button button-primary button-width-default'>
-            Setup
-          </button>
-          <button ng-if='swimmer.phone_added' ng-click="checkIn(swimmer)"
-                  ng-class="!swimmer.swimmer_checked_in &&
-                            swimmer.phone_number ? 'button-success' : 'button-danger button-disabled'"
-                  class='button button-width-default'>
-            {{!swimmer.swimmer_checked_in && swimmer.phone_number ? 'Check In' : 'Checked In'}}
-          </button>
+          <div ng-switch="swimmer.state">
+            <button ng-switch-when='0' ng-click="openSetupModal(swimmer)"
+                   class='button button-primary button-width-default'>
+              Setup
+            </button>
+            <button ng-switch-when='1' ng-click="checkIn(swimmer)"
+                    class='button button-width-default button-success'>    
+              Check In
+            </button>
+            <button ng-switch-when='2'
+                    class='button button-width-default button-success button-disabled'>    
+              Checking In...
+            </button>
+            <button ng-switch-when='3'
+                    class='button button-width-default button-danger button-disabled'>    
+              Checked In
+            </button>
+          </div>
         </td>
         <td>
           <a ng-if='!currentUser.admin' ng-click='openViewSwimmerModal(swimmer)'>
