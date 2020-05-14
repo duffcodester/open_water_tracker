@@ -192,26 +192,26 @@
         swimmer: swimmer
 
       $scope.checkInSetupSwimmer = (swimmer) ->
+        console.log $scope.swimmer
         $scope.swimmer.loading = true
-
-        swimmerData = angular.extend swimmer,
-          phone_number: $scope.swimmer.phone_number
 
         $q.all
           swimRecord: SwimRecords.create
             swimmer_id: $scope.swimmer.id
             account_id: Application.currentUser.account_id
+            check_in_user_id: $scope.currentUser.id
+            check_in_first_name: $scope.currentUser.first_name
+            check_in_last_name: $scope.currentUser.last_name
+            check_in: new Date()
           .$promise
-          updatedSwimmer: Swimmers.update id: swimmerData.id, 
-            swimmerData
+          updatedSwimmer: Swimmers.update id: $scope.swimmer.id, 
+            phone_number: $scope.swimmer.phone_number
           .$promise
-        .then (updatedSwimmer) ->
+        .then (response) ->
           $scope.swimmer.state = 3 # checked in
-          $scope.swimmers.splice $scope.swimmers.indexOf(swimmerData), 1
-          $scope.swimmers.push addViewDataToSwimmer(swimmer)
           $rootScope.$broadcast('incrementCheckOutCount')
           toastr.options.positionClass = 'toast-bottom-left'
-          toastr.success swimmerData.first_name + ' ' + swimmerData.last_name + ' has been checked in'
+          toastr.success swimmer.first_name + ' ' + swimmer.last_name + ' has been checked in'
           resetSearch()
           $modalInstance.close swimmer
         .catch ->
