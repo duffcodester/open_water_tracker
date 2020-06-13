@@ -6,7 +6,7 @@ describe Swimmer do
     @swimmer = Swimmer.new(first_name:     'First',
                            last_name:      'Last',
                            mi: 'Dubs',
-                           phone_number:   '720-387-9691')
+                           phone_number:   '303-921-8628')
   end
 
   subject { @swimmer }
@@ -18,6 +18,11 @@ describe Swimmer do
   it { should respond_to(:phone_added) }
   it { should respond_to(:swimmer_checked_in) }
   it { should respond_to(:deleted_at) }
+  it { should respond_to(:email) }
+  it { should respond_to(:emergency_first) }
+  it { should respond_to(:emergency_last) }
+  it { should respond_to(:emergency_phone) }
+  it { should respond_to(:date_of_birth) }
 
   it { should be_valid }
 

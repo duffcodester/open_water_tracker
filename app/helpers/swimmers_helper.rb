@@ -6,7 +6,12 @@ module SwimmersHelper
                     :phone_added,
                     :id,
                     :swimmer_checked_in,
-                    :deleted_at
+                    :deleted_at,
+                    :email,
+                    :emergency_first,
+                    :emergency_last,
+                    :emergency_phone,
+                    :date_of_birth
                    ]
 
   def swimmer_params
