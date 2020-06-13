@@ -39,6 +39,10 @@
         swimmer.checked_in = true
       setSwimmerState(swimmer)
 
+      # set swimmer dob input in edit swimmer modal, otherwise leave blank
+      if swimmer.date_of_birth
+        swimmer.date_of_birth = new Date(swimmer.date_of_birth)
+
     setSwimmerState = (swimmer) ->
       if !swimmer.phone_number
         # needs set up with phone number
@@ -162,6 +166,7 @@
           swimmer: -> swimmer
 
     $scope.openViewSwimmerModal = (swimmer) ->
+      console.log swimmer
       modalInstance = $modal.open
         templateUrl: 'view_swimmer_modal.html',
         controller: ModalCtrl,

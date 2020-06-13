@@ -9,6 +9,26 @@
         novalidate>
     <div class='form-group'
          ng-class="{ 'has-error' : userForm.phone_number.$invalid && !userForm.phone_number.$pristine }">
+      <label>First Name<span style='color: red'> *</span></label>
+      <input style='width:100%'
+             name='first_name'
+             class='form-control'
+             ng-model='swimmer.first_name'
+             ng-minlength='1'
+             placeholder='First'
+             autocorrect='off'
+             required>
+             
+      <label>Last Name<span style='color: red'> *</span></label>
+      <input style='width:100%'
+             name='last_name'
+             class='form-control'
+             ng-model='swimmer.last_name'
+             ng-minlength='1'
+             placeholder='Last'
+             autocorrect='off'
+             required>
+
       <label>Phone Number<span style='color: red'> *</span></label>
       <input style='width:100%'
              type='tel'
@@ -23,24 +43,43 @@
          class='help-block'>
         Phone number not valid
       </p>
-      <label>First Name<span style='color: red'> *</span></label>
+      <label>Date of Birth</label>
+      <input type='date'
+             ng-model='swimmer.date_of_birth'>
+
+      <label>Email</label>
       <input style='width:100%'
-             name='first_name'
+             name='email'
              class='form-control'
-             ng-model='swimmer.first_name'
-             ng-minlength='1'
+             ng-model='swimmer.email'
+             placeholder='name@example.com'
+             autocorrect='off'>
+
+      <label>Emergency Contact First Name</label>
+      <input style='width:100%'
+             name='emergency_first'
+             class='form-control'
+             ng-model='swimmer.emergency_first'
              placeholder='First'
-             autocorrect='off'
-             required>
-      <label>Last Name<span style='color: red'> *</span></label>
+             autocorrect='off'>
+
+      <label>Emergency Contact Last Name</label>
       <input style='width:100%'
-             name='last_name'
+             name='emergency_last'
              class='form-control'
-             ng-model='swimmer.last_name'
-             ng-minlength='1'
+             ng-model='swimmer.emergency_last'
              placeholder='Last'
-             autocorrect='off'
-             required>
+             autocorrect='off'>
+
+      <label>Emergency Contact Phone</label>
+      <input style='width:100%'
+             type='tel'
+             name='emergency_phone'
+             class='form-control'
+             ng-model='swimmer.emergency_phone'
+             placeholder='7778889999'
+             autocorrect='off'>
+
     </div>
   </form>
 </div>

@@ -17,7 +17,11 @@ json.array!(@swim_records) do |swim_record|
     json.mi swim_record.swimmer.mi
     json.last_name swim_record.swimmer.last_name
     json.phone_number swim_record.swimmer.phone_number
-    json.swimmer_checked_in swim_record.swimmer.swimmer_checked_in
     json.account_id swim_record.swimmer.account_id
+    json.email swim_record.swimmer.email
+    json.date_of_birth swim_record.swimmer.date_of_birth
+    json.emergency_first swim_record.swimmer.emergency_first
+    json.emergency_last swim_record.swimmer.emergency_last
+    json.emergency_phone swim_record.swimmer.emergency_phone
   end
 end
