@@ -47,8 +47,10 @@
           </button>
         </div>
       </td>
-      <td class='medium-grey-text'>
-        {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}}
+      <td>
+        <a ng-click='openViewSwimmerModal(swimRecord.swimmer)'>
+          {{swimRecord.swimmer.last_name}}, {{swimRecord.swimmer.first_name}}
+        </a>
       </td>
         <td class='hidden-xs medium-grey-text'>{{swimRecord.check_in | date:'MM/dd/yyyy @ h:mma'}}</td>
         <td>

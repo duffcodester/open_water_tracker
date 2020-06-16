@@ -11,18 +11,18 @@ FactoryGirl.define do
     password 'foobar77'
     password_confirmation 'foobar77'
     admin false
-    phone_number '720-387-9691'
+    phone_number '303-921-8628'
     account_id 1
   end
 
   factory :admin, class: User do
-    first_name 'Michael'
-    last_name 'Pierce'
+    first_name 'Josh'
+    last_name 'Admin'
     email 'newuser2@example.com'
     password 'foobar22'
     password_confirmation 'foobar22'
     admin true
-    phone_number '720-387-9655'
+    phone_number '303-921-8628'
     account_id 1
   end
 

@@ -6,8 +6,6 @@ class ApiController < ApplicationController
   OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
   OpenURI::Buffer.const_set 'StringMax', 0
 
-  SWIMMER_HEADERS = %w(first_name, mi, last_name)
-
   def analytics
     swim_records = SwimRecord.joins(:swimmer).where(swimmers: {account_id: current_user.account_id}, completed: true).order(check_in: :asc)
 
