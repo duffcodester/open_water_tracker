@@ -54,10 +54,7 @@
           </div>
         </td>
         <td>
-          <a ng-if='!currentUser.admin' ng-click='openViewSwimmerModal(swimmer)'>
-            {{swimmer.last_name}}, {{swimmer.first_name}}
-          </a>
-          <a ng-if='currentUser.admin' ng-click='openEditSwimmerModal(swimmer)'>
+          <a ng-click='openEditSwimmerModal(swimmer)'>
             {{swimmer.last_name}}, {{swimmer.first_name}}
           </a>
         </td>

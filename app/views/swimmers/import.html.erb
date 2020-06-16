@@ -10,10 +10,14 @@
     <%= link_to 'Excel template',
                 'https://docs.google.com/spreadsheets/d/1sPdSTcAhQlHU2BguBCGd-WLFLp0MYbKeyZLmvQcQDz4/export?format=xlsx',
                 class: 'styled-link' %>.
-    First name and last name are required. Phone number is not required on import, but is required before
-    the swimmer can be checked in for the first time. Then, choose your file to upload and click IMPORT! 
-    Note: Swimmers found in the database by first name and last name will have their phone number updated 
-    (if changed). Swimmers not found in the database by first name and last name will be created as new swimmers. 
+    </br>
+    First name and last name are required. 
+    </br>
+    Phone number is not required on import, but is required before the swimmer can be checked in for the first time.
+    </br> 
+    Note: Swimmers found in the database by first name and last name will have their additional information updated (if changed). 
+    </br>
+    Swimmers not found in the database by first name and last name will be created as new swimmers. 
   </p>
   <hr />
   <%= form_tag swimmer_import_path, multipart: true do %>
